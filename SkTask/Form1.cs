@@ -38,47 +38,24 @@ namespace SkTask
         }
         void MainThread()
         {
-            Inventory Inventory = new Inventory();
-            Stash Stash = new Stash();
-            MultiPoint multipoint = new MultiPoint();
-            MultiPointInsert insert = new MultiPointInsert();
-            MultiPointMove move = new MultiPointMove(insert);
-            MultiPointClear clear = new MultiPointClear(insert);
+            List<SkTask.Action.Task> actions = new List<SkTask.Action.Task>(new SkTask.Action.Task[] {
+                new Inventory(),
+                new Stash(),
+                new BlightMap()
+            });
             while (this.isRunning)
             {
                 Thread.Sleep(40); //minimum CPU usage
                 if(Status.mode == Constants.Mode.WAITING)
                 {
-                    /*
-                    if (multipoint.StartCondition())
+                    var select = from action in actions
+                                 where action.StartCondition() == true
+                                 select action;
+                    if(select.Count() > 0)
                     {
-                        Status.mode = constants.Mode.RUNNING;
-                        multipoint.task();
-                    }*/
-                    if (Inventory.StartCondition())
-                    {
+                        SkTask.Action.Task t = select.First();
                         Status.mode = Constants.Mode.RUNNING;
-                        Inventory.task();
-                    }
-                    if (Stash.StartCondition())
-                    {
-                        Status.mode = Constants.Mode.RUNNING;
-                        Stash.task();
-                    }
-                    if (move.StartCondition())
-                    {
-                        Status.mode = Constants.Mode.RUNNING;
-                        move.task();
-                    }
-                    if (insert.StartCondition())
-                    {
-                        Status.mode = Constants.Mode.RUNNING;
-                        insert.task();
-                    }
-                    if (clear.StartCondition())
-                    {
-                        Status.mode = Constants.Mode.RUNNING;
-                        clear.task();
+                        t.task();
                     }
                 }
             }

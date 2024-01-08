@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace SkTask.Action
 {
-    class Action
+    class Task
     {
         static private int interval_;
         static private readonly ManualResetEvent stoppeing_event_ = new ManualResetEvent(false); //System.Threading;
@@ -937,6 +937,12 @@ namespace SkTask.Action
         public void ForcedStop()
         {
             Status.mode = Constants.Mode.WAITING;
+        }
+        public System.Drawing.Point toPoint(System.Drawing.PointF input)
+        {
+            return new System.Drawing.Point(
+                (int)((float)Screen.PrimaryScreen.Bounds.Width * input.X),
+                (int)((float)Screen.PrimaryScreen.Bounds.Height* input.Y));
         }
     }
 }

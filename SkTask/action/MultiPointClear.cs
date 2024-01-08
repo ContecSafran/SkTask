@@ -12,7 +12,7 @@ using System.Windows;
 
 namespace SkTask.Action
 {
-    class MultiPointClear : Action
+    class MultiPointClear : Task
     {
         MultiPointInsert insert;
         public MultiPointClear(MultiPointInsert insert)

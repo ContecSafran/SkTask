@@ -13,7 +13,7 @@ using System.Diagnostics;
 
 namespace SkTask.Action
 {
-    class MultiPointInsert : Action
+    class MultiPointInsert : Task
     {
         public List<System.Drawing.Point> Points = new List<System.Drawing.Point>();
         public MultiPointInsert()

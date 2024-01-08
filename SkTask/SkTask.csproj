@@ -62,6 +62,7 @@
     <Compile Include="Action\MultiPointClear.cs" />
     <Compile Include="Action\MultiPointInsert.cs" />
     <Compile Include="Action\MultiPointMove.cs" />
+    <Compile Include="Action\QuickMove.cs" />
     <Compile Include="Action\Stash.cs" />
     <Compile Include="Component\Log.cs">
       <SubType>UserControl</SubType>

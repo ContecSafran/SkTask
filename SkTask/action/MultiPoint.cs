@@ -12,7 +12,7 @@ using System.Windows;
 
 namespace SkTask.Action
 {
-    class MultiPoint : Action
+    class MultiPoint : Task
     {
         public MultiPoint()
         {

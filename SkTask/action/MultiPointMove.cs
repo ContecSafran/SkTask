@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace SkTask.Action
 {
-    class MultiPointMove : Action
+    class MultiPointMove : Task
     {
         MultiPointInsert insert;
         public MultiPointMove(MultiPointInsert insert)
@@ -32,7 +32,7 @@ namespace SkTask.Action
             Log.WriteLog("MultiPointMove 시작");
             MouseDown(InputEvent.RIGHT);
             Sleep(1000);
-            SendKeyDown(SkTask.Action.Action.KeyCode.KEY_D);
+            SendKeyDown(SkTask.Action.Task.KeyCode.KEY_D);
         }
         public override void Process()
         {
@@ -55,7 +55,7 @@ namespace SkTask.Action
         {
             MouseUp(InputEvent.RIGHT);
             Sleep(1000);
-            SendKeyUp(SkTask.Action.Action.KeyCode.KEY_D);
+            SendKeyUp(SkTask.Action.Task.KeyCode.KEY_D);
             Log.WriteLog("MultiPointMove 종료");
         }
     }

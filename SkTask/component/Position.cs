@@ -28,7 +28,9 @@ namespace SkTask
                 if (!Position.CurrentPosition.Equals(Cursor.Position))
                 {
                     Position.CurrentPosition = Cursor.Position;
-                    this.ContentsTextBox.AppendText(Cursor.Position.X.ToString() + " " + Cursor.Position.Y.ToString() + "\r\n");
+                    float x = (float)Position.CurrentPosition.X / (float)Screen.PrimaryScreen.Bounds.Width;
+                    float y = (float)Position.CurrentPosition.Y / (float)Screen.PrimaryScreen.Bounds.Height;
+                    this.ContentsTextBox.AppendText(x.ToString("F4") + "f, " + y.ToString("F4") + "f\r\n");
                     this.ContentsTextBox.Select(this.ContentsTextBox.Text.Length, 0);
                     this.ContentsTextBox.ScrollToCaret();
                 }
