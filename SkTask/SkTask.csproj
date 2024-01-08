@@ -60,6 +60,7 @@
     <Compile Include="Action\Inventory.cs" />
     <Compile Include="Action\MultiPoint.cs" />
     <Compile Include="Action\MultiPointClear.cs" />
+    <Compile Include="Action\Trash.cs" />
     <Compile Include="Action\MultiPointInsert.cs" />
     <Compile Include="Action\MultiPointMove.cs" />
     <Compile Include="Action\QuickMove.cs" />

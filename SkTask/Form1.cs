@@ -41,7 +41,8 @@ namespace SkTask
             List<SkTask.Action.Task> actions = new List<SkTask.Action.Task>(new SkTask.Action.Task[] {
                 new Inventory(),
                 new Stash(),
-                new BlightMap()
+                new BlightMap(),
+                new Trash()
             });
             while (this.isRunning)
             {
