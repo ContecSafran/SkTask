@@ -12,22 +12,19 @@ using System.Windows;
 
 namespace SkTask.Action
 {
-    class MultiPoint : Task
+    class Alter : Task
     {
-        public MultiPoint()
+        public Alter()
         {
-            StartKey.Add(Key.LeftAlt);
-            StartKey.Add(Key.D1);
-
-            EndKey.Add(Key.LeftAlt);
-            EndKey.Add(Key.D2);
+            StartKey.Add(Key.LeftShift);
+            StartKey.Add(Key.A);
         }
         public override void Process()
         {
-            Click(Position.CurrentPosition, InputEvent.RIGHT);
-            Sleep(200);
-            Click(Position.CurrentPosition, InputEvent.LEFT);
-            Sleep(200);
+            Click(toPoint(new System.Drawing.PointF(0.10f, 0.17f)), InputEvent.RIGHT);
+            Sleep(50);
+            Click(toPoint(new System.Drawing.PointF(0.10f, 0.17f)), InputEvent.LEFT);
+            Sleep(50);
         }
     }
 }

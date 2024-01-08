@@ -56,9 +56,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Action\Action.cs" />
+    <Compile Include="Action\AlchSco.cs" />
+    <Compile Include="Action\Augmentation.cs" />
     <Compile Include="Action\BlightMap.cs" />
     <Compile Include="Action\Inventory.cs" />
-    <Compile Include="Action\MultiPoint.cs" />
+    <Compile Include="Action\Alter.cs" />
     <Compile Include="Action\MultiPointClear.cs" />
     <Compile Include="Action\Trash.cs" />
     <Compile Include="Action\MultiPointInsert.cs" />
