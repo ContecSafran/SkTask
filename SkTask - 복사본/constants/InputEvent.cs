@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SkTask.Constants
+namespace SkTask.constants
 {
-    enum Mode
+    enum InputEvent
     {
-        RUNNING,
-        STOP,
-        WAITING
+        LEFT,
+        RIGHT
     }
 }

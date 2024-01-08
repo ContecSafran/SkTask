@@ -1,4 +1,4 @@
-﻿using SkTask.dto;
+﻿using SkTask.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,11 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 using System.Threading;
-using SkTask.constants;
+using SkTask.Constants;
 using System.Windows.Input;
 using System.Windows;
 
-namespace SkTask.action
+namespace SkTask.Action
 {
     class Inventory : Action
     {

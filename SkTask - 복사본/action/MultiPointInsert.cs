@@ -1,4 +1,4 @@
-﻿using SkTask.Dto;
+﻿using SkTask.dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,12 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 using System.Threading;
-using SkTask.Constants;
+using SkTask.constants;
 using System.Windows.Input;
 using System.Windows;
 using System.Diagnostics;
 
-namespace SkTask.Action
+namespace SkTask.action
 {
     class MultiPointInsert : Action
     {

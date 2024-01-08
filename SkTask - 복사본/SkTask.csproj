@@ -55,45 +55,45 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Action\Action.cs" />
-    <Compile Include="Action\BlightMap.cs" />
-    <Compile Include="Action\Inventory.cs" />
-    <Compile Include="Action\MultiPoint.cs" />
-    <Compile Include="Action\MultiPointClear.cs" />
-    <Compile Include="Action\MultiPointInsert.cs" />
-    <Compile Include="Action\MultiPointMove.cs" />
-    <Compile Include="Action\Stash.cs" />
-    <Compile Include="Component\Log.cs">
+    <Compile Include="action\Action.cs" />
+    <Compile Include="action\BlightMap.cs" />
+    <Compile Include="action\Stash.cs" />
+    <Compile Include="action\Inventory.cs" />
+    <Compile Include="action\MultiPointClear.cs" />
+    <Compile Include="action\MultiPointInsert.cs" />
+    <Compile Include="action\MultiPointMove.cs" />
+    <Compile Include="action\MultiPoint.cs" />
+    <Compile Include="component\Log.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Component\Log.Designer.cs">
+    <Compile Include="component\Log.Designer.cs">
       <DependentUpon>Log.cs</DependentUpon>
     </Compile>
-    <Compile Include="Constants\Event.cs" />
-    <Compile Include="Constants\InputEvent.cs" />
-    <Compile Include="Constants\Mode.cs" />
-    <Compile Include="Dto\Status.cs" />
+    <Compile Include="constants\Event.cs" />
+    <Compile Include="constants\InputEvent.cs" />
+    <Compile Include="constants\Mode.cs" />
+    <Compile Include="dto\Status.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Component\Position.cs">
+    <Compile Include="component\Position.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Component\Position.Designer.cs">
+    <Compile Include="component\Position.Designer.cs">
       <DependentUpon>Position.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Component\Log.resx">
+    <EmbeddedResource Include="component\Log.resx">
       <DependentUpon>Log.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Component\Position.resx">
+    <EmbeddedResource Include="component\Position.resx">
       <DependentUpon>Position.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

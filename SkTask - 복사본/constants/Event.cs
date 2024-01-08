@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SkTask.Constants
+namespace SkTask.constants
 {
     enum Event
     {

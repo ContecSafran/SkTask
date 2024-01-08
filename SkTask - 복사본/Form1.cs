@@ -1,5 +1,5 @@
-﻿using SkTask.Action;
-using SkTask.Dto;
+﻿using SkTask.action;
+using SkTask.dto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -47,7 +47,7 @@ namespace SkTask
             while (this.isRunning)
             {
                 Thread.Sleep(40); //minimum CPU usage
-                if(Status.mode == Constants.Mode.WAITING)
+                if(Status.mode == constants.Mode.WAITING)
                 {
                     /*
                     if (multipoint.StartCondition())
@@ -57,27 +57,27 @@ namespace SkTask
                     }*/
                     if (Inventory.StartCondition())
                     {
-                        Status.mode = Constants.Mode.RUNNING;
+                        Status.mode = constants.Mode.RUNNING;
                         Inventory.task();
                     }
                     if (Stash.StartCondition())
                     {
-                        Status.mode = Constants.Mode.RUNNING;
+                        Status.mode = constants.Mode.RUNNING;
                         Stash.task();
                     }
                     if (move.StartCondition())
                     {
-                        Status.mode = Constants.Mode.RUNNING;
+                        Status.mode = constants.Mode.RUNNING;
                         move.task();
                     }
                     if (insert.StartCondition())
                     {
-                        Status.mode = Constants.Mode.RUNNING;
+                        Status.mode = constants.Mode.RUNNING;
                         insert.task();
                     }
                     if (clear.StartCondition())
                     {
-                        Status.mode = Constants.Mode.RUNNING;
+                        Status.mode = constants.Mode.RUNNING;
                         clear.task();
                     }
                 }

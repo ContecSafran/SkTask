@@ -1,11 +1,11 @@
-﻿using SkTask.Constants;
+﻿using SkTask.constants;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SkTask.Dto
+namespace SkTask.dto
 {
     static class Status
     {

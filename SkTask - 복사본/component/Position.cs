@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using SkTask.Dto;
+using SkTask.dto;
 
 namespace SkTask
 {
@@ -23,7 +23,7 @@ namespace SkTask
 
         private void PositionTimer_Tick(object sender, EventArgs e)
         {
-            if (Status.mode == Constants.Mode.WAITING)
+            if (Status.mode == constants.Mode.WAITING)
             {
                 if (!Position.CurrentPosition.Equals(Cursor.Position))
                 {

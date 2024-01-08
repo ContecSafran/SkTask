@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using SkTask.Dto;
+using SkTask.dto;
 
 namespace SkTask
 {
@@ -28,7 +28,7 @@ namespace SkTask
             {
                 if (LogTextBox.InvokeRequired)
                 {
-                    LogTextBox.Invoke((System.Action)delegate
+                    LogTextBox.Invoke((Action)delegate
                     {
                         WriteLog(LogTextBox, s);
                     });
@@ -45,7 +45,7 @@ namespace SkTask
             {
                 if (LogTextBox.InvokeRequired)
                 {
-                    LogTextBox.Invoke((System.Action)delegate
+                    LogTextBox.Invoke((Action)delegate
                     {
                         LogTextBox.Text = "";
                     });

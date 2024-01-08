@@ -1,4 +1,4 @@
-﻿using SkTask.Dto;
+﻿using SkTask.dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,12 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 using System.Threading;
-using SkTask.Constants;
+using SkTask.constants;
 using System.Windows.Input;
 using System.Windows;
 using System.Windows.Forms;
 
-namespace SkTask.Action
+namespace SkTask.action
 {
     class Action
     {
@@ -907,7 +907,7 @@ namespace SkTask.Action
         public void task()
         {
             Start();
-            while (Status.mode == Constants.Mode.RUNNING)
+            while (Status.mode == constants.Mode.RUNNING)
             {
                 Process();
                 if (EndKey.Count == 0)
@@ -920,7 +920,7 @@ namespace SkTask.Action
                 }
             }
             End();
-            Status.mode = Constants.Mode.WAITING;
+            Status.mode = constants.Mode.WAITING;
         }
         public virtual void Start()
         {
@@ -936,7 +936,7 @@ namespace SkTask.Action
         }
         public void ForcedStop()
         {
-            Status.mode = Constants.Mode.WAITING;
+            Status.mode = constants.Mode.WAITING;
         }
     }
 }

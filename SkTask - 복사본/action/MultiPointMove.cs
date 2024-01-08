@@ -1,4 +1,4 @@
-﻿using SkTask.Dto;
+﻿using SkTask.dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,12 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 using System.Threading;
-using SkTask.Constants;
+using SkTask.constants;
 using System.Windows.Input;
 using System.Windows;
 using System.Windows.Forms;
 
-namespace SkTask.Action
+namespace SkTask.action
 {
     class MultiPointMove : Action
     {
@@ -32,7 +32,7 @@ namespace SkTask.Action
             Log.WriteLog("MultiPointMove 시작");
             MouseDown(InputEvent.RIGHT);
             Sleep(1000);
-            SendKeyDown(SkTask.Action.Action.KeyCode.KEY_D);
+            SendKeyDown(SkTask.action.Action.KeyCode.KEY_D);
         }
         public override void Process()
         {
@@ -55,7 +55,7 @@ namespace SkTask.Action
         {
             MouseUp(InputEvent.RIGHT);
             Sleep(1000);
-            SendKeyUp(SkTask.Action.Action.KeyCode.KEY_D);
+            SendKeyUp(SkTask.action.Action.KeyCode.KEY_D);
             Log.WriteLog("MultiPointMove 종료");
         }
     }
