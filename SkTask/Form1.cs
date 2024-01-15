@@ -43,7 +43,9 @@ namespace SkTask
                 new Stash(),
                 new BlightMap(),
                 new Trash(),
-                new Alter()
+                new Alter(),
+                new Augmentation(),
+                new AlchSco()
             });
             while (this.isRunning)
             {
