@@ -25,8 +25,9 @@ namespace SkTask.Action
         {
             Random rand = new Random();
             Click(Position.CurrentPosition, InputEvent.LEFT);
-            Thread.Sleep(rand.Next(100, 150));
+            Thread.Sleep(rand.Next(500, 550));
             Move(toPoint(new System.Drawing.PointF(0.30f, 0.30f)));
+            Thread.Sleep(rand.Next(100, 150));
             Thread.Sleep(rand.Next(100, 150));
             Move(Position.CurrentPosition);
         }

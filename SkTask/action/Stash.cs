@@ -16,7 +16,7 @@ namespace SkTask.Action
     {
         public Stash()
         {
-            StartKey.Add(Key.LeftAlt);
+            StartKey.Add(Key.LeftCtrl);
             StartKey.Add(Key.D2);
         }
 

@@ -16,13 +16,13 @@ namespace SkTask.Action
     {
         public Inventory()
         {
-            StartKey.Add(Key.LeftAlt);
+            StartKey.Add(Key.LeftCtrl);
             StartKey.Add(Key.D1);
         }
         public override void Start()
         {
-            TopPoint = toPoint(new System.Drawing.PointF(0.40f, 0.17f));
-            BottomPoint = toPoint(new System.Drawing.PointF(0.90f, 0.57f));
+            TopPoint = toPoint(new System.Drawing.PointF(0.67f, 0.57f));
+            BottomPoint = toPoint(new System.Drawing.PointF(0.983f, 0.7874f));
             CountX = 12;
             CountY = 5;
             Log.WriteLog("Inventory 시작");

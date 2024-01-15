@@ -42,7 +42,8 @@ namespace SkTask
                 new Inventory(),
                 new Stash(),
                 new BlightMap(),
-                new Trash()
+                new Trash(),
+                new Alter()
             });
             while (this.isRunning)
             {

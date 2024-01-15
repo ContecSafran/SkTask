@@ -16,7 +16,7 @@ namespace SkTask.Action
     {
         public BlightMap()
         {
-            StartKey.Add(Key.LeftAlt);
+            StartKey.Add(Key.LeftCtrl);
             StartKey.Add(Key.D3);
         }
 

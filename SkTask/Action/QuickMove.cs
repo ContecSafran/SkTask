@@ -38,12 +38,12 @@ namespace SkTask.Action
             {
                 for (; y < BottomPoint.Y; y += MarginY)
                 {
-                    //Click(x, y, InputEvent.LEFT);
-                    Move(x, y);
+                    Click(x, y, InputEvent.LEFT);
+                    //Move(x, y);
                     Thread.Sleep(rand.Next(10, 20));
-                    //Click(x, y, InputEvent.LEFT);
+                    Click(x, y, InputEvent.LEFT);
 
-                    if (!((Keyboard.GetKeyStates(Key.LeftAlt) & KeyStates.Down) > 0))
+                    if (!((Keyboard.GetKeyStates(Key.LeftCtrl) & KeyStates.Down) > 0))
                     {
                         return;
                     }
