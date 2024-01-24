@@ -21,6 +21,11 @@ namespace SkTask.Action
             StartKey.Add(Key.D6);
             EndKey.Add(Key.D7);
         }
+
+        public override void Start()
+        {
+            Log.WriteLog("Alter 시작");
+        }
         public override void Process()
         {
             Random rand = new Random();
@@ -58,6 +63,7 @@ namespace SkTask.Action
         }
         public override void End()
         {
+            Log.WriteLog("Alter 종료");
             Random rand = new Random();
             SendKeyDown(SkTask.Action.Task.KeyCode.ALT);
             Thread.Sleep(rand.Next(100, 150));
@@ -67,7 +73,7 @@ namespace SkTask.Action
             Thread.Sleep(rand.Next(100, 150));
             SendKeyUp(SkTask.Action.Task.KeyCode.KEY_D);
             System.Media.SoundPlayer player = new System.Media.SoundPlayer("alter.WAV");
-            player.PlaySync();
+            //player.PlaySync();
         }
     }
 }

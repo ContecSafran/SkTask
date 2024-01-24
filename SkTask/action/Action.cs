@@ -796,6 +796,11 @@ namespace SkTask.Action
 
         static public void Click(int x, int y, InputEvent input)
         {
+            if(!Status.MouseClick)
+            {
+                Move(x, y);
+                return;
+            }
             try
             {
 
@@ -888,6 +893,10 @@ namespace SkTask.Action
 
             bool check = true;
 
+            if ((Keyboard.GetKeyStates(System.Windows.Input.Key.Escape) & KeyStates.Down) > 0)
+            {
+                return true;
+            }
             for (int i = 0; i < Key.Count; i++)
             {
                 check &= ((Keyboard.GetKeyStates(Key[i]) & KeyStates.Down) > 0);

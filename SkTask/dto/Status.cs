@@ -10,5 +10,7 @@ namespace SkTask.Dto
     static class Status
     {
         public static Mode mode = Mode.WAITING;
+        public static bool MouseLog = false;
+        public static bool MouseClick = false;
     }
 }
