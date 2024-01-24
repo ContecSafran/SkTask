@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SkTask.Constants
 {
-    enum InputEvent
+    public enum InputEvent
     {
         LEFT,
         RIGHT

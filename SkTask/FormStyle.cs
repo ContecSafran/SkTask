@@ -1,4 +1,5 @@
-﻿using SkTask.Dto;
+﻿using SkTask.Data;
+using SkTask.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace SkTask
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
 
             Thread TH = new Thread(MainThread);
             TH.SetApartmentState(ApartmentState.STA);

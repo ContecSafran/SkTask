@@ -48,15 +48,13 @@
             // 
             // MainPanel.ContentPanel
             // 
-            this.MainPanel.ContentPanel.Controls.Add(this.CommandLog);
-            this.MainPanel.ContentPanel.Controls.Add(this.PositionList);
-            this.MainPanel.ContentPanel.Size = new System.Drawing.Size(491, 445);
+            this.MainPanel.ContentPanel.Size = new System.Drawing.Size(224, 445);
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.LeftToolStripPanelVisible = false;
             this.MainPanel.Location = new System.Drawing.Point(0, 0);
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.RightToolStripPanelVisible = false;
-            this.MainPanel.Size = new System.Drawing.Size(491, 470);
+            this.MainPanel.Size = new System.Drawing.Size(224, 470);
             this.MainPanel.TabIndex = 2;
             this.MainPanel.Text = "toolStripContainer1";
             // 
@@ -70,13 +68,13 @@
             this.CommandLog.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.CommandLog.Location = new System.Drawing.Point(0, 326);
             this.CommandLog.Name = "CommandLog";
-            this.CommandLog.Size = new System.Drawing.Size(392, 119);
+            this.CommandLog.Size = new System.Drawing.Size(125, 119);
             this.CommandLog.TabIndex = 1;
             // 
             // PositionList
             // 
             this.PositionList.Dock = System.Windows.Forms.DockStyle.Right;
-            this.PositionList.Location = new System.Drawing.Point(392, 0);
+            this.PositionList.Location = new System.Drawing.Point(125, 0);
             this.PositionList.Name = "PositionList";
             this.PositionList.Size = new System.Drawing.Size(99, 445);
             this.PositionList.TabIndex = 0;
@@ -91,7 +89,7 @@
             this.FormClose});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(204, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(173, 25);
             this.toolStrip1.TabIndex = 0;
             // 
             // MouseLogEnableBtn
@@ -129,8 +127,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(491, 470);
+            this.ClientSize = new System.Drawing.Size(224, 470);
             this.Controls.Add(this.MainPanel);
+            this.Controls.Add(this.CommandLog);
+            this.Controls.Add(this.PositionList);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

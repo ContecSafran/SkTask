@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace SkTask.Action
 {
-    class Task
+    public class Task
     {
         static private int interval_;
         static private readonly ManualResetEvent stoppeing_event_ = new ManualResetEvent(false); //System.Threading;
@@ -888,15 +888,12 @@ namespace SkTask.Action
 
         public List<System.Windows.Input.Key> StartKey = new List<Key>();
         public List<System.Windows.Input.Key> EndKey = new List<Key>();
+        public SkTask.Component.ActionItem actionItem;
         public bool CheckKeyCondition(List<System.Windows.Input.Key> Key)
         {
 
             bool check = true;
 
-            if ((Keyboard.GetKeyStates(System.Windows.Input.Key.Escape) & KeyStates.Down) > 0)
-            {
-                return true;
-            }
             for (int i = 0; i < Key.Count; i++)
             {
                 check &= ((Keyboard.GetKeyStates(Key[i]) & KeyStates.Down) > 0);
@@ -905,11 +902,19 @@ namespace SkTask.Action
         }
         public bool StartCondition()
         {
+            if (!this.actionItem.isActive())
+            {
+                return false;
+            }
             return CheckKeyCondition(StartKey);
         }
 
         public bool EndCondition()
         {
+            if ((Keyboard.GetKeyStates(System.Windows.Input.Key.Escape) & KeyStates.Down) > 0)
+            {
+                return true;
+            }
             return CheckKeyCondition(EndKey);
         }
 

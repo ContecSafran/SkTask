@@ -1,4 +1,5 @@
 ﻿using SkTask.Action;
+using SkTask.Data;
 using SkTask.Dto;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,8 @@ namespace SkTask
 {
     public partial class SkTaskForm : Form
     {
+        List<SkTask.Action.Task> actions;
+        List<SkTask.Component.ActionItem> actionItems;
         //알케
         //알터
         //템 버리기
@@ -30,15 +33,7 @@ namespace SkTask
         public SkTaskForm()
         {
             InitializeComponent();
-        }
-        bool isRunning = true;
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
-        {
-            return base.ProcessCmdKey(ref msg, keyData);
-        }
-        void MainThread()
-        {
-            List<SkTask.Action.Task> actions = new List<SkTask.Action.Task>(new SkTask.Action.Task[] {
+            this.actions = new List<SkTask.Action.Task>(new SkTask.Action.Task[] {
                 new Inventory(),
                 new Stash(),
                 new BlightMap(),
@@ -47,8 +42,25 @@ namespace SkTask
                 new Augmentation(),
                 new AlchSco()
             });
+
+            ActionItemVisible.ReadActionItemVisible(this.actions);
+            this.actionItems = new List<Component.ActionItem>();
+            for(int i = 0; i < this.actions.Count; i++)
+            {
+                this.actionItems.Add(new Component.ActionItem(this.actions[i], true));
+                this.MainPanel.ContentPanel.Controls.Add(this.actionItems[i]);
+            }
+        }
+        bool isRunning = true;
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+        void MainThread()
+        {
             while (this.isRunning)
             {
+
                 Thread.Sleep(40); //minimum CPU usage
                 if(Status.mode == Constants.Mode.WAITING)
                 {
