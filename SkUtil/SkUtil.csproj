@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5F750383-00A7-4993-AA0A-59EB4C5C5E89}</ProjectGuid>
+    <ProjectGuid>{CC9318A2-8F4C-46DF-93BA-1F1D6A5A5967}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SkAffix</RootNamespace>
-    <AssemblyName>SkAffix</AssemblyName>
+    <RootNamespace>SkUtil</RootNamespace>
+    <AssemblyName>SkUtil</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin\Debug\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -41,21 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constants\Currency.cs" />
-    <Compile Include="Dto\Affix.cs" />
-    <Compile Include="Dto\Currency.cs" />
-    <Compile Include="Dto\DtoBase.cs" />
-    <Compile Include="Dto\Item.cs" />
-    <Compile Include="Dto\PrefixExtension.cs" />
-    <Compile Include="Dto\Price.cs" />
-    <Compile Include="Process\ItemCsv.cs" />
+    <Compile Include="CsvFileCommon.cs" />
+    <Compile Include="CsvFileReader.cs" />
+    <Compile Include="CsvFileWriter.cs" />
+    <Compile Include="CT_CSV.cs" />
+    <Compile Include="EmptyLineBehavior.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SkUtil\SkUtil.csproj">
-      <Project>{cc9318a2-8f4c-46df-93ba-1f1d6a5a5967}</Project>
-      <Name>SkUtil</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,6 @@
-﻿using SkTask.Action;
+﻿using SkAffix.Dto;
+using SkAffix.Process;
+using SkTask.Action;
 using SkTask.Data;
 using SkTask.Dto;
 using System;
@@ -32,6 +34,9 @@ namespace SkTask
         //아이템 거래소 검색
         public SkTaskForm()
         {
+
+            ItemCsv itemCsv = new SkAffix.Process.ItemCsv();
+            List<Item> items = itemCsv.getItems();
             InitializeComponent();
             this.actions = new List<SkTask.Action.Task>(new SkTask.Action.Task[] {
                 new Inventory(),

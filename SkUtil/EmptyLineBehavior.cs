@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SkAffix.Dto
+namespace SkUtil
 {
-    public class Item : DtoBase
+    public enum EmptyLineBehavior
     {
-        public string name { get; set; }
+        NoColumns,
+        EmptyColumn,
+        Ignore,
+        EndOfFile
     }
 }
