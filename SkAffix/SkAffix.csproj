@@ -49,6 +49,7 @@
     <Compile Include="Dto\PrefixExtension.cs" />
     <Compile Include="Dto\Price.cs" />
     <Compile Include="Process\ItemCsv.cs" />
+    <Compile Include="Process\OptionManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

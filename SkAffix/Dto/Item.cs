@@ -8,6 +8,7 @@ namespace SkAffix.Dto
 {
     public class Item : DtoBase
     {
-        public string name { get; set; }
+        public string KRName { get; set; }
+        public string EnName { get; set; }
     }
 }

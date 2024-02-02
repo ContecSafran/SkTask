@@ -37,6 +37,8 @@ namespace SkTask
 
             ItemCsv itemCsv = new SkAffix.Process.ItemCsv();
             List<Item> items = itemCsv.getItems();
+            OptionManager optionManager = new OptionManager();
+            optionManager.test();
             InitializeComponent();
             this.actions = new List<SkTask.Action.Task>(new SkTask.Action.Task[] {
                 new Inventory(),

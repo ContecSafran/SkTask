@@ -10,7 +10,7 @@ namespace SkAffix.Dto
     {
         public string name;
         public string option;
-        public bool range;
+        public bool isRange;
         public int min;
         public int max;
     }
