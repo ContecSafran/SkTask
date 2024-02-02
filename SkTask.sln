@@ -19,6 +19,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item", "Item", "{B5E17401-66E2-4FAC-8FF7-83AC69699233}"
 	ProjectSection(SolutionItems) = preProject
 		bin\resource\Item\flask.csv = bin\resource\Item\flask.csv
+		bin\resource\Item\flask_prefix.csv = bin\resource\Item\flask_prefix.csv
 	EndProjectSection
 EndProject
 Global
