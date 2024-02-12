@@ -27,6 +27,7 @@ namespace Follow
             
             //ocr thread
             Tesseract.TesseractEngine tesseractEngine = new Tesseract.TesseractEngine("../resource/tessdata-main", "eng");
+            DrawPosition.DrawPoint.Clear();
             using (var img = PixConverter.ToPix((Bitmap)bmp))
             {
 
@@ -45,7 +46,9 @@ namespace Follow
                                 // do whatever you want with bounding box for the symbol
 
                                 var curText = iter.GetText(PageIteratorLevel.Word);
-                                Cv2.Rectangle(src, new OpenCvSharp.Rect(symbolBounds.X1, symbolBounds.Y1, symbolBounds.Width, symbolBounds.Height), Scalar.Red);
+                                OpenCvSharp.Rect rect = new OpenCvSharp.Rect(symbolBounds.X1, symbolBounds.Y1, symbolBounds.Width, symbolBounds.Height);
+                                DrawPosition.DrawPoint.Add(new OpenCvSharp.Point(rect.Left + rect.Width/2, rect.Top + rect.Height / 2));
+                                Cv2.Rectangle(src, rect, Scalar.Red);
                                 //Cv2.Rectangle(src, new OpenCvSharp.Rect(100,100,100,100), Scalar.Red);
                                 int dd = 0;
                                 //Wayne

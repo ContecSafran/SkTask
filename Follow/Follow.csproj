@@ -77,6 +77,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DrawPosition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DrawPosition.Designer.cs">
+      <DependentUpon>DrawPosition.cs</DependentUpon>
+    </Compile>
     <Compile Include="FollowImageProcess.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -100,6 +106,9 @@
       <DependentUpon>FollowForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ScreenCapture.cs" />
+    <EmbeddedResource Include="DrawPosition.resx">
+      <DependentUpon>DrawPosition.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -136,6 +145,10 @@
     <ProjectReference Include="..\SkTask\SkTask.csproj">
       <Project>{1bed907b-1b84-4ba6-85a7-73f9ccce9208}</Project>
       <Name>SkTask</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SkUtil\SkUtil.csproj">
+      <Project>{cc9318a2-8f4c-46df-93ba-1f1d6a5a5967}</Project>
+      <Name>SkUtil</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

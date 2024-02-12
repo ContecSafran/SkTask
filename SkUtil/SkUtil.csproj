@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConcurrentEnumerator_T_.cs" />
+    <Compile Include="ConcurrentList_T.cs" />
     <Compile Include="CsvFileCommon.cs" />
     <Compile Include="CsvFileReader.cs" />
     <Compile Include="CsvFileWriter.cs" />

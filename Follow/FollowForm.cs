@@ -18,6 +18,7 @@ namespace Follow
     public partial class FollowForm : SkTaskFormBase
     {
         SkTask.Image image = new SkTask.Image();
+        DrawPosition DrawPosition = new DrawPosition();
         ScreenCapture screenCapture = new ScreenCapture();
         System.Windows.Forms.ToolStripComboBox comboBox;
         public FollowForm() : base()
@@ -79,6 +80,7 @@ namespace Follow
             TH.SetApartmentState(ApartmentState.STA);
             CheckForIllegalCrossThreadCalls = false;
             TH.Start();
+            DrawPosition.Show();
         }
         void FollowThread()
         {
@@ -93,6 +95,7 @@ namespace Follow
                     screenCapture.Capture();
                     image.InputImage.Image = (Bitmap)screenCapture.bmp.Clone();
                     image.OutputImage.Image = FollowImageProcess.Process(screenCapture.bmp);
+                    DrawPosition.ReDraw();
                 }
                 catch (Exception e)
                 {

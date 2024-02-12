@@ -19,57 +19,6 @@ namespace SkTask
         {
             InitializeComponent();
 
-            // ScreenCapture screenCapture = new ScreenCapture();
-            //screenCapture.Init();
-            // screenCapture.Capture();
-            // OutputImage.Image = screenCapture.bmp;
-            /*
-            //캡쳐 thread
-            //이미지 변환 thread
-            Mat src = Cv2.ImRead("../resource/inputImage.png");
-            process(src);
-
-            Mat gray = new Mat();
-            Mat binary = new Mat();
-
-            Cv2.CvtColor(src, gray, ColorConversionCodes.BGR2GRAY);
-            Cv2.Threshold(gray, binary, 100, 200, ThresholdTypes.Binary);
-            OutputImage.Image = BitmapConverter.ToBitmap(binary);
-
-            //ocr thread
-            Tesseract.TesseractEngine tesseractEngine = new Tesseract.TesseractEngine("../resource/tessdata-main", "eng");
-            using (var img = PixConverter.ToPix((Bitmap)OutputImage.Image))
-            {
-
-                using (var page = tesseractEngine.Process(img))
-                {
-                    //var str = page.GetText();
-                    using (var iter = page.GetIterator())
-                    {
-                        iter.Begin();
-                        do
-                        {
-                            Tesseract.Rect symbolBounds;
-                            //string path = Server.MapPath("~/Output/data.txt");
-                            if (iter.TryGetBoundingBox(PageIteratorLevel.Word, out symbolBounds))
-                            {
-                                // do whatever you want with bounding box for the symbol
-
-                                var curText = iter.GetText(PageIteratorLevel.Word);
-                                int dd = 0;
-                                //Wayne
-                                //Wayn
-                                //ayne
-                                //Way
-                                //ayn
-                                //yne
-                                //확인해서 검출
-
-                            }
-                        } while (iter.Next(PageIteratorLevel.Word));
-                    }
-                }
-            }*/
         }
         public void process(Mat src)
         {
