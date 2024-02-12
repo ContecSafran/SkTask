@@ -9,6 +9,7 @@ namespace Follow.MonitorInfo
 {
     public class SelectMonitor
     {
+        public static int index = 0;
         public static System.Windows.Forms.ToolStripComboBox GetButton()
         {
 
@@ -31,6 +32,7 @@ namespace Follow.MonitorInfo
             SelectMonitorButton.Size = new System.Drawing.Size(121, 25);
             SelectMonitorButton.SelectedIndex = 0;
             SelectMonitorButton.DropDownStyle = ComboBoxStyle.DropDownList;
+            //SelectMonitorButton.SelectedIndexChanged(new )
             return SelectMonitorButton;
         }
     }
