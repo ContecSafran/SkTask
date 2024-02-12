@@ -60,6 +60,7 @@ namespace SkTask
             this.Controls.Add(this.InputImage);
             this.Name = "Image";
             this.Text = "Image";
+            this.Load += new System.EventHandler(this.Image_Load);
             ((System.ComponentModel.ISupportInitialize)(this.InputImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OutputImage)).EndInit();
             this.ResumeLayout(false);
@@ -68,7 +69,7 @@ namespace SkTask
 
         #endregion
 
-        private System.Windows.Forms.PictureBox InputImage;
-        private System.Windows.Forms.PictureBox OutputImage;
+        public System.Windows.Forms.PictureBox InputImage;
+        public System.Windows.Forms.PictureBox OutputImage;
     }
 }

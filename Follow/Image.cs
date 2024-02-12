@@ -19,10 +19,10 @@ namespace SkTask
         {
             InitializeComponent();
 
-           // ScreenCapture screenCapture = new ScreenCapture();
+            // ScreenCapture screenCapture = new ScreenCapture();
             //screenCapture.Init();
-           // screenCapture.Capture();
-           // OutputImage.Image = screenCapture.bmp;
+            // screenCapture.Capture();
+            // OutputImage.Image = screenCapture.bmp;
             /*
             //캡쳐 thread
             //이미지 변환 thread
@@ -100,6 +100,23 @@ namespace SkTask
                 Console.WriteLine($"<{one}> is greater than <{two}> using ordinal comparison");
             else
                 Console.WriteLine($"<{one}> and <{two}> are equivalent in order using ordinal comparison");
+        }
+
+        private void Image_Load(object sender, EventArgs e)
+        {
+            if(Screen.AllScreens.Length == 1)
+            {
+                this.Visible = false;
+            }
+            else
+            {
+                int SelectedIndex = 2;// Follow.MonitorInfo.SelectMonitor.index;
+                this.Location = new System.Drawing.Point
+                {
+                    X = Screen.AllScreens[SelectedIndex].Bounds.Left,
+                    Y = Screen.AllScreens[SelectedIndex].Bounds.Top
+                };
+            }
         }
     }
 }

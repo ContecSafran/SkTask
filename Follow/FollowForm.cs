@@ -17,14 +17,19 @@ namespace Follow
 {
     public partial class FollowForm : SkTaskFormBase
     {
+        SkTask.Image image = new SkTask.Image();
+        ScreenCapture screenCapture = new ScreenCapture();
+        System.Windows.Forms.ToolStripComboBox comboBox;
         public FollowForm() : base()
         {
             //Toolstrip에 combo box 넣어두고 모니터 개수 확인해서 넣어두고 창 이동하게 하고 상태 설정 저장
-            System.Windows.Forms.ToolStripComboBox comboBox = Follow.MonitorInfo.SelectMonitor.GetButton();
+            comboBox = Follow.MonitorInfo.SelectMonitor.GetButton();
 
             comboBox.SelectedIndexChanged += new System.EventHandler(this.SelectedIndexChanged_Monitor);
             AddToolSctipButton(comboBox);
             this.InitializeComponent();
+            screenCapture.Init();
+            image.Show();
         }
 
         private void SelectedIndexChanged_Monitor(object sender, EventArgs e)
@@ -69,6 +74,31 @@ namespace Follow
         private void FollowForm_Load(object sender, EventArgs e)
         {
             this.Location = new Point { X = 0, Y = 0 };
+            comboBox.SelectedIndex = 1;
+            Thread TH = new Thread(FollowThread);
+            TH.SetApartmentState(ApartmentState.STA);
+            CheckForIllegalCrossThreadCalls = false;
+            TH.Start();
+        }
+        void FollowThread()
+        {
+            while (this.isRunning)
+            {
+                try
+                {
+
+
+                    Thread.Sleep(40); //minimum CPU usage
+
+                    screenCapture.Capture();
+                    image.InputImage.Image = (Bitmap)screenCapture.bmp.Clone();
+                    image.OutputImage.Image = FollowImageProcess.Process(screenCapture.bmp);
+                }
+                catch (Exception e)
+                {
+
+                }
+            }
         }
     }
 }

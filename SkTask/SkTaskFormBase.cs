@@ -82,7 +82,7 @@ namespace SkTask
         {
             MainToolSctip.Items.Insert(0,toolStripItem);
         }
-        bool isRunning = true;
+        protected bool isRunning = true;
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             return base.ProcessCmdKey(ref msg, keyData);

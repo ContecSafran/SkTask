@@ -116,7 +116,6 @@
     <Compile Include="Constants\Mode.cs" />
     <Compile Include="Data\ActionItemVisible.cs" />
     <Compile Include="Dto\Status.cs" />
-    <Compile Include="Follow\ScreenCapture.cs" />
     <Compile Include="FormStyle.cs">
       <SubType>Form</SubType>
     </Compile>

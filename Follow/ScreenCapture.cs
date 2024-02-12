@@ -1,13 +1,15 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace SkTask.Follow
+namespace Follow
 {
     public class ScreenCapture
     {
         public Rectangle rect;
+        public Size size;
         public int imageData_Stride;
         public PixelFormat pixelFormat;
         public bool IsCaptureStart = true;   //false : Receive
@@ -17,7 +19,8 @@ namespace SkTask.Follow
         public void Init()
         {
             // 주화면의 크기 정보 읽기
-            rect = Screen.PrimaryScreen.Bounds;
+            rect = Screen.AllScreens[Follow.MonitorInfo.SelectMonitor.index].Bounds;
+            size = rect.Size;
             // 2nd screen = Screen.AllScreens[1]
 
             // 픽셀 포맷 정보 얻기 (Optional)
@@ -32,18 +35,28 @@ namespace SkTask.Follow
                 pixelFormat = PixelFormat.Format24bppRgb;
             }
             // 화면 크기만큼의 Bitmap 생성
-            bmp = new Bitmap(rect.Width, rect.Height, pixelFormat);
+            bmp = new Bitmap(rect.Width/2, rect.Height/2, pixelFormat);
 
 
         }
 
         public void Capture()
         {
+            Rectangle newRect = Screen.AllScreens[Follow.MonitorInfo.SelectMonitor.index].Bounds;
+            if (!newRect.Size.Equals(size))
+            {
+                this.Init();
+            }
+            int index = Follow.MonitorInfo.SelectMonitor.index;
             // Bitmap 이미지 변경을 위해 Graphics 객체 생성
             using (Graphics gr = Graphics.FromImage(bmp))
             {
                 // 화면을 그대로 카피해서 Bitmap 메모리에 저장
-                gr.CopyFromScreen(rect.Left, rect.Top, 0, 0, rect.Size);
+                //gr.CopyFromScreen(rect.Left, rect.Top, 0, 0, rect.Size);
+                gr.CopyFromScreen(
+                    Screen.AllScreens[index].Bounds.X + Screen.AllScreens[index].Bounds.Width / 4,
+                    Screen.AllScreens[index].Bounds.Y + Screen.AllScreens[index].Bounds.Height / 4,
+                    0, 0, new Size(rect.Size.Width / 2, rect.Size.Height / 2));
             }
         }
         public void CaptureBuffer()

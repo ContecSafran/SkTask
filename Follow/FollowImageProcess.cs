@@ -1,44 +1,33 @@
-﻿using System;
+﻿using OpenCvSharp;
+using OpenCvSharp.Extensions;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
-using OpenCvSharp;
-using OpenCvSharp.Extensions;
 using Tesseract;
 
-namespace SkTask
+namespace Follow
 {
-    public partial class Image : Form
+    public class FollowImageProcess
     {
-        public Image()
+        public static Bitmap Process(Bitmap inputBmp)
         {
-            InitializeComponent();
-
-           // ScreenCapture screenCapture = new ScreenCapture();
-            //screenCapture.Init();
-           // screenCapture.Capture();
-           // OutputImage.Image = screenCapture.bmp;
-            /*
-            //캡쳐 thread
-            //이미지 변환 thread
-            Mat src = Cv2.ImRead("../resource/inputImage.png");
-            process(src);
+            
+            Mat src = OpenCvSharp.Extensions.BitmapConverter.ToMat(inputBmp);
+            ImageProcess(src);
 
             Mat gray = new Mat();
             Mat binary = new Mat();
 
             Cv2.CvtColor(src, gray, ColorConversionCodes.BGR2GRAY);
             Cv2.Threshold(gray, binary, 100, 200, ThresholdTypes.Binary);
-            OutputImage.Image = BitmapConverter.ToBitmap(binary);
-
+            Bitmap bmp = BitmapConverter.ToBitmap(binary);
+            
             //ocr thread
             Tesseract.TesseractEngine tesseractEngine = new Tesseract.TesseractEngine("../resource/tessdata-main", "eng");
-            using (var img = PixConverter.ToPix((Bitmap)OutputImage.Image))
+            using (var img = PixConverter.ToPix((Bitmap)bmp))
             {
 
                 using (var page = tesseractEngine.Process(img))
@@ -56,6 +45,8 @@ namespace SkTask
                                 // do whatever you want with bounding box for the symbol
 
                                 var curText = iter.GetText(PageIteratorLevel.Word);
+                                Cv2.Rectangle(src, new OpenCvSharp.Rect(symbolBounds.X1, symbolBounds.Y1, symbolBounds.Width, symbolBounds.Height), Scalar.Red);
+                                //Cv2.Rectangle(src, new OpenCvSharp.Rect(100,100,100,100), Scalar.Red);
                                 int dd = 0;
                                 //Wayne
                                 //Wayn
@@ -69,9 +60,10 @@ namespace SkTask
                         } while (iter.Next(PageIteratorLevel.Word));
                     }
                 }
-            }*/
+            }
+            return (Bitmap)BitmapConverter.ToBitmap(src).Clone();
         }
-        public void process(Mat src)
+        private static void ImageProcess(Mat src)
         {
 
             Mat[] mv = new Mat[3];
@@ -83,23 +75,6 @@ namespace SkTask
 
             Cv2.InRange(mv[0], new Scalar(60), new Scalar(60), mask);
             Cv2.BitwiseAnd(src, mask.CvtColor(ColorConversionCodes.GRAY2BGR), src);
-        }
-        void showComparison(string one, string two)
-        {
-            int compareLinguistic = String.Compare(one, two, StringComparison.InvariantCulture);
-            int compareOrdinal = String.Compare(one, two, StringComparison.Ordinal);
-            if (compareLinguistic < 0)
-                Console.WriteLine($"<{one}> is less than <{two}> using invariant culture");
-            else if (compareLinguistic > 0)
-                Console.WriteLine($"<{one}> is greater than <{two}> using invariant culture");
-            else
-                Console.WriteLine($"<{one}> and <{two}> are equivalent in order using invariant culture");
-            if (compareOrdinal < 0)
-                Console.WriteLine($"<{one}> is less than <{two}> using ordinal comparison");
-            else if (compareOrdinal > 0)
-                Console.WriteLine($"<{one}> is greater than <{two}> using ordinal comparison");
-            else
-                Console.WriteLine($"<{one}> and <{two}> are equivalent in order using ordinal comparison");
         }
     }
 }
