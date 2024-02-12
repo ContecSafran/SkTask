@@ -23,6 +23,7 @@ namespace Follow
         System.Windows.Forms.ToolStripComboBox comboBox;
         public static bool Recognize = false;
         public static bool FollowMove = false;
+        public static bool FollowClick= false;
         public static bool DebugDraw = false;
         public FollowForm() : base()
         {

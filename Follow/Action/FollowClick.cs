@@ -12,17 +12,17 @@ using System.Windows;
 
 namespace Follow.Action
 {
-    class FollowStop : SkTask.Action.Task
+    class FollowClick : SkTask.Action.Task
     {
-        public FollowStop()
+        public FollowClick()
         {
             StartKey.Add(Key.LeftAlt);
-            StartKey.Add(Key.D4);
+            StartKey.Add(Key.D2);
         }
         public override void Process()
         {
-            FollowForm.Recognize = false;
-            FollowForm.FollowMove = false;
+            FollowForm.FollowMove = true;
+            FollowForm.FollowClick = true;
         }
     }
 }

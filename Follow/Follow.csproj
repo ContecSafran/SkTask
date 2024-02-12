@@ -78,6 +78,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Action\FollowClick.cs" />
     <Compile Include="Action\Follow.cs" />
     <Compile Include="Action\FollowStop.cs" />
     <Compile Include="Action\DebugDraw.cs" />

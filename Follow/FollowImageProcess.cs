@@ -66,6 +66,10 @@ namespace Follow
                                         SkTask.Action.Task.Move(
                                             (Screen.AllScreens[index].Bounds.X + Screen.AllScreens[index].Bounds.Width / 4) + (rect.Left + rect.Width / 2),
                                             (Screen.AllScreens[index].Bounds.Y + Screen.AllScreens[index].Bounds.Height / 4) + (rect.Top + rect.Height / 2));
+                                        if (FollowForm.FollowClick)
+                                        {
+                                            SkTask.Action.Task.SendKeyDown(SkTask.Action.Task.KeyCode.KEY_T);
+                                        }
                                         if (FollowForm.DebugDraw)
                                         {
                                             DrawPosition.DrawPoint.Add(new OpenCvSharp.Point(rect.Left + rect.Width / 2, rect.Top + rect.Height / 2));

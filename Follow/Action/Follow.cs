@@ -12,7 +12,7 @@ using System.Windows;
 
 namespace Follow.Action
 {
-    class Follow: SkTask.Action.Task
+    class Follow : SkTask.Action.Task
     {
         public Follow()
         {
@@ -22,6 +22,7 @@ namespace Follow.Action
         public override void Process()
         {
             FollowForm.FollowMove = true;
+            
         }
     }
 }
