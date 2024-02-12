@@ -13,6 +13,8 @@ namespace Follow
 {
     public class FollowImageProcess
     {
+
+        static List<string> SearchList = new List<string>() { "Wayne", "Wayn", "ayne", "Way", "ayn", "yne", "wayne", "wayn" };
         public static Bitmap Process(Bitmap inputBmp)
         {
             
@@ -43,24 +45,14 @@ namespace Follow
                         do
                         {
                             Tesseract.Rect symbolBounds;
-                            //string path = Server.MapPath("~/Output/data.txt");
                             if (iter.TryGetBoundingBox(PageIteratorLevel.Word, out symbolBounds))
                             {
                                 // do whatever you want with bounding box for the symbol
-
                                 var curText = iter.GetText(PageIteratorLevel.Word);
                                 OpenCvSharp.Rect rect = new OpenCvSharp.Rect(symbolBounds.X1, symbolBounds.Y1, symbolBounds.Width, symbolBounds.Height);
-                                DrawPosition.DrawPoint.Add(new OpenCvSharp.Point(rect.Left + rect.Width/2, rect.Top + rect.Height / 2));
-                                Cv2.Rectangle(src, rect, Scalar.Red);
-                                //Cv2.Rectangle(src, new OpenCvSharp.Rect(100,100,100,100), Scalar.Red);
                                 if (FollowForm.FollowMove)
                                 {
-                                    SkTask.Action.Task.Move(
-                                        (Screen.AllScreens[index].Bounds.X + Screen.AllScreens[index].Bounds.Width / 4) + (rect.Left + rect.Width / 2),
-                                        (Screen.AllScreens[index].Bounds.Y + Screen.AllScreens[index].Bounds.Height / 4) + (rect.Top + rect.Height / 2));
-                                }
-                                int dd = 0;
-                                //if (FollowForm.Recognize)
+
                                     //Wayne
                                     //Wayn
                                     //ayne
@@ -68,8 +60,21 @@ namespace Follow
                                     //ayn
                                     //yne
                                     //확인해서 검출
-
+                                    string s = SearchList.Find(x => curText.Contains(x));
+                                    if(s != null)
+                                    {
+                                        SkTask.Action.Task.Move(
+                                            (Screen.AllScreens[index].Bounds.X + Screen.AllScreens[index].Bounds.Width / 4) + (rect.Left + rect.Width / 2),
+                                            (Screen.AllScreens[index].Bounds.Y + Screen.AllScreens[index].Bounds.Height / 4) + (rect.Top + rect.Height / 2));
+                                        if (FollowForm.DebugDraw)
+                                        {
+                                            DrawPosition.DrawPoint.Add(new OpenCvSharp.Point(rect.Left + rect.Width / 2, rect.Top + rect.Height / 2));
+                                            Cv2.Rectangle(src, rect, Scalar.Red);
+                                        }
+                                    }
                                 }
+
+                            }
                         } while (iter.Next(PageIteratorLevel.Word));
                     }
                 }

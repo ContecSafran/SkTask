@@ -23,6 +23,7 @@ namespace Follow
         System.Windows.Forms.ToolStripComboBox comboBox;
         public static bool Recognize = false;
         public static bool FollowMove = false;
+        public static bool DebugDraw = false;
         public FollowForm() : base()
         {
             //Toolstrip에 combo box 넣어두고 모니터 개수 확인해서 넣어두고 창 이동하게 하고 상태 설정 저장
@@ -112,7 +113,8 @@ namespace Follow
             this.actions = new List<SkTask.Action.Task>(new SkTask.Action.Task[] {
                 new Follow.Action.Recognize(),
                 new Follow.Action.Follow(),
-                new Follow.Action.FollowStop()
+                new Follow.Action.FollowStop(),
+                new Follow.Action.DebugDraw()
             });
         }
     }

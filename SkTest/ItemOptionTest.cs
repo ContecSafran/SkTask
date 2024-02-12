@@ -21,5 +21,14 @@ namespace SkTest
             int result = optionManager.GetOptionValue(option, entry);
             Assert.AreEqual(inputValue, result);
         }
+
+        [TestMethod]
+        public void TextSearchTest()
+        {
+            List<string> SearchList = new List<string>() {"Wayne", "Wayn", "ayne", "Way", "ayn", "yne", "wayne", "wayn" };
+            string input = "Wayne_";
+            string s = SearchList.Find(x => input.Contains(x));
+            int dd = 0;
+        }
     }
 }
