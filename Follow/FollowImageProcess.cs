@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Tesseract;
 
 namespace Follow
@@ -28,6 +29,8 @@ namespace Follow
             //ocr thread
             Tesseract.TesseractEngine tesseractEngine = new Tesseract.TesseractEngine("../resource/tessdata-main", "eng");
             DrawPosition.DrawPoint.Clear();
+
+            int index = 1;
             using (var img = PixConverter.ToPix((Bitmap)bmp))
             {
 
@@ -50,16 +53,23 @@ namespace Follow
                                 DrawPosition.DrawPoint.Add(new OpenCvSharp.Point(rect.Left + rect.Width/2, rect.Top + rect.Height / 2));
                                 Cv2.Rectangle(src, rect, Scalar.Red);
                                 //Cv2.Rectangle(src, new OpenCvSharp.Rect(100,100,100,100), Scalar.Red);
+                                if (FollowForm.FollowMove)
+                                {
+                                    SkTask.Action.Task.Move(
+                                        (Screen.AllScreens[index].Bounds.X + Screen.AllScreens[index].Bounds.Width / 4) + (rect.Left + rect.Width / 2),
+                                        (Screen.AllScreens[index].Bounds.Y + Screen.AllScreens[index].Bounds.Height / 4) + (rect.Top + rect.Height / 2));
+                                }
                                 int dd = 0;
-                                //Wayne
-                                //Wayn
-                                //ayne
-                                //Way
-                                //ayn
-                                //yne
-                                //확인해서 검출
+                                //if (FollowForm.Recognize)
+                                    //Wayne
+                                    //Wayn
+                                    //ayne
+                                    //Way
+                                    //ayn
+                                    //yne
+                                    //확인해서 검출
 
-                            }
+                                }
                         } while (iter.Next(PageIteratorLevel.Word));
                     }
                 }

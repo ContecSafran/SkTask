@@ -21,6 +21,8 @@ namespace Follow
         DrawPosition DrawPosition = new DrawPosition();
         ScreenCapture screenCapture = new ScreenCapture();
         System.Windows.Forms.ToolStripComboBox comboBox;
+        public static bool Recognize = false;
+        public static bool FollowMove = false;
         public FollowForm() : base()
         {
             //Toolstrip에 combo box 넣어두고 모니터 개수 확인해서 넣어두고 창 이동하게 하고 상태 설정 저장
@@ -88,20 +90,30 @@ namespace Follow
             {
                 try
                 {
-
-
                     Thread.Sleep(40); //minimum CPU usage
 
-                    screenCapture.Capture();
-                    image.InputImage.Image = (Bitmap)screenCapture.bmp.Clone();
-                    image.OutputImage.Image = FollowImageProcess.Process(screenCapture.bmp);
-                    DrawPosition.ReDraw();
+                    if (FollowForm.Recognize)
+                    {
+                        screenCapture.Capture();
+                        image.InputImage.Image = (Bitmap)screenCapture.bmp.Clone();
+                        image.OutputImage.Image = FollowImageProcess.Process(screenCapture.bmp);
+                        DrawPosition.ReDraw();
+                    }
                 }
                 catch (Exception e)
                 {
 
                 }
             }
+        }
+
+        protected override void AddAction()
+        {
+            this.actions = new List<SkTask.Action.Task>(new SkTask.Action.Task[] {
+                new Follow.Action.Recognize(),
+                new Follow.Action.Follow(),
+                new Follow.Action.FollowStop()
+            });
         }
     }
 }

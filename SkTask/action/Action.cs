@@ -749,7 +749,7 @@ namespace SkTask.Action
                 /// <summary>
                 /// Right shift
                 /// </summary>
-                RSHIFT = 0xa1,
+                RSHIFT = 0xa1,  
 
                 /// <summary>
                 /// Right windows key

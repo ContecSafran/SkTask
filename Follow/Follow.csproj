@@ -75,8 +75,12 @@
     <Reference Include="Tesseract, Version=5.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Tesseract.5.2.0\lib\net47\Tesseract.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Action\Follow.cs" />
+    <Compile Include="Action\FollowStop.cs" />
+    <Compile Include="Action\Recognize.cs" />
     <Compile Include="DrawPosition.cs">
       <SubType>Form</SubType>
     </Compile>
