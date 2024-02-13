@@ -10,5 +10,6 @@ namespace SkAffix.Dto
     {
         public SkAffix.Constants.Currency currency;
         public int num;
+        public int count;
     }
 }
