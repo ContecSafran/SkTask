@@ -67,6 +67,8 @@ namespace SkTask
             q_Stats_filters prefixFilter = Search.OptionParser.GetOptionFilter("# 빈 접두어 속성 부여");
             q_Stats_filters suffixFilter = Search.OptionParser.GetOptionFilter("효과를 받는 동안 추가 원소 저항 #%", 39);
             string output = Search.Search.toJson("자수정 플라스크", "flask", prefixFilter, suffixFilter);
+            string ss = "{\"query\":{\"filters\":{\"armour_filters\":{\"disabled\":true},\"heist_filters\":{\"disabled\":true,\"filters\":{}},\"map_filters\":{\"disabled\":true,\"filters\":{}},\"misc_filters\":{\"disabled\":true,\"filters\":{}},\"req_filters\":{\"disabled\":true},\"socket_filters\":{\"disabled\":true,\"filters\":{}},\"trade_filters\":{\"disabled\":false,\"filters\":{\"indexed\":{\"option\":\"1week\"},\"sale_type\":{\"option\":\"priced\"}}},\"type_filters\":{\"filters\":{\"category\":{\"option\":\"flask\"},\"rarity\":{\"option\":\"magic\"}}},\"ultimatum_filters\":{\"disabled\":true,\"filters\":{}},\"weapon_filters\":{\"disabled\":true}},\"stats\":[{\"filters\":[{\"disabled\":false,\"id\":\"explicit.stat_1582728645\",\"value\":{\"max\":3,\"min\":3}}],\"type\":\"and\"}],\"type\":\"자수정 플라스크\",\"status\":{\"option\":\"online\"}},\"sort\":{\"price\":\"asc\"}}";
+            List<SkAffix.Dto.Currency> price =  Search.Search.UpdatePrice("standard", 0, ss, 2);
         }
         protected override void AddAction()
         {

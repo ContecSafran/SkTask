@@ -128,7 +128,7 @@ namespace Search
             }
         }
 
-        private List<SkAffix.Dto.Currency> UpdatePrice(string league, int langIndex, string[] entity, int listCount)
+        static public List<SkAffix.Dto.Currency> UpdatePrice(string league, int langIndex, string entity, int listCount)
         {
             string url_string = "";
             string json_entity = "";
@@ -138,172 +138,155 @@ namespace Search
 
             try
             {
-                if (entity.Length > 0 && !string.IsNullOrEmpty(entity[0]))
+                url_string = RS.TradeApi[langIndex] + league;
+                json_entity = entity;
+                string request_result = Api.SendHTTP(json_entity, url_string, configOption.ServerTimeout);
+                msg = "현재 리그의 거래소 접속이 원활하지 않습니다";
+
+                if (request_result != null)
                 {
-                    if (entity.Length == 1)
-                    {
-                        url_string = RS.TradeApi[langIndex] + league;
-                        json_entity = entity[0];
-                    }
-                    else
-                    {
-                        url_string = RS.ExchangeApi[langIndex] + league;
-                        json_entity = "{\"exchange\":{\"status\":{\"option\":\"online\"},\"have\":[\"" + entity[0] + "\"],\"want\":[\"" + entity[1] + "\"]}}";
-                    }
-                    string request_result = Api.SendHTTP(json_entity, url_string, configOption.ServerTimeout);
-                    msg = "현재 리그의 거래소 접속이 원활하지 않습니다";
+                    ResultData resultData = Json.Deserialize<ResultData>(request_result);
+                    Dictionary<string, int> currencys = new Dictionary<string, int>();
 
-                    if (request_result != null)
+                    int total = 0;
+                    int resultCount = resultData.Result.Length;
+
+                    if (resultData.Result.Length > 0)
                     {
-                        ResultData resultData = Json.Deserialize<ResultData>(request_result);
-                        Dictionary<string, int> currencys = new Dictionary<string, int>();
+                        string ents0 = "", ents1 = "";
 
-                        int total = 0;
-                        int resultCount = resultData.Result.Length;
 
-                        if (resultData.Result.Length > 0)
+                        for (int x = 0; x < listCount; x++)
                         {
-                            string ents0 = "", ents1 = "";
+                            string[] tmp = new string[10];
+                            int cnt = x * 10;
+                            int length = 0;
 
-                            if (entity.Length > 1)
+                            if (cnt >= resultData.Result.Length)
+                                break;
+
+                            for (int i = 0; i < 10; i++)
                             {
-                                //listCount = listCount + 2;
-                                ents0 = Regex.Replace(entity[0], @"(timeless-)?([a-z]{3})[a-z\-]+\-([a-z]+)", @"$3`$2");
-                                ents1 = Regex.Replace(entity[1], @"(timeless-)?([a-z]{3})[a-z\-]+\-([a-z]+)", @"$3`$2");
-                            }
-
-                            for (int x = 0; x < listCount; x++)
-                            {
-                                string[] tmp = new string[10];
-                                int cnt = x * 10;
-                                int length = 0;
-
-                                if (cnt >= resultData.Result.Length)
+                                if (i + cnt >= resultData.Result.Length)
                                     break;
 
-                                for (int i = 0; i < 10; i++)
+                                tmp[i] = resultData.Result[i + cnt];
+                                length++;
+                            }
+
+                            string json_result = "";
+                            string url = RS.FetchApi[langIndex] + tmp.Join(',') + "?query=" + resultData.ID;
+                            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(new Uri(url));
+                            request.CookieContainer = new CookieContainer();
+                            request.UserAgent = RS.UserAgent;
+                            request.Timeout = configOption.ServerTimeout * 1000;
+                            //request.UseDefaultCredentials = true;
+
+                            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                            using (StreamReader streamReader = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
+                            {
+                                json_result = streamReader.ReadToEnd();
+                            }
+
+                            if (json_result != "")
+                            {
+                                FetchData fetchData = new FetchData();
+                                fetchData.Result = new FetchInfo[10];
+
+                                fetchData = Json.Deserialize<FetchData>(json_result);
+
+                                for (int i = 0; i < fetchData.Result.Length; i++)
                                 {
-                                    if (i + cnt >= resultData.Result.Length)
+                                    if (fetchData.Result[i] == null)
                                         break;
 
-                                    tmp[i] = resultData.Result[i + cnt];
-                                    length++;
-                                }
-
-                                string json_result = "";
-                                string url = RS.FetchApi[langIndex] + tmp.Join(',') + "?query=" + resultData.ID;
-                                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(new Uri(url));
-                                request.CookieContainer = new CookieContainer();
-                                request.UserAgent = RS.UserAgent;
-                                request.Timeout = configOption.ServerTimeout * 1000;
-                                //request.UseDefaultCredentials = true;
-
-                                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-                                using (StreamReader streamReader = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
-                                {
-                                    json_result = streamReader.ReadToEnd();
-                                }
-
-                                if (json_result != "")
-                                {
-                                    FetchData fetchData = new FetchData();
-                                    fetchData.Result = new FetchInfo[10];
-
-                                    fetchData = Json.Deserialize<FetchData>(json_result);
-
-                                    for (int i = 0; i < fetchData.Result.Length; i++)
+                                    if (fetchData.Result[i].Listing.Price != null && fetchData.Result[i].Listing.Price.Amount > 0)
                                     {
-                                        if (fetchData.Result[i] == null)
-                                            break;
-
-                                        if (fetchData.Result[i].Listing.Price != null && fetchData.Result[i].Listing.Price.Amount > 0)
+                                        string key = "";
+                                        string indexed = fetchData.Result[i].Listing.Indexed;
+                                        string account = fetchData.Result[i].Listing.Account.Name;
+                                        string currency = fetchData.Result[i].Listing.Price.Currency;
+                                        double amount = fetchData.Result[i].Listing.Price.Amount;
+                                        SkAffix.Constants.Currency selectedCurrency = currency.Equals("divine") ? SkAffix.Constants.Currency.Divine: SkAffix.Constants.Currency.Chaos;
+                                        /*
+                                        liPrice.Dispatcher.BeginInvoke(DispatcherPriority.Background, (ThreadStart)delegate ()
                                         {
-                                            string key = "";
-                                            string indexed = fetchData.Result[i].Listing.Indexed;
-                                            string account = fetchData.Result[i].Listing.Account.Name;
-                                            string currency = fetchData.Result[i].Listing.Price.Currency;
-                                            double amount = fetchData.Result[i].Listing.Price.Amount;
-                                            SkAffix.Constants.Currency selectedCurrency = currency.Equals("divine") ? SkAffix.Constants.Currency.Divine: SkAffix.Constants.Currency.Chaos;
-                                            /*
-                                            liPrice.Dispatcher.BeginInvoke(DispatcherPriority.Background, (ThreadStart)delegate ()
-                                            {
-                                                ParserDictItem item = GetExchangeItem(currency);
-                                                string keyName = item != null ? item.Text[0] : currency;
+                                            ParserDictItem item = GetExchangeItem(currency);
+                                            string keyName = item != null ? item.Text[0] : currency;
 
-                                                if (entity.Length > 1)
-                                                {
-                                                    item = GetExchangeItem(entity[1]);
-                                                    string tName2 = item != null ? item.Text[0] : entity[1];
-                                                    liPrice.Items.Add(Math.Round(1 / amount, 4) + " " + tName2 + " <-> " + Math.Round(amount, 4) + " " + keyName + " [" + account + "]");
-                                                }
-                                                else
-                                                {
-                                                    liPrice.Items.Add((
-                                                        String.Format(
-                                                            "{0} [{1}] {2}", (amount + " " + keyName).PadRight(14, '\u2000'), account, GetLapsedTime(indexed).PadRight(10, '\u2000'))
-                                                        )
-                                                    );
-                                                }
-                                            });
-                                            */
                                             if (entity.Length > 1)
-                                                key = amount < 1 ? Math.Round(1 / amount, 1) + " " + ents1 : Math.Round(amount, 1) + " " + ents0;
-                                            else
-                                                key = Math.Round(amount - 0.1) + " " + currency;
-
-                                            if (currencys.ContainsKey(key))
                                             {
-                                                currencys[key]++;
-                                                price.FirstOrDefault(s => s.currency == selectedCurrency).count++;
+                                                item = GetExchangeItem(entity[1]);
+                                                string tName2 = item != null ? item.Text[0] : entity[1];
+                                                liPrice.Items.Add(Math.Round(1 / amount, 4) + " " + tName2 + " <-> " + Math.Round(amount, 4) + " " + keyName + " [" + account + "]");
                                             }
                                             else
                                             {
-
-                                                SkAffix.Dto.Currency newPrice = new SkAffix.Dto.Currency();
-                                                newPrice.currency = selectedCurrency;
-                                                newPrice.num = (int)Math.Round(amount - 0.1);
-                                                newPrice.count = 1;
-                                                currencys.Add(key, 1);
-                                                price.Add(newPrice);
+                                                liPrice.Items.Add((
+                                                    String.Format(
+                                                        "{0} [{1}] {2}", (amount + " " + keyName).PadRight(14, '\u2000'), account, GetLapsedTime(indexed).PadRight(10, '\u2000'))
+                                                    )
+                                                );
                                             }
+                                        });
+                                        */
+                                        if (entity.Length > 1)
+                                            key = amount < 1 ? Math.Round(1 / amount, 1) + " " + ents1 : Math.Round(amount, 1) + " " + ents0;
+                                        else
+                                            key = Math.Round(amount - 0.1) + " " + currency;
 
-                                            total++;
+                                        if (currencys.ContainsKey(key))
+                                        {
+                                            currencys[key]++;
+                                            price.FirstOrDefault(s => s.currency == selectedCurrency).count++;
                                         }
+                                        else
+                                        {
+
+                                            SkAffix.Dto.Currency newPrice = new SkAffix.Dto.Currency();
+                                            newPrice.currency = selectedCurrency;
+                                            newPrice.num = (int)Math.Round(amount - 0.1);
+                                            newPrice.count = 1;
+                                            currencys.Add(key, 1);
+                                            price.Add(newPrice);
+                                        }
+
+                                        total++;
                                     }
                                 }
-
                             }
 
-                            if (currencys.Count > 0)
-                            {
-                                List<KeyValuePair<string, int>> myList = new List<KeyValuePair<string, int>>(currencys);
-                                string first = ((KeyValuePair<string, int>)myList[0]).Key;
-                                string last = ((KeyValuePair<string, int>)myList[myList.Count - 1]).Key;
-
-                                myList.Sort(
-                                    delegate (KeyValuePair<string, int> firstPair,
-                                    KeyValuePair<string, int> nextPair)
-                                    {
-                                        return -1 * firstPair.Value.CompareTo(nextPair.Value);
-                                    }
-                                );
-
-                                for (int i = 0; i < myList.Count; i++)
-                                {
-                                    if (i == 2) break;
-                                    if (myList[i].Value < 2) continue;
-                                    msg_2 += myList[i].Key + "[" + myList[i].Value + "], ";
-                                }
-
-                                msg = Regex.Replace(first + " ~ " + last, @"(timeless-)?([a-z]{3})[a-z\-]+\-([a-z]+)", @"$3`$2");
-                                msg_2 = Regex.Replace(msg_2.TrimEnd(',', ' '), @"(timeless-)?([a-z]{3})[a-z\-]+\-([a-z]+)", @"$3`$2");
-
-                                //currencys.FirstOrDefault(x => x.Value == currencys.Max(y => y.Value)).
-                                if (msg_2 == "") msg_2 = "가장 많은 수 없음";
-                            }
                         }
 
+                        if (currencys.Count > 0)
+                        {
+                            List<KeyValuePair<string, int>> myList = new List<KeyValuePair<string, int>>(currencys);
+                            string first = ((KeyValuePair<string, int>)myList[0]).Key;
+                            string last = ((KeyValuePair<string, int>)myList[myList.Count - 1]).Key;
+
+                            myList.Sort(
+                                delegate (KeyValuePair<string, int> firstPair,
+                                KeyValuePair<string, int> nextPair)
+                                {
+                                    return -1 * firstPair.Value.CompareTo(nextPair.Value);
+                                }
+                            );
+
+                            for (int i = 0; i < myList.Count; i++)
+                            {
+                                if (i == 2) break;
+                                if (myList[i].Value < 2) continue;
+                                msg_2 += myList[i].Key + "[" + myList[i].Value + "], ";
+                            }
+
+                            msg = Regex.Replace(first + " ~ " + last, @"(timeless-)?([a-z]{3})[a-z\-]+\-([a-z]+)", @"$3`$2");
+                            msg_2 = Regex.Replace(msg_2.TrimEnd(',', ' '), @"(timeless-)?([a-z]{3})[a-z\-]+\-([a-z]+)", @"$3`$2");
+
+                            //currencys.FirstOrDefault(x => x.Value == currencys.Max(y => y.Value)).
+                            if (msg_2 == "") msg_2 = "가장 많은 수 없음";
+                        }
                     }
+
                 }
             }
             catch (Exception ex)
