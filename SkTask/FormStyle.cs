@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace SkTask
 {
-    partial class SkTaskForm
+    partial class SkTaskFormBase
     {
         private void init()
         {

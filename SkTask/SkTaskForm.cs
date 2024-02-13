@@ -19,10 +19,9 @@ using System.Windows.Input;
 
 namespace SkTask
 {
-    public partial class SkTaskForm : Form
+    public partial class SkTaskForm : SkTaskFormBase
     {
-        List<SkTask.Action.Task> actions;
-        List<SkTask.Component.ActionItem> actionItems;
+        Image image = new Image();
         //알케
         //알터
         //템 버리기
@@ -32,14 +31,17 @@ namespace SkTask
         //필터
         //각종 필터 자동
         //아이템 거래소 검색
-        public SkTaskForm()
+        public SkTaskForm() : base()
         {
-
+            /*
+             * 
+             * 물약 검색 
             ItemCsv itemCsv = new SkAffix.Process.ItemCsv();
             List<Item> items = itemCsv.getItems();
             OptionManager optionManager = new OptionManager();
             optionManager.test();
-            InitializeComponent();
+            */
+            /*
             this.actions = new List<SkTask.Action.Task>(new SkTask.Action.Task[] {
                 new Inventory(),
                 new Stash(),
@@ -57,59 +59,20 @@ namespace SkTask
                 this.actionItems.Add(new Component.ActionItem(this.actions[i], true));
                 this.MainPanel.ContentPanel.Controls.Add(this.actionItems[i]);
             }
+            */
+            // image.Show();
         }
-        bool isRunning = true;
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        protected override void AddAction()
         {
-            return base.ProcessCmdKey(ref msg, keyData);
-        }
-        void MainThread()
-        {
-            while (this.isRunning)
-            {
-
-                Thread.Sleep(40); //minimum CPU usage
-                if(Status.mode == Constants.Mode.WAITING)
-                {
-                    var select = from action in actions
-                                 where action.StartCondition() == true
-                                 select action;
-                    if(select.Count() > 0)
-                    {
-                        SkTask.Action.Task t = select.First();
-                        Status.mode = Constants.Mode.RUNNING;
-                        t.task();
-                    }
-                }
-            }
-        }
-
-        private void FormClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void MainPanel_TopToolStripPanel_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
-        {
-            
-        }
-
-        public const int WM_NCLBUTTONDOWN = 0xA1;
-        public const int HT_CAPTION = 0x2;
-
-        [DllImportAttribute("user32.dll")]
-        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        [DllImportAttribute("user32.dll")]
-        public static extern bool ReleaseCapture();
-
-        private void MainPanel_TopToolStripPanel_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
-        {
-
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
+            this.actions = new List<SkTask.Action.Task>(new SkTask.Action.Task[] {
+                new Inventory(),
+                new Stash(),
+                new BlightMap(),
+                new Trash(),
+                new Alter(),
+                new Augmentation(),
+                new AlchSco()
+            });
         }
     }
 }
