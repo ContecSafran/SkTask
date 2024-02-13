@@ -13,7 +13,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkUtil", "SkUtil\SkUtil.csp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resource", "Resource", "{40738990-CECB-4DEE-8C07-B9427D356536}"
 	ProjectSection(SolutionItems) = preProject
+		bin\resource\Checked.txt = bin\resource\Checked.txt
+		bin\resource\Config.txt = bin\resource\Config.txt
+		bin\resource\FiltersEN.txt = bin\resource\FiltersEN.txt
+		bin\resource\FiltersKO.txt = bin\resource\FiltersKO.txt
+		bin\resource\ItemsEN.txt = bin\resource\ItemsEN.txt
+		bin\resource\ItemsKO.txt = bin\resource\ItemsKO.txt
 		bin\resource\origin.xlsx = bin\resource\origin.xlsx
+		bin\resource\Parser.txt = bin\resource\Parser.txt
+		bin\resource\StaticEN.txt = bin\resource\StaticEN.txt
+		bin\resource\StaticKO.txt = bin\resource\StaticKO.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item", "Item", "{B5E17401-66E2-4FAC-8FF7-83AC69699233}"
