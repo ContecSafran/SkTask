@@ -15,6 +15,9 @@ namespace Follow
     {
 
         static List<string> SearchList = new List<string>() { "Wayne", "Wayn", "ayne", "Way", "ayn", "yne", "wayne", "wayn" };
+
+        //ocr thread
+        static Tesseract.TesseractEngine tesseractEngine = new Tesseract.TesseractEngine("../resource/tessdata-main", "eng");
         public static Bitmap Process(Bitmap inputBmp)
         {
             
@@ -28,11 +31,9 @@ namespace Follow
             Cv2.Threshold(gray, binary, 100, 200, ThresholdTypes.Binary);
             Bitmap bmp = BitmapConverter.ToBitmap(binary);
             
-            //ocr thread
-            Tesseract.TesseractEngine tesseractEngine = new Tesseract.TesseractEngine("../resource/tessdata-main", "eng");
             DrawPosition.DrawPoint.Clear();
 
-            int index = 1;
+            int index = Follow.MonitorInfo.SelectMonitor.Index;
             using (var img = PixConverter.ToPix((Bitmap)bmp))
             {
 

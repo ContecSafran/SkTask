@@ -19,9 +19,8 @@ namespace Follow
         public void Init()
         {
             // 주화면의 크기 정보 읽기
-            rect = Screen.AllScreens[Follow.MonitorInfo.SelectMonitor.index].Bounds;
+            rect = Screen.AllScreens[Follow.MonitorInfo.SelectMonitor.Index].Bounds;
             size = rect.Size;
-            // 2nd screen = Screen.AllScreens[1]
 
             // 픽셀 포맷 정보 얻기 (Optional)
             int bitsPerPixel = Screen.PrimaryScreen.BitsPerPixel;
@@ -42,12 +41,12 @@ namespace Follow
 
         public void Capture()
         {
-            Rectangle newRect = Screen.AllScreens[Follow.MonitorInfo.SelectMonitor.index].Bounds;
+            Rectangle newRect = Screen.AllScreens[Follow.MonitorInfo.SelectMonitor.Index].Bounds;
             if (!newRect.Size.Equals(size))
             {
                 this.Init();
             }
-            int index = Follow.MonitorInfo.SelectMonitor.index;
+            int index = Follow.MonitorInfo.SelectMonitor.Index;
             // Bitmap 이미지 변경을 위해 Graphics 객체 생성
             using (Graphics gr = Graphics.FromImage(bmp))
             {
@@ -90,8 +89,6 @@ namespace Follow
             IsCaptureStart = false;
             // 주화면의 크기 정보 읽기
             Rectangle rect = new Rectangle(0, 0, width, height);
-            // 2nd screen = Screen.AllScreens[1]
-
             bmp = new Bitmap(rect.Width, rect.Height, pixelFormat);
 
         }

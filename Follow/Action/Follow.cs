@@ -9,6 +9,7 @@ using System.Threading;
 using SkTask.Constants;
 using System.Windows.Input;
 using System.Windows;
+using SkTask;
 
 namespace Follow.Action
 {
@@ -18,6 +19,16 @@ namespace Follow.Action
         {
             StartKey.Add(Key.LeftAlt);
             StartKey.Add(Key.D2);
+        }
+
+        public override void Start()
+        {
+            Log.WriteLog("Follow 시작");
+        }
+
+        public override void End()
+        {
+            Log.WriteLog("Follow 종료");
         }
         public override void Process()
         {

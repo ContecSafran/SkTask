@@ -29,7 +29,7 @@ namespace Follow
         {
             //Toolstrip에 combo box 넣어두고 모니터 개수 확인해서 넣어두고 창 이동하게 하고 상태 설정 저장
             comboBox = Follow.MonitorInfo.SelectMonitor.GetButton();
-
+            comboBox.SelectedIndex = -1;
             comboBox.SelectedIndexChanged += new System.EventHandler(this.SelectedIndexChanged_Monitor);
             AddToolSctipButton(comboBox);
             this.InitializeComponent();
@@ -40,7 +40,9 @@ namespace Follow
         private void SelectedIndexChanged_Monitor(object sender, EventArgs e)
         {
             int SelectedIndex = ((ToolStripComboBox)sender).SelectedIndex;
-            Follow.MonitorInfo.SelectMonitor.index = SelectedIndex;
+            Follow.MonitorInfo.SelectMonitor.Index = SelectedIndex;
+
+            Follow.MonitorInfo.SelectMonitor.OtherIndex = SelectedIndex != 0 ? 0 : 1;
             this.Location = new Point {
                 X = Screen.AllScreens[SelectedIndex].Bounds.Right - this.ClientSize.Width,
                 Y = Screen.AllScreens[SelectedIndex].Bounds.Height / 2 - this.ClientSize.Height / 2
@@ -79,7 +81,7 @@ namespace Follow
         private void FollowForm_Load(object sender, EventArgs e)
         {
             this.Location = new Point { X = 0, Y = 0 };
-            comboBox.SelectedIndex = 1;
+            comboBox.SelectedIndex = Follow.MonitorInfo.SelectMonitor.GetProcessIndex();
             Thread TH = new Thread(FollowThread);
             TH.SetApartmentState(ApartmentState.STA);
             CheckForIllegalCrossThreadCalls = false;
