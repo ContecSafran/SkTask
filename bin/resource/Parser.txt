@@ -1,0 +1,384 @@
+﻿{
+	"local":{
+		"entries":[
+			{ "id":"stat_210067635", "key":"weapon" }, { "id":"stat_691932474", "key":"weapon" }, { "id":"stat_3885634897", "key":"weapon" },
+			{ "id":"stat_2223678961", "key":"weapon" }, { "id":"stat_1940865751", "key":"weapon" }, { "id":"stat_3336890334", "key":"weapon" },
+			{ "id":"stat_709508406", "key":"weapon" }, { "id":"stat_1037193709", "key":"weapon" }, { "id":"stat_821021828", "key":"weapon" },
+			{ "id":"stat_55876295", "key":"weapon" }, { "id":"stat_669069897", "key":"weapon" },
+			{ "id":"stat_4052037485", "key":"armour" }, { "id":"stat_4015621042", "key":"armour" }, { "id":"stat_124859000", "key":"armour" },
+			{ "id":"stat_53045048", "key":"armour" }, { "id":"stat_1062208444", "key":"armour" }, { "id":"stat_3484657501", "key":"armour" },
+			{ "id":"stat_3321629045", "key":"armour" }, { "id":"stat_1999113824", "key":"armour" }, { "id":"stat_2451402625", "key":"armour" },
+			{ "id":"stat_3523867985", "key":"armour" },
+			{ "id":"stat_1001829678", "key":"weapon" }, { "id":"stat_2881111359", "key":"__none__" },{ "id":"stat_57434274", "key":"map" }
+		]
+	},
+
+	"disable":{
+		"entries":[
+			{ "id":"stat_144887967", "key":"armour" }
+		]
+	},
+
+	"position":{
+		"entries":[
+            		{ "id":"stat_3441651621", "key":"reverse" }, { "id":"stat_3853018505", "key":"reverse" }, { "id":"stat_969865219", "key":"reverse" },
+			{ "id":"stat_4176970656", "key":"reverse" }, { "id":"stat_3277537093", "key":"reverse" }, { "id":"stat_3691641145", "key":"reverse" },
+			{ "id":"stat_3557561376", "key":"reverse" }, { "id":"stat_705686721", "key":"reverse" },  { "id":"stat_2156764291", "key":"reverse" },
+			{ "id":"stat_3743301799", "key":"reverse" }, { "id":"stat_1187803783", "key":"reverse" }, { "id":"stat_3612407781", "key":"reverse" },
+            		{ "id":"stat_496011033", "key":"reverse" },  { "id":"stat_1625103793", "key":"reverse" }, { "id":"stat_308618188", "key":"reverse" },
+			{ "id":"stat_2590715472", "key":"reverse" }, { "id":"stat_1964333391", "key":"reverse" }, { "id":"stat_614758785", "key":"reverse" },
+			{ "id":"stat_2440172920", "key":"reverse" }, { "id":"stat_321765853", "key":"reverse" },  { "id":"stat_465051235", "key":"reverse" },
+			{ "id":"stat_261654754", "key":"reverse" },  { "id":"stat_3522931817", "key":"reverse" }, { "id":"stat_1443108510", "key":"reverse" },
+			{ "id":"stat_2477636501", "key":"reverse" }, { "id":"stat_3086156145", "key":"reverse" }, { "id":"stat_2734809852", "key":"reverse" }
+		]
+	},
+
+	"currency":{
+		"entries":[
+			{"id":"chaos","hidden":false,"text":[ "카오스 오브", "Chaos Orb" ]},
+			{"id":"exalted","hidden":false,"text":[ "엑잘티드 오브", "Exalted Orb" ]},
+			{"id":"ancient-orb","hidden":false,"text":[ "고대의 오브", "Ancient Orb" ]},
+			{"id":"engineers","hidden":false,"text":[ "기술자의 오브", "Engineer's Orb" ]},
+			{"id":"chance","hidden":false,"text":[ "기회의 오브", "Orb of Chance" ]},
+			{"id":"vaal","hidden":false,"text":[ "바알 오브", "Vaal Orb" ]},
+			{"id":"alt","hidden":false,"text":[ "변화의 오브", "Orb of Alteration" ]},
+			{"id":"harbingers-orb","hidden":false,"text":[ "선구자의 오브", "Harbinger's Orb" ]},
+			{"id":"annul","hidden":false,"text":[ "소멸의 오브", "Orb of Annulment" ]},
+			{"id":"orb-of-binding","hidden":false,"text":[ "속박의 오브", "Orb of Binding" ]},
+			{"id":"divine","hidden":false,"text":[ "신성한 오브", "Divine Orb" ]},
+			{"id":"chrome","hidden":false,"text":[ "색채의 오브", "Chromatic Orb" ]},
+			{"id":"fusing","hidden":false,"text":[ "연결의 오브", "Orb of Fusing" ]},
+			{"id":"alch","hidden":false,"text":[ "연금술의 오브", "Orb of Alchemy" ]},
+			{"id":"eternal","hidden":false,"text":[ "영원의 오브", "Eternal Orb" ]},
+			{"id":"scour","hidden":false,"text":[ "정제의 오브", "Orb of Scouring" ]},
+			{"id":"jewellers","hidden":false,"text":[ "쥬얼러 오브", "Jeweller's Orb" ]},
+			{"id":"orb-of-horizons","hidden":false,"text":[ "지평의 오브", "Orb of Horizons" ]},
+			{"id":"transmute","hidden":false,"text":[ "진화의 오브", "Orb of Transmutation" ]},
+			{"id":"regal","hidden":false,"text":[ "제왕의 오브", "Regal Orb" ]},
+			{"id":"blessed","hidden":false,"text":[ "축복의 오브", "Blessed Orb" ]},
+			{"id":"mirror","hidden":false,"text":[ "칼란드라의 거울", "Mirror of Kalandra" ]},
+			{"id":"aug","hidden":false,"text":[ "확장의 오브", "Orb of Augmentation" ]},
+			{"id":"regret","hidden":false,"text":[ "후회의 오브", "Orb of Regret" ]},
+
+			{"id":"gcp","hidden":false,"text":[ "세공사의 프리즘", "Gemcutter's Prism" ]},
+			{"id":"bauble","hidden":false,"text":[ "유리직공의 방울", "Glassblower's Bauble" ]},
+			{"id":"silver","hidden":false,"text":[ "실버 코인", "Silver Coin" ]},
+			{"id":"stacked-deck","hidden":false,"text":[ "카드 묶음", "Stacked Deck" ]},
+			{"id":"wisdom","hidden":false,"text":[ "감정 주문서", "Scroll of Wisdom" ]},
+			{"id":"portal","hidden":false,"text":[ "포탈 주문서", "Portal Scroll" ]},
+
+			{"id":"chisel","hidden":false,"text":[ "지도제작자의 끌", "Cartographer's Chisel" ]},
+			{"id":"apprentice-sextant","hidden":false,"text":[ "단순한 육분의", "Simple Sextant" ]},
+			{"id":"journeyman-sextant","hidden":false,"text":[ "최종형 육분의", "Prime Sextant" ]},
+			{"id":"master-sextant","hidden":false,"text":[ "각성한 육분의", "Awakened Sextant" ]},
+			{"id":"elevated-sextant","hidden":false,"text":[ "고양된 육분의", "elevated-sextant" ]},
+
+			{"id":"crusaders-exalted-orb","hidden":true,"text":[ "십자군의 엑잘티드 오브", "Crusader's Exalted Orb" ]},
+			{"id":"redeemers-exalted-orb","hidden":true,"text":[ "대속자의 엑잘티드 오브", "Redeemer's Exalted Orb" ]},
+			{"id":"hunters-exalted-orb","hidden":true,"text":[ "사냥꾼의 엑잘티드 오브", "Hunter's Exalted Orb" ]},
+			{"id":"warlords-exalted-orb","hidden":true,"text":[ "전쟁군주의 엑잘티드 오브", "Warlord's Exalted Orb" ]},
+
+			{"id":"awakeners-orb","hidden":true,"text":[ "각성자의 오브", "Awakener's Orb" ]},
+			{"id":"tempering-orb","hidden":true,"text":[ "단조 오브", "Tempering Orb" ]},
+			{"id":"tailoring-orb","hidden":true,"text":[ "재단 오브", "Tailoring Orb" ]},
+
+			{"id":"veiled-chaos-orb","hidden":true,"text":[ "장막의 카오스 오브", "Veiled Chaos Orb" ]},
+			{"id":"enkindling-orb","hidden":true,"text":[ "자극의 오브", "Enkindling Orb" ]},
+			{"id":"instilling-orb","hidden":true,"text":[ "주입의 오브", "Instilling Orb" ]},
+
+			{"id":"prime-regrading-lens","hidden":true,"text":[ "1차 재보정 렌즈", "Prime Regrading Lens" ]},
+			{"id":"secondary-regrading-lens","hidden":true,"text":[ "2차 재보정 렌즈", "Secondary Regrading Lens" ]},
+
+			{"id":"ancient-shard","hidden":true,"text":[ "고대의 파편", "Ancient Shard" ]},
+			{"id":"engineers-shard","hidden":true,"text":[ "기술자의 파편", "Engineer's Shard" ]},
+			{"id":"harbingers-shard","hidden":true,"text":[ "선구자의 파편", "Harbinger's Shard" ]},
+			{"id":"annulment-shard","hidden":true,"text":[ "소멸의 파편", "Annulment Shard" ]},
+			{"id":"binding-shard","hidden":true,"text":[ "속박의 파편", "Binding Shard" ]},
+			{"id":"exalted-shard","hidden":true,"text":[ "엑잘티드 파편", "Exalted Shard" ]},
+			{"id":"horizon-shard","hidden":true,"text":[ "지평의 파편", "Horizon Shard" ]},
+			{"id":"regal-shard","hidden":true,"text":[ "제왕의 파편", "Regal Shard" ]},
+			{"id":"chaos-shard","hidden":true,"text":[ "카오스 파편", "Chaos Shard" ]},
+			{"id":"mirror-shard","hidden":true,"text":[ "거울 파편", "Mirror Shard" ]},
+			{"id":"whetstone","hidden":true,"text":[ "대장장이의 숫돌", "Blacksmith's Whetstone" ]},
+			{"id":"scrap","hidden":true,"text":[ "방어구 장인의 고철", "Armourer's Scrap" ]},
+			{"id":"p","hidden":true,"text":[ "페란두스 코인", "Perandus Coin" ]}
+		]
+	},
+
+	"exchange":{
+		"entries":[
+			{"id":"turbulent-catalyst","hidden":false,"text":[ "격동의 기폭제", "Turbulent Catalyst" ]},
+			{"id":"imbued-catalyst","hidden":false,"text":[ "부여의 기폭제", "Imbued Catalyst" ]},
+			{"id":"abrasive-catalyst","hidden":false,"text":[ "연마의 기폭제", "Abrasive Catalyst" ]},
+			{"id":"tempering-catalyst","hidden":false,"text":[ "완화의 기폭제", "Tempering Catalyst" ]},
+			{"id":"fertile-catalyst","hidden":false,"text":[ "풍요의 기폭제", "Fertile Catalyst" ]},
+			{"id":"prismatic-catalyst","hidden":false,"text":[ "분광의 기폭제", "Prismatic Catalyst" ]},
+			{"id":"intrinsic-catalyst","hidden":false,"text":[ "본질의 기폭제", "Intrinsic Catalyst" ]},
+
+			{"id":"hollow-fossil","hidden":false,"text":[ "공허의 화석", "Hollow Fossil" ]},
+			{"id":"scorched-fossil","hidden":false,"text":[ "그을린 화석", "Scorched Fossil" ]},
+			{"id":"metallic-fossil","hidden":false,"text":[ "금속성 화석", "Metallic Fossil" ]},
+			{"id":"gilded-fossil","hidden":false,"text":[ "도금된 화석", "Gilded Fossil" ]},
+			{"id":"encrusted-fossil","hidden":false,"text":[ "뒤덮인 화석", "Encrusted Fossil" ]},
+			{"id":"corroded-fossil","hidden":false,"text":[ "부식된 화석", "Corroded Fossil" ]},
+			{"id":"prismatic-fossil","hidden":false,"text":[ "분광 화석", "Prismatic Fossil" ]},
+			{"id":"fractured-fossil","hidden":false,"text":[ "분열된 화석", "Fractured Fossil" ]},
+			{"id":"jagged-fossil","hidden":false,"text":[ "뾰족한 화석", "Jagged Fossil" ]},
+			{"id":"lucent-fossil","hidden":false,"text":[ "빛나는 화석", "Lucent Fossil" ]},
+			{"id":"glyphic-fossil","hidden":false,"text":[ "상형 문자 화석", "Glyphic Fossil" ]},
+			{"id":"bound-fossil","hidden":false,"text":[ "속박의 화석", "Bound Fossil" ]},
+			{"id":"tangled-fossil","hidden":false,"text":[ "얽혀든 화석", "Tangled Fossil" ]},
+			{"id":"faceted-fossil","hidden":false,"text":[ "연마한 화석", "Faceted Fossil" ]},
+			{"id":"pristine-fossil","hidden":false,"text":[ "온전한 화석", "Pristine Fossil" ]},
+			{"id":"perfect-fossil","hidden":false,"text":[ "완벽한 화석", "Perfect Fossil" ]},
+			{"id":"enchanted-fossil","hidden":false,"text":[ "인챈트된 화석", "Enchanted Fossil" ]},
+			{"id":"aetheric-fossil","hidden":false,"text":[ "에테르 화석", "Aetheric Fossil" ]},
+			{"id":"shuddering-fossil","hidden":false,"text":[ "전율의 화석", "Shuddering Fossil" ]},
+			{"id":"dense-fossil","hidden":false,"text":[ "조밀한 화석", "Dense Fossil" ]},
+			{"id":"frigid-fossil","hidden":false,"text":[ "차디찬 화석", "Frigid Fossil" ]},
+			{"id":"sanctified-fossil","hidden":false,"text":[ "축성된 화석", "Sanctified Fossil" ]},
+			{"id":"serrated-fossil","hidden":false,"text":[ "톱니 화석", "Serrated Fossil" ]},
+			{"id":"aberrant-fossil","hidden":false,"text":[ "특이한 화석", "Aberrant Fossil" ]},
+			{"id":"bloodstained-fossil","hidden":false,"text":[ "피얼룩 화석", "Bloodstained Fossil" ]},
+
+			{"id":"splinter-uul","hidden":true,"text":[ "울네톨의 파편", "Splinter of Uul-Netol" ]},
+			{"id":"splinter-esh","hidden":true,"text":[ "에쉬의 파편", "Splinter of Esh" ]},
+			{"id":"splinter-xoph","hidden":true,"text":[ "조프의 파편", "Splinter of Xoph" ]},
+			{"id":"splinter-chayula","hidden":true,"text":[ "차율라의 파편", "Splinter of Chayula" ]},
+			{"id":"splinter-tul","hidden":true,"text":[ "툴의 파편", "Splinter of Tul" ]},
+			{"id":"blessing-uul-netol","hidden":true,"text":[ "울네톨의 축복", "Blessing of Uul-Netol" ]},
+			{"id":"blessing-esh","hidden":true,"text":[ "에쉬의 축복", "Blessing of Esh" ]},
+			{"id":"blessing-xoph","hidden":true,"text":[ "조프의 축복", "Blessing of Xoph" ]},
+			{"id":"blessing-chayula","hidden":true,"text":[ "차율라의 축복", "Blessing of Chayula" ]},
+			{"id":"blessing-tul","hidden":true,"text":[ "툴의 축복", "Blessing of Tul" ]},
+
+			{"id":"timeless-vaal-splinter","hidden":false,"text":[ "무궁한 바알 파편", "Timeless Vaal Splinter" ]},
+			{"id":"timeless-eternal-empire-splinter","hidden":false,"text":[ "무궁한 영원한 제국 파편", "Timeless Eternal Empire Splinter" ]},
+			{"id":"timeless-karui-splinter","hidden":false,"text":[ "무궁한 카루이 파편", "Timeless Karui Splinter" ]},
+			{"id":"timeless-templar-splinter","hidden":false,"text":[ "무궁한 템플러 파편", "Timeless Templar Splinter" ]},
+			{"id":"timeless-maraketh-splinter","hidden":false,"text":[ "무궁한 마라케스 파편", "Timeless Maraketh Splinter" ]},
+			{"id":"timeless-vaal-emblem","hidden":false,"text":[ "무궁한 바알 상징", "Timeless Vaal Emblem" ]},
+			{"id":"timeless-eternal-emblem","hidden":false,"text":[ "무궁한 영원의 상징", "Timeless Eternal Emblem" ]},
+			{"id":"timeless-karui-emblem","hidden":false,"text":[ "무궁한 카루이 상징", "Timeless Karui Emblem" ]},
+			{"id":"timeless-templar-emblem","hidden":false,"text":[ "무궁한 템플러 상징", "Timeless Templar Emblem" ]},
+			{"id":"timeless-maraketh-emblem","hidden":false,"text":[ "무궁한 마라케스 상징", "Timeless Maraketh Emblem" ]}
+		]
+	},
+
+	"cluster":{
+		"entries":[
+			{"id":"1","text":[ "도끼 공격으로 주는 적중 및 상태 이상 피해 #% 증가", "Axe Attacks deal #% increased Damage with Hits and Ailments" ]},
+			{"id":"1","text":[ "검 공격으로 주는 적중 및 상태 이상 피해 #% 증가", "Sword Attacks deal #% increased Damage with Hits and Ailments" ]},
+			{"id":"2","text":[ "지팡이 공격으로 주는 적중 및 상태 이상 피해 #% 증가", "Staff Attacks deal #% increased Damage with Hits and Ailments" ]},
+			{"id":"2","text":[ "철퇴나 셉터 공격으로 주는 적중 및 상태 이상 피해 #% 증가", "Mace or Sceptre Attacks deal #% increased Damage with Hits and Ailments" ]},
+			{"id":"3","text":[ "클로 공격으로 주는 적중 및 상태 이상 피해 #% 증가", "Claw Attacks deal #% increased Damage with Hits and Ailments" ]},
+			{"id":"3","text":[ "단검 공격으로 주는 적중 및 상태 이상 피해 #% 증가", "Dagger Attacks deal #% increased Damage with Hits and Ailments" ]},
+			{"id":"4","text":[ "활 사용 시 피해 #% 증가", "#% increased Damage with Bows" ]},
+			{"id":"4","text":[ "활 스킬의 지속 피해 #% 증가", "#% increased Damage Over Time with Bow Skills" ]},
+			{"id":"5","text":[ "마법봉 공격으로 주는 적중 및 상태 이상 피해 #% 증가", "Wand Attacks deal #% increased Damage with Hits and Ailments" ]},
+			{"id":"6","text":[ "양손 무기 피해 #% 증가", "#% increased Damage with Two Handed Weapons" ]},
+			{"id":"7","text":[ "쌍수 사용 시 공격 피해 #% 증가", "#% increased Attack Damage while Dual Wielding" ]},
+			{"id":"8","text":[ "방패를 들고 있는 동안 공격 피해 #% 증가", "#% increased Attack Damage while holding a Shield" ]},
+			{"id":"9","text":[ "공격 피해 #% 증가", "#% increased Attack Damage" ]},
+			{"id":"10","text":[ "주문 피해 #% 증가", "#% increased Spell Damage" ]},
+			{"id":"11","text":[ "원소 피해 #% 증가", "#% increased Elemental Damage" ]},
+			{"id":"12","text":[ "물리 피해 #% 증가", "#% increased Physical Damage" ]},
+			{"id":"13","text":[ "화염 피해 #% 증가", "#% increased Fire Damage" ]},
+			{"id":"14","text":[ "번개 피해 #% 증가", "#% increased Lightning Damage" ]},
+			{"id":"15","text":[ "냉기 피해 #% 증가", "#% increased Cold Damage" ]},
+			{"id":"16","text":[ "카오스 피해 #% 증가", "#% increased Chaos Damage" ]},
+			{"id":"17","text":[ "소환수가 주는 피해 #% 증가", "Minions deal #% increased Damage" ]},
+			{"id":"18","text":[ "지속 화염 피해 배율 +#%", "+#% to Fire Damage over Time Multiplier" ]},
+			{"id":"19","text":[ "지속 카오스 피해 배율 +#%", "+#% to Chaos Damage over Time Multiplier" ]},
+			{"id":"20","text":[ "지속 물리 피해 배율 +#%", "+#% to Physical Damage over Time Multiplier" ]},
+			{"id":"21","text":[ "지속 냉기 피해 배율 +#%", "+#% to Cold Damage over Time Multiplier" ]},
+			{"id":"22","text":[ "지속 피해 배율 +#%", "+#% to Damage over Time Multiplier" ]},
+			{"id":"23","text":[ "비-피해 상태 이상 효과 #% 증가", "#% increased Effect of Non-Damaging Ailments" ]},
+			{"id":"24","text":[ "자신의 비-저주 오라 스킬 효과 #% 증가", "#% increased effect of Non-Curse Auras from your Skills" ]},
+			{"id":"25","text":[ "플레이어가 시전하는 저주 효과 #% 증가", "#% increased Effect of your Curses" ]},
+			{"id":"26","text":[ "전령의 영향을 받는 동안 피해 #% 증가", "#% increased Damage while affected by a Herald" ]},
+			{"id":"27","text":[ "전령의 영향을 받는 동안 소환수가 주는 피해 #% 증가", "Minions deal #% increased Damage while you are affected by a Herald" ]},
+			{"id":"28","text":[ "전력 공격이 주는 피해 #% 증가", "Exerted Attacks deal #% increased Damage" ]},
+			{"id":"29","text":[ "치명타 확률 #% 증가", "#% increased Critical Strike Chance" ]},
+			{"id":"30","text":[ "소환수의 최대 생명력 #% 증가", "Minions have #% increased maximum Life" ]},
+			{"id":"31","text":[ "범위 피해 #% 증가", "#% increased Area Damage" ]},
+			{"id":"32","text":[ "투사체 피해 #% 증가", "#% increased Projectile Damage" ]},
+			{"id":"33","text":[ "덫 피해 #% 증가", "#% increased Trap Damage" ]},
+			{"id":"33","text":[ "지뢰 피해 #% 증가", "#% increased Mine Damage" ]},
+			{"id":"34","text":[ "토템 피해 #% 증가", "#% increased Totem Damage" ]},
+			{"id":"35","text":[ "낙인 피해 #% 증가", "#% increased Brand Damage" ]},
+			{"id":"36","text":[ "집중 유지 스킬로 주는 피해 #% 증가", "Channelling Skills deal #% increased Damage" ]},
+			{"id":"37","text":[ "플라스크 효과 지속시간 #% 증가", "#% increased Flask Effect Duration" ]},
+			{"id":"38","text":[ "플라스크로 얻는 생명력 회복 #% 증가", "#% increased Life Recovery from Flasks" ]},
+			{"id":"38","text":[ "플라스크로 얻는 마나 회복 #% 증가", "#% increased Mana Recovery from Flasks" ]},
+			{"id":"39","text":[ "최대 생명력 #% 증가", "#% increased maximum Life" ]},
+			{"id":"40","text":[ "에너지 보호막 최대치 #% 증가", "#% increased maximum Energy Shield" ]},
+			{"id":"41","text":[ "최대 마나 #% 증가", "#% increased maximum Mana" ]},
+			{"id":"42","text":[ "방어도 #% 증가", "#% increased Armour" ]},
+			{"id":"43","text":[ "회피 #% 증가", "#% increased Evasion Rating" ]},
+			{"id":"44","text":[ "#%의 확률로 공격 피해를 막아냄", "#% Chance to Block Attack Damage" ]},
+			{"id":"45","text":[ "#%의 확률로 주문 피해를 막아냄", "#% Chance to Block Spell Damage" ]},
+			{"id":"46","text":[ "화염 저항 +#%", "+#% to Fire Resistance" ]},
+			{"id":"47","text":[ "냉기 저항 +#%", "+#% to Cold Resistance" ]},
+			{"id":"48","text":[ "번개 저항 +#%", "+#% to Lightning Resistance" ]},
+			{"id":"49","text":[ "카오스 저항 +#%", "+#% to Chaos Resistance" ]},
+			{"id":"50","text":[ "#%의 확률로 공격 적중 완벽회피", "#% chance to Dodge Attack Hits" ]},
+		]
+	},
+
+	"physical_damage":{"text":[ "물리 피해", "Physical Damage" ]},
+	"elemental_damage":{"text":[ "원소 피해", "Elemental Damage" ]},
+	"chaos_damage":{"text":[ "카오스 피해", "Chaos Damage" ]},
+	"attacks_per_second":{"text":[ "초당 공격 횟수", "Attacks per Second" ]},
+	"attack_speed_incr":{"text":[ "공격 속도 #% 증가", "#% increased Attack Speed" ]},
+	"physical_damage_incr":{"text":[ "물리 피해 #% 증가", "#% increased Physical Damage" ]},
+
+	"rarity":{
+		"text":[ "아이템 희귀도", "Rarity" ],
+		"entries":[
+			{"id":"normal","text":[ "일반", "Normal" ]},
+			{"id":"magic","text":[ "마법", "Magic" ]},
+			{"id":"rare","text":[ "희귀", "Rare" ]},
+			{"id":"unique","text":[ "고유", "Unique" ]},
+			{"id":"gem","text":[ "젬", "Gem" ]},
+			{"id":"currency","text":[ "화폐", "Currency" ]},
+			{"id":"card","text":[ "점술 카드", "Divination Card" ]}
+		]
+	},
+	"category":{
+		"text":[ "아이템 종류", "Item Class" ],
+		"entries":[
+			{"id":"weapon.dagger","key":"weapons","text":[ "단검", "Daggers" ]},
+			{"id":"weapon.runedagger","key":"weapons","text":[ "룬 단검", "Rune Daggers" ]},
+			{"id":"weapon.onesword","key":"weapons","text":[ "한손 검", "One Hand Swords" ]},
+			{"id":"weapon.onesword","key":"weapons","text":[ "날카로운 한손 검", "Thrusting One Hand Swords" ]},
+			{"id":"weapon.twosword","key":"weapons","text":[ "양손 검", "Two Hand Swords" ]},
+			{"id":"weapon.oneaxe","key":"weapons","text":[ "한손 도끼", "One Hand Axes" ]},
+			{"id":"weapon.twoaxe","key":"weapons","text":[ "양손 도끼", "Two Hand Axes" ]},
+			{"id":"weapon.onemace","key":"weapons","text":[ "한손 철퇴", "One Hand Maces" ]},
+			{"id":"weapon.twomace","key":"weapons","text":[ "양손 철퇴", "Two Hand Maces" ]},
+			{"id":"weapon.staff","key":"weapons","text":[ "지팡이", "Staves" ]},
+			{"id":"weapon.warstaff","key":"weapons","text":[ "전쟁지팡이", "Warstaves" ]},
+			{"id":"weapon.wand","key":"weapons","text":[ "마법봉", "Wands" ]},
+			{"id":"weapon.claw","key":"weapons","text":[ "클로", "Claws" ]},
+			{"id":"weapon.sceptre","key":"weapons","text":[ "셉터", "Sceptres" ]},
+			{"id":"weapon.bow","key":"weapons","text":[ "활", "Bows" ]},
+			{"id":"armour.chest","key":"armour","text":[ "갑옷", "Body Armours" ]},
+			{"id":"armour.boots","key":"armour","text":[ "장화", "Boots" ]},
+			{"id":"armour.gloves","key":"armour","text":[ "장갑", "Gloves" ]},
+			{"id":"armour.helmet","key":"armour","text":[ "투구", "Helmets" ]},
+			{"id":"armour.shield","key":"armour","text":[ "방패", "Shields" ]},
+			{"id":"armour.quiver","key":"armour","text":[ "화살통", "Quivers" ]},
+			{"id":"accessory.amulet","key":"accessories","text":[ "목걸이", "Amulets" ]},
+			{"id":"accessory.belt","key":"accessories","text":[ "허리띠", "Belts" ]},
+			{"id":"accessory.ring","key":"accessories","text":[ "반지", "Rings" ]},
+			{"id":"accessory.trinket","key":"accessories","text":[ "장신구", "Trinkets" ]},
+			{"id":"gem.activegem","key":"gems","text":[ "액티브 스킬 젬", "Active Skill Gems" ]},
+			{"id":"gem.supportgem","key":"gems","text":[ "보조 스킬 젬", "Support Skill Gems" ]},
+			{"id":"gem.supportgemplus","key":"gems","flag":"--","text":[ "각성한 보조 스킬 젬", "Awakened Support Skill Gems" ]},
+			{"id":"jewel.base","key":"jewels","text":[ "주얼", "Jewel" ]},
+			{"id":"jewel.abyss","key":"jewels","text":[ "심연 주얼", "Abyss Jewel" ]},
+			{"id":"jewel.cluster","key":"jewels","flag":"--","text":[ "군 주얼", "Cluster Jewel" ]},
+			{"id":"flask","key":"flasks","text":[ "특수 플라스크", "Utility Flasks" ]},
+			{"id":"flask","key":"flasks","text":[ "강력한 특수 플라스크", "Critical Utility Flasks" ]},
+			{"id":"flask","key":"flasks","text":[ "생명력 플라스크", "Life Flasks" ]},
+			{"id":"flask","key":"flasks","text":[ "마나 플라스크", "Mana Flasks" ]},
+			{"id":"flask","key":"flasks","text":[ "하이브리드 플라스크", "Hybrid Flasks" ]},
+			{"id":"map","key":"maps","text":[ "지도", "Maps" ]},
+			{"id":"map.fragment","key":"maps","text":[ "지도 조각", "Map Fragments" ]},
+			{"id":"map","key":"maps","text":[ "기타 지도 아이템", "Misc Map Items" ]},
+			{"id":"watchstone","key":"watchstones","text":[ "아틀라스 지역 업그레이드 아이템", "Atlas Region Upgrade Item" ]},
+			{"id":"card","key":"cards","text":[ "점술 카드", "Divination Card" ]},
+			{"id":"monster.sample","key":"monsters","text":[ "변형 샘플", "Metamorph Sample" ]},
+			{"id":"currency.piece","key":"currency","text":[ "조각", "Piece" ]},
+			{"id":"heistmission.contract","key":"heistmission","text":[ "계약", "Contract" ]},
+			{"id":"heistmission.blueprint","key":"heistmission","text":[ "도면", "Blueprint" ]},
+			{"id":"heistequipment","key":"heistequipment","text":[ "강탈 도구", "Heist Tool" ]},
+			{"id":"logbook","key":"logbook","text":[ "탐험 일지", "Expedition Logbooks" ]},
+			{"id":"currency.incubator","key":"currency","text":[ "인큐베이터", "Incubator" ]},
+			{"id":"currency.resonator","key":"currency","text":[ "탐광 중첩 및 결합형 화폐", "Delve Stackable Socketable Currency" ]},
+			{"id":"currency","key":"currency","text":[ "중첩 가능 화폐", "Stackable Currency" ]},
+
+			{"id":"prophecy","key":"prophecies","flag":"--","text":[ "예언", "Prophecy" ]},
+			{"id":"monster.beast","key":"monsters","flag":"--","text":[ "야수", "Beast" ]},
+			{"id":"currency.fossil","key":"currency","flag":"--","text":[ "화석", "Fossil" ]}
+		]
+	},
+	"gems":{
+		"entries":[
+			{"text":[ "기묘한", "Anomalous" ]},
+			{"text":[ "상이한", "Divergent" ]},
+			{"text":[ "몽환적인", "Phantasmal" ]}
+		]
+	},
+	"map_tier":{
+		"text":[ "지도 등급", "Map Tier" ],
+		"entries":[
+			{"text":[ "쉐이퍼", "The Shaper" ]},
+			{"text":[ "엘더", "The Elder" ]}
+		]
+	},
+	"heist":{
+		"text":[ "강탈 대상", "Heist Target" ],
+		"entries":[
+			{"id":"normal","text":[ "보통 가치", "Moderate Value" ]},
+			{"id":"magic","text":[ "높은 가치", "High Value" ]},
+			{"id":"rare","text":[ "귀중한 가치", "Precious" ]},
+			{"id":"unique","text":[ "환산 불가능한 가치", "Priceless" ]}
+		]
+	},
+	"map_ultimatum":{"text":[ "도전", "Challenge" ]},
+	"reward_ultimatum":{
+		"text":[ "보상", "Reward" ],
+		"entries":[
+			{"id":"DoubleCurrency","text":[ "소모되는 화폐 2배", "Doubles sacrificed Currency" ]},
+			{"id":"DoubleDivCards","text":[ "소모되는 점술 카드 2배", "Doubles sacrificed Divination Cards" ]},
+			{"id":"MirrorRare","text":[ "아이템과 복제본", "Item and Mirrored Copy" ]},
+			{"id":"ExchangeUnique","text":[ "유니크 아이템", "Unique Item" ]}
+		]
+	},
+	"logbook":{
+		"text":[ "지역에 탐험 보스 (#) 등장", "Area contains an Expedition Boss (#)" ],
+		"entries":[
+			{"id":"1","text":[ "지역에 영웅을 쓰러뜨리는 자 메드베드 등장", "Area contains Medved, Feller of Heroes" ]},
+			{"id":"2","text":[ "지역에 최후의 보루 보라나 등장", "Area contains Vorana, Last to Fall" ]},
+			{"id":"3","text":[ "지역에 갈망하는 배반자 우트레드 등장", "Area contains Uhtred, Covetous Traitor" ]},
+			{"id":"4","text":[ "지역에 몰락의 기원 올로스 등장", "Area contains Olroth, Origin of the Fall" ]}
+		]
+	},
+	"radius":{
+		"text":[ "적용 반경", "Radius" ],
+		"entries":[
+			{"id":"1","text":[ "좁은 반경의 패시브 스킬에만 영향을 미침", "Only affects Passives in Small Ring" ]},
+			{"id":"2","text":[ "중간 반경의 패시브 스킬에만 영향을 미침", "Only affects Passives in Medium Ring" ]},
+			{"id":"3","text":[ "넓은 반경의 패시브 스킬에만 영향을 미침", "Only affects Passives in Large Ring" ]},
+			{"id":"4","text":[ "아주 넓은 반경의 패시브 스킬에만 영향을 미침", "Only affects Passives in Very Large Ring" ]}
+		]
+	},
+	"quality":{"text":[ "퀄리티", "Quality" ]},
+	"sockets":{"text":[ "홈", "Sockets" ]},
+	"level":{"text":[ "레벨", "Level" ]},
+	"item_level":{"text":[ "아이템 레벨", "Item Level" ]},
+	"talisman_tier":{"text":[ "부적 등급", "Talisman Tier" ]},
+	"option_tier":{"text":[ "등급", "Tier" ]},
+	"superior":{"text":[ "상급", "Superior" ]},
+	"unidentified":{"text":[ "미확인", "Unidentified" ]},
+	"max":{"text":[ "최대", "Max" ]},
+	"vaal":{"text":[ "바알", "Vaal" ]},
+	"corrupted":{"text":[ "타락", "Corrupted" ]},
+	"monster_genus":{"text":[ "종", "Genus" ]},
+	"monster_group":{"text":[ "속", "Group" ]},
+	"metamorph":{"text":[ "변형", "Metamorph" ]},
+	"shaped":{"text":[ "형성된", "Shaped" ]},
+	"blighted":{"text":[ "역병 걸린", "Blighted" ]},
+	"delirium_reward":{"text":[ "환영 보상 유형", "Delirium Reward Type" ]},
+	"elder_item":{"text":[ "엘더 아이템", "Elder Item" ]},
+	"shaper_item":{"text":[ "쉐이퍼 아이템", "Shaper Item" ]},
+	"crusader_item":{"text":[ "십자군 아이템", "Crusader Item" ]},
+	"redeemer_item":{"text":[ "대속자 아이템", "Redeemer Item" ]},
+	"hunter_item":{"text":[ "사냥꾼 아이템", "Hunter Item" ]},
+	"warlord_item":{"text":[ "전쟁군주 아이템", "Warlord Item" ]},
+	"synthesised_item":{"text":[ "결합된 아이템", "Synthesised Item" ]},
+	"prophecy_item":{"text":[ "우클릭으로 이 예언을 캐릭터에 추가하십시오.", "Right-click to add this prophecy to your character." ]},
+	"unstack_items":{"text":[ "Shift + 클릭으로 아이템 나누기", "Shift click to unstack" ]}
+}

@@ -1,0 +1,102 @@
+﻿{
+    "entries": [
+        {
+            "id": "stat_3299347043",
+            "key": "accessory\/armour\/jewel\/"
+        },
+        {
+            "id": "stat_4220027924",
+            "key": "accessory\/armour\/"
+        },
+        {
+            "id": "stat_1671376347",
+            "key": "accessory\/armour\/"
+        },
+        {
+            "id": "stat_1546046884",
+            "key": "accessory\/"
+        },
+        {
+            "id": "stat_983749596",
+            "key": "jewel\/"
+        },
+        {
+            "id": "stat_2901986750",
+            "key": "accessory\/"
+        },
+        {
+            "id": "stat_3372524247",
+            "key": "armour\/accessory\/"
+        },
+        {
+            "id": "pseudo_global_critical_strike_multiplier",
+            "key": "jewel\/accessory\/weapon\/"
+        },
+        {
+            "id": "stat_1265282021",
+            "key": "accessory\/"
+        },
+        {
+            "id": "stat_1002362373",
+            "key": "accessory\/"
+        },
+        {
+            "id": "stat_2923486259",
+            "key": "accessory\/"
+        },
+        {
+            "id": "stat_250961191",
+            "key": "accessory\/"
+        },
+        {
+            "id": "stat_2003753577",
+            "key": "accessory\/"
+        },
+        {
+            "id": "pseudo_increased_spell_damage",
+            "key": "weapon\/"
+        },
+        {
+            "id": "stat_1509134228",
+            "key": "weapon\/"
+        },
+        {
+            "id": "pseudo_increased_movement_speed",
+            "key": "armour\/"
+        }
+    ],
+    "bases": [
+        {
+            "id": "모두",
+            "key": "오팔 반지(82)\/분광 반지(82)\/주색 반지(82)\/눈보라 왕관(1)\/슬픔 가면(1)\/"
+        },
+        {
+            "id": "쉐이퍼",
+            "key": "가시 방패(86)\/"
+        },
+        {
+            "id": "엘더",
+            "key": ""
+        },
+        {
+            "id": "십자군",
+            "key": "수정 허리띠(82)\/"
+        },
+        {
+            "id": "대속자",
+            "key": ""
+        },
+        {
+            "id": "사냥꾼",
+            "key": "두 가지 색 장화(75)\/가시 장갑(80)\/"
+        },
+        {
+            "id": "대속자",
+            "key": "두 가지 색 장화(75)\/"
+        },
+        {
+            "id": "전쟁군주",
+            "key": "강철 반지(80)\/가시 장갑(73)\/움켜쥔 장갑(73)\/손가락 없는 실크 장갑(73)\/"
+        }
+    ]
+}
