@@ -13,10 +13,11 @@ namespace SkAffix.Process
     {
         public List<Item> getItems()
         {
-            DataTable dt = CT_CSV.Load_CSVData("../resource/Item/flask.csv", Encoding.UTF8);
+            List<Item> ItemList = ItemFileUtil.CsvToItemList("Item/flask.csv");
 
-            List<System.Data.DataRow> rows = dt.AsEnumerable().ToList();
-            return rows.Select((r,index) =>  new Item { id = index, KRName = (string)r[0], EnName = (string)r[1] }).ToList();
+            List<Affix> PrefixList = ItemFileUtil.CsvToAffixList("Item/flask_prefix.csv");
+            List<Affix> SurffixList = ItemFileUtil.CsvToAffixList("Item/flask_surffix.csv");
+            return ItemList;
         }
     }
 }

@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants\Currency.cs" />
+    <Compile Include="Constants\FilePath.cs" />
     <Compile Include="Dto\Affix.cs" />
     <Compile Include="Dto\Currency.cs" />
     <Compile Include="Dto\DtoBase.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="Dto\PrefixExtension.cs" />
     <Compile Include="Dto\Price.cs" />
     <Compile Include="Process\ItemCsv.cs" />
+    <Compile Include="Process\ItemFileUtil.cs" />
     <Compile Include="Process\OptionManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
