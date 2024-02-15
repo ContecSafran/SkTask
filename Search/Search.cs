@@ -3,12 +3,14 @@ using SkAffix.Dto;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using SkUtil;
 
 namespace Search
 {
@@ -19,6 +21,7 @@ namespace Search
         {
             string BeforeDayToString(int day)
             {
+                return "any";/*
                 if (day < 1)
                     return "any";
                 else if (day < 3)
@@ -27,7 +30,7 @@ namespace Search
                     return "3days";
                 else if (day < 14)
                     return "1week";
-                return "2weeks";
+                return "2weeks";*/
             }
 
             try
@@ -104,7 +107,7 @@ namespace Search
                 JQ.Stats = new q_Stats[1];
                 JQ.Stats[0] = new q_Stats();
                 JQ.Stats[0].Type = "and";
-                JQ.Stats[0].Filters = new q_Stats_filters[2] { prefix, surffix };
+                JQ.Stats[0].Filters = new q_Stats_filters[2] { prefix,surffix };
 
 
                 //if (!ckSocket.Dispatcher.CheckAccess())
@@ -207,6 +210,7 @@ namespace Search
                                         string account = fetchData.Result[i].Listing.Account.Name;
                                         string currency = fetchData.Result[i].Listing.Price.Currency;
                                         double amount = fetchData.Result[i].Listing.Price.Amount;
+                                        DateTime dt = TimeUtil.GetLapsedTime(indexed);
                                         SkAffix.Constants.Currency selectedCurrency = currency.Equals("divine") ? SkAffix.Constants.Currency.Divine: SkAffix.Constants.Currency.Chaos;
                                         /*
                                         liPrice.Dispatcher.BeginInvoke(DispatcherPriority.Background, (ThreadStart)delegate ()
@@ -231,14 +235,16 @@ namespace Search
                                         });
                                         */
                                         if (entity.Length > 1)
-                                            key = amount < 1 ? Math.Round(1 / amount, 1) + " " + ents1 : Math.Round(amount, 1) + " " + ents0;
+                                            key = amount < 1 ? Math.Round(1 / amount, 1) + " " + ents1 : Math.Round(amount, 1) + " " + ents0 + " " + currency;
                                         else
                                             key = Math.Round(amount - 0.1) + " " + currency;
 
                                         if (currencys.ContainsKey(key))
                                         {
                                             currencys[key]++;
-                                            price.FirstOrDefault(s => s.currency == selectedCurrency).count++;
+                                            SkAffix.Dto.Currency selectedPrice = price.FirstOrDefault(s => s.currency == selectedCurrency);
+                                            selectedPrice.count++;
+                                            //selectedPrice.dt - dt;
                                         }
                                         else
                                         {
@@ -247,6 +253,7 @@ namespace Search
                                             newPrice.currency = selectedCurrency;
                                             newPrice.num = (int)Math.Round(amount - 0.1);
                                             newPrice.count = 1;
+                                            newPrice.dt = dt;
                                             currencys.Add(key, 1);
                                             price.Add(newPrice);
                                         }

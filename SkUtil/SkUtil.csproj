@@ -50,6 +50,7 @@
     <Compile Include="CT_CSV.cs" />
     <Compile Include="EmptyLineBehavior.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TimeUtil.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
