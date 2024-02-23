@@ -40,6 +40,15 @@ namespace SkTask
             this.RLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.rMaxScrollbarText = new System.Windows.Forms.TextBox();
+            this.gMaxScrollbarText = new System.Windows.Forms.TextBox();
+            this.bMaxScrollbarText = new System.Windows.Forms.TextBox();
+            this.rMaxScrollbar = new System.Windows.Forms.HScrollBar();
+            this.gMaxScrollbar = new System.Windows.Forms.HScrollBar();
+            this.bMaxScrollbar = new System.Windows.Forms.HScrollBar();
             ((System.ComponentModel.ISupportInitialize)(this.InputImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OutputImage)).BeginInit();
             this.SuspendLayout();
@@ -62,29 +71,38 @@ namespace SkTask
             // 
             // bScrollbar
             // 
+            this.bScrollbar.LargeChange = 1;
             this.bScrollbar.Location = new System.Drawing.Point(107, 758);
             this.bScrollbar.Maximum = 255;
+            this.bScrollbar.Minimum = 1;
             this.bScrollbar.Name = "bScrollbar";
             this.bScrollbar.Size = new System.Drawing.Size(689, 21);
             this.bScrollbar.TabIndex = 2;
+            this.bScrollbar.Value = 1;
             this.bScrollbar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.bScrollbar_Scroll);
             // 
             // gScrollbar
             // 
+            this.gScrollbar.LargeChange = 1;
             this.gScrollbar.Location = new System.Drawing.Point(107, 732);
             this.gScrollbar.Maximum = 255;
+            this.gScrollbar.Minimum = 1;
             this.gScrollbar.Name = "gScrollbar";
             this.gScrollbar.Size = new System.Drawing.Size(689, 21);
             this.gScrollbar.TabIndex = 3;
+            this.gScrollbar.Value = 1;
             this.gScrollbar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.gScrollbar_Scroll);
             // 
             // rScrollbar
             // 
+            this.rScrollbar.LargeChange = 1;
             this.rScrollbar.Location = new System.Drawing.Point(107, 706);
             this.rScrollbar.Maximum = 255;
+            this.rScrollbar.Minimum = 1;
             this.rScrollbar.Name = "rScrollbar";
             this.rScrollbar.Size = new System.Drawing.Size(689, 21);
             this.rScrollbar.TabIndex = 4;
+            this.rScrollbar.Value = 1;
             this.rScrollbar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.rScrollbar_Scroll);
             // 
             // bScrollbarText
@@ -138,11 +156,107 @@ namespace SkTask
             this.label2.TabIndex = 10;
             this.label2.Text = "G";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(806, 762);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(14, 12);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "G";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(806, 736);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(13, 12);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "B";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(806, 710);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(13, 12);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "R";
+            // 
+            // rMaxScrollbarText
+            // 
+            this.rMaxScrollbarText.Location = new System.Drawing.Point(830, 706);
+            this.rMaxScrollbarText.Name = "rMaxScrollbarText";
+            this.rMaxScrollbarText.ReadOnly = true;
+            this.rMaxScrollbarText.Size = new System.Drawing.Size(65, 21);
+            this.rMaxScrollbarText.TabIndex = 16;
+            // 
+            // gMaxScrollbarText
+            // 
+            this.gMaxScrollbarText.Location = new System.Drawing.Point(830, 732);
+            this.gMaxScrollbarText.Name = "gMaxScrollbarText";
+            this.gMaxScrollbarText.ReadOnly = true;
+            this.gMaxScrollbarText.Size = new System.Drawing.Size(65, 21);
+            this.gMaxScrollbarText.TabIndex = 15;
+            // 
+            // bMaxScrollbarText
+            // 
+            this.bMaxScrollbarText.Location = new System.Drawing.Point(830, 758);
+            this.bMaxScrollbarText.Name = "bMaxScrollbarText";
+            this.bMaxScrollbarText.ReadOnly = true;
+            this.bMaxScrollbarText.Size = new System.Drawing.Size(65, 21);
+            this.bMaxScrollbarText.TabIndex = 14;
+            // 
+            // rMaxScrollbar
+            // 
+            this.rMaxScrollbar.LargeChange = 1;
+            this.rMaxScrollbar.Location = new System.Drawing.Point(900, 706);
+            this.rMaxScrollbar.Maximum = 255;
+            this.rMaxScrollbar.Minimum = 1;
+            this.rMaxScrollbar.Name = "rMaxScrollbar";
+            this.rMaxScrollbar.Size = new System.Drawing.Size(689, 21);
+            this.rMaxScrollbar.TabIndex = 13;
+            this.rMaxScrollbar.Value = 1;
+            this.rMaxScrollbar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.rMaxScrollbar_Scroll);
+            // 
+            // gMaxScrollbar
+            // 
+            this.gMaxScrollbar.LargeChange = 1;
+            this.gMaxScrollbar.Location = new System.Drawing.Point(900, 732);
+            this.gMaxScrollbar.Maximum = 255;
+            this.gMaxScrollbar.Minimum = 1;
+            this.gMaxScrollbar.Name = "gMaxScrollbar";
+            this.gMaxScrollbar.Size = new System.Drawing.Size(689, 21);
+            this.gMaxScrollbar.TabIndex = 12;
+            this.gMaxScrollbar.Value = 1;
+            this.gMaxScrollbar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.gMaxScrollbar_Scroll);
+            // 
+            // bMaxScrollbar
+            // 
+            this.bMaxScrollbar.LargeChange = 1;
+            this.bMaxScrollbar.Location = new System.Drawing.Point(900, 758);
+            this.bMaxScrollbar.Maximum = 255;
+            this.bMaxScrollbar.Minimum = 1;
+            this.bMaxScrollbar.Name = "bMaxScrollbar";
+            this.bMaxScrollbar.Size = new System.Drawing.Size(689, 21);
+            this.bMaxScrollbar.TabIndex = 11;
+            this.bMaxScrollbar.Value = 1;
+            this.bMaxScrollbar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.bMaxScrollbar_Scroll);
+            // 
             // Image
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1815, 788);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.rMaxScrollbarText);
+            this.Controls.Add(this.gMaxScrollbarText);
+            this.Controls.Add(this.bMaxScrollbarText);
+            this.Controls.Add(this.rMaxScrollbar);
+            this.Controls.Add(this.gMaxScrollbar);
+            this.Controls.Add(this.bMaxScrollbar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.RLabel);
@@ -177,5 +291,14 @@ namespace SkTask
         private System.Windows.Forms.Label RLabel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox rMaxScrollbarText;
+        private System.Windows.Forms.TextBox gMaxScrollbarText;
+        private System.Windows.Forms.TextBox bMaxScrollbarText;
+        private System.Windows.Forms.HScrollBar rMaxScrollbar;
+        private System.Windows.Forms.HScrollBar gMaxScrollbar;
+        private System.Windows.Forms.HScrollBar bMaxScrollbar;
     }
 }

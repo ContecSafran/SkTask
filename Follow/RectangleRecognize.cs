@@ -13,7 +13,8 @@ namespace Follow
 {
     public class RectangleRecognize
     {
-        public static Scalar MaskScalar;
+        public static Scalar MaskScalar = new Scalar(0,0,0);
+        public static Scalar MaskMaxScalar = new Scalar(0, 0, 0);
         public static Bitmap Process(Bitmap inputBmp)
         {
             
@@ -58,7 +59,7 @@ namespace Follow
             Cv2.CvtColor(src, src, ColorConversionCodes.HSV2BGR);
 
             //BGR
-            Cv2.InRange(mv[0], RectangleRecognize.MaskScalar, RectangleRecognize.MaskScalar, mask);
+            Cv2.InRange(mv[0], RectangleRecognize.MaskScalar, RectangleRecognize.MaskMaxScalar, mask);
             Cv2.BitwiseAnd(src, mask.CvtColor(ColorConversionCodes.GRAY2BGR), src);
         }
     }
