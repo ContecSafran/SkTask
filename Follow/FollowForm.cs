@@ -100,7 +100,9 @@ namespace Follow
                     {
                         screenCapture.Capture();
                         image.InputImage.Image = (Bitmap)screenCapture.bmp.Clone();
-                        image.OutputImage.Image = FollowImageProcess.Process(screenCapture.bmp);
+                        //RectangleRecognize
+                        image.OutputImage.Image = RectangleRecognize.Process(screenCapture.bmp);
+                        //image.OutputImage.Image = FollowImageProcess.Process(screenCapture.bmp);
                         DrawPosition.ReDraw();
                     }
                 }

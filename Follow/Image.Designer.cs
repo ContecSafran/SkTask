@@ -31,6 +31,7 @@ namespace SkTask
         {
             this.InputImage = new System.Windows.Forms.PictureBox();
             this.OutputImage = new System.Windows.Forms.PictureBox();
+            this.hScrollBar1 = new System.Windows.Forms.HScrollBar();
             ((System.ComponentModel.ISupportInitialize)(this.InputImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OutputImage)).BeginInit();
             this.SuspendLayout();
@@ -51,11 +52,19 @@ namespace SkTask
             this.OutputImage.TabIndex = 1;
             this.OutputImage.TabStop = false;
             // 
+            // hScrollBar1
+            // 
+            this.hScrollBar1.Location = new System.Drawing.Point(42, 692);
+            this.hScrollBar1.Name = "hScrollBar1";
+            this.hScrollBar1.Size = new System.Drawing.Size(80, 17);
+            this.hScrollBar1.TabIndex = 2;
+            // 
             // Image
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1815, 680);
+            this.ClientSize = new System.Drawing.Size(1815, 788);
+            this.Controls.Add(this.hScrollBar1);
             this.Controls.Add(this.OutputImage);
             this.Controls.Add(this.InputImage);
             this.Name = "Image";
@@ -71,5 +80,6 @@ namespace SkTask
 
         public System.Windows.Forms.PictureBox InputImage;
         public System.Windows.Forms.PictureBox OutputImage;
+        private System.Windows.Forms.HScrollBar hScrollBar1;
     }
 }

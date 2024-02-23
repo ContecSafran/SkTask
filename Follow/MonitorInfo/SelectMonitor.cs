@@ -48,7 +48,7 @@ namespace Follow.MonitorInfo
             SelectMonitorButton.DropDownStyle = ComboBoxStyle.DropDownList;
 
 
-            Process[] processes = Process.GetProcessesByName("notepad");
+            Process[] processes = Process.GetProcessesByName("MSPaint");
             Process p = processes[0];
             IntPtr ptr = p.MainWindowHandle;
             Rect ProcessRect = new Rect();
@@ -65,7 +65,7 @@ namespace Follow.MonitorInfo
         public static int GetProcessIndex()
         {
 
-            Process[] processes = Process.GetProcessesByName("notepad");
+            Process[] processes = Process.GetProcessesByName("MSPaint");
             Process p = processes[0];
             IntPtr ptr = p.MainWindowHandle;
             Rect ProcessRect = new Rect();

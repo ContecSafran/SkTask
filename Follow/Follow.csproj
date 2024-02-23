@@ -89,6 +89,7 @@
     <Compile Include="DrawPosition.Designer.cs">
       <DependentUpon>DrawPosition.cs</DependentUpon>
     </Compile>
+    <Compile Include="RectangleRecognize.cs" />
     <Compile Include="FollowImageProcess.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
