@@ -49,36 +49,42 @@ namespace Follow.MonitorInfo
 
 
             Process[] processes = Process.GetProcessesByName("MSPaint");
-            Process p = processes[0];
-            IntPtr ptr = p.MainWindowHandle;
-            Rect ProcessRect = new Rect();
-            GetWindowRect(ptr, ref ProcessRect);
-            System.Drawing.Rectangle rc = new System.Drawing.Rectangle
+            if (processes.Length > 0)
             {
-                X = ProcessRect.Left,
-                Y = ProcessRect.Top,
-                Width = ProcessRect.Right - ProcessRect.Left,
-                Height = ProcessRect.Bottom - ProcessRect.Top
-            };
+                Process p = processes[0];
+                IntPtr ptr = p.MainWindowHandle;
+                Rect ProcessRect = new Rect();
+                GetWindowRect(ptr, ref ProcessRect);
+                System.Drawing.Rectangle rc = new System.Drawing.Rectangle
+                {
+                    X = ProcessRect.Left,
+                    Y = ProcessRect.Top,
+                    Width = ProcessRect.Right - ProcessRect.Left,
+                    Height = ProcessRect.Bottom - ProcessRect.Top
+                };
+            }
             return SelectMonitorButton;
         }
         public static int GetProcessIndex()
         {
 
             Process[] processes = Process.GetProcessesByName("MSPaint");
-            Process p = processes[0];
-            IntPtr ptr = p.MainWindowHandle;
-            Rect ProcessRect = new Rect();
-            GetWindowRect(ptr, ref ProcessRect);
-            System.Drawing.Rectangle rc = new System.Drawing.Rectangle
+            if (processes.Length > 0)
             {
-                X = ProcessRect.Left,
-                Y = ProcessRect.Top,
-                Width = ProcessRect.Right - ProcessRect.Left,
-                Height = ProcessRect.Bottom - ProcessRect.Top
-            };
-            int index = Screen.AllScreens.ToList().FindIndex(x => x.WorkingArea.Contains(rc));
-            return index;
+                Process p = processes[0];
+                IntPtr ptr = p.MainWindowHandle;
+                Rect ProcessRect = new Rect();
+                GetWindowRect(ptr, ref ProcessRect);
+                System.Drawing.Rectangle rc = new System.Drawing.Rectangle
+                {
+                    X = ProcessRect.Left,
+                    Y = ProcessRect.Top,
+                    Width = ProcessRect.Right - ProcessRect.Left,
+                    Height = ProcessRect.Bottom - ProcessRect.Top
+                };
+                return Screen.AllScreens.ToList().FindIndex(x => x.WorkingArea.Contains(rc));
+            }
+            return 0;
         }
     }
 }

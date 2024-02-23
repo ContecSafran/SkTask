@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Follow;
 using OpenCvSharp;
 using OpenCvSharp.Extensions;
 using Tesseract;
@@ -66,6 +67,24 @@ namespace SkTask
                     Y = Screen.AllScreens[SelectedIndex].Bounds.Top
                 };
             }
+        }
+
+        private void bScrollbar_Scroll(object sender, ScrollEventArgs e)
+        {
+            bScrollbarText.Text = bScrollbar.Value.ToString();
+            RectangleRecognize.MaskScalar.Val0 = bScrollbar.Value;
+        }
+
+        private void gScrollbar_Scroll(object sender, ScrollEventArgs e)
+        {
+            gScrollbarText.Text = gScrollbar.Value.ToString();
+            RectangleRecognize.MaskScalar.Val1 = gScrollbar.Value;
+        }
+
+        private void rScrollbar_Scroll(object sender, ScrollEventArgs e)
+        {
+            rScrollbarText.Text = rScrollbar.Value.ToString();
+            RectangleRecognize.MaskScalar.Val2 = rScrollbar.Value;
         }
     }
 }

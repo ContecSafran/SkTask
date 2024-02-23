@@ -96,7 +96,7 @@ namespace Follow
             mv = Cv2.Split(src);
             Cv2.CvtColor(src, src, ColorConversionCodes.HSV2BGR);
 
-            Cv2.InRange(mv[0], new Scalar(60), new Scalar(60), mask);
+            Cv2.InRange(mv[0], RectangleRecognize.MaskScalar, RectangleRecognize.MaskScalar, mask);
             Cv2.BitwiseAnd(src, mask.CvtColor(ColorConversionCodes.GRAY2BGR), src);
         }
     }
