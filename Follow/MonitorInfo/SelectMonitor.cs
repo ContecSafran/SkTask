@@ -44,11 +44,11 @@ namespace Follow.MonitorInfo
             "2222"});*/
             SelectMonitorButton.Name = "SelectMonitorButton";
             SelectMonitorButton.Size = new System.Drawing.Size(121, 25);
-            SelectMonitorButton.SelectedIndex = 0;
+            SelectMonitorButton.SelectedIndex = 1;
             SelectMonitorButton.DropDownStyle = ComboBoxStyle.DropDownList;
 
 
-            Process[] processes = Process.GetProcessesByName("MSPaint");
+            Process[] processes = Process.GetProcessesByName("PathOfExile_KG");
             if (processes.Length > 0)
             {
                 Process p = processes[0];
@@ -68,7 +68,8 @@ namespace Follow.MonitorInfo
         public static int GetProcessIndex()
         {
 
-            Process[] processes = Process.GetProcessesByName("MSPaint");
+            //Process[] processes = Process.GetProcessesByName("MSPaint");
+            Process[] processes = Process.GetProcessesByName("PathOfExile_KG");
             if (processes.Length > 0)
             {
                 Process p = processes[0];

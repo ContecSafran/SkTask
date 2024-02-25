@@ -85,6 +85,7 @@ namespace Follow
             Thread TH = new Thread(FollowThread);
             TH.SetApartmentState(ApartmentState.STA);
             CheckForIllegalCrossThreadCalls = false;
+            SkTask.Dto.Status.MouseClick = true;
             TH.Start();
             DrawPosition.Show();
         }
@@ -94,7 +95,7 @@ namespace Follow
             {
                 try
                 {
-                    Thread.Sleep(40); //minimum CPU usage
+                    Thread.Sleep(200); //minimum CPU usage
 
                     if (FollowForm.Recognize)
                     {

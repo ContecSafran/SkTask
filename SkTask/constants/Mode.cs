@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SkTask.Constants
 {
-    enum Mode
+    public enum Mode
     {
         RUNNING,
         STOP,
