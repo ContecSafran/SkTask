@@ -47,7 +47,7 @@ namespace Follow.MonitorInfo
             SelectMonitorButton.SelectedIndex = 1;
             SelectMonitorButton.DropDownStyle = ComboBoxStyle.DropDownList;
 
-
+            //Process[] processes = Process.GetProcessesByName("MSPaint");
             Process[] processes = Process.GetProcessesByName("PathOfExile_KG");
             if (processes.Length > 0)
             {
@@ -78,12 +78,12 @@ namespace Follow.MonitorInfo
                 GetWindowRect(ptr, ref ProcessRect);
                 System.Drawing.Rectangle rc = new System.Drawing.Rectangle
                 {
-                    X = ProcessRect.Left,
-                    Y = ProcessRect.Top,
-                    Width = ProcessRect.Right - ProcessRect.Left,
-                    Height = ProcessRect.Bottom - ProcessRect.Top
+                    X = ProcessRect.Left + ((ProcessRect.Right - ProcessRect.Left) / 2 - 10),
+                    Y = ProcessRect.Top + ((ProcessRect.Bottom - ProcessRect.Top) / 2 - 10),
+                    Width = 20,
+                    Height = 20
                 };
-                return Screen.AllScreens.ToList().FindIndex(x => x.WorkingArea.Contains(rc));
+                return Screen.AllScreens.ToList().FindIndex(x => x.WorkingArea.IntersectsWith(rc));
             }
             return 0;
         }

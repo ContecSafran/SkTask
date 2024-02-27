@@ -16,7 +16,7 @@ namespace Follow.Action
     {
         public FollowStop()
         {
-            StartKey.Add(Key.LeftAlt);
+            StartKey.Add(Key.LeftCtrl);
             StartKey.Add(Key.D4);
         }
         public override void Process()

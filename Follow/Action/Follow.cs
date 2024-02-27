@@ -17,7 +17,7 @@ namespace Follow.Action
     {
         public Follow()
         {
-            StartKey.Add(Key.LeftAlt);
+            StartKey.Add(Key.LeftCtrl);
             StartKey.Add(Key.D2);
         }
 

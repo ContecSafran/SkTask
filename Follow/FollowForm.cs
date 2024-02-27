@@ -95,16 +95,19 @@ namespace Follow
             {
                 try
                 {
-                    Thread.Sleep(200); //minimum CPU usage
+                    Thread.Sleep(500); //minimum CPU usage
 
                     if (FollowForm.Recognize)
                     {
                         screenCapture.Capture();
+                        /*
                         image.InputImage.Image = (Bitmap)screenCapture.bmp.Clone();
+                        image.OutputImage.Image = (Bitmap)screenCapture.bmp.Clone();*/
                         //RectangleRecognize
-                        image.OutputImage.Image = RectangleRecognize.Process(screenCapture.bmp);
+                        RectangleRecognize.Process((Bitmap)screenCapture.bmp.Clone());
                         //image.OutputImage.Image = FollowImageProcess.Process(screenCapture.bmp);
-                        DrawPosition.ReDraw();
+                        Bitmap bmp = DrawPosition.ReDraw((Bitmap)screenCapture.bmp.Clone());
+                        image.InputImage.Image = bmp;
                     }
                 }
                 catch (Exception e)

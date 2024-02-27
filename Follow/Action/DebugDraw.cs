@@ -17,7 +17,7 @@ namespace Follow.Action
     {
         public DebugDraw()
         {
-            StartKey.Add(Key.LeftAlt);
+            StartKey.Add(Key.LeftCtrl);
             StartKey.Add(Key.D5);
         }
 
