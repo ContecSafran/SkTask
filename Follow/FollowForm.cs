@@ -34,7 +34,7 @@ namespace Follow
             AddToolSctipButton(comboBox);
             this.InitializeComponent();
             screenCapture.Init();
-            image.Show();
+           // image.Show();
         }
 
         private void SelectedIndexChanged_Monitor(object sender, EventArgs e)
@@ -56,6 +56,7 @@ namespace Follow
             // 
             // CommandLog
             // 
+            this.CommandLog.Location = new System.Drawing.Point(0, 73);
             this.CommandLog.Size = new System.Drawing.Size(353, 119);
             // 
             // MainPanel
@@ -63,13 +64,13 @@ namespace Follow
             // 
             // MainPanel.ContentPanel
             // 
-            this.MainPanel.ContentPanel.Size = new System.Drawing.Size(353, 351);
-            this.MainPanel.Size = new System.Drawing.Size(353, 351);
+            this.MainPanel.ContentPanel.Size = new System.Drawing.Size(353, 73);
+            this.MainPanel.Size = new System.Drawing.Size(353, 73);
             // 
             // FollowForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
-            this.ClientSize = new System.Drawing.Size(353, 470);
+            this.ClientSize = new System.Drawing.Size(353, 192);
             this.Name = "FollowForm";
             this.Load += new System.EventHandler(this.FollowForm_Load);
             this.MainPanel.ResumeLayout(false);
@@ -82,12 +83,13 @@ namespace Follow
         {
             this.Location = new Point { X = 0, Y = 0 };
             comboBox.SelectedIndex = Follow.MonitorInfo.SelectMonitor.GetProcessIndex();
+            /*
             Thread TH = new Thread(FollowThread);
             TH.SetApartmentState(ApartmentState.STA);
             CheckForIllegalCrossThreadCalls = false;
             SkTask.Dto.Status.MouseClick = true;
-            TH.Start();
-            DrawPosition.Show();
+            TH.Start();*/
+            //DrawPosition.Show();
         }
         void FollowThread()
         {
@@ -120,10 +122,7 @@ namespace Follow
         protected override void AddAction()
         {
             this.actions = new List<SkTask.Action.Task>(new SkTask.Action.Task[] {
-                new Follow.Action.Recognize(),
-                new Follow.Action.Follow(),
-                new Follow.Action.FollowStop(),
-                new Follow.Action.DebugDraw()
+                new Follow.Action.Click()
             });
         }
     }

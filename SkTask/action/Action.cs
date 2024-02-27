@@ -814,6 +814,24 @@ namespace SkTask.Action
                 Log.WriteLog("MouseSetPosNclick\r\n" + e.Message);
             }
         }
+        static public void Click_NoRandom(int x, int y, InputEvent input)
+        {
+            if (!Status.MouseClick)
+            {
+                Move(x, y);
+                return;
+            }
+            try
+            {
+                SetCursorPos(x, y);
+                // stoppeing_event_.WaitOne(interval_);
+                MouseClick_now(input);
+            }
+            catch (Exception e)
+            {
+                Log.WriteLog("MouseSetPosNclick\r\n" + e.Message);
+            }
+        }
         static public void Sleep()
         {
             Sleep(100);

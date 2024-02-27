@@ -18,6 +18,11 @@ namespace Follow
         public static Scalar MaskScalar = new Scalar(41,1,1);
         public static Scalar MaskMaxScalar = new Scalar(42, 1, 1);
         public static bool check = false;
+
+        public static int corner = 0;//2회씩 2배수로 꺽는다
+        public static int moveOffset = 4;
+        public static int move = 2;
+        public static int direction = 0;
         public static void Process(Bitmap inputBmp)
         {
             check = false;
@@ -52,10 +57,6 @@ namespace Follow
             const int pixelSize = 4; // 32 bits per pixel
 
             BitmapData sourceData = null, targetData = null;
-            int corner = 0;//2회씩 2배수로 꺽는다
-            int moveOffset = 4;
-            int move = 2;
-            int direction = 0;
             DrawPosition.DrawPoint.Clear();
             DrawPosition.targetPoint.X = 0;
             DrawPosition.targetPoint.Y = 0;
@@ -68,75 +69,54 @@ namespace Follow
                 DrawPosition.DrawPoint.Add(currentPt);
                 GraphicsUnit pageUnit = GraphicsUnit.Pixel;
                 RectangleF area = new RectangleF(moveOffset, moveOffset, source.Width- moveOffset, source.Height- moveOffset);//source.GetBounds(ref pageUnit);
+                int correctCount = 0;
+                int correctCheckCount = 0;
                 while (area.Contains(currentPt))
                 {
                     corner++;
+                    bool currentCheck = false;
                     switch(direction)
                     {
                         case 0:
                             for (int offset = 0; offset <= move; offset += 5)
                             {
                                 currentPt.X += moveOffset;
-                                DrawPosition.DrawPoint.Add(currentPt);
-                                if (recognizeColor(sourceData, toReplace, currentPt))
-                                {
-                                    check = true;
-                                    return currentPt;
-                                }
                             }
                             break;
                         case 1:
                             for (int offset = 0; offset <= move; offset += 5)
                             {
                                 currentPt.Y -= moveOffset;
-                                DrawPosition.DrawPoint.Add(currentPt);
-                                if (recognizeColor(sourceData, toReplace, currentPt))
-                                {
-                                    check = true;
-                                    return currentPt;
-                                }
                             }
                             break;
                         case 2:
                             for (int offset = 0; offset <= move; offset += 5)
                             {
                                 currentPt.X -= moveOffset;
-                                DrawPosition.DrawPoint.Add(currentPt);
-                                if (recognizeColor(sourceData, toReplace, currentPt))
-                                {
-                                    check = true;
-                                    return currentPt;
-                                }
                             }
                             break;
                         case 3:
                             for (int offset = 0; offset <= move; offset += 5)
                             {
                                 currentPt.Y += moveOffset;
-                                DrawPosition.DrawPoint.Add(currentPt);
-                                if (recognizeColor(sourceData, toReplace, currentPt))
-                                {
-                                    check = true;
-                                    return currentPt;
-                                }
                             }
                             break;
+                    }
+
+                    DrawPosition.DrawPoint.Add(currentPt);
+                    if(recognizeColor(sourceData, toReplace, currentPt))
+                    {
+                        correctCount++;
                     }
                     if (!area.Contains(currentPt))
                     {
                         break;
-                    }
-                    if (recognizeColor(sourceData, toReplace, currentPt))
-                    {
-                        check = true;
-                        return currentPt;
                     }
                     if (corner == 2)
                     {
                         move += moveOffset;
                         corner = 0;
                     }
-                    DrawPosition.DrawPoint.Add(currentPt);
                     direction++;
                     if(direction == 4)
                     {
