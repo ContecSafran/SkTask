@@ -73,7 +73,7 @@ namespace Follow
                                         }
                                         if (FollowForm.DebugDraw)
                                         {
-                                          //  DrawPosition.DrawPoint.Add(new OpenCvSharp.Point(rect.Left + rect.Width / 2, rect.Top + rect.Height / 2));
+                                            DrawPosition.DrawPoint.Add(new OpenCvSharp.Point(rect.Left + rect.Width / 2, rect.Top + rect.Height / 2));
                                             Cv2.Rectangle(src, rect, Scalar.Red);
                                         }
                                     }
