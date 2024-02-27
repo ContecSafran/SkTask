@@ -22,7 +22,7 @@ namespace Follow.MonitorInfo
         [DllImport("user32.dll")]
         public static extern bool GetWindowRect(IntPtr hwnd, ref Rect rectangle);
 
-        public static int Index = 0;
+        public static int Index = 1;
         public static int OtherIndex = 0;
         public static System.Windows.Forms.ToolStripComboBox GetButton()
         {

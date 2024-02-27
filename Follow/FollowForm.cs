@@ -21,7 +21,7 @@ namespace Follow
         DrawPosition DrawPosition = new DrawPosition();
         ScreenCapture screenCapture = new ScreenCapture();
         System.Windows.Forms.ToolStripComboBox comboBox;
-        public static bool Recognize = false;
+        public static bool Recognize = true;
         public static bool FollowMove = false;
         public static bool FollowClick= false;
         public static bool DebugDraw = false;
@@ -34,7 +34,7 @@ namespace Follow
             AddToolSctipButton(comboBox);
             this.InitializeComponent();
             screenCapture.Init();
-           // image.Show();
+            image.Show();
         }
 
         private void SelectedIndexChanged_Monitor(object sender, EventArgs e)
@@ -83,13 +83,13 @@ namespace Follow
         {
             this.Location = new Point { X = 0, Y = 0 };
             comboBox.SelectedIndex = Follow.MonitorInfo.SelectMonitor.GetProcessIndex();
-            /*
+            
             Thread TH = new Thread(FollowThread);
             TH.SetApartmentState(ApartmentState.STA);
             CheckForIllegalCrossThreadCalls = false;
             SkTask.Dto.Status.MouseClick = true;
-            TH.Start();*/
-            //DrawPosition.Show();
+            TH.Start();
+           // DrawPosition.Show();
         }
         void FollowThread()
         {
@@ -97,16 +97,19 @@ namespace Follow
             {
                 try
                 {
-                    Thread.Sleep(200); //minimum CPU usage
+                    Thread.Sleep(100); //minimum CPU usage
 
                     if (FollowForm.Recognize)
                     {
                         screenCapture.Capture();
-                        image.InputImage.Image = (Bitmap)screenCapture.bmp.Clone();
+                        Bitmap bmp = (Bitmap)screenCapture.bmp.Clone();
+                        RectangleRecognize.Process(bmp);
+                        image.InputImage.Image = bmp;
+                        //image.InputImage.Image = (Bitmap)screenCapture.bmp.Clone();
                         //RectangleRecognize
-                        image.OutputImage.Image = RectangleRecognize.Process(screenCapture.bmp);
+                        //  image.InputImage.Image = RectangleRecognize.Process((Bitmap)screenCapture.bmp.Clone());
                         //image.OutputImage.Image = FollowImageProcess.Process(screenCapture.bmp);
-                        DrawPosition.ReDraw();
+                        // DrawPosition.ReDraw();
                     }
                 }
                 catch (Exception e)
@@ -119,7 +122,7 @@ namespace Follow
         protected override void AddAction()
         {
             this.actions = new List<SkTask.Action.Task>(new SkTask.Action.Task[] {
-                new Follow.Action.Click()
+                new Follow.Action.Recognize()
             });
         }
     }

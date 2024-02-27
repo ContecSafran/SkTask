@@ -32,21 +32,11 @@ namespace Follow
                     }
                 }
             }
-           */ 
-            Mat src = OpenCvSharp.Extensions.BitmapConverter.ToMat(inputBmp);
-            //ImageProcess(src);
-            
-            Mat gray = new Mat();
-            Mat dest = new Mat();
-            Mat binary = new Mat();
-            // Cv2.CvtColor(src, gray, ColorConversionCodes.BGR2GRAY);
-            //Cv2.Threshold(gray, binary, 100, 200, ThresholdTypes.Binary);
-            dest = src;
-            Bitmap bmp = BitmapConverter.ToBitmap(src);
+           */
 
 
             int index = Follow.MonitorInfo.SelectMonitor.Index;
-            using (var img = PixConverter.ToPix((Bitmap)bmp))
+            using (var img = PixConverter.ToPix((Bitmap)inputBmp))
             {
 
                 using (var page = tesseractEngine.Process(img))
@@ -63,30 +53,33 @@ namespace Follow
                                 // do whatever you want with bounding box for the symbol
                                 var curText = iter.GetText(PageIteratorLevel.Word);
                                 OpenCvSharp.Rect rect = new OpenCvSharp.Rect(symbolBounds.X1, symbolBounds.Y1, symbolBounds.Width, symbolBounds.Height);
-                                if (FollowForm.FollowMove)
-                                {
 
-                                    SkTask.Action.Task.Move(
-                                        (Screen.AllScreens[index].Bounds.X + Screen.AllScreens[index].Bounds.Width / 4) + (rect.Left + rect.Width / 2),
-                                        (Screen.AllScreens[index].Bounds.Y + Screen.AllScreens[index].Bounds.Height / 4) + (rect.Top + rect.Height / 2));
+                                SkTask.Action.Task.Move(
+                                    (Screen.AllScreens[index].Bounds.X + Screen.AllScreens[index].Bounds.Width / 4) + (rect.Left + rect.Width / 2),
+                                    (Screen.AllScreens[index].Bounds.Y + Screen.AllScreens[index].Bounds.Height / 4) + (rect.Top + rect.Height / 2));
 
-                                    SkTask.Action.Task.Click(
-                                        (Screen.AllScreens[index].Bounds.X + Screen.AllScreens[index].Bounds.Width / 4) + (rect.Left + rect.Width / 2),
-                                        (Screen.AllScreens[index].Bounds.Y + Screen.AllScreens[index].Bounds.Height / 4) + (rect.Top + rect.Height / 2),
-                                        SkTask.Constants.InputEvent.LEFT);
-                                }
-                               // if (FollowForm.DebugDraw)
+                                System.Threading.Thread.Sleep(50); //minimum CPU usage
+                                SkTask.Action.Task.Move(
+                                    (Screen.AllScreens[index].Bounds.X + Screen.AllScreens[index].Bounds.Width / 4) + (rect.Left + rect.Width / 2),
+                                    (Screen.AllScreens[index].Bounds.Y + Screen.AllScreens[index].Bounds.Height / 4) + (rect.Top + rect.Height / 2));
+
+                                System.Threading.Thread.Sleep(50); //minimum CPU usage
+                                SkTask.Action.Task.Click(
+                                    (Screen.AllScreens[index].Bounds.X + Screen.AllScreens[index].Bounds.Width / 4) + (rect.Left + rect.Width / 2),
+                                    (Screen.AllScreens[index].Bounds.Y + Screen.AllScreens[index].Bounds.Height / 4) + (rect.Top + rect.Height / 2),
+                                    SkTask.Constants.InputEvent.LEFT);
+                                break;
+                                // 
+                                /*if (FollowForm.FollowMove)
                                 {
-                                    DrawPosition.DrawPoint.Add(new OpenCvSharp.Point(rect.Left + rect.Width / 2, rect.Top + rect.Height / 2));
-                                    Cv2.Rectangle(src, rect, Scalar.Red);
-                                }
+                                }*/
 
                             }
                         } while (iter.Next(PageIteratorLevel.Word));
                     }
                 }
             }
-            return (Bitmap)BitmapConverter.ToBitmap(src).Clone();
+            return inputBmp;
         }
         private static void SelectedArea(Mat src, OpenCvSharp.Rect rect)
         {
@@ -122,71 +115,30 @@ namespace Follow
         {
             const int pixelSize = 4; // 32 bits per pixel
 
-            Bitmap target = new Bitmap(
-              source.Width,
-              source.Height,
-              PixelFormat.Format32bppArgb);
 
-            BitmapData sourceData = null, targetData = null;
+            BitmapData sourceData = null;
 
             int direction = 0;
             DrawPosition.DrawPoint.Clear();
-            DrawPosition.targetPoint.X = 0;
-            DrawPosition.targetPoint.Y = 0;
             try
-
-                targetData = target.LockBits(
-                  new Rectangle(0, 0, target.Width, target.Height),
+            {
+                sourceData = source.LockBits(
+                  new Rectangle(0, 0, source.Width, source.Height),
                   ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
 
                 for (int y = 0; y < source.Height; ++y)
                 {
                     byte* sourceRow = (byte*)sourceData.Scan0 + (y * sourceData.Stride);
-                    byte* targetRow = (byte*)targetData.Scan0 + (y * targetData.Stride);
 
                     for (int x = 0; x < source.Width; ++x)
                     {
-                        byte b = sourceRow[x * pixelSize + 0];
-                        byte g = sourceRow[x * pixelSize + 1];
-                        byte r = sourceRow[x * pixelSize + 2];
-                        byte a = sourceRow[x * pixelSize + 3];
-
-                        if (!(toReplace.R == r && toReplace.G == g && toReplace.B == b))
+                        if (!(toReplace.R == sourceRow[x * pixelSize + 2] && toReplace.G == sourceRow[x * pixelSize + 1] && toReplace.B == sourceRow[x * pixelSize + 0]))
                         {
-                            r = replacement.R;
-                            g = replacement.G;
-                            b = replacement.B;
-                        }
 
-                        targetRow[x * pixelSize + 0] = b;
-                        targetRow[x * pixelSize + 1] = g;
-                        targetRow[x * pixelSize + 2] = r;
-                        targetRow[x * pixelSize + 3] = a;
-                                    check = true;
-                                    return currentPt;
-                                }
-                            }
-                            break;
-                    }
-                    if (!area.Contains(currentPt))
-                    {
-                        break;
-                    }
-                    if (recognizeColor(sourceData, toReplace, currentPt))
-                    {
-                        check = true;
-                        return currentPt;
-                    }
-                    if (corner == 2)
-                    {
-                        move += moveOffset;
-                        corner = 0;
-                    }
-                    DrawPosition.DrawPoint.Add(currentPt);
-                    direction++;
-                    if(direction == 4)
-                    {
-                        direction = 0;
+                            sourceRow[x * pixelSize + 0] = 0;
+                            sourceRow[x * pixelSize + 1] = 0;
+                            sourceRow[x * pixelSize + 2] = 0;
+                        }
                     }
                 }
             }
@@ -194,12 +146,9 @@ namespace Follow
             {
                 if (sourceData != null)
                     source.UnlockBits(sourceData);
-
-                if (targetData != null)
-                    target.UnlockBits(targetData);
             }
 
-            return target;
+            return source;
         }
         private static void ImageProcess(Mat src)
         {
