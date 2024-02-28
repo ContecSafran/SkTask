@@ -34,6 +34,7 @@ namespace Follow
             AddToolSctipButton(comboBox);
             this.InitializeComponent();
             screenCapture.Init();
+            RectangleRecognizePixel.init();
             image.Show();
         }
 
