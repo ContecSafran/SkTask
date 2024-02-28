@@ -36,6 +36,7 @@ namespace Follow
         }
         public static Bitmap Process(Bitmap inputBmp)
         {
+            List<System.Drawing.Point> AstarResult = null;
             //충돌 픽셀 그리기
             if (points.Count > 2)
             {
@@ -46,45 +47,62 @@ namespace Follow
                     sourceData = inputBmp.LockBits(
                       new Rectangle(0, 0, inputBmp.Width, inputBmp.Height),
                       ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
-                    using (var graphics = Graphics.FromImage(inputBmp))
+
+                    for (int i = 1; i <= points.Count - 1; i++)
                     {
-                        for (int i = 1; i <= points.Count - 1; i++)
+                        if (recognizeColor(sourceData, Color.FromArgb(165, 248, 13), points[i]))
                         {
-                            graphics.DrawLine(BluePen, points[i - 1], points[i]);
-                            if (recognizeColor(sourceData, Color.FromArgb(165, 248, 13), points[i]))
+                            AstarResult = AStar(sourceData, Color.FromArgb(165, 248, 13), points[i]);
+                            if (AstarResult.Count != 0)
                             {
-                                List<System.Drawing.Point> AstarResult = AStar(sourceData, Color.FromArgb(165, 248, 13), points[i]);
-                                if(AstarResult.Count != 0)
-                                {
-                                    System.Drawing.Rectangle resultArea = SkUtil.Draw.ToRectangle(AstarResult);
-                                    System.Drawing.Point center = System.Drawing.Point.Add(ScreenCapture.CaptureStartPoint,(SkUtil.Draw.ToCenterSize(resultArea)));
-                                    resultArea.Inflate(10, 10);
-
-                                    graphics.DrawRectangle(RedPen, resultArea);
-                                    center.X -= 100;
-                                    center.Y += 100;
-                                    for (int move = 0; move < 10; move++)
-                                    {
-                                        SkTask.Action.Task.Move(center);
-
-                                        center.X += 10;
-                                        center.Y -= 10;
-                                        Thread.Sleep(10);
-                                    }
-
-                                    SkTask.Action.Task.Click(center, SkTask.Constants.InputEvent.LEFT);
-                                    break;
-                                    //Click 동작 해줌
-                                    //종료
-                                }
+                                break;
                             }
                         }
                     }
+                }
+                catch(Exception e)
+                {
+                    int dd = 0;
                 }
                 finally
                 {
                     if (sourceData != null)
                         inputBmp.UnlockBits(sourceData);
+                }
+                if(AstarResult == null)
+                {
+                    return inputBmp;
+                }
+                using (var graphics = Graphics.FromImage(inputBmp))
+                {
+                    for (int i = 1; i <= points.Count - 1; i++)
+                    {
+                        graphics.DrawLine(BluePen, points[i - 1], points[i]);
+                    }
+                    if (AstarResult.Count != 0)
+                    {
+                        System.Drawing.Rectangle resultArea = SkUtil.Draw.ToRectangle(AstarResult);
+                        System.Drawing.Point center = System.Drawing.Point.Add(ScreenCapture.CaptureStartPoint, (SkUtil.Draw.ToCenterSize(resultArea)));
+                        resultArea.Inflate(10, 10);
+
+                        graphics.DrawRectangle(RedPen, resultArea);
+                       /* center.X -= 90;
+                        center.Y += 90;
+                        
+                        for (int move = 0; move < 3; move++)
+                        {
+                            SkTask.Action.Task.Move(center);
+
+                            center.X += 30;
+                            center.Y -= 30;
+                            Thread.Sleep(10);
+                        }
+                       */
+                        SkTask.Action.Task.Click(center, SkTask.Constants.InputEvent.LEFT);
+                        SkTask.Action.Task.Click(center, SkTask.Constants.InputEvent.LEFT);
+                        //Click 동작 해줌
+                        //종료
+                    }
                 }
 
                 return inputBmp;
@@ -119,13 +137,13 @@ namespace Follow
             points.Add(currentPt);
 
             System.Drawing.Point point = currentPt;
-            point = AStarNextPoint(sourceData, toReplace, currentPt);
+            point = AStarNextPoint(sourceData, toReplace, currentPt, points);
             while (!point.IsEmpty)
             {
                 points.Add(point);
                 float distance = SkUtil.MathUtil.DistanceToPoint(currentPt, point);
                 //다음꺼 처리 했는데 거리가 CollisionOffset * 20이면 잘못 처리하고있는거다 나와야 한다.
-                if(distance > CollisionOffset * 20)
+                if(distance > 1000)
                 {
                     points.Clear();
                     return points;
@@ -148,11 +166,11 @@ namespace Follow
                 {
                     break;
                 }
-                point = AStarNextPoint(sourceData, toReplace, currentPt);
+                point = AStarNextPoint(sourceData, toReplace, point, points);
             }
             return points;
         }
-        static System.Drawing.Point AStarNextPoint(BitmapData sourceData, Color toReplace, System.Drawing.Point currentPt)
+        static System.Drawing.Point AStarNextPoint(BitmapData sourceData, Color toReplace, System.Drawing.Point currentPt, List<System.Drawing.Point> points)
         {
             for (int moveOffset = 1; moveOffset < CollisionOffset * 10; moveOffset += CollisionOffset)
             {
@@ -167,13 +185,23 @@ namespace Follow
                 //Astar 알고리즘에 맞는것을 리턴
                 for (int i = 0; i < AStarCount; i++)
                 {
-                    if (i == 0 && (!AStarResult[AStarCount - 1] || !AStarResult[1]) && AStarResult[i])
+                    if (points.Contains(AStarPoints[i]))
                     {
-                        return AStarPoints[i];
+                        continue;
                     }
-                    else if (i == AStarCount - 1 && (!AStarResult[AStarCount - 2] || !AStarResult[0]) && AStarResult[i])
+                    if (i == 0)
                     {
-                        return AStarPoints[i];
+                        if ((!AStarResult[AStarCount - 1] || !AStarResult[1]) && AStarResult[i])
+                        {
+                            return AStarPoints[i];
+                        }
+                    }
+                    else if (i == AStarCount - 1)
+                    {
+                        if ((!AStarResult[AStarCount - 2] || !AStarResult[0]) && AStarResult[i])
+                        {
+                            return AStarPoints[i];
+                        }
                     }
                     else if ((!AStarResult[i - 1] || !AStarResult[i + 1]) && AStarResult[i])
                     {

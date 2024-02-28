@@ -17,8 +17,8 @@ namespace Follow.Action
     {
         public Recognize()
         {
-            StartKey.Add(Key.LeftAlt);
-            StartKey.Add(Key.D1);
+            //StartKey.Add(Key.LeftAlt);
+            StartKey.Add(Key.A);
         }
         public override void Start()
         {

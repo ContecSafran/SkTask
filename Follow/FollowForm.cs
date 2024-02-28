@@ -21,7 +21,7 @@ namespace Follow
         DrawPosition DrawPosition = new DrawPosition();
         ScreenCapture screenCapture = new ScreenCapture();
         System.Windows.Forms.ToolStripComboBox comboBox;
-        public static bool Recognize = true;
+        public static bool Recognize = false;
         public static bool FollowMove = false;
         public static bool FollowClick= false;
         public static bool DebugDraw = false;
@@ -99,7 +99,7 @@ namespace Follow
             {
                 try
                 {
-                    Thread.Sleep(100); //minimum CPU usage
+                    Thread.Sleep(200); //minimum CPU usage
 
                     if (FollowForm.Recognize)
                     {
@@ -111,8 +111,8 @@ namespace Follow
                         image.InputImage.Image = bmp;*/
 
                         screenCapture.Capture();
-                        Bitmap bmp = (Bitmap)screenCapture.bmp.Clone();
-                        image.InputImage.Image = RectangleRecognizePixel.Process(bmp);
+                        //Bitmap bmp = (Bitmap)screenCapture.bmp.Clone();
+                        image.InputImage.Image = RectangleRecognizePixel.Process(screenCapture.bmp);
                     }
                 }
                 catch (Exception e)
@@ -125,7 +125,8 @@ namespace Follow
         protected override void AddAction()
         {
             this.actions = new List<SkTask.Action.Task>(new SkTask.Action.Task[] {
-                new Follow.Action.Recognize()
+                new Follow.Action.Recognize(),
+                new Follow.Action.FollowStop()
             });
         }
     }
