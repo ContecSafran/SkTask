@@ -12,7 +12,7 @@ using Tesseract;
 
 namespace Follow
 {
-    public class RectangleRecognize
+    public class RectangleRecognizeOcr
     {
         public static Scalar MaskScalar = new Scalar(41,1,1);
         public static Scalar MaskMaxScalar = new Scalar(42, 1, 1);
@@ -161,7 +161,7 @@ namespace Follow
             Cv2.CvtColor(src, src, ColorConversionCodes.HSV2BGR);
 
             //BGR
-            Cv2.InRange(mv[0], RectangleRecognize.MaskScalar, RectangleRecognize.MaskMaxScalar, mask);
+            Cv2.InRange(mv[0], RectangleRecognizeOcr.MaskScalar, RectangleRecognizeOcr.MaskMaxScalar, mask);
             Cv2.BitwiseAnd(src, mask.CvtColor(ColorConversionCodes.GRAY2BGR), src);
         }
     }

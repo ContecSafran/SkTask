@@ -89,6 +89,7 @@ namespace Follow
             CheckForIllegalCrossThreadCalls = false;
             SkTask.Dto.Status.MouseClick = true;
             TH.Start();
+            this.Hide();
            // DrawPosition.Show();
         }
         void FollowThread()
@@ -101,15 +102,16 @@ namespace Follow
 
                     if (FollowForm.Recognize)
                     {
+                        //기존 OCR 방법으로 검출 하던 방법
+                        /*
                         screenCapture.Capture();
                         Bitmap bmp = (Bitmap)screenCapture.bmp.Clone();
-                        RectangleRecognize.Process(bmp);
-                        image.InputImage.Image = bmp;
-                        //image.InputImage.Image = (Bitmap)screenCapture.bmp.Clone();
-                        //RectangleRecognize
-                        //  image.InputImage.Image = RectangleRecognize.Process((Bitmap)screenCapture.bmp.Clone());
-                        //image.OutputImage.Image = FollowImageProcess.Process(screenCapture.bmp);
-                        // DrawPosition.ReDraw();
+                        RectangleRecognizeOcr.Process(bmp);
+                        image.InputImage.Image = bmp;*/
+
+                        screenCapture.Capture();
+                        Bitmap bmp = (Bitmap)screenCapture.bmp.Clone();
+                        image.InputImage.Image = RectangleRecognizePixel.Process(bmp);
                     }
                 }
                 catch (Exception e)

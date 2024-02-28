@@ -72,38 +72,38 @@ namespace SkTask
         private void bScrollbar_Scroll(object sender, ScrollEventArgs e)
         {
             bScrollbarText.Text = bScrollbar.Value.ToString();
-            RectangleRecognize.MaskScalar.Val0 = bScrollbar.Value;
+            RectangleRecognizeOcr.MaskScalar.Val0 = bScrollbar.Value;
         }
 
         private void gScrollbar_Scroll(object sender, ScrollEventArgs e)
         {
             gScrollbarText.Text = gScrollbar.Value.ToString();
-            RectangleRecognize.MaskScalar.Val1 = gScrollbar.Value;
+            RectangleRecognizeOcr.MaskScalar.Val1 = gScrollbar.Value;
         }
 
         private void rScrollbar_Scroll(object sender, ScrollEventArgs e)
         {
             rScrollbarText.Text = rScrollbar.Value.ToString();
-            RectangleRecognize.MaskScalar.Val2 = rScrollbar.Value;
+            RectangleRecognizeOcr.MaskScalar.Val2 = rScrollbar.Value;
         }
 
         private void rMaxScrollbar_Scroll(object sender, ScrollEventArgs e)
         {
 
             rMaxScrollbarText.Text = rMaxScrollbar.Value.ToString();
-            RectangleRecognize.MaskMaxScalar.Val2 = rMaxScrollbar.Value;
+            RectangleRecognizeOcr.MaskMaxScalar.Val2 = rMaxScrollbar.Value;
         }
 
         private void gMaxScrollbar_Scroll(object sender, ScrollEventArgs e)
         {
             gMaxScrollbarText.Text = gMaxScrollbar.Value.ToString();
-            RectangleRecognize.MaskMaxScalar.Val1 = gMaxScrollbar.Value;
+            RectangleRecognizeOcr.MaskMaxScalar.Val1 = gMaxScrollbar.Value;
         }
 
         private void bMaxScrollbar_Scroll(object sender, ScrollEventArgs e)
         {
             bMaxScrollbarText.Text = bMaxScrollbar.Value.ToString();
-            RectangleRecognize.MaskMaxScalar.Val0 = bMaxScrollbar.Value;
+            RectangleRecognizeOcr.MaskMaxScalar.Val0 = bMaxScrollbar.Value;
 
         }
     }
