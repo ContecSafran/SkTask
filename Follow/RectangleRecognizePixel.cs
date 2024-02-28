@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tesseract;
@@ -16,6 +17,7 @@ namespace Follow
     {
         static List<System.Drawing.Point> points = new List<System.Drawing.Point>();
         static Pen BluePen = new Pen(Color.Blue, 1);
+        static Pen RedPen = new Pen(Color.Red, 1);
         const int AStarCount = 8;
         static bool[] AStarResult = new bool[AStarCount];
         static System.Drawing.Point[] AStarPoints = new System.Drawing.Point[AStarCount];
@@ -55,7 +57,25 @@ namespace Follow
                                 if(AstarResult.Count != 0)
                                 {
                                     System.Drawing.Rectangle resultArea = SkUtil.Draw.ToRectangle(AstarResult);
-                                    System.Drawing.Point center = SkUtil.Draw.ToCenter(resultArea);
+                                    System.Drawing.Point center = System.Drawing.Point.Add(ScreenCapture.CaptureStartPoint,(SkUtil.Draw.ToCenterSize(resultArea)));
+                                    resultArea.Inflate(10, 10);
+
+                                    graphics.DrawRectangle(RedPen, resultArea);
+                                    center.X -= 100;
+                                    center.Y += 100;
+                                    for (int move = 0; move < 10; move++)
+                                    {
+                                        SkTask.Action.Task.Move(center);
+
+                                        center.X += 10;
+                                        center.Y -= 10;
+                                        Thread.Sleep(10);
+                                    }
+
+                                    SkTask.Action.Task.Click(center, SkTask.Constants.InputEvent.LEFT);
+                                    break;
+                                    //Click 동작 해줌
+                                    //종료
                                 }
                             }
                         }

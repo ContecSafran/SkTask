@@ -12,6 +12,11 @@ namespace SkUtil
         {
             return new System.Drawing.Point(rc.X + (rc.Width / 2), rc.Y + (rc.Height / 2));
         }
+
+        public static System.Drawing.Size ToCenterSize(System.Drawing.Rectangle rc)
+        {
+            return new System.Drawing.Size(rc.X + (rc.Width / 2), rc.Y + (rc.Height / 2));
+        }
         public static System.Drawing.Rectangle ToRectangle(List<System.Drawing.Point> points)
         {
             int minX = points.Min(p => p.X);
