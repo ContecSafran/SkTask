@@ -52,6 +52,7 @@
     <Compile Include="Draw.cs" />
     <Compile Include="EmptyLineBehavior.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MathUtil.cs" />
     <Compile Include="TimeUtil.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
