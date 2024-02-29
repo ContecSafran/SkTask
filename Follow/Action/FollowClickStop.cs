@@ -13,24 +13,31 @@ using SkTask;
 
 namespace Follow.Action
 {
-    class Recognize : SkTask.Action.Task
+    class FollowClickStop : SkTask.Action.Task
     {
-        public Recognize()
+        public FollowClickStop()
         {
-            StartKey.Add(Key.LeftCtrl);
-            StartKey.Add(Key.A);
+            StartKey.Add(Key.D7);
         }
+
+
         public override bool isActive()
         {
-            return FollowForm.Recognize;
+            return !FollowForm.FollowClick;
         }
+
         public override void Start()
         {
-            Log.WriteLog("Recognize 시작");
+            Log.WriteLog("FollowClick 시작");
+        }
+
+        public override void End()
+        {
+            Log.WriteLog("FollowClick 종료");
         }
         public override void Process()
         {
-            FollowForm.Recognize = true;
+            FollowForm.FollowClick = false;
         }
     }
 }

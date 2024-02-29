@@ -15,8 +15,11 @@ namespace Follow
 {
     public class RectangleRecognizePixel
     {
+        //static Color RecognizeColor = Color.FromArgb(165, 248, 13);
+        static Color RecognizeColor = Color.FromArgb(0, 0, 0);
         static List<System.Drawing.Point> points = new List<System.Drawing.Point>();
         static Pen BluePen = new Pen(Color.Blue, 1);
+        static Pen YellowPen = new Pen(Color.Yellow, 2);
         static Pen RedPen = new Pen(Color.Red, 1);
         const int AStarCount = 8;
         static bool[] AStarResult = new bool[AStarCount];
@@ -50,19 +53,15 @@ namespace Follow
 
                     for (int i = 1; i <= points.Count - 1; i++)
                     {
-                        if (recognizeColor(sourceData, Color.FromArgb(165, 248, 13), points[i]))
+                        if (recognizeColor(sourceData, RecognizeColor, points[i]))
                         {
-                            AstarResult = AStar(sourceData, Color.FromArgb(165, 248, 13), points[i]);
-                            if (AstarResult.Count != 0)
+                            AstarResult = AStar(sourceData, RecognizeColor, points[i]);
+                            if (AstarResult.Count > 1)
                             {
                                 break;
                             }
                         }
                     }
-                }
-                catch(Exception e)
-                {
-                    int dd = 0;
                 }
                 finally
                 {
@@ -79,27 +78,26 @@ namespace Follow
                     {
                         graphics.DrawLine(BluePen, points[i - 1], points[i]);
                     }
-                    if (AstarResult.Count != 0)
+                    if (AstarResult.Count > 0)
+                    {
+                        graphics.DrawLine(YellowPen, points[0], AstarResult[0]);
+                        for (int i = 1; i <= AstarResult.Count - 1; i++)
+                        {
+                            graphics.DrawLine(YellowPen, AstarResult[i - 1], AstarResult[i]);
+                        }
+                    }
+                    if (AstarResult.Count > 1)
                     {
                         System.Drawing.Rectangle resultArea = SkUtil.Draw.ToRectangle(AstarResult);
                         System.Drawing.Point center = System.Drawing.Point.Add(ScreenCapture.CaptureStartPoint, (SkUtil.Draw.ToCenterSize(resultArea)));
                         resultArea.Inflate(10, 10);
 
                         graphics.DrawRectangle(RedPen, resultArea);
-                       /* center.X -= 90;
-                        center.Y += 90;
-                        
-                        for (int move = 0; move < 3; move++)
+                        if (FollowForm.FollowClick)
                         {
                             SkTask.Action.Task.Move(center);
-
-                            center.X += 30;
-                            center.Y -= 30;
-                            Thread.Sleep(10);
+                            SkTask.Action.Task.Click(center, SkTask.Constants.InputEvent.LEFT);
                         }
-                       */
-                        SkTask.Action.Task.Click(center, SkTask.Constants.InputEvent.LEFT);
-                        SkTask.Action.Task.Click(center, SkTask.Constants.InputEvent.LEFT);
                         //Click 동작 해줌
                         //종료
                     }
@@ -137,7 +135,8 @@ namespace Follow
             points.Add(currentPt);
 
             System.Drawing.Point point = currentPt;
-            point = AStarNextPoint(sourceData, toReplace, currentPt, points);
+            int direction = -1;
+            point = AStarNextPoint(sourceData, toReplace, currentPt, points, ref direction);
             while (!point.IsEmpty)
             {
                 points.Add(point);
@@ -155,9 +154,9 @@ namespace Follow
                         distanceFlag++;
                     }
                 }
-                if(distanceFlag == 1)
+                else if(distanceFlag == 1)
                 {
-                    if (distance < CollisionOffset)
+                    if (distance < 3)
                     {
                         distanceFlag++;
                     }
@@ -166,11 +165,39 @@ namespace Follow
                 {
                     break;
                 }
-                point = AStarNextPoint(sourceData, toReplace, point, points);
+                point = AStarNextPoint(sourceData, toReplace, point, points, ref direction);
+            }
+            if(points.Count == 1)
+            {
+                int dd = 0;
             }
             return points;
         }
-        static System.Drawing.Point AStarNextPoint(BitmapData sourceData, Color toReplace, System.Drawing.Point currentPt, List<System.Drawing.Point> points)
+        static void AStarNextDirection(List<System.Drawing.Point> points, ref int direction) {
+            direction--;
+            for (int cnt = 0; cnt < AStarCount-1; cnt++)
+            {
+                if (AStarResult[direction] && !AStarPoints.Contains(AStarPoints[direction]))
+                {
+                    return;
+                }
+                if (direction == 0)
+                {
+                    direction = 7;
+                }
+                else
+                {
+                    direction--;
+                }
+            }
+            direction = -1;
+        }
+        static System.Drawing.Point AStarNextPoint(
+            BitmapData sourceData,
+            Color toReplace, 
+            System.Drawing.Point currentPt, 
+            List<System.Drawing.Point> points,
+            ref int direction)
         {
             for (int moveOffset = 1; moveOffset < CollisionOffset * 10; moveOffset += CollisionOffset)
             {
@@ -182,34 +209,65 @@ namespace Follow
                         AStarResult[i] = recognizeColor(sourceData, toReplace, AStarPoints[i]);
                     }
                 }
-                //Astar 알고리즘에 맞는것을 리턴
-                for (int i = 0; i < AStarCount; i++)
+                if (direction != -1)
                 {
-                    if (points.Contains(AStarPoints[i]))
+                    AStarPoints[direction] = GetProcessPoint(direction, sourceData, currentPt, moveOffset);
+                    if (!AStarPoints[direction].IsEmpty)
                     {
-                        continue;
-                    }
-                    if (i == 0)
-                    {
-                        if ((!AStarResult[AStarCount - 1] || !AStarResult[1]) && AStarResult[i])
+                        AStarResult[direction] = recognizeColor(sourceData, toReplace, AStarPoints[direction]);
+                        if (AStarResult[direction] && !points.Contains(AStarPoints[direction]))
                         {
+                            return AStarPoints[direction];
+                        }
+                        else
+                        {
+                            AStarNextDirection(points, ref direction); 
+                            if(direction == -1)
+                            {
+                                continue;
+                            }
+                            return AStarPoints[direction];
+                        }
+                       
+                    }
+                }
+                else
+                {
+                    int das = 0;
+                    //Astar 알고리즘에 맞는것을 리턴
+                    //새로 검색 하는 로직일때
+                    for (int i = 0; i < AStarCount; i++)
+                    {
+                        if (points.Contains(AStarPoints[i]))
+                        {
+                            continue;
+                        }
+                        if (i == 0)
+                        {
+                            if ((!AStarResult[AStarCount - 1] || !AStarResult[1]) && AStarResult[i])
+                            {
+                                direction = i;
+                                return AStarPoints[i];
+                            }
+                        }
+                        else if (i == AStarCount - 1)
+                        {
+                            if ((!AStarResult[AStarCount - 2] || !AStarResult[0]) && AStarResult[i])
+                            {
+                                direction = i;
+                                return AStarPoints[i];
+                            }
+                        }
+                        else if ((!AStarResult[i - 1] || !AStarResult[i + 1]) && AStarResult[i])
+                        {
+                            direction = i;
                             return AStarPoints[i];
                         }
-                    }
-                    else if (i == AStarCount - 1)
-                    {
-                        if ((!AStarResult[AStarCount - 2] || !AStarResult[0]) && AStarResult[i])
-                        {
-                            return AStarPoints[i];
-                        }
-                    }
-                    else if ((!AStarResult[i - 1] || !AStarResult[i + 1]) && AStarResult[i])
-                    {
-                        return AStarPoints[i];
                     }
                 }
                 //중간값으로 처리 했으면 범위 넓혀서 다시 처리
             }
+            direction = -1;
             return System.Drawing.Point.Empty;
         }
         static System.Drawing.Point GetProcessPoint(int index, BitmapData sourceData, System.Drawing.Point currentPt, int moveOffset) 

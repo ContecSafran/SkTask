@@ -57,7 +57,7 @@ namespace Follow
             // 
             // CommandLog
             // 
-            this.CommandLog.Location = new System.Drawing.Point(0, 73);
+            this.CommandLog.Location = new System.Drawing.Point(0, 346);
             this.CommandLog.Size = new System.Drawing.Size(353, 119);
             // 
             // MainPanel
@@ -65,13 +65,13 @@ namespace Follow
             // 
             // MainPanel.ContentPanel
             // 
-            this.MainPanel.ContentPanel.Size = new System.Drawing.Size(353, 73);
-            this.MainPanel.Size = new System.Drawing.Size(353, 73);
+            this.MainPanel.ContentPanel.Size = new System.Drawing.Size(353, 346);
+            this.MainPanel.Size = new System.Drawing.Size(353, 346);
             // 
             // FollowForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
-            this.ClientSize = new System.Drawing.Size(353, 192);
+            this.ClientSize = new System.Drawing.Size(353, 465);
             this.Name = "FollowForm";
             this.Load += new System.EventHandler(this.FollowForm_Load);
             this.MainPanel.ResumeLayout(false);
@@ -127,7 +127,9 @@ namespace Follow
         {
             this.actions = new List<SkTask.Action.Task>(new SkTask.Action.Task[] {
                 new Follow.Action.Recognize(),
-                new Follow.Action.FollowStop()
+                new Follow.Action.RecognizeStop(),
+                new Follow.Action.FollowClick(),
+                new Follow.Action.FollowClickStop()
             });
         }
     }

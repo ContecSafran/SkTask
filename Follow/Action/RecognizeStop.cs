@@ -9,19 +9,28 @@ using System.Threading;
 using SkTask.Constants;
 using System.Windows.Input;
 using System.Windows;
+using SkTask;
 
 namespace Follow.Action
 {
-    class FollowStop : SkTask.Action.Task
+    class RecognizeStop : SkTask.Action.Task
     {
-        public FollowStop()
+        public RecognizeStop()
         {
-            StartKey.Add(Key.D6);
+            StartKey.Add(Key.LeftShift);
+            StartKey.Add(Key.A);
+        }
+        public override bool isActive()
+        {
+            return !FollowForm.Recognize;
+        }
+        public override void Start()
+        {
+            Log.WriteLog("Recognize 종료");
         }
         public override void Process()
         {
             FollowForm.Recognize = false;
-            FollowForm.FollowMove = false;
         }
     }
 }

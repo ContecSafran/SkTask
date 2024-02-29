@@ -81,9 +81,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Action\Click.cs" />
+    <Compile Include="Action\FollowClickStop.cs" />
     <Compile Include="Action\FollowClick.cs" />
     <Compile Include="Action\Follow.cs" />
-    <Compile Include="Action\FollowStop.cs" />
+    <Compile Include="Action\RecognizeStop.cs" />
     <Compile Include="Action\DebugDraw.cs" />
     <Compile Include="Action\Recognize.cs" />
     <Compile Include="DrawPosition.cs">
