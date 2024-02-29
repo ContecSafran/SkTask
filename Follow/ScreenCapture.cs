@@ -43,8 +43,8 @@ namespace Follow
             // 화면 크기만큼의 Bitmap 생성
             bmp = new Bitmap(r, r, pixelFormat);
             CaptureStartPoint = new Point(
-                (Screen.AllScreens[index].Bounds.Width / 2) - r/2,
-                (Screen.AllScreens[index].Bounds.Height / 2) - r/2);
+                Screen.AllScreens[index].Bounds.X + (Screen.AllScreens[index].Bounds.Width / 2) - r/2,
+                Screen.AllScreens[index].Bounds.Y + (Screen.AllScreens[index].Bounds.Height / 2) - r/2);
             CaptureSize = new Size(r,r);
             CaptureBound = new Rectangle(CaptureStartPoint, CaptureSize);
             ProcessRectangle = new Rectangle(new Point(0, 0), CaptureSize);

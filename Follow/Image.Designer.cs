@@ -50,7 +50,6 @@ namespace SkTask
             this.Controls.Add(this.InputImage);
             this.Name = "Image";
             this.Text = "Image";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Image_Load);
             ((System.ComponentModel.ISupportInitialize)(this.InputImage)).EndInit();
             this.ResumeLayout(false);

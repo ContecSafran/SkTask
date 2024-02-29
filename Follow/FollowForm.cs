@@ -43,7 +43,7 @@ namespace Follow
             int SelectedIndex = ((ToolStripComboBox)sender).SelectedIndex;
             Follow.MonitorInfo.SelectMonitor.Index = SelectedIndex;
 
-            Follow.MonitorInfo.SelectMonitor.OtherIndex = SelectedIndex != 0 ? 0 : 1;
+            Follow.MonitorInfo.SelectMonitor.OtherIndex = Follow.MonitorInfo.SelectMonitor.GetOtherIndex();
             this.Location = new Point {
                 X = Screen.AllScreens[SelectedIndex].Bounds.Right - this.ClientSize.Width,
                 Y = Screen.AllScreens[SelectedIndex].Bounds.Height / 2 - this.ClientSize.Height / 2
@@ -91,7 +91,8 @@ namespace Follow
             SkTask.Dto.Status.MouseClick = true;
             TH.Start();
             this.Hide();
-           // DrawPosition.Show();
+            image.init();
+            // DrawPosition.Show();
         }
         void FollowThread()
         {

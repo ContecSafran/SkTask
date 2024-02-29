@@ -54,13 +54,17 @@ namespace SkTask
 
         private void Image_Load(object sender, EventArgs e)
         {
-            if(Screen.AllScreens.Length == 1)
+        }
+        public void init()
+        {
+
+            if (Screen.AllScreens.Length == 1)
             {
                 this.Visible = false;
             }
             else
             {
-                int SelectedIndex = 0;// Follow.MonitorInfo.SelectMonitor.Index;
+                int SelectedIndex = Follow.MonitorInfo.SelectMonitor.OtherIndex;
                 this.Location = new System.Drawing.Point
                 {
                     X = Screen.AllScreens[SelectedIndex].Bounds.Left,
