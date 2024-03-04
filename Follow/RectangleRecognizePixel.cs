@@ -2,6 +2,7 @@
 using OpenCvSharp.Extensions;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
@@ -39,7 +40,8 @@ namespace Follow
         }
         public static Bitmap Process(Bitmap inputBmp)
         {
-            List<System.Drawing.Point> AstarResult = null;
+            //List<System.Drawing.Point> AstarResult = null;
+            Rectangle RecognizeResult = Rectangle.Empty;
             //충돌 픽셀 그리기
             if (points.Count > 2)
             {
@@ -55,11 +57,13 @@ namespace Follow
                     {
                         if (recognizeColor(sourceData, RecognizeColor, points[i]))
                         {
+                            RecognizeResult = GetBoundary(sourceData, RecognizeColor, points[i]);
+                            /*
                             AstarResult = AStar(sourceData, RecognizeColor, points[i]);
                             if (AstarResult.Count > 1)
                             {
                                 break;
-                            }
+                            }*/
                         }
                     }
                 }
@@ -68,16 +72,21 @@ namespace Follow
                     if (sourceData != null)
                         inputBmp.UnlockBits(sourceData);
                 }
-                if(AstarResult == null)
+                if (RecognizeResult.IsEmpty)
                 {
                     return inputBmp;
                 }
+                /*
+                if(AstarResult == null)
+                {
+                    return inputBmp;
+                }*/
                 using (var graphics = Graphics.FromImage(inputBmp))
                 {
                     for (int i = 1; i <= points.Count - 1; i++)
                     {
                         graphics.DrawLine(BluePen, points[i - 1], points[i]);
-                    }
+                    }/*
                     if (AstarResult.Count > 0)
                     {
                         graphics.DrawLine(YellowPen, points[0], AstarResult[0]);
@@ -100,6 +109,17 @@ namespace Follow
                         }
                         //Click 동작 해줌
                         //종료
+                    }
+                    */
+
+                    System.Drawing.Point center = System.Drawing.Point.Add(ScreenCapture.CaptureStartPoint, (SkUtil.Draw.ToCenterSize(RecognizeResult)));
+
+                    RecognizeResult.Inflate(10, 10);
+                    graphics.DrawRectangle(RedPen, RecognizeResult);
+                    if (FollowForm.FollowClick)
+                    {
+                        SkTask.Action.Task.Move(center);
+                        SkTask.Action.Task.Click(center, SkTask.Constants.InputEvent.LEFT);
                     }
                 }
 
@@ -127,6 +147,38 @@ namespace Follow
                toReplace.G == sourceRow[x * pixelSize + 1] &&
                toReplace.B == sourceRow[x * pixelSize + 0]);
             return b;
+        }
+        static  Rectangle GetBoundary(BitmapData sourceData, Color toReplace, System.Drawing.Point currentPt)
+        {
+            Rectangle result = Rectangle.FromLTRB(
+                GetMinMax(sourceData, toReplace, currentPt.X, currentPt.Y,true,true),
+                GetMinMax(sourceData, toReplace, currentPt.X, currentPt.Y, false, true),
+                GetMinMax(sourceData, toReplace, currentPt.X, currentPt.Y, true, false),
+                GetMinMax(sourceData, toReplace, currentPt.X, currentPt.Y, false, false));
+            return result;
+        }
+        static int GetMinMax(BitmapData sourceData, Color toReplace, int CurrentX, int CurrentY, bool CheckXY, bool Min)
+        {
+            int StartX = CurrentX + (CheckXY ? (Min ? -100 : 100) : -100);
+            int EndX = CurrentX + (CheckXY ? 0 : 100);
+            int offsetX = (StartX < EndX) ? +1 : -1;
+            int StartY = CurrentY + (!CheckXY ? (Min ? -100 : 100) : -100);
+            int EndY = CurrentY + (!CheckXY ? 0 : 100);
+            int offsetY = (StartY < EndY) ? +1 : -1;
+            int i;
+            i = +1;
+
+            for (int x = StartX; (StartX < EndX) ? x < EndX : x > EndX; x += offsetX)
+            {
+                for (int y = StartY; (StartY < EndY) ? y < EndY : y > EndY; y += offsetY)
+                {
+                    if(recognizeColor(sourceData, RecognizeColor, x, y))
+                    {
+                        return CheckXY ? x : y;
+                    }
+                }
+            }
+            return (CheckXY ? CurrentX : CurrentY) + (Min ? -1 : 1);
         }
         static List<System.Drawing.Point> AStar(BitmapData sourceData, Color toReplace, System.Drawing.Point currentPt)
         {
