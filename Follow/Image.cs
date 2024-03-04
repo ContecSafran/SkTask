@@ -54,57 +54,23 @@ namespace SkTask
 
         private void Image_Load(object sender, EventArgs e)
         {
-            if(Screen.AllScreens.Length == 1)
+        }
+        public void init()
+        {
+
+            if (Screen.AllScreens.Length == 1)
             {
                 this.Visible = false;
             }
             else
             {
-                int SelectedIndex = Follow.MonitorInfo.SelectMonitor.Index;
+                int SelectedIndex = Follow.MonitorInfo.SelectMonitor.OtherIndex;
                 this.Location = new System.Drawing.Point
                 {
                     X = Screen.AllScreens[SelectedIndex].Bounds.Left,
                     Y = Screen.AllScreens[SelectedIndex].Bounds.Top
                 };
             }
-        }
-
-        private void bScrollbar_Scroll(object sender, ScrollEventArgs e)
-        {
-            bScrollbarText.Text = bScrollbar.Value.ToString();
-            RectangleRecognizeOcr.MaskScalar.Val0 = bScrollbar.Value;
-        }
-
-        private void gScrollbar_Scroll(object sender, ScrollEventArgs e)
-        {
-            gScrollbarText.Text = gScrollbar.Value.ToString();
-            RectangleRecognizeOcr.MaskScalar.Val1 = gScrollbar.Value;
-        }
-
-        private void rScrollbar_Scroll(object sender, ScrollEventArgs e)
-        {
-            rScrollbarText.Text = rScrollbar.Value.ToString();
-            RectangleRecognizeOcr.MaskScalar.Val2 = rScrollbar.Value;
-        }
-
-        private void rMaxScrollbar_Scroll(object sender, ScrollEventArgs e)
-        {
-
-            rMaxScrollbarText.Text = rMaxScrollbar.Value.ToString();
-            RectangleRecognizeOcr.MaskMaxScalar.Val2 = rMaxScrollbar.Value;
-        }
-
-        private void gMaxScrollbar_Scroll(object sender, ScrollEventArgs e)
-        {
-            gMaxScrollbarText.Text = gMaxScrollbar.Value.ToString();
-            RectangleRecognizeOcr.MaskMaxScalar.Val1 = gMaxScrollbar.Value;
-        }
-
-        private void bMaxScrollbar_Scroll(object sender, ScrollEventArgs e)
-        {
-            bMaxScrollbarText.Text = bMaxScrollbar.Value.ToString();
-            RectangleRecognizeOcr.MaskMaxScalar.Val0 = bMaxScrollbar.Value;
-
         }
     }
 }

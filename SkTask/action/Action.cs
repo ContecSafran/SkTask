@@ -907,6 +907,10 @@ namespace SkTask.Action
         public List<System.Windows.Input.Key> StartKey = new List<Key>();
         public List<System.Windows.Input.Key> EndKey = new List<Key>();
         public SkTask.Component.ActionItem actionItem;
+        public virtual bool isActive()
+        {
+            return false;
+        }
         public bool CheckKeyCondition(List<System.Windows.Input.Key> Key)
         {
 
@@ -920,7 +924,7 @@ namespace SkTask.Action
         }
         public bool StartCondition()
         {
-            if (!this.actionItem.isActive())
+            if (!this.actionItem.isActive() || isActive())
             {
                 return false;
             }

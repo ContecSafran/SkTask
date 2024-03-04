@@ -17,10 +17,13 @@ namespace Follow.Action
     {
         public FollowClick()
         {
-            StartKey.Add(Key.LeftAlt);
-            StartKey.Add(Key.D2);
+            StartKey.Add(Key.D6);
         }
 
+        public override bool isActive()
+        {
+            return FollowForm.FollowClick;
+        }
 
         public override void Start()
         {
@@ -33,7 +36,6 @@ namespace Follow.Action
         }
         public override void Process()
         {
-            FollowForm.FollowMove = true;
             FollowForm.FollowClick = true;
         }
     }

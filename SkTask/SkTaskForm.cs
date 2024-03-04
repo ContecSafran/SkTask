@@ -22,7 +22,6 @@ namespace SkTask
 {
     public partial class SkTaskForm : SkTaskFormBase
     {
-        Image image = new Image();
         //알케
         //알터
         //템 버리기

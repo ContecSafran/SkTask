@@ -21,7 +21,7 @@ namespace Follow
         DrawPosition DrawPosition = new DrawPosition();
         ScreenCapture screenCapture = new ScreenCapture();
         System.Windows.Forms.ToolStripComboBox comboBox;
-        public static bool Recognize = true;
+        public static bool Recognize = false;
         public static bool FollowMove = false;
         public static bool FollowClick= false;
         public static bool DebugDraw = false;
@@ -34,6 +34,7 @@ namespace Follow
             AddToolSctipButton(comboBox);
             this.InitializeComponent();
             screenCapture.Init();
+            RectangleRecognizePixel.init();
             image.Show();
         }
 
@@ -42,7 +43,7 @@ namespace Follow
             int SelectedIndex = ((ToolStripComboBox)sender).SelectedIndex;
             Follow.MonitorInfo.SelectMonitor.Index = SelectedIndex;
 
-            Follow.MonitorInfo.SelectMonitor.OtherIndex = SelectedIndex != 0 ? 0 : 1;
+            Follow.MonitorInfo.SelectMonitor.OtherIndex = Follow.MonitorInfo.SelectMonitor.GetOtherIndex();
             this.Location = new Point {
                 X = Screen.AllScreens[SelectedIndex].Bounds.Right - this.ClientSize.Width,
                 Y = Screen.AllScreens[SelectedIndex].Bounds.Height / 2 - this.ClientSize.Height / 2
@@ -56,7 +57,7 @@ namespace Follow
             // 
             // CommandLog
             // 
-            this.CommandLog.Location = new System.Drawing.Point(0, 73);
+            this.CommandLog.Location = new System.Drawing.Point(0, 346);
             this.CommandLog.Size = new System.Drawing.Size(353, 119);
             // 
             // MainPanel
@@ -64,13 +65,13 @@ namespace Follow
             // 
             // MainPanel.ContentPanel
             // 
-            this.MainPanel.ContentPanel.Size = new System.Drawing.Size(353, 73);
-            this.MainPanel.Size = new System.Drawing.Size(353, 73);
+            this.MainPanel.ContentPanel.Size = new System.Drawing.Size(353, 346);
+            this.MainPanel.Size = new System.Drawing.Size(353, 346);
             // 
             // FollowForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
-            this.ClientSize = new System.Drawing.Size(353, 192);
+            this.ClientSize = new System.Drawing.Size(353, 465);
             this.Name = "FollowForm";
             this.Load += new System.EventHandler(this.FollowForm_Load);
             this.MainPanel.ResumeLayout(false);
@@ -90,7 +91,8 @@ namespace Follow
             SkTask.Dto.Status.MouseClick = true;
             TH.Start();
             this.Hide();
-           // DrawPosition.Show();
+            image.init();
+            // DrawPosition.Show();
         }
         void FollowThread()
         {
@@ -98,7 +100,7 @@ namespace Follow
             {
                 try
                 {
-                    Thread.Sleep(100); //minimum CPU usage
+                    Thread.Sleep(200); //minimum CPU usage
 
                     if (FollowForm.Recognize)
                     {
@@ -110,8 +112,8 @@ namespace Follow
                         image.InputImage.Image = bmp;*/
 
                         screenCapture.Capture();
-                        Bitmap bmp = (Bitmap)screenCapture.bmp.Clone();
-                        image.InputImage.Image = RectangleRecognizePixel.Process(bmp);
+                        //Bitmap bmp = (Bitmap)screenCapture.bmp.Clone();
+                        image.InputImage.Image = RectangleRecognizePixel.Process(screenCapture.bmp);
                     }
                 }
                 catch (Exception e)
@@ -124,7 +126,10 @@ namespace Follow
         protected override void AddAction()
         {
             this.actions = new List<SkTask.Action.Task>(new SkTask.Action.Task[] {
-                new Follow.Action.Recognize()
+                new Follow.Action.Recognize(),
+                new Follow.Action.RecognizeStop(),
+                new Follow.Action.FollowClick(),
+                new Follow.Action.FollowClickStop()
             });
         }
     }
