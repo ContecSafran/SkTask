@@ -12,15 +12,22 @@ namespace SkTask
 {
     partial class SkTaskFormBase
     {
+        Thread TaskThread = null;
+        Thread TimerTaskThread = null;
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
 
-            Thread TH = new Thread(MainThread);
-            TH.SetApartmentState(ApartmentState.STA);
+            TaskThread = new Thread(MainThread);
+            TaskThread.SetApartmentState(ApartmentState.STA);
             CheckForIllegalCrossThreadCalls = false;
-            TH.Start();
+            TaskThread.Start();
+
+            TimerTaskThread = new Thread(TimerThread);
+            TimerTaskThread.SetApartmentState(ApartmentState.STA);
+            CheckForIllegalCrossThreadCalls = false;
+            TimerTaskThread.Start();
 
         }
 

@@ -41,7 +41,6 @@ namespace SkTask.Property
 
         private void SettingDlg_FormClosed(object sender, FormClosedEventArgs e)
         {
-            SkTask.Setting.Status.Mode = Constants.Mode.WAITING;
         }
     }
 }

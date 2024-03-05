@@ -22,7 +22,9 @@ namespace SkTask
     public partial class SkTaskFormBase : Form
     {
         protected List<SkTask.Action.Task> actions = new List<SkTask.Action.Task>();
+        protected List<SkTask.Action.TimerTask> timerActions = new List<SkTask.Action.TimerTask>();
         List<SkTask.Component.ActionItem> actionItems;
+
         //알케
         //알터
         //템 버리기
@@ -33,6 +35,7 @@ namespace SkTask
         //각종 필터 자동
         //아이템 거래소 검색
         //트레이 아이콘
+        [Obsolete]
         public SkTaskFormBase()
         {
             InitializeComponent();
@@ -62,10 +65,28 @@ namespace SkTask
             SkTask.Setting.Status.Mode = Constants.Mode.WAITING;
             SkTask.Setting.Status.PropertyChanged += Status_PropertyChanged;
             SkTask.Setting.Status.MouseLog = false;
-            AddAction(new SkTask.Action.TrayIcon(this));
-            AddAction(new SkTask.Action.PopupWindow(this));
+
+            SkTask.Action.TrayIcon tray = new SkTask.Action.TrayIcon(this);
+            tray.ViewModeChanged += Tray_ViewModeChanged;
+            SkTask.Action.PopupWindow popupWindow = new SkTask.Action.PopupWindow(this);
+            popupWindow.ViewModeChanged += Tray_ViewModeChanged;
+            AddAction((SkTask.Action.Task)tray);
+            AddAction((SkTask.Action.Task)popupWindow);
             AddAction();
             InitAction();
+        }
+
+        [Obsolete]
+        private void Tray_ViewModeChanged(object sender, bool isPopup)
+        {
+            if (isPopup)
+            {
+                TimerTaskThread.Suspend();
+            }
+            else
+            {
+                TimerTaskThread.Resume();
+            }
         }
 
         private void Status_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -129,6 +150,32 @@ namespace SkTask
             }
         }
 
+        //Main 창이 띄워지면 중지 한다.
+        //키 입력 인식 Thread와 같이 돌면 Sleep에 영향이 있으므로 별도로 둔다.
+        //대신에 Waiting일때에만 동작하고 
+        //한번에 하나의 동작만 해야한다.
+        void TimerThread()
+        {
+            while (this.isRunning)
+            {
+                Thread.Sleep(40); //minimum CPU usage
+                try
+                {
+                    if (SkTask.Setting.Status.Mode == Constants.Mode.WAITING && timerActions != null)
+                    {
+                        foreach(SkTask.Action.TimerTask task in timerActions)
+                        {
+                            //process에서 동작할거 시간 계산하고 그대로 입력 하면됨
+                            task.Process();
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                }
+            }
+        }
+
         private void FormClose_Click(object sender, EventArgs e)
         {
             if(MessageBox.Show("close?", "close", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -165,7 +212,13 @@ namespace SkTask
             SkTask.Property.SettingDlg setting = new Property.SettingDlg(this.actions);
             setting.Show();
             setting.Location = new Point(this.Location.X + this.Width, this.Location.Y);
+            setting.FormClosed += Setting_FormClosed;
             SkTask.Setting.Status.Mode = Constants.Mode.SETTING;
+        }
+
+        private void Setting_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            SkTask.Setting.Status.Mode = Constants.Mode.WAITING;
         }
     }
 }

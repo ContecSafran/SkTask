@@ -19,6 +19,7 @@ namespace SkTask.Action
         //창이 열려진 상태에서 esc키 누르면 다시 tray icon으로 하고
         //그외에 나머지 수행하고 있는데 esc 누르면 취소가 된다
         SkTaskFormBase MainWindow = null;
+        public event SkTask.EventHandler.FormViewModeChangedEventHandler ViewModeChanged;
         public PopupWindow(SkTaskFormBase mainWindow)
         {
             MainWindow = mainWindow;
@@ -38,6 +39,7 @@ namespace SkTask.Action
                 MainWindow.trayicon.Visible = false;
                 SkTask.Action.TrayIcon.isOpened = true;
                 MainWindow.Location = System.Windows.Forms.Cursor.Position;
+                ViewModeChanged(this, true);
             }
         }
     }
