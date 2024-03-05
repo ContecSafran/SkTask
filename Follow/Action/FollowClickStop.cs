@@ -21,7 +21,7 @@ namespace Follow.Action
         }
 
 
-        public override bool isActive()
+        protected override bool isActive()
         {
             return !FollowForm.FollowClick;
         }

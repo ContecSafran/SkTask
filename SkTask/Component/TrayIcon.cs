@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SkTask.Constants
+namespace SkTask.Component
 {
-    public enum Mode
+    public class TrayIcon
     {
-        RUNNING,
-        STOP,
-        WAITING,
-        SETTING
     }
 }

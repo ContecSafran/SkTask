@@ -7,10 +7,17 @@ using System.Threading.Tasks;
 
 namespace SkTask.Dto
 {
-    public static class Status
+    public class Status
     {
         public static Mode mode = Mode.WAITING;
-        public static bool MouseLog = false;
-        public static bool MouseClick = false;
+        public static bool MouseLog {
+            get;
+            set;
+        }
+        public static bool MouseClick
+        {
+            get;
+            set;
+        }
     }
 }

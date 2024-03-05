@@ -20,7 +20,7 @@ namespace Follow.Action
             StartKey.Add(Key.LeftShift);
             StartKey.Add(Key.A);
         }
-        public override bool isActive()
+        protected override bool isActive()
         {
             return !FollowForm.Recognize;
         }

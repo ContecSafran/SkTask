@@ -20,7 +20,7 @@ namespace Follow.Action
             StartKey.Add(Key.D6);
         }
 
-        public override bool isActive()
+        protected override bool isActive()
         {
             return FollowForm.FollowClick;
         }

@@ -2,7 +2,7 @@
 using SkAffix.Dto;
 using SkAffix.Process;
 using SkTask.Action;
-using SkTask.Data;
+using SkTask.Property;
 using SkTask.Dto;
 using System;
 using System.Collections.Generic;
@@ -72,15 +72,13 @@ namespace SkTask
         }
         protected override void AddAction()
         {
-            this.actions = new List<SkTask.Action.Task>(new SkTask.Action.Task[] {
-                new Inventory(),
-                new Stash(),
-                new BlightMap(),
-                new Trash(),
-                new Alter(),
-                new Augmentation(),
-                new AlchSco()
-            });
+            AddAction(new Inventory());
+            AddAction(new Stash());
+            AddAction(new BlightMap());
+            AddAction(new Trash());
+            AddAction(new Alter());
+            AddAction(new Augmentation());
+            AddAction(new AlchSco());
         }
     }
 }

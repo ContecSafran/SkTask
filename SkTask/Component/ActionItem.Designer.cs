@@ -29,21 +29,10 @@ namespace SkTask.Component
         /// </summary>
         private void InitializeComponent()
         {
-            this.NameCheckBox = new System.Windows.Forms.CheckBox();
             this.StartKey = new System.Windows.Forms.Label();
             this.EndKey = new System.Windows.Forms.Label();
+            this.NameLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // NameCheckBox
-            // 
-            this.NameCheckBox.AutoSize = true;
-            this.NameCheckBox.Location = new System.Drawing.Point(3, 3);
-            this.NameCheckBox.Name = "NameCheckBox";
-            this.NameCheckBox.Size = new System.Drawing.Size(58, 16);
-            this.NameCheckBox.TabIndex = 0;
-            this.NameCheckBox.Text = "Name";
-            this.NameCheckBox.UseVisualStyleBackColor = true;
-            this.NameCheckBox.CheckedChanged += new System.EventHandler(this.NameCheckBox_CheckedChanged);
             // 
             // StartKey
             // 
@@ -64,13 +53,23 @@ namespace SkTask.Component
             this.EndKey.TabIndex = 2;
             this.EndKey.Text = "EndKey";
             // 
+            // NameLabel
+            // 
+            this.NameLabel.AutoSize = true;
+            this.NameLabel.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.NameLabel.Location = new System.Drawing.Point(5, 6);
+            this.NameLabel.Name = "NameLabel";
+            this.NameLabel.Size = new System.Drawing.Size(43, 12);
+            this.NameLabel.TabIndex = 3;
+            this.NameLabel.Text = "Name";
+            // 
             // ActionItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.NameLabel);
             this.Controls.Add(this.EndKey);
             this.Controls.Add(this.StartKey);
-            this.Controls.Add(this.NameCheckBox);
             this.Name = "ActionItem";
             this.Size = new System.Drawing.Size(273, 60);
             this.ResumeLayout(false);
@@ -80,8 +79,8 @@ namespace SkTask.Component
 
         #endregion
 
-        private System.Windows.Forms.CheckBox NameCheckBox;
         private System.Windows.Forms.Label StartKey;
         private System.Windows.Forms.Label EndKey;
+        private System.Windows.Forms.Label NameLabel;
     }
 }

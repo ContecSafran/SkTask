@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SkTask.Data
+namespace SkTask.Property
 {
     public class ActionItemVisible
     {

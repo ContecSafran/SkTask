@@ -1,4 +1,4 @@
-﻿using SkTask.Data;
+﻿using SkTask.Property;
 using SkTask.Dto;
 using System;
 using System.Collections.Generic;
@@ -12,10 +12,6 @@ namespace SkTask
 {
     partial class SkTaskFormBase
     {
-        private void init()
-        {
-            this.PositionList.Visible = this.MouseClickEnableBtn.Checked;
-        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -25,7 +21,6 @@ namespace SkTask
             TH.SetApartmentState(ApartmentState.STA);
             CheckForIllegalCrossThreadCalls = false;
             TH.Start();
-            init();
 
         }
 
@@ -34,27 +29,7 @@ namespace SkTask
             isRunning = false;
         }
 
-        private void MouseLogEnableBtn_Click(object sender, EventArgs e)
-        {
-            MouseLog(!Status.MouseLog);
-        }
-        private void MouseLog(bool enable)
-        {
-            MouseLogEnableBtn.Checked = enable;
-            PositionList.Visible = enable;
-            Status.MouseLog = enable;
-        }
 
-        private void MouseClickEnableBtn_Click(object sender, EventArgs e)
-        {
-            MouseClickEnable(!Status.MouseClick);
-        }
 
-        private void MouseClickEnable(bool enable)
-        {
-            MouseClickEnableBtn.Checked = enable;
-            MouseClickEnableBtn.Text = enable ? "Click Enable" : "Click Disable";
-            Status.MouseClick = enable;
-        }
     }
 }

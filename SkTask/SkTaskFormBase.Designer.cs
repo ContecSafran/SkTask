@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SkTaskForm));
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SkTaskFormBase));
             this.MainPanel = new System.Windows.Forms.ToolStripContainer();
             this.MainToolSctip = new System.Windows.Forms.ToolStrip();
-            this.MouseLogEnableBtn = new System.Windows.Forms.ToolStripButton();
-            this.MouseClickEnableBtn = new System.Windows.Forms.ToolStripButton();
+            this.Setting = new System.Windows.Forms.ToolStripButton();
             this.FormClose = new System.Windows.Forms.ToolStripButton();
+            this.trayicon = new System.Windows.Forms.NotifyIcon(this.components);
             this.CommandLog = new SkTask.Log();
             this.PositionList = new SkTask.Position();
             this.MainPanel.TopToolStripPanel.SuspendLayout();
@@ -62,39 +63,27 @@
             this.MainPanel.TopToolStripPanel.Controls.Add(this.MainToolSctip);
             this.MainPanel.TopToolStripPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPanel_TopToolStripPanel_MouseDown);
             // 
-            // toolStrip1
+            // MainToolSctip
             // 
             this.MainToolSctip.Dock = System.Windows.Forms.DockStyle.None;
             this.MainToolSctip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.MainToolSctip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MouseLogEnableBtn,
-            this.MouseClickEnableBtn,
+            this.Setting,
             this.FormClose});
             this.MainToolSctip.Location = new System.Drawing.Point(3, 0);
-            this.MainToolSctip.Name = "toolStrip1";
-            this.MainToolSctip.Size = new System.Drawing.Size(122, 25);
+            this.MainToolSctip.Name = "MainToolSctip";
+            this.MainToolSctip.Size = new System.Drawing.Size(49, 25);
             this.MainToolSctip.TabIndex = 0;
             // 
-            // MouseLogEnableBtn
+            // Setting
             // 
-            this.MouseLogEnableBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.MouseLogEnableBtn.Image = ((System.Drawing.Image)(resources.GetObject("MouseLogEnableBtn.Image")));
-            this.MouseLogEnableBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MouseLogEnableBtn.Name = "MouseLogEnableBtn";
-            this.MouseLogEnableBtn.Size = new System.Drawing.Size(71, 22);
-            this.MouseLogEnableBtn.Text = "Mouse Log";
-            this.MouseLogEnableBtn.Click += new System.EventHandler(this.MouseLogEnableBtn_Click);
-            // 
-            // MouseClickEnableBtn
-            // 
-            this.MouseClickEnableBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.MouseClickEnableBtn.Image = ((System.Drawing.Image)(resources.GetObject("MouseClickEnableBtn.Image")));
-            this.MouseClickEnableBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MouseClickEnableBtn.Name = "MouseClickEnableBtn";
-            this.MouseClickEnableBtn.Size = new System.Drawing.Size(76, 22);
-            this.MouseClickEnableBtn.Text = "Click Enable";
-            this.MouseClickEnableBtn.ToolTipText = "Click Enable";
-            this.MouseClickEnableBtn.Click += new System.EventHandler(this.MouseClickEnableBtn_Click);
+            this.Setting.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.Setting.Image = ((System.Drawing.Image)(resources.GetObject("Setting.Image")));
+            this.Setting.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Setting.Name = "Setting";
+            this.Setting.Size = new System.Drawing.Size(23, 22);
+            this.Setting.Text = "toolStripButton1";
+            this.Setting.Click += new System.EventHandler(this.Setting_Click);
             // 
             // FormClose
             // 
@@ -105,6 +94,11 @@
             this.FormClose.Size = new System.Drawing.Size(23, 22);
             this.FormClose.Text = "X";
             this.FormClose.Click += new System.EventHandler(this.FormClose_Click);
+            // 
+            // trayicon
+            // 
+            this.trayicon.Text = "SkTask";
+            this.trayicon.Visible = true;
             // 
             // CommandLog
             // 
@@ -122,7 +116,7 @@
             this.PositionList.Size = new System.Drawing.Size(99, 470);
             this.PositionList.TabIndex = 0;
             // 
-            // SkTaskForm
+            // SkTaskFormBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -133,7 +127,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "SkTaskForm";
+            this.Name = "SkTaskFormBase";
             this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "SK";
@@ -156,9 +150,9 @@
         public Log CommandLog;
         public System.Windows.Forms.ToolStripContainer MainPanel;
         public System.Windows.Forms.ToolStrip MainToolSctip;
-        public System.Windows.Forms.ToolStripButton MouseClickEnableBtn;
-        public System.Windows.Forms.ToolStripButton MouseLogEnableBtn;
         private System.Windows.Forms.ToolStripButton FormClose;
+        public System.Windows.Forms.NotifyIcon trayicon;
+        private System.Windows.Forms.ToolStripButton Setting;
     }
 }
 

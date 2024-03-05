@@ -1,7 +1,7 @@
 ﻿using SkAffix.Dto;
 using SkAffix.Process;
 using SkTask.Action;
-using SkTask.Data;
+using SkTask.Property;
 using SkTask.Dto;
 using System;
 using System.Collections.Generic;
@@ -21,7 +21,7 @@ namespace SkTask
 {
     public partial class SkTaskFormBase : Form
     {
-        protected List<SkTask.Action.Task> actions;
+        protected List<SkTask.Action.Task> actions = new List<SkTask.Action.Task>();
         List<SkTask.Component.ActionItem> actionItems;
         //알케
         //알터
@@ -32,6 +32,7 @@ namespace SkTask
         //필터
         //각종 필터 자동
         //아이템 거래소 검색
+        //트레이 아이콘
         public SkTaskFormBase()
         {
             InitializeComponent();
@@ -58,9 +59,23 @@ namespace SkTask
                 this.MainPanel.ContentPanel.Controls.Add(this.actionItems[i]);
             }
             */
+            SkTask.Setting.Status.Mode = Constants.Mode.WAITING;
+            SkTask.Setting.Status.PropertyChanged += Status_PropertyChanged;
+            SkTask.Setting.Status.MouseLog = false;
+            AddAction(new SkTask.Action.TrayIcon(this));
+            AddAction(new SkTask.Action.PopupWindow(this));
             AddAction();
             InitAction();
         }
+
+        private void Status_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (this.PositionList.Visible != SkTask.Setting.Status.MouseLog)
+            {
+                this.PositionList.Visible = SkTask.Setting.Status.MouseLog;
+            }
+        }
+
         protected virtual void AddAction()
         {
 
@@ -93,24 +108,33 @@ namespace SkTask
             {
 
                 Thread.Sleep(40); //minimum CPU usage
-                if(Status.mode == Constants.Mode.WAITING && actions != null)
+                try
                 {
-                    var select = from action in actions
-                                 where action.StartCondition() == true
-                                 select action;
-                    if(select.Count() > 0)
+                    if (SkTask.Setting.Status.Mode == Constants.Mode.WAITING && actions != null)
                     {
-                        SkTask.Action.Task t = select.First();
-                        Status.mode = Constants.Mode.RUNNING;
-                        t.task();
+                        var select = from action in actions
+                                     where action.StartCondition() == true
+                                     select action;
+                        if (select.Count() > 0)
+                        {
+                            SkTask.Action.Task t = select.First();
+                            SkTask.Setting.Status.Mode = Constants.Mode.RUNNING;
+                            t.task();
+                        }
                     }
+                }
+                catch (Exception e) 
+                { 
                 }
             }
         }
 
         private void FormClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if(MessageBox.Show("close?", "close", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
 
         public const int WM_NCLBUTTONDOWN = 0xA1;
@@ -129,6 +153,19 @@ namespace SkTask
                 ReleaseCapture();
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
+        }
+
+        protected void AddAction(SkTask.Action.Task task)
+        {
+            this.actions.Add(task);
+        }
+
+        private void Setting_Click(object sender, EventArgs e)
+        {
+            SkTask.Property.SettingDlg setting = new Property.SettingDlg(this.actions);
+            setting.Show();
+            setting.Location = new Point(this.Location.X + this.Width, this.Location.Y);
+            SkTask.Setting.Status.Mode = Constants.Mode.SETTING;
         }
     }
 }

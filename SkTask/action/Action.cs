@@ -15,6 +15,7 @@ namespace SkTask.Action
 {
     public class Task
     {
+        #region MouseEvent
         static private int interval_;
         static private readonly ManualResetEvent stoppeing_event_ = new ManualResetEvent(false); //System.Threading;
 
@@ -24,8 +25,122 @@ namespace SkTask.Action
         [DllImport("user32")]
         public static extern int SetCursorPos(int x, int y);
 
+        static public void Move(System.Drawing.Point CurrentPosition)
+        {
+            Move(CurrentPosition.X, CurrentPosition.Y);
+        }
 
+        static public void Move(int x, int y)
+        {
+            Random rand = new Random();
+            SetCursorPos(x + rand.Next(1, 5), y + rand.Next(1, 5));
+            stoppeing_event_.WaitOne(interval_);
+        }
+        static public void Click(System.Drawing.Point CurrentPosition, InputEvent input)
+        {
+            Click(CurrentPosition.X, CurrentPosition.Y, input);
+        }
 
+        static public void Click(int x, int y, InputEvent input)
+        {
+            if (!SkTask.Setting.Status.MouseClick)
+            {
+                Move(x, y);
+                return;
+            }
+            try
+            {
+
+                Random rand = new Random();
+                SetCursorPos(x + rand.Next(1, 5), y + rand.Next(1, 5));
+                // stoppeing_event_.WaitOne(interval_);
+                MouseClick_now(input);
+            }
+            catch (Exception e)
+            {
+                Log.WriteLog("MouseSetPosNclick\r\n" + e.Message);
+            }
+        }
+        static public void Click_NoRandom(int x, int y, InputEvent input)
+        {
+            if (!SkTask.Setting.Status.MouseClick)
+            {
+                Move(x, y);
+                return;
+            }
+            try
+            {
+                SetCursorPos(x, y);
+                // stoppeing_event_.WaitOne(interval_);
+                MouseClick_now(input);
+            }
+            catch (Exception e)
+            {
+                Log.WriteLog("MouseSetPosNclick\r\n" + e.Message);
+            }
+        }
+        static public void MouseDown(InputEvent input)
+        {
+            try
+            {
+                if (input == InputEvent.LEFT)
+                {
+                    mouse_event((int)Event.MouseEV_LeftDown, 0, 0, 0, 0);
+                }
+                else if (input == InputEvent.RIGHT)
+                {
+                    mouse_event((int)Event.MouseEV_RightDown, 0, 0, 0, 0);
+                }
+                stoppeing_event_.WaitOne(10);
+            }
+            catch (Exception e)
+            {
+                Log.WriteLog("MouseClick_now\r\n" + e.Message);
+            }
+        }
+
+        static public void MouseUp(InputEvent input)
+        {
+            try
+            {
+                if (input == InputEvent.LEFT)
+                {
+                    mouse_event((int)Event.MouseEV_LeftUp, 0, 0, 0, 0);
+                }
+                else if (input == InputEvent.RIGHT)
+                {
+                    mouse_event((int)Event.MouseEV_RightUp, 0, 0, 0, 0);
+                }
+                stoppeing_event_.WaitOne(10);
+            }
+            catch (Exception e)
+            {
+                Log.WriteLog("MouseClick_now\r\n" + e.Message);
+            }
+        }
+        static public void MouseClick_now(InputEvent input)
+        {
+            try
+            {
+                if (input == InputEvent.LEFT)
+                {
+                    mouse_event((int)Event.MouseEV_LeftDown, 0, 0, 0, 0);
+                    mouse_event((int)Event.MouseEV_LeftUp, 0, 0, 0, 0);
+                }
+                else if (input == InputEvent.RIGHT)
+                {
+                    mouse_event((int)Event.MouseEV_RightDown, 0, 0, 0, 0);
+                    mouse_event((int)Event.MouseEV_RightUp, 0, 0, 0, 0);
+                }
+                stoppeing_event_.WaitOne(10);
+            }
+            catch (Exception e)
+            {
+                Log.WriteLog("MouseClick_now\r\n" + e.Message);
+            }
+        }
+        #endregion
+        #region KeyboardEvent
         // Sending Keystrokes to Other Apps with Windows API and C# 
         // ; https://dzone.com/articles/sending-keys-other-apps
 
@@ -78,88 +193,91 @@ namespace SkTask.Action
             public MOUSEKEYBDHARDWAREINPUT Data;
         }
 
-            [DllImport("user32.dll", SetLastError = true)]
-            private static extern uint SendInput(uint numberOfInputs, INPUT[] inputs, int sizeOfInputStructure);
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern uint SendInput(uint numberOfInputs, INPUT[] inputs, int sizeOfInputStructure);
 
-            public static void SendKeyPress(KeyCode keyCode)
+        public static void SendKeyPress(KeyCode keyCode)
+        {
+            INPUT input = new INPUT
             {
-                INPUT input = new INPUT
-                {
-                    Type = 1
-                };
-                input.Data.Keyboard = new KEYBDINPUT()
-                {
-                    Vk = (ushort)keyCode,
-                    Scan = 0,
-                    Flags = 0,
-                    Time = 0,
-                    ExtraInfo = IntPtr.Zero,
-                };
-
-                INPUT input2 = new INPUT
-                {
-                    Type = 1
-                };
-                input2.Data.Keyboard = new KEYBDINPUT()
-                {
-                    Vk = (ushort)keyCode,
-                    Scan = 0,
-                    Flags = 2,
-                    Time = 0,
-                    ExtraInfo = IntPtr.Zero
-                };
-                INPUT[] inputs = new INPUT[] { input, input2 };
-                if (SendInput(2, inputs, Marshal.SizeOf(typeof(INPUT))) == 0)
-                    throw new Exception();
-            }
-
-
-            /// <summary>
-            /// Send a key down and hold it down until sendkeyup method is called
-            /// </summary>
-            /// <param name="keyCode"></param>
-            public static void SendKeyDown(KeyCode keyCode)
+                Type = 1
+            };
+            input.Data.Keyboard = new KEYBDINPUT()
             {
-                INPUT input = new INPUT
-                {
-                    Type = 1
-                };
-                input.Data.Keyboard = new KEYBDINPUT();
-                input.Data.Keyboard.Vk = (ushort)keyCode;
-                input.Data.Keyboard.Scan = 0;
-                input.Data.Keyboard.Flags = 0;
-                input.Data.Keyboard.Time = 0;
-                input.Data.Keyboard.ExtraInfo = IntPtr.Zero;
-                INPUT[] inputs = new INPUT[] { input };
-                if (SendInput(1, inputs, Marshal.SizeOf(typeof(INPUT))) == 0)
-                {
-                    throw new Exception();
-                }
-            }
+                Vk = (ushort)keyCode,
+                Scan = 0,
+                Flags = 0,
+                Time = 0,
+                ExtraInfo = IntPtr.Zero,
+            };
 
-            /// <summary>
-            /// Release a key that is being hold down
-            /// </summary>
-            /// <param name="keyCode"></param>
-            public static void SendKeyUp(KeyCode keyCode)
+            INPUT input2 = new INPUT
             {
-                INPUT input = new INPUT
-                {
-                    Type = 1
-                };
-                input.Data.Keyboard = new KEYBDINPUT();
-                input.Data.Keyboard.Vk = (ushort)keyCode;
-                input.Data.Keyboard.Scan = 0;
-                input.Data.Keyboard.Flags = 2;
-                input.Data.Keyboard.Time = 0;
-                input.Data.Keyboard.ExtraInfo = IntPtr.Zero;
-                INPUT[] inputs = new INPUT[] { input };
-                if (SendInput(1, inputs, Marshal.SizeOf(typeof(INPUT))) == 0)
-                    throw new Exception();
+                Type = 1
+            };
+            input2.Data.Keyboard = new KEYBDINPUT()
+            {
+                Vk = (ushort)keyCode,
+                Scan = 0,
+                Flags = 2,
+                Time = 0,
+                ExtraInfo = IntPtr.Zero
+            };
+            INPUT[] inputs = new INPUT[] { input, input2 };
+            if (SendInput(2, inputs, Marshal.SizeOf(typeof(INPUT))) == 0)
+                throw new Exception();
+        }
 
+
+        /// <summary>
+        /// Send a key down and hold it down until sendkeyup method is called
+        /// </summary>
+        /// <param name="keyCode"></param>
+        public static void SendKeyDown(KeyCode keyCode)
+        {
+            INPUT input = new INPUT
+            {
+                Type = 1
+            };
+            input.Data.Keyboard = new KEYBDINPUT();
+            input.Data.Keyboard.Vk = (ushort)keyCode;
+            input.Data.Keyboard.Scan = 0;
+            input.Data.Keyboard.Flags = 0;
+            input.Data.Keyboard.Time = 0;
+            input.Data.Keyboard.ExtraInfo = IntPtr.Zero;
+            INPUT[] inputs = new INPUT[] { input };
+            if (SendInput(1, inputs, Marshal.SizeOf(typeof(INPUT))) == 0)
+            {
+                throw new Exception();
             }
+        }
 
-            public enum KeyCode : ushort
+        /// <summary>
+        /// Release a key that is being hold down
+        /// </summary>
+        /// <param name="keyCode"></param>
+        public static void SendKeyUp(KeyCode keyCode)
+        {
+            INPUT input = new INPUT
+            {
+                Type = 1
+            };
+            input.Data.Keyboard = new KEYBDINPUT();
+            input.Data.Keyboard.Vk = (ushort)keyCode;
+            input.Data.Keyboard.Scan = 0;
+            input.Data.Keyboard.Flags = 2;
+            input.Data.Keyboard.Time = 0;
+            input.Data.Keyboard.ExtraInfo = IntPtr.Zero;
+            INPUT[] inputs = new INPUT[] { input };
+            if (SendInput(1, inputs, Marshal.SizeOf(typeof(INPUT))) == 0)
+                throw new Exception();
+
+        }
+
+        #endregion
+        #region KeyCode
+
+        public enum KeyCode : ushort
             {
                 #region Media
 
@@ -777,61 +895,22 @@ namespace SkTask.Action
                 UP = 0x26,
 
             }
-        
-        static public void Move(System.Drawing.Point CurrentPosition)
-        {
-            Move(CurrentPosition.X, CurrentPosition.Y);
-        }
+        #endregion
 
-        static public void Move(int x, int y)
+        #region Property
+        private bool Active = true;
+        public bool TaskActive
         {
-            Random rand = new Random();
-            SetCursorPos(x + rand.Next(1, 5), y + rand.Next(1, 5));
-            stoppeing_event_.WaitOne(interval_);
+            get {
+                return Active && isActive();
+            }
+            set
+            {
+                Active = value;
+            }
         }
-        static public void Click(System.Drawing.Point CurrentPosition, InputEvent input)
-        {
-            Click(CurrentPosition.X, CurrentPosition.Y, input);
-        }
+        #endregion
 
-        static public void Click(int x, int y, InputEvent input)
-        {
-            if(!Status.MouseClick)
-            {
-                Move(x, y);
-                return;
-            }
-            try
-            {
-
-                Random rand = new Random();
-                SetCursorPos(x + rand.Next(1, 5), y + rand.Next(1, 5));
-               // stoppeing_event_.WaitOne(interval_);
-                MouseClick_now(input);
-            }
-            catch (Exception e)
-            {
-                Log.WriteLog("MouseSetPosNclick\r\n" + e.Message);
-            }
-        }
-        static public void Click_NoRandom(int x, int y, InputEvent input)
-        {
-            if (!Status.MouseClick)
-            {
-                Move(x, y);
-                return;
-            }
-            try
-            {
-                SetCursorPos(x, y);
-                // stoppeing_event_.WaitOne(interval_);
-                MouseClick_now(input);
-            }
-            catch (Exception e)
-            {
-                Log.WriteLog("MouseSetPosNclick\r\n" + e.Message);
-            }
-        }
         static public void Sleep()
         {
             Sleep(100);
@@ -843,73 +922,13 @@ namespace SkTask.Action
             Thread.Sleep(rand.Next(value - margin, value + margin));
         }
 
-        static public void MouseDown(InputEvent input)
-        {
-            try
-            {
-                if (input == InputEvent.LEFT)
-                {
-                    mouse_event((int)Event.MouseEV_LeftDown, 0, 0, 0, 0);
-                }
-                else if (input == InputEvent.RIGHT)
-                {
-                    mouse_event((int)Event.MouseEV_RightDown, 0, 0, 0, 0);
-                }
-                stoppeing_event_.WaitOne(10);
-            }
-            catch (Exception e)
-            {
-                Log.WriteLog("MouseClick_now\r\n" + e.Message);
-            }
-        }
-
-        static public void MouseUp(InputEvent input)
-        {
-            try
-            {
-                if (input == InputEvent.LEFT)
-                {
-                    mouse_event((int)Event.MouseEV_LeftUp, 0, 0, 0, 0);
-                }
-                else if (input == InputEvent.RIGHT)
-                {
-                    mouse_event((int)Event.MouseEV_RightUp, 0, 0, 0, 0);
-                }
-                stoppeing_event_.WaitOne(10);
-            }
-            catch (Exception e)
-            {
-                Log.WriteLog("MouseClick_now\r\n" + e.Message);
-            }
-        }
-        static public void MouseClick_now(InputEvent input)
-        {
-            try
-            {
-                if (input == InputEvent.LEFT)
-                {
-                    mouse_event((int)Event.MouseEV_LeftDown, 0, 0, 0, 0);
-                    mouse_event((int)Event.MouseEV_LeftUp, 0, 0, 0, 0);
-                }
-                else if (input == InputEvent.RIGHT)
-                {
-                    mouse_event((int)Event.MouseEV_RightDown, 0, 0, 0, 0);
-                    mouse_event((int)Event.MouseEV_RightUp, 0, 0, 0, 0);
-                }
-                stoppeing_event_.WaitOne(10);
-            }
-            catch (Exception e)
-            {
-                Log.WriteLog("MouseClick_now\r\n" + e.Message);
-            }
-        }
 
         public List<System.Windows.Input.Key> StartKey = new List<Key>();
         public List<System.Windows.Input.Key> EndKey = new List<Key>();
         public SkTask.Component.ActionItem actionItem;
-        public virtual bool isActive()
+        protected virtual bool isActive()
         {
-            return false;
+            return true;
         }
         public bool CheckKeyCondition(List<System.Windows.Input.Key> Key)
         {
@@ -924,7 +943,7 @@ namespace SkTask.Action
         }
         public bool StartCondition()
         {
-            if (!this.actionItem.isActive() || isActive())
+            if (!isActive())
             {
                 return false;
             }
@@ -933,7 +952,7 @@ namespace SkTask.Action
 
         public bool EndCondition()
         {
-            if ((Keyboard.GetKeyStates(System.Windows.Input.Key.Escape) & KeyStates.Down) > 0)
+            if (!SkTask.Action.TrayIcon.isOpened && (Keyboard.GetKeyStates(System.Windows.Input.Key.Escape) & KeyStates.Down) > 0)
             {
                 return true;
             }
@@ -943,7 +962,7 @@ namespace SkTask.Action
         public void task()
         {
             Start();
-            while (Status.mode == Constants.Mode.RUNNING)
+            while (SkTask.Setting.Status.Mode== Constants.Mode.RUNNING)
             {
                 Process();
                 if (EndKey.Count == 0)
@@ -956,7 +975,7 @@ namespace SkTask.Action
                 }
             }
             End();
-            Status.mode = Constants.Mode.WAITING;
+            SkTask.Setting.Status.Mode = Constants.Mode.WAITING;
         }
         public virtual void Start()
         {
@@ -972,7 +991,7 @@ namespace SkTask.Action
         }
         public void ForcedStop()
         {
-            Status.mode = Constants.Mode.WAITING;
+            SkTask.Setting.Status.Mode = Constants.Mode.WAITING;
         }
         public System.Drawing.Point toPoint(System.Drawing.PointF input)
         {

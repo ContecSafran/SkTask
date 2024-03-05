@@ -72,7 +72,7 @@ namespace Follow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.ClientSize = new System.Drawing.Size(353, 465);
-            this.Name = "FollowForm";
+            this.Name = "SkClient";
             this.Load += new System.EventHandler(this.FollowForm_Load);
             this.MainPanel.ResumeLayout(false);
             this.MainPanel.PerformLayout();
@@ -125,12 +125,10 @@ namespace Follow
 
         protected override void AddAction()
         {
-            this.actions = new List<SkTask.Action.Task>(new SkTask.Action.Task[] {
-                new Follow.Action.Recognize(),
-                new Follow.Action.RecognizeStop(),
-                new Follow.Action.FollowClick(),
-                new Follow.Action.FollowClickStop()
-            });
+            AddAction(new Follow.Action.Recognize());
+            AddAction(new Follow.Action.RecognizeStop());
+            AddAction(new Follow.Action.FollowClick());
+            AddAction(new Follow.Action.FollowClickStop());
         }
     }
 }

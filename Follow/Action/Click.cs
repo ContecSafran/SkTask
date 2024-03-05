@@ -21,7 +21,7 @@ namespace Follow.Action
         public Click()
         {
 
-            Status.MouseClick = true;
+            SkTask.Setting.Status.MouseClick = true;
             StartKey.Add(Key.LeftCtrl);
             StartKey.Add(Key.A);
             EndKey.Add(Key.LeftCtrl);

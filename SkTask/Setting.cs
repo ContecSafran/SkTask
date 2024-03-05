@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SkTask.Constants
+namespace SkTask
 {
-    public enum Mode
+    public class Setting
     {
-        RUNNING,
-        STOP,
-        WAITING,
-        SETTING
+        public static SkTask.Property.Status Status = new SkTask.Property.Status();
     }
 }

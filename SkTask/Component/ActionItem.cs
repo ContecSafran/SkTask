@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SkTask.Action;
-using SkTask.Data;
+using SkTask.Property;
 
 namespace SkTask.Component
 {
@@ -23,18 +23,13 @@ namespace SkTask.Component
         {
             InitializeComponent();
             this.action = action;
-            this.NameCheckBox.Text = action.GetType().Name;
+            this.NameLabel.Text = action.GetType().Name;
             this.Name = action.GetType().Name;
             this.StartKey.Text = toString(action.StartKey);
             this.EndKey.Text = toString(action.EndKey);
             this.Dock = System.Windows.Forms.DockStyle.Top;
-            NameCheckBox.Checked = ActionItemVisible.get(this.Name);
             setControlSize();
             action.actionItem = this;
-        }
-        public bool isActive()
-        {
-            return NameCheckBox.Checked;
         }
         private string toString(List<System.Windows.Input.Key> keys)
         {
@@ -50,23 +45,9 @@ namespace SkTask.Component
             return s;
         }
 
-        private void NameCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            ActionItemVisible.set(this.Name, isActive());
-            setControlSize();
-        }
         private void setControlSize()
         {
-
-            if (isActive())
-            {
-
-                this.Size = new System.Drawing.Size(273, action.EndKey.Count != 0 ? 60 : 40);
-            }
-            else
-            {
-                this.Size = new System.Drawing.Size(273, 20);
-            }
+            this.Size = new System.Drawing.Size(273, action.EndKey.Count != 0 ? 60 : 40);
         }
     }
 }

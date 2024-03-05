@@ -23,11 +23,11 @@ namespace SkTask
 
         private void PositionTimer_Tick(object sender, EventArgs e)
         {
-            if (!Status.MouseLog)
+            if (!SkTask.Setting.Status.MouseLog)
             {
                 return;
             }
-            if (Status.mode == Constants.Mode.WAITING)
+            if (SkTask.Setting.Status.Mode == Constants.Mode.WAITING)
             {
                 if (!Position.CurrentPosition.Equals(Cursor.Position))
                 {
