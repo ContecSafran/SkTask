@@ -22,7 +22,7 @@ namespace Follow.Action
 
         protected override bool isActive()
         {
-            return FollowForm.FollowClick;
+            return !FollowForm.FollowClick;
         }
 
         public override void Start()
@@ -37,6 +37,7 @@ namespace Follow.Action
         public override void Process()
         {
             FollowForm.FollowClick = true;
+            SkTask.Setting.Status.MouseClick = true;
         }
     }
 }

@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Follow",
+    "\\Follow\\Action"
   ],
-  "SelectedNode": "\\SkTask.sln",
+  "SelectedNode": "\\Follow\\Action\\DebugDraw.cs",
   "PreviewInSolutionExplorer": false
 }

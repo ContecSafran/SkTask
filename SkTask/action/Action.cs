@@ -10,6 +10,7 @@ using SkTask.Constants;
 using System.Windows.Input;
 using System.Windows;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace SkTask.Action
 {
@@ -934,7 +935,13 @@ namespace SkTask.Action
         {
 
             bool check = true;
-
+            /*
+            if (Key[0] == System.Windows.Input.Key.LeftCtrl && Key[1] == System.Windows.Input.Key.A)
+            {
+                
+                Trace.Write(((Keyboard.GetKeyStates(Key[0]) & KeyStates.Down) > 0) ? "true " : "false ");
+                Trace.WriteLine(((Keyboard.GetKeyStates(Key[1]) & KeyStates.Down) > 0) ? "true" : "false");
+            }*/
             for (int i = 0; i < Key.Count; i++)
             {
                 check &= ((Keyboard.GetKeyStates(Key[i]) & KeyStates.Down) > 0);

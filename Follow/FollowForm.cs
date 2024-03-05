@@ -96,6 +96,7 @@ namespace Follow
         }
         void FollowThread()
         {
+            SkTask.Dto.Status.MouseClick = true;
             while (this.isRunning)
             {
                 try

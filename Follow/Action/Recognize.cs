@@ -22,7 +22,7 @@ namespace Follow.Action
         }
         protected override bool isActive()
         {
-            return FollowForm.Recognize;
+            return !FollowForm.Recognize;
         }
         public override void Start()
         {
