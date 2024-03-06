@@ -80,6 +80,8 @@ namespace SkTask
         [Obsolete]
         private void Tray_ViewModeChanged(object sender, bool isPopup)
         {
+            this.trayicon.Visible = !isPopup;
+            this.Visible = isPopup;
             if (isPopup)
             {
                 TimerTaskThread.Suspend();

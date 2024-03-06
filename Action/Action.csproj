@@ -61,11 +61,20 @@
       <DependentUpon>Log.cs</DependentUpon>
     </Compile>
     <Compile Include="Dto\Status.cs" />
+    <Compile Include="EventHandler\TaskEventHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Task.cs" />
+    <Compile Include="Tasks\AlchSco.cs" />
+    <Compile Include="Tasks\Alter.cs" />
+    <Compile Include="Tasks\Augmentation.cs" />
+    <Compile Include="Tasks\BlightMap.cs" />
+    <Compile Include="Tasks\Inventory.cs" />
+    <Compile Include="Tasks\PopupWindow.cs" />
+    <Compile Include="Tasks\QuickMove.cs" />
+    <Compile Include="Tasks\Stash.cs" />
+    <Compile Include="Tasks\Trash.cs" />
+    <Compile Include="Tasks\TrayIcon.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Tasks\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
