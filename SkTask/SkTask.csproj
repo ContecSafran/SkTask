@@ -89,20 +89,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Action\Action.cs" />
-    <Compile Include="Action\AlchSco.cs" />
-    <Compile Include="Action\PopupWindow.cs" />
-    <Compile Include="Action\TrayIcon.cs" />
-    <Compile Include="Action\Alter.cs" />
-    <Compile Include="Action\Augmentation.cs" />
-    <Compile Include="Action\BlightMap.cs" />
-    <Compile Include="Action\Inventory.cs" />
-    <Compile Include="Action\MultiPointClear.cs" />
-    <Compile Include="Action\Trash.cs" />
-    <Compile Include="Action\MultiPointInsert.cs" />
-    <Compile Include="Action\MultiPointMove.cs" />
-    <Compile Include="Action\QuickMove.cs" />
-    <Compile Include="Action\Stash.cs" />
     <Compile Include="EventHandler\TaskEventHandler.cs" />
     <Compile Include="Property\ActionItem.cs">
       <SubType>UserControl</SubType>
@@ -207,6 +193,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Action\Action.csproj">
+      <Project>{836acd4b-5773-4893-af43-faf362fcc7e8}</Project>
+      <Name>Action</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Search\Search.csproj">
       <Project>{a40244b7-473f-45fc-813a-9b2abcc2c407}</Project>
       <Name>Search</Name>
