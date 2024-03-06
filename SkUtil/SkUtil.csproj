@@ -51,6 +51,16 @@
     <Compile Include="CT_CSV.cs" />
     <Compile Include="Draw.cs" />
     <Compile Include="EmptyLineBehavior.cs" />
+    <Compile Include="Network\DefineData.cs" />
+    <Compile Include="Network\NetFuntion.cs" />
+    <Compile Include="Network\PacketQueue_T_.cs" />
+    <Compile Include="Network\PingTester.cs" />
+    <Compile Include="Network\PortScaner.cs" />
+    <Compile Include="Network\SkClient.cs" />
+    <Compile Include="Network\SkServer.cs" />
+    <Compile Include="Network\SocketClient.cs" />
+    <Compile Include="Network\SocketServer.cs" />
+    <Compile Include="Network\SocketServer_Client.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MathUtil.cs" />
     <Compile Include="TimeUtil.cs" />

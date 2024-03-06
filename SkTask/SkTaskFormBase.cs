@@ -23,6 +23,7 @@ namespace SkTask
     {
         protected List<SkTask.Action.Task> actions = new List<SkTask.Action.Task>();
         protected List<SkTask.Action.TimerTask> timerActions = new List<SkTask.Action.TimerTask>();
+        protected List<SkTask.Action.TimerTask> NetworkActions = new List<SkTask.Action.TimerTask>();
         List<SkTask.Component.ActionItem> actionItems;
 
         //알케
@@ -219,6 +220,10 @@ namespace SkTask
         private void Setting_FormClosed(object sender, FormClosedEventArgs e)
         {
             SkTask.Setting.Status.Mode = Constants.Mode.WAITING;
+        }
+        private void AddNetworkAction()
+        {
+            //NetworkActions.Add(Follow)
         }
     }
 }

@@ -7,8 +7,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{869D75B1-A8F1-4BBC-AE0E-83840508627F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>SkClient</RootNamespace>
-    <AssemblyName>SkClient</AssemblyName>
+    <RootNamespace>Follow</RootNamespace>
+    <AssemblyName>Follow</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -99,6 +99,7 @@
     <Compile Include="DrawPosition.Designer.cs">
       <DependentUpon>DrawPosition.cs</DependentUpon>
     </Compile>
+    <Compile Include="FollowClient.cs" />
     <Compile Include="RectangleRecognizePixel.cs" />
     <Compile Include="RectangleRecognizeOcr.cs" />
     <Compile Include="FollowImageProcess.cs" />
