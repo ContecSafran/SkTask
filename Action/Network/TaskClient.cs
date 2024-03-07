@@ -1,18 +1,21 @@
 ﻿using SkUtil;
 using SkUtil.Network;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Follow
+namespace Action.Network
 {
-    class FollowClient : SkClient
+    public class TaskClient : SkClient
     {
-        public byte[] Header = new byte[8];
-        public byte[] Data = new byte[8];
+        byte[] Header = new byte[8];
+        byte[] Data = new byte[8];
+
+        public ConcurrentQueue<int> DataQueue = new ConcurrentQueue<int>();
         public override void ClientStart(bool ClientType = true)
         {
             base.ClientStart();
@@ -36,7 +39,8 @@ namespace Follow
             {
                 return;
             }
-            int key = CT_Converter.ByteToInt32(Data, 0);
+            int taskIndex = CT_Converter.ByteToInt32(Data, 8);
+            DataQueue.Enqueue(taskIndex);
         }
         public bool Client_ReceiveData(NetworkStream ClientStream, byte[] buffer)
         {

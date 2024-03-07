@@ -1,4 +1,5 @@
-﻿using Action.Dlg;
+﻿using Action.Controls;
+using Action.Dlg;
 using Action.Info;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace Action
     {
         protected List<Action.Task> actions = new List<Action.Task>();
         protected List<Action.TimerAction.TimerTask> timerActions = new List<Action.TimerAction.TimerTask>();
-        //protected List<Action.TimerTask> NetworkActions = new List<Action.TimerTask>();
+        protected List<Action.Task> NetworkActions = new List<Action.Task>();
         List<Action.Controls.ActionItem> actionItems;
 
         //알케
@@ -62,12 +63,6 @@ namespace Action
             Setting.PropertyChanged += Status_PropertyChanged;
             Setting.MouseLog = false;
 
-            Action.TrayIcon tray = new Action.TrayIcon(this);
-            tray.ViewModeChanged += Tray_ViewModeChanged;
-            Action.PopupWindow popupWindow = new Action.PopupWindow(this);
-            popupWindow.ViewModeChanged += Tray_ViewModeChanged;
-            AddAction((Action.Task)tray);
-            AddAction((Action.Task)popupWindow);
             AddAction();
             InitAction();
         }
@@ -79,11 +74,11 @@ namespace Action
             this.Visible = isPopup;
             if (isPopup)
             {
-                TimerTaskThread.Suspend();
+                TimerTaskThread.Resume();
             }
             else
             {
-                TimerTaskThread.Resume();
+                TimerTaskThread.Suspend();
             }
         }
 
@@ -98,6 +93,19 @@ namespace Action
         protected virtual void AddAction()
         {
 
+            Action.TrayIcon tray = new Action.TrayIcon(this);
+            tray.ViewModeChanged += Tray_ViewModeChanged;
+            Action.PopupWindow popupWindow = new Action.PopupWindow(this);
+            popupWindow.ViewModeChanged += Tray_ViewModeChanged;
+            AddAction((Action.Task)tray);
+            AddAction((Action.Task)popupWindow);
+            recognizeTask = new Action.Recognize();
+            recognizeStopTask = new Action.RecognizeStop();
+            AddAction(recognizeTask);
+            AddAction(recognizeStopTask);
+
+            this.NetworkActions.Add(recognizeTask);
+            this.NetworkActions.Add(recognizeStopTask);
         }
         protected void InitAction()
         {
@@ -110,6 +118,7 @@ namespace Action
                     this.MainPanel.ContentPanel.Controls.Add(this.actionItems[i]);
                 }
             }
+
         }
         protected void AddToolSctipButton(ToolStripItem toolStripItem)
         {
@@ -120,6 +129,8 @@ namespace Action
         {
             return base.ProcessCmdKey(ref msg, keyData);
         }
+        public Recognize recognizeTask;
+        public RecognizeStop recognizeStopTask;
         Thread TaskThread = null;
         Thread TimerTaskThread = null;
 
@@ -136,9 +147,13 @@ namespace Action
             TimerTaskThread.SetApartmentState(ApartmentState.STA);
             CheckForIllegalCrossThreadCalls = false;
             TimerTaskThread.Start();
-
+            InitForm();
         }
 
+        protected virtual void InitForm()
+        {
+
+        }
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             isRunning = false;
@@ -161,12 +176,16 @@ namespace Action
                             Action.Task t = select.First();
                             Setting.Mode = Action.Constants.Mode.RUNNING;
                             t.task();
+                            CurrentTask(t);
                         }
                     }
                 }
                 catch (Exception e)
                 {
+                    Log.WriteLog(e.Message);
+                    Setting.Mode = Action.Constants.Mode.WAITING;
                 }
+                MainThreadProcessed();
             }
         }
 
@@ -240,9 +259,16 @@ namespace Action
         {
             Setting.Mode = Action.Constants.Mode.WAITING;
         }
-        private void AddNetworkAction()
+        protected virtual void CurrentTask(Action.Task task)
         {
-            //NetworkActions.Add(Follow)
+
+        }
+        /**
+         * 메인 쓰레드 처리하고 각틱마다 호출됨
+         */
+        protected virtual void MainThreadProcessed()
+        {
+
         }
     }
 }

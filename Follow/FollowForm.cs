@@ -1,5 +1,7 @@
 ﻿using Action;
+using Action.Controls;
 using Action.Info;
+using Action.Network;
 using SkTask;
 using System;
 using System.Collections.Generic;
@@ -22,11 +24,10 @@ namespace Follow
         SkTask.Image image = new SkTask.Image();
         DrawPosition DrawPosition = new DrawPosition();
         ScreenCapture screenCapture = new ScreenCapture();
+        TaskClient taskClient = new TaskClient();
         System.Windows.Forms.ToolStripComboBox comboBox;
-        public static bool Recognize = false;
-        public static bool FollowMove = false;
-        public static bool FollowClick= false;
-        public static bool DebugDraw = false;
+
+        Thread RecognizeThread;
         public FollowForm() : base()
         {
             //Toolstrip에 combo box 넣어두고 모니터 개수 확인해서 넣어두고 창 이동하게 하고 상태 설정 저장
@@ -38,6 +39,7 @@ namespace Follow
             screenCapture.Init();
             RectangleRecognizePixel.init();
             image.Show();
+            taskClient.ClientStart();
         }
 
         private void SelectedIndexChanged_Monitor(object sender, EventArgs e)
@@ -86,26 +88,20 @@ namespace Follow
         {
             this.Location = new Point { X = 0, Y = 0 };
             comboBox.SelectedIndex = Action.Info.MonitorArea.GetProcessIndex();
-            
-            Thread TH = new Thread(FollowThread);
-            TH.SetApartmentState(ApartmentState.STA);
-            CheckForIllegalCrossThreadCalls = false;
-            Setting.MouseClick = true;
-            TH.Start();
+
             this.Hide();
             image.init();
             // DrawPosition.Show();
         }
         void FollowThread()
         {
-            Setting.MouseClick = true;
             while (this.isRunning)
             {
                 try
                 {
                     Thread.Sleep(200); //minimum CPU usage
 
-                    if (FollowForm.Recognize)
+                    //if (FollowForm.Recognize)
                     {
                         //기존 OCR 방법으로 검출 하던 방법
                         /*
@@ -128,10 +124,28 @@ namespace Follow
 
         protected override void AddAction()
         {
-            AddAction(new Action.Recognize());
-            AddAction(new Action.RecognizeStop());
-            AddAction(new Action.FollowClick());
-            AddAction(new Action.FollowClickStop());
+            RecognizeThread = new Thread(FollowThread);
+            RecognizeThread.SetApartmentState(ApartmentState.STA);
+            CheckForIllegalCrossThreadCalls = false;
+            base.AddAction();
+            recognizeTask.RecognizeThread = RecognizeThread;
+            recognizeStopTask.RecognizeThread = RecognizeThread;
+        }
+
+        protected override void MainThreadProcessed()
+        {
+            int index;
+            while (this.taskClient.DataQueue.TryDequeue(out index))
+            {
+                if (index > 0 && index < NetworkActions.Count) {
+                    NetworkActions[index].Process();
+                    Thread.Sleep(100);
+                }
+                else
+                {
+                    Log.WriteLog("Client Error Index : " + index.ToString());
+                }
+            }
         }
     }
 }

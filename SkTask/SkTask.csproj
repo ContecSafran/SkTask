@@ -138,6 +138,10 @@
       <Project>{5f750383-00a7-4993-aa0a-59eb4c5c5e89}</Project>
       <Name>SkAffix</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SkUtil\SkUtil.csproj">
+      <Project>{cc9318a2-8f4c-46df-93ba-1f1d6a5a5967}</Project>
+      <Name>SkUtil</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\inputImage.png" />

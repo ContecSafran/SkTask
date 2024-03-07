@@ -14,6 +14,11 @@ namespace Action
     public class Recognize : Task
     {
         public static bool On = false;
+        public Thread RecognizeThread
+        {
+            get;
+            set;
+        }
         public Recognize()
         {
             StartKey.Add(Key.LeftCtrl);
@@ -21,14 +26,30 @@ namespace Action
         }
         protected override bool isActive()
         {
-            return !Recognize.On;
+            if(RecognizeThread == null)
+            {
+                return !On;
+            }
+            return RecognizeThread.ThreadState == ThreadState.Suspended;
         }
         public override void Start()
         {
             Log.WriteLog("Recognize 시작");
         }
+
         public override void Process()
         {
+            if (RecognizeThread != null)
+            {
+                if (!RecognizeThread.IsAlive)
+                {
+                    RecognizeThread.Start();
+                }
+                else if(RecognizeThread.ThreadState == ThreadState.Suspended)
+                {
+                    RecognizeThread.Resume();
+                }
+            }
             Recognize.On = true;
         }
     }

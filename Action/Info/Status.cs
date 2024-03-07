@@ -23,9 +23,9 @@ namespace Action.Info
                 PropertyChanged(o, new PropertyChangedEventArgs(propertyName));
             }
         }
-        static private Mode ModeValue;
+        static private Mode ModeValue = Mode.WAITING;
         static private Boolean MouseLogValue;
-        static private Boolean MouseClickValue;
+        static private Boolean MouseClickValue = true;
         static public Mode Mode
         {
             get

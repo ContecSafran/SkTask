@@ -86,6 +86,8 @@
       <DependentUpon>FormBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Info\MonitorArea.cs" />
+    <Compile Include="Network\TaskClient.cs" />
+    <Compile Include="Network\TaskServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -103,6 +105,7 @@
     <Compile Include="Tasks\Follow\Recognize.cs" />
     <Compile Include="Tasks\Follow\RecognizeStop.cs" />
     <Compile Include="Tasks\Inventory.cs" />
+    <Compile Include="Tasks\Network\NetworkTask.cs" />
     <Compile Include="Tasks\PopupWindow.cs" />
     <Compile Include="Tasks\QuickMove.cs" />
     <Compile Include="Tasks\Stash.cs" />
@@ -121,6 +124,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\settings.245x256.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SkUtil\SkUtil.csproj">
+      <Project>{cc9318a2-8f4c-46df-93ba-1f1d6a5a5967}</Project>
+      <Name>SkUtil</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

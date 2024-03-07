@@ -119,7 +119,7 @@ namespace Follow
 
                     RecognizeResult.Inflate(10, 10);
                     graphics.DrawRectangle(RedPen, RecognizeResult);
-                    if (FollowForm.FollowClick)
+                    //if (FollowForm.FollowClick)
                     {
                         //SkTask.Action.Task.Move(center);
                         Action.Task.Click(center, Action.Constants.InputEvent.LEFT);

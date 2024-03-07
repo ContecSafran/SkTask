@@ -13,6 +13,12 @@ namespace Action
 {
     public class RecognizeStop : Task
     {
+        public static bool On = false;
+        public Thread RecognizeThread
+        {
+            get;
+            set;
+        }
         public RecognizeStop()
         {
             StartKey.Add(Key.LeftShift);
@@ -20,7 +26,11 @@ namespace Action
         }
         protected override bool isActive()
         {
-            return Recognize.On;
+            if (RecognizeThread == null)
+            {
+                return On;
+            }
+            return RecognizeThread.ThreadState != ThreadState.Suspended;
         }
         public override void Start()
         {
@@ -28,6 +38,10 @@ namespace Action
         }
         public override void Process()
         {
+            if (RecognizeThread != null)
+            {
+                RecognizeThread.Suspend();
+            }
             Recognize.On = false;
         }
     }
