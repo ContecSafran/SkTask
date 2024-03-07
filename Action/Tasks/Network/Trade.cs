@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 using SkUtil.Network;
 namespace Action
 {
-    public class NetworkTask : Task
+    public class Trade : NetworkTask
     {
+        public override void Process()
+        {
+        }
     }
 }

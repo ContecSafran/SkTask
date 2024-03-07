@@ -85,6 +85,18 @@
     <Compile Include="FormBase.Designer.cs">
       <DependentUpon>FormBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormBaseAction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBaseGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBaseSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBaseThread.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Info\MonitorArea.cs" />
     <Compile Include="Network\TaskClient.cs" />
     <Compile Include="Network\TaskServer.cs" />
@@ -99,16 +111,20 @@
     <Compile Include="Tasks\AlchSco.cs" />
     <Compile Include="Tasks\Alter.cs" />
     <Compile Include="Tasks\Augmentation.cs" />
-    <Compile Include="Tasks\BlightMap.cs" />
+    <Compile Include="Tasks\QuickMove\BlightMap.cs" />
     <Compile Include="Tasks\Follow\FollowClick.cs" />
     <Compile Include="Tasks\Follow\FollowClickStop.cs" />
     <Compile Include="Tasks\Follow\Recognize.cs" />
     <Compile Include="Tasks\Follow\RecognizeStop.cs" />
-    <Compile Include="Tasks\Inventory.cs" />
+    <Compile Include="Tasks\QuickMove\TradeCheck.cs" />
+    <Compile Include="Tasks\QuickMove\Inventory.cs" />
+    <Compile Include="Tasks\Network\Trade.cs" />
+    <Compile Include="Tasks\Network\LocationMove.cs" />
+    <Compile Include="Tasks\Network\Invite.cs" />
     <Compile Include="Tasks\Network\NetworkTask.cs" />
     <Compile Include="Tasks\PopupWindow.cs" />
-    <Compile Include="Tasks\QuickMove.cs" />
-    <Compile Include="Tasks\Stash.cs" />
+    <Compile Include="Tasks\QuickMove\QuickMove.cs" />
+    <Compile Include="Tasks\QuickMove\Stash.cs" />
     <Compile Include="Tasks\Trash.cs" />
     <Compile Include="Tasks\TrayIcon.cs" />
     <Compile Include="TimerAction\TimerTask.cs" />

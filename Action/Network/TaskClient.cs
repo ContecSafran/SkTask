@@ -1,4 +1,5 @@
-﻿using SkUtil;
+﻿using Action.Controls;
+using SkUtil;
 using SkUtil.Network;
 using System;
 using System.Collections.Concurrent;
@@ -14,8 +15,15 @@ namespace Action.Network
     {
         byte[] Header = new byte[8];
         byte[] Data = new byte[8];
+        private List<Action.Task> NetworkActionValue;
 
-        public ConcurrentQueue<int> DataQueue = new ConcurrentQueue<int>();
+        public List<Action.Task> NetworkActions
+        {
+            set
+            {
+                this.NetworkActionValue = value;
+            }
+        }
         public override void ClientStart(bool ClientType = true)
         {
             base.ClientStart();
@@ -39,8 +47,17 @@ namespace Action.Network
             {
                 return;
             }
-            int taskIndex = CT_Converter.ByteToInt32(Data, 8);
-            DataQueue.Enqueue(taskIndex);
+
+            int taskIndex = CT_Converter.ByteToInt32(Data, 0);
+
+            if (taskIndex >= 0 && taskIndex < NetworkActionValue.Count)
+            {
+                Task.ProcessTask.Enqueue(NetworkActionValue[taskIndex]);
+            }
+            else
+            {
+                Log.WriteLog("Client Error Index : " + taskIndex.ToString());
+            }
         }
         public bool Client_ReceiveData(NetworkStream ClientStream, byte[] buffer)
         {

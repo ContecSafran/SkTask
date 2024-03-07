@@ -12,6 +12,7 @@ using Action.Constants;
 using System.Windows.Forms;
 using Action.Controls;
 using Action.Info;
+using System.Collections.Concurrent;
 
 namespace Action
 {
@@ -38,7 +39,7 @@ namespace Action
             SetCursorPos(x + rand.Next(1, 5), y + rand.Next(1, 5));
             stoppeing_event_.WaitOne(interval_);
         }
-        static public void Click(System.Drawing.Point CurrentPosition, InputEvent input)
+        static public void Click(System.Drawing.Point CurrentPosition, InputEvent input = InputEvent.LEFT)
         {
             Click(CurrentPosition.X, CurrentPosition.Y, input);
         }
@@ -928,9 +929,12 @@ namespace Action
 
         public List<System.Windows.Input.Key> StartKey = new List<Key>();
         public List<System.Windows.Input.Key> EndKey = new List<Key>();
+
+
+        public static ConcurrentQueue<Task> ProcessTask = new ConcurrentQueue<Task>();
         public Controls.ActionItem actionItem;
         public static bool WindowPopup = false;
-
+        public bool useMiddleMousebutton = false;
         protected virtual bool isActive()
         {
             return true;
@@ -948,7 +952,12 @@ namespace Action
             }*/
             for (int i = 0; i < Key.Count; i++)
             {
+                
                 check &= ((Keyboard.GetKeyStates(Key[i]) & KeyStates.Down) > 0);
+            }
+            if (useMiddleMousebutton)
+            {
+                check &= ((Control.MouseButtons & MouseButtons.Middle) == MouseButtons.Middle);
             }
             return check;
         }

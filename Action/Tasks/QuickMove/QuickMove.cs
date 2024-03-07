@@ -15,6 +15,9 @@ namespace Action
     {
         public System.Drawing.Point TopPoint;
         public System.Drawing.Point BottomPoint;
+        public bool onlyMove = false;
+
+        public bool ManualAction = false;
 
         public int CountX = 0;
         public int CountY = 0;
@@ -22,6 +25,11 @@ namespace Action
         {
         }
 
+        protected override bool isActive()
+        {
+            ManualAction = true;
+            return true;
+        }
 
         public override void Process()
         {
@@ -37,13 +45,28 @@ namespace Action
             {
                 for (; y < BottomPoint.Y; y += MarginY)
                 {
-                    Click(x, y, InputEvent.LEFT);
+                    if (onlyMove)
+                    {
+                        Move(x, y);
+                    }
+                    else
+                    {
+                        Click(x, y, InputEvent.LEFT);
+                    }
                     //Move(x, y);
                     Thread.Sleep(rand.Next(10, 20));
-                    Click(x, y, InputEvent.LEFT);
-
-                    if (!((Keyboard.GetKeyStates(Key.LeftCtrl) & KeyStates.Down) > 0))
+                    if (onlyMove)
                     {
+                        Move(x, y);
+                    }
+                    else
+                    {
+                        Click(x, y, InputEvent.LEFT);
+                    }
+
+                    if ((!((Keyboard.GetKeyStates(Key.LeftCtrl) & KeyStates.Down) > 0)) && ManualAction)
+                    {
+                        ManualAction = false;
                         return;
                     }
                 }

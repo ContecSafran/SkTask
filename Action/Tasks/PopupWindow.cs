@@ -23,9 +23,11 @@ namespace Action
         public PopupWindow(Form mainWindow)
         {
             MainWindow = mainWindow;
+            useMiddleMousebutton = true;
+            /*
             StartKey.Add(Key.LeftShift);
             StartKey.Add(Key.LeftCtrl);
-            StartKey.Add(Key.S);
+            StartKey.Add(Key.S);*/
         }
 
         public override void Start()
@@ -36,7 +38,11 @@ namespace Action
             if (!MainWindow.Visible)
             {
                 Action.TrayIcon.isOpened = true;
-                MainWindow.Location = System.Windows.Forms.Cursor.Position;
+                System.Drawing.Point pt = System.Windows.Forms.Cursor.Position;
+                MainWindow.Location = pt;
+                pt.X += 100;
+                pt.Y += 15;
+                Click(pt);
                 ViewModeChanged(this, true);
             }
         }

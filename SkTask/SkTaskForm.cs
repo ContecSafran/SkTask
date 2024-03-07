@@ -87,17 +87,19 @@ namespace SkTask
             AddAction(new Action.Alter());
             AddAction(new Action.Augmentation());
             AddAction(new Action.AlchSco());
+            base.AddAction();
         }
 
-        protected override void CurrentTask(Action.Task task)
+        protected override bool SendNetworkTask(Action.Task task)
         {
             //서버 역할을 해줘야 한다.
             int index = NetworkActions.IndexOf(task);
             if(index == -1)
             {
-                return;
+                return false;
             }
             taskServer.SendCommand(index);
+            return true;
         }
 
         private void InitializeComponent()

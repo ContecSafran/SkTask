@@ -130,22 +130,8 @@ namespace Follow
             base.AddAction();
             recognizeTask.RecognizeThread = RecognizeThread;
             recognizeStopTask.RecognizeThread = RecognizeThread;
+            this.taskClient.NetworkActions = this.NetworkActions;
         }
 
-        protected override void MainThreadProcessed()
-        {
-            int index;
-            while (this.taskClient.DataQueue.TryDequeue(out index))
-            {
-                if (index > 0 && index < NetworkActions.Count) {
-                    NetworkActions[index].Process();
-                    Thread.Sleep(100);
-                }
-                else
-                {
-                    Log.WriteLog("Client Error Index : " + index.ToString());
-                }
-            }
-        }
     }
 }
