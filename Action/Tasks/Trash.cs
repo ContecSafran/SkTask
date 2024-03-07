@@ -1,5 +1,4 @@
-﻿using Action.Dto;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +12,7 @@ using System.Diagnostics;
 
 namespace Action
 {
-    class Trash : Task
+    public class Trash : Task
     {
         public List<System.Drawing.Point> Points = new List<System.Drawing.Point>();
         public Trash()

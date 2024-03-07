@@ -122,7 +122,7 @@ namespace Follow
                     if (FollowForm.FollowClick)
                     {
                         //SkTask.Action.Task.Move(center);
-                        SkTask.Action.Task.Click(center, SkTask.Constants.InputEvent.LEFT);
+                        Action.Task.Click(center, Action.Constants.InputEvent.LEFT);
                     }
                 }
 

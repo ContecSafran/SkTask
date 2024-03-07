@@ -11,6 +11,7 @@ using System.Diagnostics;
 using Action.Constants;
 using System.Windows.Forms;
 using Action.Controls;
+using Action.Info;
 
 namespace Action
 {
@@ -44,7 +45,7 @@ namespace Action
 
         static public void Click(int x, int y, InputEvent input)
         {
-            if (!Action.Dto.Status.MouseClick)
+            if (!Setting.MouseClick)
             {
                 Move(x, y);
                 return;
@@ -64,7 +65,7 @@ namespace Action
         }
         static public void Click_NoRandom(int x, int y, InputEvent input)
         {
-            if (!Action.Dto.Status.MouseClick)
+            if (!Setting.MouseClick)
             {
                 Move(x, y);
                 return;
@@ -972,7 +973,7 @@ namespace Action
         public void task()
         {
             Start();
-            while (Action.Dto.Status.mode == Constants.Mode.RUNNING)
+            while (Setting.Mode == Constants.Mode.RUNNING)
             {
                 Process();
                 if (EndKey.Count == 0)
@@ -985,7 +986,7 @@ namespace Action
                 }
             }
             End();
-            Action.Dto.Status.mode = Constants.Mode.WAITING;
+            Setting.Mode = Constants.Mode.WAITING;
         }
         public virtual void Start()
         {
@@ -1002,7 +1003,7 @@ namespace Action
         }
         public void ForcedStop()
         {
-            Action.Dto.Status.mode = Constants.Mode.WAITING;
+            Setting.Mode = Constants.Mode.WAITING;
         }
         public System.Drawing.Point toPoint(System.Drawing.PointF input)
         {

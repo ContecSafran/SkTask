@@ -1,4 +1,6 @@
-﻿using SkTask;
+﻿using Action;
+using Action.Info;
+using SkTask;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +17,7 @@ using System.Windows.Input;
 
 namespace Follow
 {
-    public partial class FollowForm : SkTaskFormBase
+    public partial class FollowForm : FormBase
     {
         SkTask.Image image = new SkTask.Image();
         DrawPosition DrawPosition = new DrawPosition();
@@ -28,7 +30,7 @@ namespace Follow
         public FollowForm() : base()
         {
             //Toolstrip에 combo box 넣어두고 모니터 개수 확인해서 넣어두고 창 이동하게 하고 상태 설정 저장
-            comboBox = Follow.MonitorInfo.SelectMonitor.GetButton();
+            comboBox = Action.Info.MonitorArea.GetButton();
             comboBox.SelectedIndex = -1;
             comboBox.SelectedIndexChanged += new System.EventHandler(this.SelectedIndexChanged_Monitor);
             AddToolSctipButton(comboBox);
@@ -41,9 +43,9 @@ namespace Follow
         private void SelectedIndexChanged_Monitor(object sender, EventArgs e)
         {
             int SelectedIndex = ((ToolStripComboBox)sender).SelectedIndex;
-            Follow.MonitorInfo.SelectMonitor.Index = SelectedIndex;
+            Action.Info.MonitorArea.Index = SelectedIndex;
 
-            Follow.MonitorInfo.SelectMonitor.OtherIndex = Follow.MonitorInfo.SelectMonitor.GetOtherIndex();
+            Action.Info.MonitorArea.OtherIndex = Action.Info.MonitorArea.GetOtherIndex();
             this.Location = new Point {
                 X = Screen.AllScreens[SelectedIndex].Bounds.Right - this.ClientSize.Width,
                 Y = Screen.AllScreens[SelectedIndex].Bounds.Height / 2 - this.ClientSize.Height / 2
@@ -83,12 +85,12 @@ namespace Follow
         private void FollowForm_Load(object sender, EventArgs e)
         {
             this.Location = new Point { X = 0, Y = 0 };
-            comboBox.SelectedIndex = Follow.MonitorInfo.SelectMonitor.GetProcessIndex();
+            comboBox.SelectedIndex = Action.Info.MonitorArea.GetProcessIndex();
             
             Thread TH = new Thread(FollowThread);
             TH.SetApartmentState(ApartmentState.STA);
             CheckForIllegalCrossThreadCalls = false;
-            SkTask.Dto.Status.MouseClick = true;
+            Setting.MouseClick = true;
             TH.Start();
             this.Hide();
             image.init();
@@ -96,7 +98,7 @@ namespace Follow
         }
         void FollowThread()
         {
-            SkTask.Dto.Status.MouseClick = true;
+            Setting.MouseClick = true;
             while (this.isRunning)
             {
                 try
@@ -126,10 +128,10 @@ namespace Follow
 
         protected override void AddAction()
         {
-            AddAction(new Follow.Action.Recognize());
-            AddAction(new Follow.Action.RecognizeStop());
-            AddAction(new Follow.Action.FollowClick());
-            AddAction(new Follow.Action.FollowClickStop());
+            AddAction(new Action.Recognize());
+            AddAction(new Action.RecognizeStop());
+            AddAction(new Action.FollowClick());
+            AddAction(new Action.FollowClickStop());
         }
     }
 }

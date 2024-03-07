@@ -1,5 +1,4 @@
-﻿using Action.Dto;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +13,7 @@ using System.Diagnostics;
 
 namespace Action
 {
-    class Alter : Task
+    public class Alter : Task
     {
         public List<System.Drawing.Point> Points = new List<System.Drawing.Point>();
         public Alter()

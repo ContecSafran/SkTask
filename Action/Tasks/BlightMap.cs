@@ -1,5 +1,4 @@
-﻿using Action.Dto;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +12,7 @@ using Action.Controls;
 
 namespace Action
 {
-    class BlightMap : QuickMove
+    public class BlightMap : QuickMove
     {
         public BlightMap()
         {

@@ -33,7 +33,7 @@ namespace Follow
             
             DrawPosition.DrawPoint.Clear();
 
-            int index = Follow.MonitorInfo.SelectMonitor.Index;
+            int index = Action.Info.MonitorArea.Index;
             using (var img = PixConverter.ToPix((Bitmap)bmp))
             {
 
@@ -64,12 +64,12 @@ namespace Follow
                                     string s = SearchList.Find(x => curText.Contains(x));
                                     if(s != null)
                                     {
-                                        SkTask.Action.Task.Move(
+                                        Action.Task.Move(
                                             (Screen.AllScreens[index].Bounds.X + Screen.AllScreens[index].Bounds.Width / 4) + (rect.Left + rect.Width / 2),
                                             (Screen.AllScreens[index].Bounds.Y + Screen.AllScreens[index].Bounds.Height / 4) + (rect.Top + rect.Height / 2));
                                         if (FollowForm.FollowClick)
                                         {
-                                            SkTask.Action.Task.SendKeyDown(SkTask.Action.Task.KeyCode.KEY_T);
+                                            Action.Task.SendKeyDown(Action.Task.KeyCode.KEY_T);
                                         }
                                         if (FollowForm.DebugDraw)
                                         {

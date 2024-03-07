@@ -64,7 +64,7 @@ namespace SkTask
             }
             else
             {
-                int SelectedIndex = Follow.MonitorInfo.SelectMonitor.OtherIndex;
+                int SelectedIndex = Action.Info.MonitorArea.OtherIndex;
                 this.Location = new System.Drawing.Point
                 {
                     X = Screen.AllScreens[SelectedIndex].Bounds.Left,

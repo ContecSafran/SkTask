@@ -41,7 +41,7 @@ namespace Follow
         private void DrawPosition_Load(object sender, EventArgs e)
         {
             
-            int index = Follow.MonitorInfo.SelectMonitor.OtherIndex;
+            int index = Action.Info.MonitorArea.OtherIndex;
             this.Location = new System.Drawing.Point{
                     X = Screen.AllScreens[index].Bounds.X + Screen.AllScreens[index].Bounds.Width / 4,
                     Y = Screen.AllScreens[index].Bounds.Y + Screen.AllScreens[index].Bounds.Height / 4};

@@ -48,6 +48,12 @@
     <Compile Include="Constants\Event.cs" />
     <Compile Include="Constants\InputEvent.cs" />
     <Compile Include="Constants\Mode.cs" />
+    <Compile Include="Controls\ActionPropertyItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ActionPropertyItem.Designer.cs">
+      <DependentUpon>ActionPropertyItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ActionItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -60,21 +66,61 @@
     <Compile Include="Controls\Log.Designer.cs">
       <DependentUpon>Log.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dto\Status.cs" />
+    <Compile Include="Controls\Position.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Position.Designer.cs">
+      <DependentUpon>Position.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dlg\SettingDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dlg\SettingDlg.Designer.cs">
+      <DependentUpon>SettingDlg.cs</DependentUpon>
+    </Compile>
     <Compile Include="EventHandler\TaskEventHandler.cs" />
+    <Compile Include="FormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBase.Designer.cs">
+      <DependentUpon>FormBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Info\MonitorArea.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Info\Status.cs" />
     <Compile Include="Task.cs" />
     <Compile Include="Tasks\AlchSco.cs" />
     <Compile Include="Tasks\Alter.cs" />
     <Compile Include="Tasks\Augmentation.cs" />
     <Compile Include="Tasks\BlightMap.cs" />
+    <Compile Include="Tasks\Follow\FollowClick.cs" />
+    <Compile Include="Tasks\Follow\FollowClickStop.cs" />
+    <Compile Include="Tasks\Follow\Recognize.cs" />
+    <Compile Include="Tasks\Follow\RecognizeStop.cs" />
     <Compile Include="Tasks\Inventory.cs" />
     <Compile Include="Tasks\PopupWindow.cs" />
     <Compile Include="Tasks\QuickMove.cs" />
     <Compile Include="Tasks\Stash.cs" />
     <Compile Include="Tasks\Trash.cs" />
     <Compile Include="Tasks\TrayIcon.cs" />
+    <Compile Include="TimerAction\TimerTask.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="FormBase.resx">
+      <DependentUpon>FormBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings.245x256.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

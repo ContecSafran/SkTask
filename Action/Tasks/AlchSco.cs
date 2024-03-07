@@ -1,5 +1,4 @@
-﻿using Action.Dto;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +11,7 @@ using System.Windows;
 
 namespace Action
 {
-    class AlchSco : Task
+    public class AlchSco : Task
     {
         public AlchSco()
         {

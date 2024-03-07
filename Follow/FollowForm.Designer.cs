@@ -2,7 +2,7 @@
 
 namespace Follow
 {
-    partial class FollowForm
+    public partial class FollowForm
     {
         /// <summary>
         /// 필수 디자이너 변수입니다.

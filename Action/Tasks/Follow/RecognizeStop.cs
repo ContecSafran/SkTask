@@ -5,25 +5,30 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 using System.Threading;
-using Action.Constants;
 using System.Windows.Input;
 using System.Windows;
+using Action.Controls;
 
 namespace Action
 {
-    public class Augmentation : Task
+    public class RecognizeStop : Task
     {
-        public Augmentation()
+        public RecognizeStop()
         {
             StartKey.Add(Key.LeftShift);
-            StartKey.Add(Key.S);
+            StartKey.Add(Key.A);
+        }
+        protected override bool isActive()
+        {
+            return Recognize.On;
+        }
+        public override void Start()
+        {
+            Log.WriteLog("Recognize 종료");
         }
         public override void Process()
         {
-            Click(toPoint(new System.Drawing.PointF(0.10f, 0.17f)), InputEvent.RIGHT);
-            Sleep(50);
-            Click(toPoint(new System.Drawing.PointF(0.10f, 0.17f)), InputEvent.LEFT);
-            Sleep(50);
+            Recognize.On = false;
         }
     }
 }

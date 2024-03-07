@@ -35,7 +35,7 @@ namespace Follow
            */
 
 
-            int index = Follow.MonitorInfo.SelectMonitor.Index;
+            int index = Action.Info.MonitorArea.Index;
             using (var img = PixConverter.ToPix((Bitmap)inputBmp))
             {
 
@@ -54,20 +54,20 @@ namespace Follow
                                 var curText = iter.GetText(PageIteratorLevel.Word);
                                 OpenCvSharp.Rect rect = new OpenCvSharp.Rect(symbolBounds.X1, symbolBounds.Y1, symbolBounds.Width, symbolBounds.Height);
 
-                                SkTask.Action.Task.Move(
+                                Action.Task.Move(
                                     (Screen.AllScreens[index].Bounds.X + Screen.AllScreens[index].Bounds.Width / 4) + (rect.Left + rect.Width / 2),
                                     (Screen.AllScreens[index].Bounds.Y + Screen.AllScreens[index].Bounds.Height / 4) + (rect.Top + rect.Height / 2));
 
                                 System.Threading.Thread.Sleep(50); //minimum CPU usage
-                                SkTask.Action.Task.Move(
+                                Action.Task.Move(
                                     (Screen.AllScreens[index].Bounds.X + Screen.AllScreens[index].Bounds.Width / 4) + (rect.Left + rect.Width / 2),
                                     (Screen.AllScreens[index].Bounds.Y + Screen.AllScreens[index].Bounds.Height / 4) + (rect.Top + rect.Height / 2));
 
                                 System.Threading.Thread.Sleep(50); //minimum CPU usage
-                                SkTask.Action.Task.Click(
+                                Action.Task.Click(
                                     (Screen.AllScreens[index].Bounds.X + Screen.AllScreens[index].Bounds.Width / 4) + (rect.Left + rect.Width / 2),
                                     (Screen.AllScreens[index].Bounds.Y + Screen.AllScreens[index].Bounds.Height / 4) + (rect.Top + rect.Height / 2),
-                                    SkTask.Constants.InputEvent.LEFT);
+                                    Action.Constants.InputEvent.LEFT);
                                 break;
                                 // 
                                 /*if (FollowForm.FollowMove)
@@ -83,13 +83,13 @@ namespace Follow
         }
         private static void SelectedArea(Mat src, OpenCvSharp.Rect rect)
         {
-            int index = Follow.MonitorInfo.SelectMonitor.Index;
-            SkTask.Action.Task.Move(
+            int index = Action.Info.MonitorArea.Index;
+            Action.Task.Move(
                 (Screen.AllScreens[index].Bounds.X + Screen.AllScreens[index].Bounds.Width / 4) + (rect.Left + rect.Width / 2),
                 (Screen.AllScreens[index].Bounds.Y + Screen.AllScreens[index].Bounds.Height / 4) + (rect.Top + rect.Height / 2));
             if (FollowForm.FollowClick)
             {
-                SkTask.Action.Task.SendKeyDown(SkTask.Action.Task.KeyCode.KEY_T);
+                Action.Task.SendKeyDown(Action.Task.KeyCode.KEY_T);
             }
             if (FollowForm.DebugDraw)
             {

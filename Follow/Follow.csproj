@@ -86,13 +86,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Action\Click.cs" />
-    <Compile Include="Action\FollowClickStop.cs" />
-    <Compile Include="Action\FollowClick.cs" />
-    <Compile Include="Action\Follow.cs" />
-    <Compile Include="Action\RecognizeStop.cs" />
-    <Compile Include="Action\DebugDraw.cs" />
-    <Compile Include="Action\Recognize.cs" />
     <Compile Include="DrawPosition.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,19 +96,12 @@
     <Compile Include="RectangleRecognizePixel.cs" />
     <Compile Include="RectangleRecognizeOcr.cs" />
     <Compile Include="FollowImageProcess.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Image.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Image.Designer.cs">
       <DependentUpon>Image.cs</DependentUpon>
     </Compile>
-    <Compile Include="MonitorInfo\SelectMonitor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FollowForm.cs">
@@ -127,9 +113,6 @@
     <Compile Include="ScreenCapture.cs" />
     <EmbeddedResource Include="DrawPosition.resx">
       <DependentUpon>DrawPosition.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Image.resx">
       <DependentUpon>Image.cs</DependentUpon>
@@ -163,6 +146,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Action\Action.csproj">
+      <Project>{836acd4b-5773-4893-af43-faf362fcc7e8}</Project>
+      <Name>Action</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SkTask\SkTask.csproj">
       <Project>{1bed907b-1b84-4ba6-85a7-73f9ccce9208}</Project>
       <Name>SkTask</Name>

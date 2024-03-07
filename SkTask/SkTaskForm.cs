@@ -1,9 +1,6 @@
 ﻿using Search;
 using SkAffix.Dto;
 using SkAffix.Process;
-using SkTask.Action;
-using SkTask.Property;
-using SkTask.Dto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,10 +14,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
+using Action;
 
 namespace SkTask
 {
-    public partial class SkTaskForm : SkTaskFormBase
+    public partial class SkTaskForm : FormBase
     {
         //알케
         //알터
@@ -72,13 +70,13 @@ namespace SkTask
         }
         protected override void AddAction()
         {
-            AddAction(new Inventory());
-            AddAction(new Stash());
-            AddAction(new BlightMap());
-            AddAction(new Trash());
-            AddAction(new Alter());
-            AddAction(new Augmentation());
-            AddAction(new AlchSco());
+            AddAction(new Action.Inventory());
+            AddAction(new Action.Stash());
+            AddAction(new Action.BlightMap());
+            AddAction(new Action.Trash());
+            AddAction(new Action.Alter());
+            AddAction(new Action.Augmentation());
+            AddAction(new Action.AlchSco());
         }
     }
 }
