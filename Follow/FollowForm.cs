@@ -22,7 +22,7 @@ namespace Follow
     public partial class FollowForm : FormBase
     {
         SkTask.Image image = new SkTask.Image();
-        DrawPosition DrawPosition = new DrawPosition();
+        //DrawPosition DrawPosition = new DrawPosition();
         ScreenCapture screenCapture = new ScreenCapture();
         TaskClient taskClient = new TaskClient();
         System.Windows.Forms.ToolStripComboBox comboBox;

@@ -1,6 +1,4 @@
-﻿using OpenCvSharp;
-using OpenCvSharp.Extensions;
-using SkUtil;
+﻿using SkUtil;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

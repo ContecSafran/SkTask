@@ -8,9 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Follow;
-using OpenCvSharp;
-using OpenCvSharp.Extensions;
-using Tesseract;
 
 namespace SkTask
 {
@@ -20,19 +17,6 @@ namespace SkTask
         {
             InitializeComponent();
 
-        }
-        public void process(Mat src)
-        {
-
-            Mat[] mv = new Mat[3];
-            Mat mask = new Mat();
-
-            Cv2.CvtColor(src, src, ColorConversionCodes.BGR2HSV);
-            mv = Cv2.Split(src);
-            Cv2.CvtColor(src, src, ColorConversionCodes.HSV2BGR);
-
-            Cv2.InRange(mv[0], new Scalar(60), new Scalar(60), mask);
-            Cv2.BitwiseAnd(src, mask.CvtColor(ColorConversionCodes.GRAY2BGR), src);
         }
         void showComparison(string one, string two)
         {
