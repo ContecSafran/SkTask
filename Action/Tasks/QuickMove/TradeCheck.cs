@@ -19,6 +19,7 @@ namespace Action
             StartKey.Add(Key.LeftCtrl);
             StartKey.Add(Key.D9);
             this.onlyMove = true;
+            TaskType = Constants.TaskType.NetworkTask | Constants.TaskType.QuickTask;
         }
         public override void Start()
         {

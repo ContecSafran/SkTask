@@ -37,6 +37,10 @@ namespace Action
             {
                 Action.TrayIcon.isOpened = false;
                 ViewModeChanged(this, false);
+                if (!PopupWindow.popUpPos.IsEmpty)
+                {
+                    Move(PopupWindow.popUpPos);
+                }
             }
         }
     }

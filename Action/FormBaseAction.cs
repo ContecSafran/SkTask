@@ -20,7 +20,6 @@ namespace Action
         protected bool isRunning = true;
         protected List<Action.Task> actions = new List<Action.Task>();
         protected List<Action.TimerAction.TimerTask> timerActions = new List<Action.TimerAction.TimerTask>();
-        protected List<Action.Task> NetworkActions = new List<Action.Task>();
         List<Action.Controls.ActionItem> actionItems;
         public Recognize recognizeTask;
         public RecognizeStop recognizeStopTask;
@@ -40,29 +39,43 @@ namespace Action
             recognizeTask = new Action.Recognize();
             recognizeStopTask = new Action.RecognizeStop();
             tradeCheck = new TradeCheck();
+            AddAction(new Action.Invite());
+            AddAction(new Action.LocationMove());
+            AddAction(new Action.Trade());
             AddAction(recognizeTask);
             AddAction(recognizeStopTask);
             AddAction(tradeCheck);
-
-            this.NetworkActions.Add(recognizeTask);
-            this.NetworkActions.Add(recognizeStopTask);
-            this.NetworkActions.Add(tradeCheck);
+        }
+        protected List<Action.Task> GetActions(Constants.TaskType type = Constants.TaskType.Task)
+        {
+            if(type == Constants.TaskType.Task)
+            {
+                return this.actions.Where(a => a.TaskType == type).ToList();
+            }
+            return this.actions.Where(a => (a.TaskType & type) == type).ToList();
         }
         protected void InitAction()
         {
-            if (this.actions != null)
+            this.actionItems = new List<Action.Controls.ActionItem>();
+            InitAction(this.NetworkList, this.GetActions(Action.Constants.TaskType.NetworkTask));
+            InitAction(this.QuickList, this.GetActions(Action.Constants.TaskType.QuickTask));
+            InitAction(this.SettingList, this.GetActions());
+
+        }
+
+        protected void InitAction(System.Windows.Forms.Panel panel, List<Action.Task> tasks)
+        {
+            if (tasks != null)
             {
-                this.actionItems = new List<Action.Controls.ActionItem>();
-                for (int i = 0; i < this.actions.Count; i++)
+                for (int i = 0; i < tasks.Count; i++)
                 {
-                    this.actionItems.Add(new Action.Controls.ActionItem(this.actions[i], true));
-                    this.NetworkList.Controls.Add(this.actionItems[i]);
+                    ActionItem actionItem = new Action.Controls.ActionItem(tasks[i], true);
+                    this.actionItems.Add(actionItem);
+                    panel.Controls.Add(actionItem);
                 }
             }
 
         }
-
-
         protected void AddAction(Action.Task task)
         {
             this.actions.Add(task);

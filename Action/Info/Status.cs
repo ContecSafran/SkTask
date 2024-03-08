@@ -26,6 +26,7 @@ namespace Action.Info
         static private Mode ModeValue = Mode.WAITING;
         static private Boolean MouseLogValue;
         static private Boolean MouseClickValue = true;
+        static private string MainIDValue = "";
         static public Mode Mode
         {
             get
@@ -62,6 +63,19 @@ namespace Action.Info
             {
                 MouseClickValue = value;
                 NotifyPropertyChanged(MouseClickValue, "MouseClick");
+
+            }
+        }
+        static public string MainID
+        {
+            get
+            {
+                return MainIDValue;
+            }
+            set
+            {
+                MainIDValue = value;
+                NotifyPropertyChanged(MainIDValue, "MainID");
 
             }
         }

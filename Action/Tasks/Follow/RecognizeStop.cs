@@ -23,6 +23,7 @@ namespace Action
         {
             StartKey.Add(Key.LeftShift);
             StartKey.Add(Key.A);
+            TaskType = Constants.TaskType.NetworkTask;
         }
         protected override bool isActive()
         {

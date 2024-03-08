@@ -8,6 +8,10 @@ namespace Action
 {
     public class Invite : NetworkTask
     {
+        public Invite()
+        {
+            TaskType = Constants.TaskType.NetworkTask;
+        }
         public override void Process()
         {
         }

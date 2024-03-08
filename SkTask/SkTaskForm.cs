@@ -74,10 +74,6 @@ namespace SkTask
 
         }
 
-        protected override void InitForm()
-        {
-            taskServer.ServerStart();
-        }
         protected override void AddAction()
         {
             AddAction(new Action.Inventory());
@@ -93,7 +89,7 @@ namespace SkTask
         protected override bool SendNetworkTask(Action.Task task)
         {
             //서버 역할을 해줘야 한다.
-            int index = NetworkActions.IndexOf(task);
+            int index = this.GetActions(Action.Constants.TaskType.NetworkTask).IndexOf(task);
             if(index == -1)
             {
                 return false;
@@ -122,6 +118,16 @@ namespace SkTask
             this.MainPanel.ResumeLayout(false);
             this.MainPanel.PerformLayout();
             this.ResumeLayout(false);
+        }
+        protected override void Form_Load(object sender, EventArgs e)
+        {
+            InitForm();
+        }
+
+        protected override void InitForm()
+        {
+            base.InitForm();
+            taskServer.ServerStart();
         }
     }
 }

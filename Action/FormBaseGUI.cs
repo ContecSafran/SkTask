@@ -42,12 +42,6 @@ namespace Action
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            InitThread();
-            InitForm();
-        }
-
         protected void AddToolSctipButton(ToolStripItem toolStripItem)
         {
             MainToolSctip.Items.Insert(0, toolStripItem);

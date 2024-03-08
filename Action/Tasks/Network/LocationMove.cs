@@ -8,6 +8,10 @@ namespace Action
 {
     public class LocationMove : NetworkTask
     {
+        public LocationMove()
+        {
+            TaskType = Constants.TaskType.NetworkTask;
+        }
         public override void Process()
         {
         }

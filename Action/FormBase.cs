@@ -28,7 +28,6 @@ namespace Action
         //각종 필터 자동
         //아이템 거래소 검색
         //트레이 아이콘
-        [Obsolete]
         public FormBase()
         {
             InitializeComponent();
@@ -55,12 +54,11 @@ namespace Action
                 this.MainPanel.ContentPanel.Controls.Add(this.actionItems[i]);
             }
             */
-            Setting.Mode = Action.Constants.Mode.WAITING;
-            Setting.PropertyChanged += Status_PropertyChanged;
-            Setting.MouseLog = false;
+        }
 
-            AddAction();
-            InitAction();
+        protected virtual void Form_Load(object sender, EventArgs e)
+        {
+           // InitForm();
         }
 
 
@@ -74,6 +72,13 @@ namespace Action
         protected virtual void InitForm()
         {
 
+            Setting.Mode = Action.Constants.Mode.WAITING;
+            Setting.PropertyChanged += Status_PropertyChanged;
+            Setting.MouseLog = false;
+
+            AddAction();
+            InitAction();
+            InitThread();
         }
     }
 }

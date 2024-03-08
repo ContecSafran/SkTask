@@ -901,6 +901,18 @@ namespace Action
         #endregion
 
         #region Property
+        private TaskType TypeValue = TaskType.Task;
+        public TaskType TaskType
+        {
+            get
+            {
+                return TypeValue;
+            }
+            set
+            {
+                TypeValue = value;
+            }
+        }
         private bool Active = true;
         public bool TaskActive
         {

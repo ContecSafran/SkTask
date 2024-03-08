@@ -34,17 +34,17 @@ namespace Action
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBase));
             this.MainPanel = new System.Windows.Forms.ToolStripContainer();
+            this.SettingList = new System.Windows.Forms.Panel();
+            this.QuickList = new System.Windows.Forms.Panel();
+            this.NetworkList = new System.Windows.Forms.Panel();
             this.BottomPanel = new System.Windows.Forms.Panel();
             this.BottomSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.CommandLog = new Action.Controls.Log();
+            this.PositionList = new Action.Controls.Position();
             this.MainToolSctip = new System.Windows.Forms.ToolStrip();
             this.SettingToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.FormClose = new System.Windows.Forms.ToolStripButton();
             this.trayicon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.NetworkList = new System.Windows.Forms.Panel();
-            this.QuickList = new System.Windows.Forms.Panel();
-            this.SettingList = new System.Windows.Forms.Panel();
-            this.CommandLog = new Action.Controls.Log();
-            this.PositionList = new Action.Controls.Position();
             this.MainPanel.ContentPanel.SuspendLayout();
             this.MainPanel.TopToolStripPanel.SuspendLayout();
             this.MainPanel.SuspendLayout();
@@ -62,17 +62,17 @@ namespace Action
             // 
             // MainPanel.ContentPanel
             // 
-            this.MainPanel.ContentPanel.Controls.Add(this.SettingList);
-            this.MainPanel.ContentPanel.Controls.Add(this.QuickList);
             this.MainPanel.ContentPanel.Controls.Add(this.NetworkList);
+            this.MainPanel.ContentPanel.Controls.Add(this.QuickList);
+            this.MainPanel.ContentPanel.Controls.Add(this.SettingList);
             this.MainPanel.ContentPanel.Controls.Add(this.BottomPanel);
-            this.MainPanel.ContentPanel.Size = new System.Drawing.Size(349, 445);
+            this.MainPanel.ContentPanel.Size = new System.Drawing.Size(360, 445);
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.LeftToolStripPanelVisible = false;
             this.MainPanel.Location = new System.Drawing.Point(0, 0);
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.RightToolStripPanelVisible = false;
-            this.MainPanel.Size = new System.Drawing.Size(349, 470);
+            this.MainPanel.Size = new System.Drawing.Size(360, 470);
             this.MainPanel.TabIndex = 2;
             this.MainPanel.Text = "toolStripContainer1";
             // 
@@ -81,13 +81,40 @@ namespace Action
             this.MainPanel.TopToolStripPanel.Controls.Add(this.MainToolSctip);
             this.MainPanel.TopToolStripPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPanel_TopToolStripPanel_MouseDown);
             // 
+            // SettingList
+            // 
+            this.SettingList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.SettingList.Dock = System.Windows.Forms.DockStyle.Left;
+            this.SettingList.Location = new System.Drawing.Point(240, 0);
+            this.SettingList.Name = "SettingList";
+            this.SettingList.Size = new System.Drawing.Size(120, 345);
+            this.SettingList.TabIndex = 1;
+            // 
+            // QuickList
+            // 
+            this.QuickList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.QuickList.Dock = System.Windows.Forms.DockStyle.Left;
+            this.QuickList.Location = new System.Drawing.Point(120, 0);
+            this.QuickList.Name = "QuickList";
+            this.QuickList.Size = new System.Drawing.Size(120, 345);
+            this.QuickList.TabIndex = 2;
+            // 
+            // NetworkList
+            // 
+            this.NetworkList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.NetworkList.Dock = System.Windows.Forms.DockStyle.Left;
+            this.NetworkList.Location = new System.Drawing.Point(0, 0);
+            this.NetworkList.Name = "NetworkList";
+            this.NetworkList.Size = new System.Drawing.Size(120, 345);
+            this.NetworkList.TabIndex = 3;
+            // 
             // BottomPanel
             // 
             this.BottomPanel.Controls.Add(this.BottomSplitContainer);
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.BottomPanel.Location = new System.Drawing.Point(0, 345);
             this.BottomPanel.Name = "BottomPanel";
-            this.BottomPanel.Size = new System.Drawing.Size(349, 100);
+            this.BottomPanel.Size = new System.Drawing.Size(360, 100);
             this.BottomPanel.TabIndex = 0;
             // 
             // BottomSplitContainer
@@ -103,9 +130,26 @@ namespace Action
             // BottomSplitContainer.Panel2
             // 
             this.BottomSplitContainer.Panel2.Controls.Add(this.PositionList);
-            this.BottomSplitContainer.Size = new System.Drawing.Size(349, 100);
-            this.BottomSplitContainer.SplitterDistance = 211;
+            this.BottomSplitContainer.Size = new System.Drawing.Size(360, 100);
+            this.BottomSplitContainer.SplitterDistance = 217;
             this.BottomSplitContainer.TabIndex = 0;
+            // 
+            // CommandLog
+            // 
+            this.CommandLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CommandLog.Location = new System.Drawing.Point(0, 0);
+            this.CommandLog.Name = "CommandLog";
+            this.CommandLog.Size = new System.Drawing.Size(217, 100);
+            this.CommandLog.TabIndex = 1;
+            // 
+            // PositionList
+            // 
+            this.PositionList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PositionList.Location = new System.Drawing.Point(0, 0);
+            this.PositionList.Name = "PositionList";
+            this.PositionList.Size = new System.Drawing.Size(139, 100);
+            this.PositionList.TabIndex = 0;
+            this.PositionList.Visible = false;
             // 
             // MainToolSctip
             // 
@@ -143,54 +187,11 @@ namespace Action
             this.trayicon.Text = "SkTask";
             this.trayicon.Visible = true;
             // 
-            // NetworkList
-            // 
-            this.NetworkList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.NetworkList.Dock = System.Windows.Forms.DockStyle.Left;
-            this.NetworkList.Location = new System.Drawing.Point(0, 0);
-            this.NetworkList.Name = "NetworkList";
-            this.NetworkList.Size = new System.Drawing.Size(120, 345);
-            this.NetworkList.TabIndex = 1;
-            // 
-            // QuickList
-            // 
-            this.QuickList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.QuickList.Dock = System.Windows.Forms.DockStyle.Left;
-            this.QuickList.Location = new System.Drawing.Point(120, 0);
-            this.QuickList.Name = "QuickList";
-            this.QuickList.Size = new System.Drawing.Size(120, 345);
-            this.QuickList.TabIndex = 2;
-            // 
-            // SettingList
-            // 
-            this.SettingList.Dock = System.Windows.Forms.DockStyle.Left;
-            this.SettingList.Location = new System.Drawing.Point(240, 0);
-            this.SettingList.Name = "SettingList";
-            this.SettingList.Size = new System.Drawing.Size(120, 345);
-            this.SettingList.TabIndex = 3;
-            // 
-            // CommandLog
-            // 
-            this.CommandLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CommandLog.Location = new System.Drawing.Point(0, 0);
-            this.CommandLog.Name = "CommandLog";
-            this.CommandLog.Size = new System.Drawing.Size(211, 100);
-            this.CommandLog.TabIndex = 1;
-            // 
-            // PositionList
-            // 
-            this.PositionList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PositionList.Location = new System.Drawing.Point(0, 0);
-            this.PositionList.Name = "PositionList";
-            this.PositionList.Size = new System.Drawing.Size(134, 100);
-            this.PositionList.TabIndex = 0;
-            this.PositionList.Visible = false;
-            // 
             // FormBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(349, 470);
+            this.ClientSize = new System.Drawing.Size(360, 470);
             this.Controls.Add(this.MainPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
@@ -201,7 +202,7 @@ namespace Action
             this.Text = "SK";
             this.TopMost = true;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.Form_Load);
             this.MainPanel.ContentPanel.ResumeLayout(false);
             this.MainPanel.TopToolStripPanel.ResumeLayout(false);
             this.MainPanel.TopToolStripPanel.PerformLayout();

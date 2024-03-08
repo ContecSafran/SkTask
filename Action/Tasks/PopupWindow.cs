@@ -20,6 +20,7 @@ namespace Action
         //그외에 나머지 수행하고 있는데 esc 누르면 취소가 된다
         Form MainWindow = null;
         public event EventHandler.FormViewModeChangedEventHandler ViewModeChanged;
+        public static System.Drawing.Point popUpPos;
         public PopupWindow(Form mainWindow)
         {
             MainWindow = mainWindow;
@@ -39,8 +40,10 @@ namespace Action
             {
                 Action.TrayIcon.isOpened = true;
                 System.Drawing.Point pt = System.Windows.Forms.Cursor.Position;
+                popUpPos = pt;
                 MainWindow.Location = pt;
-                pt.X += 100;
+                
+                pt.X += (MainWindow.Size.Width - 10);
                 pt.Y += 15;
                 Click(pt);
                 ViewModeChanged(this, true);

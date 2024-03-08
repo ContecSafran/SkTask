@@ -72,6 +72,9 @@ namespace Action.Controls
             this.Controls.Add(this.StartKey);
             this.Name = "ActionItem";
             this.Size = new System.Drawing.Size(273, 60);
+            this.Click += new System.EventHandler(this.ActionItem_Click);
+            this.MouseEnter += new System.EventHandler(this.ActionItem_MouseEnter);
+            this.MouseLeave += new System.EventHandler(this.ActionItem_MouseLeave);
             this.ResumeLayout(false);
             this.PerformLayout();
 

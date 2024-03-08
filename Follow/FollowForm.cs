@@ -30,16 +30,6 @@ namespace Follow
         Thread RecognizeThread;
         public FollowForm() : base()
         {
-            //Toolstrip에 combo box 넣어두고 모니터 개수 확인해서 넣어두고 창 이동하게 하고 상태 설정 저장
-            comboBox = Action.Info.MonitorArea.GetButton();
-            comboBox.SelectedIndex = -1;
-            comboBox.SelectedIndexChanged += new System.EventHandler(this.SelectedIndexChanged_Monitor);
-            AddToolSctipButton(comboBox);
-            this.InitializeComponent();
-            screenCapture.Init();
-            RectangleRecognizePixel.init();
-            image.Show();
-            taskClient.ClientStart();
         }
 
         private void SelectedIndexChanged_Monitor(object sender, EventArgs e)
@@ -59,39 +49,56 @@ namespace Follow
             this.MainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
+            // PositionList
+            // 
+            this.PositionList.Size = new System.Drawing.Size(139, 100);
+            // 
             // CommandLog
             // 
-            this.CommandLog.Location = new System.Drawing.Point(0, 346);
-            this.CommandLog.Size = new System.Drawing.Size(353, 119);
+            this.CommandLog.Size = new System.Drawing.Size(217, 100);
             // 
             // MainPanel
             // 
             // 
             // MainPanel.ContentPanel
             // 
-            this.MainPanel.ContentPanel.Size = new System.Drawing.Size(353, 346);
-            this.MainPanel.Size = new System.Drawing.Size(353, 346);
+            this.MainPanel.ContentPanel.Size = new System.Drawing.Size(360, 465);
+            this.MainPanel.Size = new System.Drawing.Size(360, 465);
             // 
             // FollowForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
-            this.ClientSize = new System.Drawing.Size(353, 465);
-            this.Name = "SkClient";
-            this.Load += new System.EventHandler(this.FollowForm_Load);
+            this.ClientSize = new System.Drawing.Size(360, 465);
+            this.Name = "FollowForm";
             this.MainPanel.ResumeLayout(false);
             this.MainPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
-        private void FollowForm_Load(object sender, EventArgs e)
+        protected override void Form_Load(object sender, EventArgs e)
         {
+            InitForm();
+        }
+
+        protected override void InitForm()
+        {
+            base.InitForm();
+            //Toolstrip에 combo box 넣어두고 모니터 개수 확인해서 넣어두고 창 이동하게 하고 상태 설정 저장
+            comboBox = Action.Info.MonitorArea.GetButton();
+            comboBox.SelectedIndex = -1;
+            comboBox.SelectedIndexChanged += new System.EventHandler(this.SelectedIndexChanged_Monitor);
+            AddToolSctipButton(comboBox);
+            this.InitializeComponent();
+            screenCapture.Init();
+            RectangleRecognizePixel.init();
+            image.Show();
+            taskClient.ClientStart();
             this.Location = new Point { X = 0, Y = 0 };
             comboBox.SelectedIndex = Action.Info.MonitorArea.GetProcessIndex();
 
             this.Hide();
             image.init();
-            // DrawPosition.Show();
         }
         void FollowThread()
         {
@@ -130,7 +137,7 @@ namespace Follow
             base.AddAction();
             recognizeTask.RecognizeThread = RecognizeThread;
             recognizeStopTask.RecognizeThread = RecognizeThread;
-            this.taskClient.NetworkActions = this.NetworkActions;
+            this.taskClient.NetworkActions = this.GetActions(Action.Constants.TaskType.NetworkTask); 
         }
 
     }

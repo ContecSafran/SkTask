@@ -8,6 +8,10 @@ namespace Action
 {
     public class Trade : NetworkTask
     {
+        public Trade()
+        {
+            TaskType = Constants.TaskType.NetworkTask;
+        }
         public override void Process()
         {
         }

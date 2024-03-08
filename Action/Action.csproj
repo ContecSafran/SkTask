@@ -48,6 +48,7 @@
     <Compile Include="Constants\Event.cs" />
     <Compile Include="Constants\InputEvent.cs" />
     <Compile Include="Constants\Mode.cs" />
+    <Compile Include="Constants\TaskType.cs" />
     <Compile Include="Controls\ActionPropertyItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -130,6 +131,9 @@
     <Compile Include="TimerAction\TimerTask.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\ActionItem.resx">
+      <DependentUpon>ActionItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormBase.resx">
       <DependentUpon>FormBase.cs</DependentUpon>
     </EmbeddedResource>
