@@ -45,13 +45,12 @@ namespace Action
                 {
                     if (Setting.Mode == Action.Constants.Mode.WAITING && actions != null)
                     {
-                        var select = from action in actions
-                                     where action.StartCondition() == true
-                                     select action;
-                        if (select.Count() > 0)
+                        foreach(Action.Task curTask in actions)
                         {
-                            Action.Task t = select.First();
-                            Task.ProcessTask.Enqueue(t);
+                            if (curTask.StartCondition())
+                            {
+                                Task.ProcessTask.Enqueue(curTask);
+                            }
                         }
                     }
                 }

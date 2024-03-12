@@ -941,6 +941,7 @@ namespace Action
 
         public List<System.Windows.Input.Key> StartKey = new List<Key>();
         public List<System.Windows.Input.Key> EndKey = new List<Key>();
+        bool isStartKeyPress = false;
 
 
         public static ConcurrentQueue<Task> ProcessTask = new ConcurrentQueue<Task>();
@@ -974,10 +975,6 @@ namespace Action
                 }
                 check &= ((Keyboard.GetKeyStates(Key[i]) & KeyStates.Down) > 0);
             }
-            if (check)
-            {
-                Console.WriteLine(this.GetType().Name);
-            }
             if(((Control.MouseButtons & MouseButtons.Middle) == MouseButtons.Middle))
             {
                 if (this.GetType().Name == "PopupWindow")
@@ -985,7 +982,18 @@ namespace Action
                     check = true;
                 }
             }
-            return check;
+            if (check && !isStartKeyPress)
+            {
+                isStartKeyPress = true;
+                return false;
+            }
+            if (!check && isStartKeyPress)
+            {
+                Console.WriteLine(this.GetType().Name);
+                isStartKeyPress = false;
+                return true;
+            }
+            return false;
         }
         public bool StartCondition()
         {
