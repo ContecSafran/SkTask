@@ -26,7 +26,7 @@ namespace SkUtil.Network
         }
         #region Property
 
-        private string IPValue = "127.0.0.1";
+        private string IPValue = "192.168.219.220";
         public string IP
         {
             get

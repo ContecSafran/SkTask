@@ -19,6 +19,7 @@ namespace Action
     public partial class FormBase : Form
     {
         Thread TaskThread = null;
+        protected List<Thread> threads = new List<Thread>();
         void InitThread()
         {
 
@@ -27,6 +28,7 @@ namespace Action
             TaskThread.SetApartmentState(ApartmentState.STA);
             CheckForIllegalCrossThreadCalls = false;
             TaskThread.Start();
+            threads.Add(TaskThread);
             /*
             TimerTaskThread = new Thread(TimerThread);
             TimerTaskThread.SetApartmentState(ApartmentState.STA);

@@ -31,7 +31,7 @@ namespace Action
             {
                 return !On;
             }
-            return RecognizeThread.ThreadState == ThreadState.Suspended;
+            return (RecognizeThread.ThreadState == ThreadState.Suspended) || (RecognizeThread.ThreadState == ThreadState.Unstarted);
         }
         public override void Start()
         {

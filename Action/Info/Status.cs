@@ -26,7 +26,7 @@ namespace Action.Info
         static private Mode ModeValue = Mode.WAITING;
         static private Boolean MouseLogValue;
         static private Boolean MouseClickValue = true;
-        static private string MainIDValue = "";
+        static private string MainIDValue = "Kail_Aff";
         static public Mode Mode
         {
             get

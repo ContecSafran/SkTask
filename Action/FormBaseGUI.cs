@@ -49,6 +49,13 @@ namespace Action
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             isRunning = false;
+            foreach(Thread t in threads)
+            {
+                if (t.ThreadState == ThreadState.Running)
+                {
+                    t.Join();
+                }
+            }
         }
 
 

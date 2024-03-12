@@ -41,7 +41,7 @@ namespace Action
             tradeCheck = new TradeCheck();
             AddAction(new Action.Invite());
             AddAction(new Action.LocationMove());
-            AddAction(new Action.Trade());
+            AddAction(new Action.Trade(this));
             AddAction(recognizeTask);
             AddAction(recognizeStopTask);
             AddAction(tradeCheck);

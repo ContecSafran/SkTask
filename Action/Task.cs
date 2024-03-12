@@ -962,14 +962,28 @@ namespace Action
                 Trace.Write(((Keyboard.GetKeyStates(Key[0]) & KeyStates.Down) > 0) ? "true " : "false ");
                 Trace.WriteLine(((Keyboard.GetKeyStates(Key[1]) & KeyStates.Down) > 0) ? "true" : "false");
             }*/
+            if(Key.Count == 0)
+            {
+                check = false;
+            }
             for (int i = 0; i < Key.Count; i++)
             {
-                
+                if (((Keyboard.GetKeyStates(Key[i]) & KeyStates.Down) > 0))
+                {
+                    Console.WriteLine(Key[i].ToString());
+                }
                 check &= ((Keyboard.GetKeyStates(Key[i]) & KeyStates.Down) > 0);
             }
-            if (useMiddleMousebutton)
+            if (check)
             {
-                check &= ((Control.MouseButtons & MouseButtons.Middle) == MouseButtons.Middle);
+                Console.WriteLine(this.GetType().Name);
+            }
+            if(((Control.MouseButtons & MouseButtons.Middle) == MouseButtons.Middle))
+            {
+                if (this.GetType().Name == "PopupWindow")
+                {
+                    check = true;
+                }
             }
             return check;
         }

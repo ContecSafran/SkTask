@@ -41,7 +41,10 @@ namespace Action
         {
             if (RecognizeThread != null)
             {
-                RecognizeThread.Suspend();
+                if (RecognizeThread.ThreadState == ThreadState.Running)
+                {
+                    RecognizeThread.Suspend();
+                }
             }
             Recognize.On = false;
         }

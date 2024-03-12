@@ -106,20 +106,21 @@ namespace Follow
             {
                 try
                 {
-                    Thread.Sleep(200); //minimum CPU usage
+                    Thread.Sleep(500); //minimum CPU usage
 
                     //if (FollowForm.Recognize)
                     {
                         //기존 OCR 방법으로 검출 하던 방법
                         /*
-                        screenCapture.Capture();
+                        screenCAapture.Capture();
                         Bitmap bmp = (Bitmap)screenCapture.bmp.Clone();
                         RectangleRecognizeOcr.Process(bmp);
                         image.InputImage.Image = bmp;*/
 
-                        screenCapture.Capture();
+                        //screenCapture.Capture();
+                        RectangleRecognizePixel.Click();
                         //Bitmap bmp = (Bitmap)screenCapture.bmp.Clone();
-                        image.InputImage.Image = RectangleRecognizePixel.Process(screenCapture.bmp);
+                        //image.InputImage.Image = RectangleRecognizePixel.Process(screenCapture.bmp);
                     }
                 }
                 catch (Exception e)
@@ -133,6 +134,7 @@ namespace Follow
         {
             RecognizeThread = new Thread(FollowThread);
             RecognizeThread.SetApartmentState(ApartmentState.STA);
+            threads.Add(RecognizeThread);
             CheckForIllegalCrossThreadCalls = false;
             base.AddAction();
             recognizeTask.RecognizeThread = RecognizeThread;
