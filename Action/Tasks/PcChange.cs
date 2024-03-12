@@ -28,11 +28,11 @@ namespace Action
             StartKey.Add(key);
             //EnterKey.Add(new KeyCode[3] { KeyCode.CONTROL, KeyCode.ALT, KeyCode.KEY_1 });
             
-            /*
+            
             EnterKey.Add(new KeyCode[] { KeyCode.KEY_T});
             EnterKey.Add(new KeyCode[] { KeyCode.KEY_E });
             EnterKey.Add(new KeyCode[] { KeyCode.KEY_S });
-            EnterKey.Add(new KeyCode[] { KeyCode.KEY_T });*/
+            EnterKey.Add(new KeyCode[] { KeyCode.KEY_T });
         }
 
         public override void Start()
@@ -44,11 +44,11 @@ namespace Action
         }
         public override void Process()
         {
-            EnterKeyProcess();
             if (Action.TrayIcon.isOpened)
             {
                 this.trayIcon.Process();
             }
+            EnterKeyProcess();
         }
     }
 }

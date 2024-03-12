@@ -19,7 +19,7 @@ namespace Action
         //창이 열려 있으면 true
         //창이 열려진 상태에서 esc키 누르면 다시 tray icon으로 하고
         //그외에 나머지 수행하고 있는데 esc 누르면 취소가 된다
-        public static bool isOpened = false;
+        public static bool isOpened = true;
         Form MainWindow = null;
         public event EventHandler.FormViewModeChangedEventHandler ViewModeChanged;
         public TrayIcon(Form mainWindow)
@@ -39,7 +39,7 @@ namespace Action
                 ViewModeChanged(this, false);
                 if (!PopupWindow.popUpPos.IsEmpty)
                 {
-                    Move(PopupWindow.popUpPos);
+                    Click(PopupWindow.popUpPos);
                 }
             }
         }

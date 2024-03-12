@@ -45,6 +45,7 @@ namespace Action
             AddAction(recognizeTask);
             AddAction(recognizeStopTask);
             AddAction(tradeCheck);
+            AddAction(new PcChange(this,tray,System.Windows.Input.Key.F2));
         }
         protected List<Action.Task> GetActions(Constants.TaskType type = Constants.TaskType.Task)
         {

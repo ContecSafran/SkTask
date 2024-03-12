@@ -941,6 +941,7 @@ namespace Action
 
         public List<System.Windows.Input.Key> StartKey = new List<Key>();
         public List<System.Windows.Input.Key> EndKey = new List<Key>();
+        public List<KeyCode[]> EnterKey = new List<KeyCode[]>();
         bool isStartKeyPress = false;
 
 
@@ -1053,6 +1054,23 @@ namespace Action
             return new System.Drawing.Point(
                 (int)((float)Screen.PrimaryScreen.Bounds.Width * input.X),
                 (int)((float)Screen.PrimaryScreen.Bounds.Height * input.Y));
+        }
+        public void EnterKeyProcess()
+        {
+            foreach(KeyCode [] codes in EnterKey)
+            {
+                foreach (KeyCode code in codes)
+                {
+                    SendKeyDown(code);
+                    Task.Sleep(15);
+                }
+
+                foreach (KeyCode code in codes)
+                {
+                    SendKeyUp(code);
+                    Task.Sleep(15);
+                }
+            }
         }
     }
 }
