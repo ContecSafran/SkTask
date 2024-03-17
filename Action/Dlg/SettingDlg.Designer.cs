@@ -29,32 +29,19 @@ namespace Action.Dlg
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingDlg));
             this.SettingTab = new System.Windows.Forms.TabControl();
             this.Status = new System.Windows.Forms.TabPage();
             this.StatusPropertyGrid = new System.Windows.Forms.PropertyGrid();
             this.TaskPage = new System.Windows.Forms.TabPage();
             this.TaskSplitContainer = new System.Windows.Forms.SplitContainer();
-            this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.TimerTaskTab = new System.Windows.Forms.TabPage();
-            this.TimerTaskToolStripContainer = new System.Windows.Forms.ToolStripContainer();
-            this.TimerTaskToolStrip = new System.Windows.Forms.ToolStrip();
-            this.TimerTaskSplitContainer = new System.Windows.Forms.SplitContainer();
-            this.AddTimerTaskStripButton = new System.Windows.Forms.ToolStripButton();
-            this.DeleteTimerTaskStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.SettingTab.SuspendLayout();
             this.Status.SuspendLayout();
             this.TaskPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TaskSplitContainer)).BeginInit();
             this.TaskSplitContainer.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
-            this.TimerTaskTab.SuspendLayout();
-            this.TimerTaskToolStripContainer.ContentPanel.SuspendLayout();
-            this.TimerTaskToolStripContainer.TopToolStripPanel.SuspendLayout();
-            this.TimerTaskToolStripContainer.SuspendLayout();
-            this.TimerTaskToolStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TimerTaskSplitContainer)).BeginInit();
-            this.TimerTaskSplitContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // SettingTab
@@ -109,6 +96,16 @@ namespace Action.Dlg
             this.TaskSplitContainer.SplitterDistance = 223;
             this.TaskSplitContainer.TabIndex = 0;
             // 
+            // TimerTaskTab
+            // 
+            this.TimerTaskTab.Location = new System.Drawing.Point(4, 22);
+            this.TimerTaskTab.Name = "TimerTaskTab";
+            this.TimerTaskTab.Padding = new System.Windows.Forms.Padding(3);
+            this.TimerTaskTab.Size = new System.Drawing.Size(782, 421);
+            this.TimerTaskTab.TabIndex = 2;
+            this.TimerTaskTab.Text = "TimerTask";
+            this.TimerTaskTab.UseVisualStyleBackColor = true;
+            // 
             // toolStripContainer1
             // 
             // 
@@ -121,74 +118,6 @@ namespace Action.Dlg
             this.toolStripContainer1.Size = new System.Drawing.Size(790, 447);
             this.toolStripContainer1.TabIndex = 0;
             this.toolStripContainer1.Text = "toolStripContainer1";
-            // 
-            // TimerTaskTab
-            // 
-            this.TimerTaskTab.Controls.Add(this.TimerTaskToolStripContainer);
-            this.TimerTaskTab.Location = new System.Drawing.Point(4, 22);
-            this.TimerTaskTab.Name = "TimerTaskTab";
-            this.TimerTaskTab.Padding = new System.Windows.Forms.Padding(3);
-            this.TimerTaskTab.Size = new System.Drawing.Size(782, 421);
-            this.TimerTaskTab.TabIndex = 2;
-            this.TimerTaskTab.Text = "TimerTask";
-            this.TimerTaskTab.UseVisualStyleBackColor = true;
-            // 
-            // TimerTaskToolStripContainer
-            // 
-            // 
-            // TimerTaskToolStripContainer.ContentPanel
-            // 
-            this.TimerTaskToolStripContainer.ContentPanel.Controls.Add(this.TimerTaskSplitContainer);
-            this.TimerTaskToolStripContainer.ContentPanel.Size = new System.Drawing.Size(776, 390);
-            this.TimerTaskToolStripContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TimerTaskToolStripContainer.Location = new System.Drawing.Point(3, 3);
-            this.TimerTaskToolStripContainer.Name = "TimerTaskToolStripContainer";
-            this.TimerTaskToolStripContainer.Size = new System.Drawing.Size(776, 415);
-            this.TimerTaskToolStripContainer.TabIndex = 0;
-            this.TimerTaskToolStripContainer.Text = "toolStripContainer2";
-            // 
-            // TimerTaskToolStripContainer.TopToolStripPanel
-            // 
-            this.TimerTaskToolStripContainer.TopToolStripPanel.Controls.Add(this.TimerTaskToolStrip);
-            // 
-            // TimerTaskToolStrip
-            // 
-            this.TimerTaskToolStrip.Dock = System.Windows.Forms.DockStyle.None;
-            this.TimerTaskToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.AddTimerTaskStripButton,
-            this.DeleteTimerTaskStripButton});
-            this.TimerTaskToolStrip.Location = new System.Drawing.Point(3, 0);
-            this.TimerTaskToolStrip.Name = "TimerTaskToolStrip";
-            this.TimerTaskToolStrip.Size = new System.Drawing.Size(121, 25);
-            this.TimerTaskToolStrip.TabIndex = 0;
-            // 
-            // TimerTaskSplitContainer
-            // 
-            this.TimerTaskSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TimerTaskSplitContainer.Location = new System.Drawing.Point(0, 0);
-            this.TimerTaskSplitContainer.Margin = new System.Windows.Forms.Padding(0);
-            this.TimerTaskSplitContainer.Name = "TimerTaskSplitContainer";
-            this.TimerTaskSplitContainer.Size = new System.Drawing.Size(776, 390);
-            this.TimerTaskSplitContainer.SplitterDistance = 223;
-            this.TimerTaskSplitContainer.TabIndex = 1;
-            // 
-            // AddTimerTaskStripButton
-            // 
-            this.AddTimerTaskStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.AddTimerTaskStripButton.Image = ((System.Drawing.Image)(resources.GetObject("AddTimerTaskStripButton.Image")));
-            this.AddTimerTaskStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.AddTimerTaskStripButton.Name = "AddTimerTaskStripButton";
-            this.AddTimerTaskStripButton.Size = new System.Drawing.Size(33, 22);
-            this.AddTimerTaskStripButton.Text = "Add";
-            // 
-            // DeleteTimerTaskStripButton
-            // 
-            this.DeleteTimerTaskStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.DeleteTimerTaskStripButton.Image = ((System.Drawing.Image)(resources.GetObject("DeleteTimerTaskStripButton.Image")));
-            this.DeleteTimerTaskStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.DeleteTimerTaskStripButton.Name = "DeleteTimerTaskStripButton";
-            this.DeleteTimerTaskStripButton.Size = new System.Drawing.Size(45, 22);
-            this.DeleteTimerTaskStripButton.Text = "Delete";
             // 
             // SettingDlg
             // 
@@ -208,16 +137,6 @@ namespace Action.Dlg
             this.TaskSplitContainer.ResumeLayout(false);
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
-            this.TimerTaskTab.ResumeLayout(false);
-            this.TimerTaskToolStripContainer.ContentPanel.ResumeLayout(false);
-            this.TimerTaskToolStripContainer.TopToolStripPanel.ResumeLayout(false);
-            this.TimerTaskToolStripContainer.TopToolStripPanel.PerformLayout();
-            this.TimerTaskToolStripContainer.ResumeLayout(false);
-            this.TimerTaskToolStripContainer.PerformLayout();
-            this.TimerTaskToolStrip.ResumeLayout(false);
-            this.TimerTaskToolStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TimerTaskSplitContainer)).EndInit();
-            this.TimerTaskSplitContainer.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -230,11 +149,6 @@ namespace Action.Dlg
         private System.Windows.Forms.TabPage TaskPage;
         private System.Windows.Forms.SplitContainer TaskSplitContainer;
         private System.Windows.Forms.TabPage TimerTaskTab;
-        private System.Windows.Forms.ToolStripContainer TimerTaskToolStripContainer;
-        private System.Windows.Forms.SplitContainer TimerTaskSplitContainer;
-        private System.Windows.Forms.ToolStrip TimerTaskToolStrip;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
-        private System.Windows.Forms.ToolStripButton AddTimerTaskStripButton;
-        private System.Windows.Forms.ToolStripButton DeleteTimerTaskStripButton;
     }
 }

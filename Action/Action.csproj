@@ -73,6 +73,12 @@
     <Compile Include="Controls\Position.Designer.cs">
       <DependentUpon>Position.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\TimerTaskSetting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TimerTaskSetting.Designer.cs">
+      <DependentUpon>TimerTaskSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dlg\SettingDlg.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +140,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Controls\ActionItem.resx">
       <DependentUpon>ActionItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TimerTaskSetting.resx">
+      <DependentUpon>TimerTaskSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dlg\SettingDlg.resx">
+      <DependentUpon>SettingDlg.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormBase.resx">
       <DependentUpon>FormBase.cs</DependentUpon>
