@@ -75,7 +75,7 @@ namespace Action
 
             Setting.Mode = Action.Constants.Mode.WAITING;
             Setting.PropertyChanged += Status_PropertyChanged;
-            Setting.MouseLog = false;
+            Setting.MouseLog = true;
 
             AddAction();
             InitAction();

@@ -35,7 +35,7 @@ namespace Action.Info
             }
         }
         static private Mode ModeValue = Mode.WAITING;
-        static private Boolean MouseLogValue;
+        static private Boolean MouseLogValue = true;
         static private Boolean MouseClickValue = true;
         static public Mode Mode
         {
