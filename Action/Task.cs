@@ -1019,7 +1019,7 @@ namespace Action
 
         public bool EndCondition()
         {
-            if (!Task.WindowPopup && (Keyboard.GetKeyStates(System.Windows.Input.Key.Escape) & KeyStates.Down) > 0)
+            if ((Keyboard.GetKeyStates(System.Windows.Input.Key.Escape) & KeyStates.Down) > 0)
             {
                 return true;
             }

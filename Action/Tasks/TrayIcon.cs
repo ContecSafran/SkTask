@@ -39,8 +39,9 @@ namespace Action
                 ViewModeChanged(this, false);
                 if (!PopupWindow.popUpPos.IsEmpty)
                 {
-                    Click(PopupWindow.popUpPos);
+                    Move(PopupWindow.popUpPos);
                 }
+
             }
         }
     }

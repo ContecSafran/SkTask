@@ -78,11 +78,13 @@ namespace SkTask
         {
             AddAction(new Action.Inventory());
             AddAction(new Action.Stash());
-            AddAction(new Action.BlightMap());
+           // AddAction(new Action.BlightMap());
             AddAction(new Action.Trash());
             AddAction(new Action.Alter());
-            AddAction(new Action.Augmentation());
-            AddAction(new Action.AlchSco());
+            AddAction(new Action.MouseLog());
+            
+           // AddAction(new Action.Augmentation());
+           // AddAction(new Action.AlchSco());
             base.AddAction();
         }
 

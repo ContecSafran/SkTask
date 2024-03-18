@@ -39,14 +39,14 @@ namespace Action
             if (!MainWindow.Visible)
             {
                 Action.TrayIcon.isOpened = true;
+                ViewModeChanged(this, true);
                 System.Drawing.Point pt = System.Windows.Forms.Cursor.Position;
                 popUpPos = pt;
                 MainWindow.Location = pt;
-                
+                MainWindow.Focus();
                 pt.X += (MainWindow.Size.Width - 10);
                 pt.Y += 15;
                 Click(pt);
-                ViewModeChanged(this, true);
             }
         }
     }

@@ -9,6 +9,7 @@ namespace Action
 {
     public class LocationMove : NetworkTask, Position
     {
+        //0.0102f, 0.2389f
 
         public LocationMove()
         {

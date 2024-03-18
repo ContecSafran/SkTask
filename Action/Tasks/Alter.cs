@@ -31,17 +31,34 @@ namespace Action
             Random rand = new Random();
             //0.0552f, 0.2556f
 
-           // Move(toPoint(new System.Drawing.PointF(0.1734f, 0.4250f)));
+            Move(toPoint(new System.Drawing.PointF(0.0723f, 0.2819f)));
+            Thread.Sleep(rand.Next(50, 55));
+            Move(toPoint(new System.Drawing.PointF(0.0552f, 0.2556f)));
+            Thread.Sleep(rand.Next(50, 55));
+            if ((Keyboard.GetKeyStates(System.Windows.Input.Key.Escape) & KeyStates.Down) > 0)
+            {
+                ForcedStop();
+            }
             Click(toPoint(new System.Drawing.PointF(0.0552f, 0.2556f)), InputEvent.RIGHT);
-            Thread.Sleep(rand.Next(500, 550));
-            //0.1734f, 0.4250f
-
+            Thread.Sleep(rand.Next(50, 55));
+            if ((Keyboard.GetKeyStates(System.Windows.Input.Key.Escape) & KeyStates.Down) > 0)
+            {
+                ForcedStop();
+            }
+            Move(toPoint(new System.Drawing.PointF(0.1613f, 0.3979f)));
+            Thread.Sleep(rand.Next(50, 55));
             Move(toPoint(new System.Drawing.PointF(0.1734f, 0.4250f)));
-            Thread.Sleep(rand.Next(500, 550));
-           // Move(toPoint(new System.Drawing.PointF(0.1734f, 0.4250f)));
+            Thread.Sleep(rand.Next(50, 55));
+            if ((Keyboard.GetKeyStates(System.Windows.Input.Key.Escape) & KeyStates.Down) > 0)
+            {
+                ForcedStop();
+            }
             Click(toPoint(new System.Drawing.PointF(0.1734f, 0.4250f)), InputEvent.LEFT);
-            Thread.Sleep(rand.Next(500, 550));
-
+            Thread.Sleep(rand.Next(50, 55));
+            if ((Keyboard.GetKeyStates(System.Windows.Input.Key.Escape) & KeyStates.Down) > 0)
+            {
+                ForcedStop();
+            }
             SendKeyDown(Action.Task.KeyCode.CONTROL);
             Thread.Sleep(rand.Next(100, 150));
             SendKeyDown(Action.Task.KeyCode.ALT);
@@ -53,13 +70,19 @@ namespace Action
             SendKeyUp(Action.Task.KeyCode.ALT);
             Thread.Sleep(rand.Next(100, 150));
             SendKeyUp(Action.Task.KeyCode.KEY_C);
+            if ((Keyboard.GetKeyStates(System.Windows.Input.Key.Escape) & KeyStates.Down) > 0)
+            {
+                ForcedStop();
+            }
+            /*
             string s = (string)Clipboard.GetData(DataFormats.Text);
+
 
             bool result = (s.Contains("25% increased effect") || s.Contains("(Tier: 1)"));
             if (result)
             {
                 ForcedStop();
-            }
+            }*/
         }
         public override void End()
         {

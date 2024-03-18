@@ -11,6 +11,7 @@ namespace Action
 {
     public class Invite : NetworkTask
     {
+        //0.8410f, 0.7222f
         public Invite()
         {
             TaskType = Constants.TaskType.NetworkTask;

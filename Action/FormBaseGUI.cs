@@ -36,10 +36,11 @@ namespace Action
 
         private void Status_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
+            /*
             if (this.PositionList.Visible != Setting.MouseLog)
             {
                 this.PositionList.Visible = Setting.MouseLog;
-            }
+            }*/
         }
 
         protected void AddToolSctipButton(ToolStripItem toolStripItem)

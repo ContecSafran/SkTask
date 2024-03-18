@@ -126,6 +126,7 @@
     </Compile>
     <Compile Include="Info\Status.cs" />
     <Compile Include="Task.cs" />
+    <Compile Include="Tasks\MouseLog.cs" />
     <Compile Include="Tasks\AlchSco.cs" />
     <Compile Include="Tasks\Alter.cs" />
     <Compile Include="Tasks\Augmentation.cs" />

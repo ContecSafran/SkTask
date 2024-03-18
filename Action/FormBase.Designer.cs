@@ -43,9 +43,9 @@ namespace Action
             this.PositionList = new Action.Controls.Position();
             this.MainToolSctip = new System.Windows.Forms.ToolStrip();
             this.SettingToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.TimerTaskSettingToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.FormClose = new System.Windows.Forms.ToolStripButton();
             this.trayicon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.TimerTaskSettingToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.MainPanel.ContentPanel.SuspendLayout();
             this.MainPanel.TopToolStripPanel.SuspendLayout();
             this.MainPanel.SuspendLayout();
@@ -150,7 +150,6 @@ namespace Action
             this.PositionList.Name = "PositionList";
             this.PositionList.Size = new System.Drawing.Size(139, 100);
             this.PositionList.TabIndex = 0;
-            this.PositionList.Visible = false;
             // 
             // MainToolSctip
             // 
@@ -162,7 +161,7 @@ namespace Action
             this.FormClose});
             this.MainToolSctip.Location = new System.Drawing.Point(3, 0);
             this.MainToolSctip.Name = "MainToolSctip";
-            this.MainToolSctip.Size = new System.Drawing.Size(103, 25);
+            this.MainToolSctip.Size = new System.Drawing.Size(72, 25);
             this.MainToolSctip.TabIndex = 0;
             // 
             // SettingToolStripButton
@@ -174,6 +173,16 @@ namespace Action
             this.SettingToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.SettingToolStripButton.Text = "toolStripButton1";
             this.SettingToolStripButton.Click += new System.EventHandler(this.Setting_Click);
+            // 
+            // TimerTaskSettingToolStripButton
+            // 
+            this.TimerTaskSettingToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.TimerTaskSettingToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("TimerTaskSettingToolStripButton.Image")));
+            this.TimerTaskSettingToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TimerTaskSettingToolStripButton.Name = "TimerTaskSettingToolStripButton";
+            this.TimerTaskSettingToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.TimerTaskSettingToolStripButton.Text = "toolStripButton1";
+            this.TimerTaskSettingToolStripButton.Click += new System.EventHandler(this.TimerTaskSettingToolStripButton_Click);
             // 
             // FormClose
             // 
@@ -188,16 +197,6 @@ namespace Action
             // 
             this.trayicon.Text = "SkTask";
             this.trayicon.Visible = true;
-            // 
-            // TimerTaskSettingToolStripButton
-            // 
-            this.TimerTaskSettingToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.TimerTaskSettingToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("TimerTaskSettingToolStripButton.Image")));
-            this.TimerTaskSettingToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.TimerTaskSettingToolStripButton.Name = "TimerTaskSettingToolStripButton";
-            this.TimerTaskSettingToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.TimerTaskSettingToolStripButton.Text = "toolStripButton1";
-            this.TimerTaskSettingToolStripButton.Click += new System.EventHandler(this.TimerTaskSettingToolStripButton_Click);
             // 
             // FormBase
             // 
