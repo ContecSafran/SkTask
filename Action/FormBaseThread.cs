@@ -1,6 +1,7 @@
 ﻿using Action.Controls;
 using Action.Dlg;
 using Action.Info;
+using Action.TimerAction;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -69,13 +70,12 @@ namespace Action
                         Thread.Sleep(50);
                     }
                 }
-                if (TimerTaskRunning)
+                if (Action.TimerAction.TimerTaskUtil.Running)
                 {
-                    foreach (Action.TimerAction.TimerTask timerTask in timerActions)
+                    foreach (Action.TimerAction.TimerTask timerTask in TimerTaskUtil.TimerTaskDic.Values)
                     {
                         //process에서 동작할거 시간 계산하고 그대로 입력 하면됨
-                        task.Process();
-                        Thread.Sleep(50);
+                        timerTask.Process();
                     }
                 }
             }
@@ -100,12 +100,12 @@ namespace Action
                 Thread.Sleep(40); //minimum CPU usage
                 try
                 {
-                    if (Setting.Mode == Action.Constants.Mode.WAITING && timerActions != null)
+                    if (Setting.Mode == Action.Constants.Mode.WAITING && TimerTaskUtil.TimerTaskDic != null)
                     {
-                        foreach (Action.TimerAction.TimerTask task in timerActions)
+                        foreach (Action.TimerAction.TimerTask timerTask in TimerTaskUtil.TimerTaskDic.Values)
                         {
                             //process에서 동작할거 시간 계산하고 그대로 입력 하면됨
-                            task.Process();
+                            timerTask.Process();
                         }
                     }
                 }

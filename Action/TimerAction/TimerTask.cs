@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json;
+using System.Diagnostics;
+using System.Threading;
 
 namespace Action.TimerAction
 {
-    public class TimerTask : Task
+    public class TimerTask
     {
 
         public string Name
@@ -19,34 +22,65 @@ namespace Action.TimerAction
             get;
             set;
         }
-        public float Second
+        public int Second
         {
             get;
             set;
         }
-        public System.Windows.Input.Key key
+        public Action.Task.KeyCode key
         {
             get;
             set;
         }
-        public TimerTask(System.Windows.Input.Key key, float second, bool visible)
+        bool RestartValue = false;
+        public void SetRestart(bool value)
         {
-            StartKey.Add(key);
+            RestartValue = value;
+            if (!RestartValue)
+            {
+                st.Reset();
+            }
+        }
+        Stopwatch st = new Stopwatch();
+        public TimerTask(Action.Task.KeyCode key, int second, bool visible)
+        {
+            //StartKey.Add(key);
+            this.key = key;
             Name = key.ToString();
             Second = second;
             Visible = visible;
-            TaskType = Constants.TaskType.TimerTask;
+           // TaskType = Constants.TaskType.TimerTask;
         }
-        public override void Process()
+        public void Process()
         {
-            base.Process();
+            if (this.Visible)
+            {
+                bool bProcess = false;
+                if (RestartValue)
+                {
+                    RestartValue = false;
+                    st.Start();
+                    bProcess = true;
+                }
+                else if(st.ElapsedMilliseconds > Second)
+                {
+                    st.Restart();
+                    bProcess = true;
+                }
+                if (bProcess)
+                {
+                    Task.SendKeyDown(key);
+                    Thread.Sleep(10);
+                    Task.SendKeyUp(key);
+                    Thread.Sleep(10);
+                }
+            }
+            //base.Process();
         }
-        public static List<TimerTask> LoadTimerTask()
+
+        public string toJson()
         {
-            return null;
-        }
-        public static void SaveTimerTask(List<TimerTask> tasks)
-        {
+            return JsonSerializer.Serialize<TimerTask>(this);
         }
     }
 }

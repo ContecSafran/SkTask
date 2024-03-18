@@ -1,6 +1,7 @@
 ﻿using Action.Controls;
 using Action.Dlg;
 using Action.Info;
+using Action.TimerAction;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -79,6 +80,9 @@ namespace Action
             AddAction();
             InitAction();
             InitThread();
+            TimerTaskUtil.LoadTimerTask(TimerTaskUtil.GetTimerTaskTxtFileName());
+            //TimerTaskUtil.SaveTimerTask();
         }
+
     }
 }

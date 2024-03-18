@@ -29,22 +29,9 @@ namespace Action.Controls
         /// </summary>
         private void InitializeComponent()
         {
-            this.secondUpDown = new System.Windows.Forms.NumericUpDown();
             this.NameCheckBox = new System.Windows.Forms.CheckBox();
-            ((System.ComponentModel.ISupportInitialize)(this.secondUpDown)).BeginInit();
+            this.secondTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // secondUpDown
-            // 
-            this.secondUpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.secondUpDown.Location = new System.Drawing.Point(3, 19);
-            this.secondUpDown.Name = "secondUpDown";
-            this.secondUpDown.Size = new System.Drawing.Size(61, 21);
-            this.secondUpDown.TabIndex = 5;
             // 
             // NameCheckBox
             // 
@@ -58,22 +45,33 @@ namespace Action.Controls
             this.NameCheckBox.UseVisualStyleBackColor = true;
             this.NameCheckBox.CheckedChanged += new System.EventHandler(this.NameCheckBox_CheckedChanged);
             // 
+            // secondTextBox
+            // 
+            this.secondTextBox.Location = new System.Drawing.Point(0, 21);
+            this.secondTextBox.Name = "secondTextBox";
+            this.secondTextBox.ReadOnly = true;
+            this.secondTextBox.Size = new System.Drawing.Size(68, 21);
+            this.secondTextBox.TabIndex = 7;
+            this.secondTextBox.MouseEnter += new System.EventHandler(this.secondTextBox_MouseEnter);
+            this.secondTextBox.MouseLeave += new System.EventHandler(this.secondTextBox_MouseLeave);
+            // 
             // TimerTaskSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.secondTextBox);
             this.Controls.Add(this.NameCheckBox);
-            this.Controls.Add(this.secondUpDown);
             this.Name = "TimerTaskSetting";
             this.Size = new System.Drawing.Size(68, 42);
-            ((System.ComponentModel.ISupportInitialize)(this.secondUpDown)).EndInit();
+            this.MouseEnter += new System.EventHandler(this.TimerTaskSetting_MouseEnter);
+            this.MouseLeave += new System.EventHandler(this.TimerTaskSetting_MouseLeave);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.NumericUpDown secondUpDown;
         private System.Windows.Forms.CheckBox NameCheckBox;
+        private System.Windows.Forms.TextBox secondTextBox;
     }
 }

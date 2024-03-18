@@ -46,6 +46,7 @@ namespace Action
                     RecognizeThread.Suspend();
                 }
             }
+            Action.TimerAction.TimerTaskUtil.Running = false;
             Recognize.On = false;
         }
     }

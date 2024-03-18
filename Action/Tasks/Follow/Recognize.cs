@@ -51,6 +51,7 @@ namespace Action
                     RecognizeThread.Resume();
                 }
             }
+            Action.TimerAction.TimerTaskUtil.Running = true;
             Recognize.On = true;
         }
     }

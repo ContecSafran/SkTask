@@ -1,4 +1,5 @@
 ﻿using Action.Info;
+using Action.TimerAction;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -43,6 +44,7 @@ namespace Action.Dlg
 
         private void SettingDlg_FormClosed(object sender, FormClosedEventArgs e)
         {
+          //  TimerTaskUtil.SaveTimerTask();
         }
     }
 }

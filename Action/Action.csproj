@@ -31,10 +31,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\2020\2. 통합 관제\시뮬레이터\MCS\dll\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Text.Json, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -78,6 +84,12 @@
     </Compile>
     <Compile Include="Controls\TimerTaskSetting.Designer.cs">
       <DependentUpon>TimerTaskSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dlg\TimerTaskSettingDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dlg\TimerTaskSettingDlg.Designer.cs">
+      <DependentUpon>TimerTaskSettingDlg.cs</DependentUpon>
     </Compile>
     <Compile Include="Dlg\SettingDlg.cs">
       <SubType>Form</SubType>
@@ -136,6 +148,7 @@
     <Compile Include="Tasks\Trash.cs" />
     <Compile Include="Tasks\TrayIcon.cs" />
     <Compile Include="TimerAction\TimerTask.cs" />
+    <Compile Include="TimerAction\TimerTaskUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Controls\ActionItem.resx">
@@ -143,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\TimerTaskSetting.resx">
       <DependentUpon>TimerTaskSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dlg\TimerTaskSettingDlg.resx">
+      <DependentUpon>TimerTaskSettingDlg.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dlg\SettingDlg.resx">
       <DependentUpon>SettingDlg.cs</DependentUpon>

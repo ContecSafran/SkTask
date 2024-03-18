@@ -19,15 +19,24 @@ namespace Action
     {
         private void Setting_Click(object sender, EventArgs e)
         {
-            SettingDlg setting = new SettingDlg(this.actions);
-            setting.Show();
-            setting.Location = new Point(this.Location.X + this.Width, this.Location.Y);
-            setting.FormClosed += Setting_FormClosed;
-            Setting.Mode = Action.Constants.Mode.SETTING;
+            ShowSettingDlg(new SettingDlg(this.actions));
         }
 
+        private void TimerTaskSettingToolStripButton_Click(object sender, EventArgs e)
+        {
+            ShowSettingDlg(new TimerTaskSettingDlg());
+        }
+        private void ShowSettingDlg(Form form)
+        {
+            form.Show();
+            form.Location = new Point(this.Location.X + this.Width, this.Location.Y);
+            form.FormClosed += Setting_FormClosed;
+            this.TopMost = false;
+            Setting.Mode = Action.Constants.Mode.SETTING;
+        }
         private void Setting_FormClosed(object sender, FormClosedEventArgs e)
         {
+            this.TopMost = true;
             Setting.Mode = Action.Constants.Mode.WAITING;
         }
     }

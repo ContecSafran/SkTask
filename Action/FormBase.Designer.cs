@@ -34,9 +34,9 @@ namespace Action
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBase));
             this.MainPanel = new System.Windows.Forms.ToolStripContainer();
-            this.SettingList = new System.Windows.Forms.Panel();
-            this.QuickList = new System.Windows.Forms.Panel();
             this.NetworkList = new System.Windows.Forms.Panel();
+            this.QuickList = new System.Windows.Forms.Panel();
+            this.SettingList = new System.Windows.Forms.Panel();
             this.BottomPanel = new System.Windows.Forms.Panel();
             this.BottomSplitContainer = new System.Windows.Forms.SplitContainer();
             this.CommandLog = new Action.Controls.Log();
@@ -45,6 +45,7 @@ namespace Action
             this.SettingToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.FormClose = new System.Windows.Forms.ToolStripButton();
             this.trayicon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.TimerTaskSettingToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.MainPanel.ContentPanel.SuspendLayout();
             this.MainPanel.TopToolStripPanel.SuspendLayout();
             this.MainPanel.SuspendLayout();
@@ -81,14 +82,14 @@ namespace Action
             this.MainPanel.TopToolStripPanel.Controls.Add(this.MainToolSctip);
             this.MainPanel.TopToolStripPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPanel_TopToolStripPanel_MouseDown);
             // 
-            // SettingList
+            // NetworkList
             // 
-            this.SettingList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.SettingList.Dock = System.Windows.Forms.DockStyle.Left;
-            this.SettingList.Location = new System.Drawing.Point(240, 0);
-            this.SettingList.Name = "SettingList";
-            this.SettingList.Size = new System.Drawing.Size(120, 345);
-            this.SettingList.TabIndex = 1;
+            this.NetworkList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.NetworkList.Dock = System.Windows.Forms.DockStyle.Left;
+            this.NetworkList.Location = new System.Drawing.Point(240, 0);
+            this.NetworkList.Name = "NetworkList";
+            this.NetworkList.Size = new System.Drawing.Size(120, 345);
+            this.NetworkList.TabIndex = 3;
             // 
             // QuickList
             // 
@@ -99,14 +100,14 @@ namespace Action
             this.QuickList.Size = new System.Drawing.Size(120, 345);
             this.QuickList.TabIndex = 2;
             // 
-            // NetworkList
+            // SettingList
             // 
-            this.NetworkList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.NetworkList.Dock = System.Windows.Forms.DockStyle.Left;
-            this.NetworkList.Location = new System.Drawing.Point(0, 0);
-            this.NetworkList.Name = "NetworkList";
-            this.NetworkList.Size = new System.Drawing.Size(120, 345);
-            this.NetworkList.TabIndex = 3;
+            this.SettingList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.SettingList.Dock = System.Windows.Forms.DockStyle.Left;
+            this.SettingList.Location = new System.Drawing.Point(0, 0);
+            this.SettingList.Name = "SettingList";
+            this.SettingList.Size = new System.Drawing.Size(120, 345);
+            this.SettingList.TabIndex = 1;
             // 
             // BottomPanel
             // 
@@ -157,10 +158,11 @@ namespace Action
             this.MainToolSctip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.MainToolSctip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SettingToolStripButton,
+            this.TimerTaskSettingToolStripButton,
             this.FormClose});
             this.MainToolSctip.Location = new System.Drawing.Point(3, 0);
             this.MainToolSctip.Name = "MainToolSctip";
-            this.MainToolSctip.Size = new System.Drawing.Size(49, 25);
+            this.MainToolSctip.Size = new System.Drawing.Size(103, 25);
             this.MainToolSctip.TabIndex = 0;
             // 
             // SettingToolStripButton
@@ -186,6 +188,16 @@ namespace Action
             // 
             this.trayicon.Text = "SkTask";
             this.trayicon.Visible = true;
+            // 
+            // TimerTaskSettingToolStripButton
+            // 
+            this.TimerTaskSettingToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.TimerTaskSettingToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("TimerTaskSettingToolStripButton.Image")));
+            this.TimerTaskSettingToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TimerTaskSettingToolStripButton.Name = "TimerTaskSettingToolStripButton";
+            this.TimerTaskSettingToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.TimerTaskSettingToolStripButton.Text = "toolStripButton1";
+            this.TimerTaskSettingToolStripButton.Click += new System.EventHandler(this.TimerTaskSettingToolStripButton_Click);
             // 
             // FormBase
             // 
@@ -233,5 +245,6 @@ namespace Action
         private System.Windows.Forms.Panel SettingList;
         private System.Windows.Forms.Panel QuickList;
         private System.Windows.Forms.Panel NetworkList;
+        private System.Windows.Forms.ToolStripButton TimerTaskSettingToolStripButton;
     }
 }

@@ -24,12 +24,12 @@ namespace Action
             this.Visible = isPopup;
             if (isPopup)
             {
-                TimerTaskRunning = true;
+                Action.TimerAction.TimerTaskUtil.Running = true;
                 // TimerTaskThread.Resume();
             }
             else
             {
-                TimerTaskRunning = false;
+                Action.TimerAction.TimerTaskUtil.Running = false;
                 // TimerTaskThread.Suspend();
             }
         }

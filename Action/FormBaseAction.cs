@@ -1,6 +1,7 @@
 ﻿using Action.Controls;
 using Action.Dlg;
 using Action.Info;
+using Action.TimerAction;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,12 +20,10 @@ namespace Action
     {
         protected bool isRunning = true;
         protected List<Action.Task> actions = new List<Action.Task>();
-        protected List<Action.TimerAction.TimerTask> timerActions = new List<Action.TimerAction.TimerTask>();
         List<Action.Controls.ActionItem> actionItems;
         public Recognize recognizeTask;
         public RecognizeStop recognizeStopTask;
         public TradeCheck tradeCheck;
-        bool TimerTaskRunning = false;
 
 
         protected virtual void AddAction()
