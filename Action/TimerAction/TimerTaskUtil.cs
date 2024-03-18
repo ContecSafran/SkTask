@@ -21,11 +21,11 @@ namespace Action.TimerAction
             }
             set
             {
+                RunningValue = !value;
                 foreach (TimerTask task in TimerTaskDic.Values)
                 {
-                    task.SetRestart(value);
+                    task.SetRestart(RunningValue);
                 }
-                RunningValue = value;
             }
         }
         public static TimerTask Num1TimerTask = new TimerTask(Action.Task.KeyCode.KEY_1, 1000, false);

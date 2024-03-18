@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Action.Task;
 
 namespace Action
 {
@@ -44,7 +45,9 @@ namespace Action
             AddAction(recognizeTask);
             AddAction(recognizeStopTask);
             AddAction(tradeCheck);
-            AddAction(new PcChange(this,tray,System.Windows.Input.Key.F2));
+            AddAction(new PcChange(this, tray, System.Windows.Input.Key.F1, KeyCode.KEY_1));
+            AddAction(new PcChange(this, tray, System.Windows.Input.Key.F2, KeyCode.KEY_2));
+            AddAction(new PcChange(this, tray, System.Windows.Input.Key.F3, KeyCode.KEY_3));
         }
         protected List<Action.Task> GetActions(Constants.TaskType type = Constants.TaskType.Task)
         {
@@ -69,9 +72,12 @@ namespace Action
             {
                 for (int i = 0; i < tasks.Count; i++)
                 {
-                    ActionItem actionItem = new Action.Controls.ActionItem(tasks[i], true);
-                    this.actionItems.Add(actionItem);
-                    panel.Controls.Add(actionItem);
+                    if (tasks[i].isMenuDraw)
+                    {
+                        ActionItem actionItem = new Action.Controls.ActionItem(tasks[i], true);
+                        this.actionItems.Add(actionItem);
+                        panel.Controls.Add(actionItem);
+                    }
                 }
             }
 

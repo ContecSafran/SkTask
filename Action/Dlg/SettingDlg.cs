@@ -34,8 +34,7 @@ namespace Action.Dlg
 
         private void Setting_Load(object sender, EventArgs e)
         {
-            Setting setting = new Setting();
-            this.StatusPropertyGrid.SelectedObject = setting;
+            
 
         }
         protected void InitAction()
@@ -44,7 +43,6 @@ namespace Action.Dlg
 
         private void SettingDlg_FormClosed(object sender, FormClosedEventArgs e)
         {
-          //  TimerTaskUtil.SaveTimerTask();
         }
     }
 }

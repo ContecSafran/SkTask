@@ -80,7 +80,7 @@ namespace Action
             AddAction();
             InitAction();
             InitThread();
-            TimerTaskUtil.LoadTimerTask(TimerTaskUtil.GetTimerTaskTxtFileName());
+            Action.Info.Setting.LoadStatus();
             //TimerTaskUtil.SaveTimerTask();
         }
 

@@ -2,6 +2,7 @@
 using Action.Controls;
 using Action.Info;
 using Action.Network;
+using Action.TimerAction;
 using SkTask;
 using System;
 using System.Collections.Generic;
@@ -99,6 +100,8 @@ namespace Follow
 
             this.Hide();
             image.init();
+
+            TimerTaskUtil.LoadTimerTask(TimerTaskUtil.GetTimerTaskTxtFileName());
         }
         void FollowThread()
         {

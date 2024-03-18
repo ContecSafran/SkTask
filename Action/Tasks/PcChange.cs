@@ -21,18 +21,21 @@ namespace Action
         //그외에 나머지 수행하고 있는데 esc 누르면 취소가 된다
         Form MainWindow = null;
         TrayIcon trayIcon;
-        public PcChange(Form mainWindow, TrayIcon trayIcon, System.Windows.Input.Key key)
+        public PcChange(Form mainWindow, TrayIcon trayIcon, System.Windows.Input.Key key, KeyCode inputKey)
         {
             MainWindow = mainWindow;
             this.trayIcon = trayIcon;
             StartKey.Add(key);
-            //EnterKey.Add(new KeyCode[3] { KeyCode.CONTROL, KeyCode.ALT, KeyCode.KEY_1 });
-            
-            
+            this.isMenuDraw = false;
+            //KeyCode.KEY_1
+            EnterKey.Add(new KeyCode[] { KeyCode.CONTROL, KeyCode.ALT, inputKey });
+
+            //this.EnterKey = EnterKey;
+            /*
             EnterKey.Add(new KeyCode[] { KeyCode.KEY_T});
             EnterKey.Add(new KeyCode[] { KeyCode.KEY_E });
             EnterKey.Add(new KeyCode[] { KeyCode.KEY_S });
-            EnterKey.Add(new KeyCode[] { KeyCode.KEY_T });
+            EnterKey.Add(new KeyCode[] { KeyCode.KEY_T });*/
         }
 
         public override void Start()

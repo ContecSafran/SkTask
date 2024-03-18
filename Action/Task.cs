@@ -925,6 +925,18 @@ namespace Action
                 Active = value;
             }
         }
+        private bool isMenuDrawValue = true;
+        public bool isMenuDraw
+        {
+            get
+            {
+                return isMenuDrawValue;
+            }
+            set
+            {
+                isMenuDrawValue = value;
+            }
+        }
         #endregion
 
         static public void Sleep()
