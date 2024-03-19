@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Action.Constants;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace Action.Tasks
 {
     public class Move
     {
-        public static void process(float targetX, float targetY)
+        public static void process(float targetX, float targetY, InputEvent input = InputEvent.LEFT)
         {
             Random rand = new Random();
 
@@ -33,7 +34,7 @@ namespace Action.Tasks
                 }
                 Thread.Sleep(rand.Next(10, 15));
             }
-            Task.Click(Task.toPoint(new System.Drawing.PointF(targetX, targetY)));
+            Task.Click(Task.toPoint(new System.Drawing.PointF(targetX, targetY)), input);
             //현재 위치 가져오기
             //중간 값들 찍기
             //중간중간에 Esc 키 누르면 나가기

@@ -20,6 +20,8 @@ namespace Action
         {
             StartKey.Add(Key.D6);
             EndKey.Add(Key.D7);
+
+            EnterKey.Add(new KeyCode[] { KeyCode.CONTROL, KeyCode.ALT, KeyCode.KEY_C });
         }
 
         public override void Start()
@@ -29,51 +31,10 @@ namespace Action
         public override void Process()
         {
             Random rand = new Random();
-            //0.0552f, 0.2556f
+            Action.Tasks.Move.process(0.0552f, 0.2556f, InputEvent.RIGHT);
+            Action.Tasks.Move.process(0.1734f, 0.4250f);
+            EnterKeyProcess();
 
-            Move(toPoint(new System.Drawing.PointF(0.0723f, 0.2819f)));
-            Thread.Sleep(rand.Next(50, 55));
-            Move(toPoint(new System.Drawing.PointF(0.0552f, 0.2556f)));
-            Thread.Sleep(rand.Next(50, 55));
-            if ((Keyboard.GetKeyStates(System.Windows.Input.Key.Escape) & KeyStates.Down) > 0)
-            {
-                ForcedStop();
-            }
-            Click(toPoint(new System.Drawing.PointF(0.0552f, 0.2556f)), InputEvent.RIGHT);
-            Thread.Sleep(rand.Next(50, 55));
-            if ((Keyboard.GetKeyStates(System.Windows.Input.Key.Escape) & KeyStates.Down) > 0)
-            {
-                ForcedStop();
-            }
-            Move(toPoint(new System.Drawing.PointF(0.1613f, 0.3979f)));
-            Thread.Sleep(rand.Next(50, 55));
-            Move(toPoint(new System.Drawing.PointF(0.1734f, 0.4250f)));
-            Thread.Sleep(rand.Next(50, 55));
-            if ((Keyboard.GetKeyStates(System.Windows.Input.Key.Escape) & KeyStates.Down) > 0)
-            {
-                ForcedStop();
-            }
-            Click(toPoint(new System.Drawing.PointF(0.1734f, 0.4250f)), InputEvent.LEFT);
-            Thread.Sleep(rand.Next(50, 55));
-            if ((Keyboard.GetKeyStates(System.Windows.Input.Key.Escape) & KeyStates.Down) > 0)
-            {
-                ForcedStop();
-            }
-            SendKeyDown(Action.Task.KeyCode.CONTROL);
-            Thread.Sleep(rand.Next(100, 150));
-            SendKeyDown(Action.Task.KeyCode.ALT);
-            Thread.Sleep(rand.Next(100, 150));
-            SendKeyDown(Action.Task.KeyCode.KEY_C);
-            Thread.Sleep(rand.Next(100, 150));
-            SendKeyUp(Action.Task.KeyCode.CONTROL);
-            Thread.Sleep(rand.Next(100, 150));
-            SendKeyUp(Action.Task.KeyCode.ALT);
-            Thread.Sleep(rand.Next(100, 150));
-            SendKeyUp(Action.Task.KeyCode.KEY_C);
-            if ((Keyboard.GetKeyStates(System.Windows.Input.Key.Escape) & KeyStates.Down) > 0)
-            {
-                ForcedStop();
-            }
             /*
             string s = (string)Clipboard.GetData(DataFormats.Text);
 
@@ -85,7 +46,7 @@ namespace Action
             }*/
         }
         public override void End()
-        {
+        {/*
             Log.WriteLog("Alter 종료");
             Random rand = new Random();
             SendKeyDown(Action.Task.KeyCode.ALT);
@@ -95,7 +56,7 @@ namespace Action
             SendKeyUp(Action.Task.KeyCode.ALT);
             Thread.Sleep(rand.Next(100, 150));
             SendKeyUp(Action.Task.KeyCode.KEY_D);
-            System.Media.SoundPlayer player = new System.Media.SoundPlayer("alter.WAV");
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer("alter.WAV");*/
             //player.PlaySync();
         }
     }
