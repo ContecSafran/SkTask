@@ -7,7 +7,7 @@ using Action.Tasks;
 using SkUtil.Network;
 namespace Action
 {
-    public class LocationMove : NetworkTask, Position
+    public class LocationMove : NetworkTask
     {
         //0.0102f, 0.2389f
 
@@ -16,10 +16,9 @@ namespace Action
             TaskType = Constants.TaskType.NetworkTask;
         }
 
-        public Move move => new Tasks.Move();
-
         public override void Process()
         {
+            Action.Tasks.Move.process(0.0102f, 0.2389f);
         }
     }
 }

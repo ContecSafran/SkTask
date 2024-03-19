@@ -1061,11 +1061,17 @@ namespace Action
         {
             Setting.Mode = Constants.Mode.WAITING;
         }
-        public System.Drawing.Point toPoint(System.Drawing.PointF input)
+        public static System.Drawing.Point toPoint(System.Drawing.PointF input)
         {
             return new System.Drawing.Point(
                 (int)((float)Screen.PrimaryScreen.Bounds.Width * input.X),
                 (int)((float)Screen.PrimaryScreen.Bounds.Height * input.Y));
+        }
+        public static System.Drawing.PointF toPointF(System.Drawing.Point input)
+        {
+            float x = (float)Position.CurrentPosition.X / (float)Screen.PrimaryScreen.Bounds.Width;
+            float y = (float)Position.CurrentPosition.Y / (float)Screen.PrimaryScreen.Bounds.Height;
+            return new System.Drawing.PointF(x, y);
         }
         public void EnterKeyProcess()
         {

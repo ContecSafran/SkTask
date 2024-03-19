@@ -130,8 +130,8 @@
     <Compile Include="Tasks\AlchSco.cs" />
     <Compile Include="Tasks\Alter.cs" />
     <Compile Include="Tasks\Augmentation.cs" />
-    <Compile Include="Tasks\Interface\Position.cs" />
     <Compile Include="Tasks\Move\Move.cs" />
+    <Compile Include="Tasks\Network\InviteAccept.cs" />
     <Compile Include="Tasks\PcChange.cs" />
     <Compile Include="Tasks\QuickMove\BlightMap.cs" />
     <Compile Include="Tasks\Follow\FollowClick.cs" />
