@@ -22,8 +22,13 @@ namespace Action.Info
                 set;
                 get;
             }
+            public string ServerIP
+            {
+                set;
+                get;
+            }
         }
-        private static Value value = new Value();
+        private static Value statusValue = new Value();
         // This method is called by the Set accessor of each property.
         // The CallerMemberName attribute that is applied to the optional propertyName
         // parameter causes the property name of the caller to be substituted as an argument.
@@ -76,11 +81,32 @@ namespace Action.Info
 
             }
         }
+        static public Boolean IsServer
+        {
+            get;
+            set;
+        }
+        static public TrayIcon TrayIcon
+        {
+            get;
+            set;
+        }
         static public string MainID
         {
             get
             {
-                return value.MainID;
+                return statusValue.MainID;
+            }
+        }
+        static public string ServerIP
+        {
+            get
+            {
+                return statusValue.ServerIP;
+            }
+            set
+            {
+                statusValue.ServerIP = value;
             }
         }
 
@@ -96,8 +122,9 @@ namespace Action.Info
         }
         public static void LoadStatus()
         {
-            value.MainID = "Kail";
-            string s = JsonConvert.SerializeObject(value);
+            statusValue.MainID = "Kail";
+            statusValue.ServerIP = "127.0.0.1";
+            string s = JsonConvert.SerializeObject(statusValue);
 
 
 

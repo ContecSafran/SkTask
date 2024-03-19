@@ -85,6 +85,7 @@ namespace Follow
         protected override void InitForm()
         {
             base.InitForm();
+            Action.Info.Setting.IsServer = false;
             //Toolstrip에 combo box 넣어두고 모니터 개수 확인해서 넣어두고 창 이동하게 하고 상태 설정 저장
             comboBox = Action.Info.MonitorArea.GetButton();
             comboBox.SelectedIndex = -1;
@@ -93,7 +94,7 @@ namespace Follow
             this.InitializeComponent();
             screenCapture.Init();
             RectangleRecognizePixel.init();
-            image.Show();
+            //image.Show();
             taskClient.ClientStart();
             this.Location = new Point { X = 0, Y = 0 };
             comboBox.SelectedIndex = Action.Info.MonitorArea.GetProcessIndex();
@@ -120,10 +121,10 @@ namespace Follow
                         RectangleRecognizeOcr.Process(bmp);
                         image.InputImage.Image = bmp;*/
 
-                        //screenCapture.Capture();
-                        RectangleRecognizePixel.Click();
+                        screenCapture.Capture();
+                        //RectangleRecognizePixel.Click();
                         //Bitmap bmp = (Bitmap)screenCapture.bmp.Clone();
-                        //image.InputImage.Image = RectangleRecognizePixel.Process(screenCapture.bmp);
+                        image.InputImage.Image = RectangleRecognizePixel.Process(screenCapture.bmp);
                     }
                 }
                 catch (Exception e)

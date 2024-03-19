@@ -27,7 +27,11 @@ namespace Action
         }
         protected override bool isActive()
         {
-            if(RecognizeThread == null)
+            if (Action.Info.Setting.IsServer)
+            {
+                return true;
+            }
+            if (RecognizeThread == null)
             {
                 return !On;
             }

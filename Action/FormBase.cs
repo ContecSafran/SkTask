@@ -32,7 +32,6 @@ namespace Action
         public FormBase()
         {
             InitializeComponent();
-            Action.Tasks.Move.process(0.5f, 0.5f);
             /*
             ItemCsv itemCsv = new SkAffix.Process.ItemCsv();
             List<Item> items = itemCsv.getItems();

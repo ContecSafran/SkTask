@@ -138,6 +138,8 @@
     <Compile Include="Tasks\Follow\FollowClickStop.cs" />
     <Compile Include="Tasks\Follow\Recognize.cs" />
     <Compile Include="Tasks\Follow\RecognizeStop.cs" />
+    <Compile Include="Tasks\QuickMove\ServerInviteAccept.cs" />
+    <Compile Include="Tasks\QuickMove\ServerLocationMove.cs" />
     <Compile Include="Tasks\QuickMove\TradeCheck.cs" />
     <Compile Include="Tasks\QuickMove\Inventory.cs" />
     <Compile Include="Tasks\Network\Trade.cs" />

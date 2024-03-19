@@ -33,7 +33,7 @@ namespace Action.Tasks
                 }
                 Thread.Sleep(rand.Next(10, 15));
             }
-            Task.Move(Task.toPoint(new System.Drawing.PointF(targetX, targetY)));
+            Task.Click(Task.toPoint(new System.Drawing.PointF(targetX, targetY)));
             //현재 위치 가져오기
             //중간 값들 찍기
             //중간중간에 Esc 키 누르면 나가기

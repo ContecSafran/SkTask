@@ -70,6 +70,12 @@ namespace Action
                         Thread.Sleep(50);
                     }
                 }
+
+                //Main 창이 띄워지면 중지 한다.
+                //키 입력 인식 Thread와 같이 돌면 Sleep에 영향이 있으므로 별도로 둔다.
+                //대신에 Waiting일때에만 동작하고 
+                //한번에 하나의 동작만 해야한다.
+                //일단 메인 쓰레드에서 하는것으로 변경함 혹시 모르니 냅둠
                 if (Action.TimerAction.TimerTaskUtil.Running)
                 {
                     foreach (Action.TimerAction.TimerTask timerTask in TimerTaskUtil.TimerTaskDic.Values)
@@ -87,32 +93,6 @@ namespace Action
         protected virtual void MainThreadProcessed()
         {
 
-        }
-        //Main 창이 띄워지면 중지 한다.
-        //키 입력 인식 Thread와 같이 돌면 Sleep에 영향이 있으므로 별도로 둔다.
-        //대신에 Waiting일때에만 동작하고 
-        //한번에 하나의 동작만 해야한다.
-        //일단 메인 쓰레드에서 하는것으로 변경함 혹시 모르니 냅둠
-        void TimerThread()
-        {
-            while (this.isRunning)
-            {
-                Thread.Sleep(40); //minimum CPU usage
-                try
-                {
-                    if (Setting.Mode == Action.Constants.Mode.WAITING && TimerTaskUtil.TimerTaskDic != null)
-                    {
-                        foreach (Action.TimerAction.TimerTask timerTask in TimerTaskUtil.TimerTaskDic.Values)
-                        {
-                            //process에서 동작할거 시간 계산하고 그대로 입력 하면됨
-                            timerTask.Process();
-                        }
-                    }
-                }
-                catch (Exception e)
-                {
-                }
-            }
         }
     }
 }

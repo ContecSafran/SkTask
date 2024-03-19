@@ -16,8 +16,7 @@ namespace Action
     {
         public TradeCheck()
         {
-            StartKey.Add(Key.LeftCtrl);
-            StartKey.Add(Key.D9);
+            StartKey.Add(Key.F11);
             this.onlyMove = true;
             TaskType = Constants.TaskType.NetworkTask | Constants.TaskType.QuickTask;
         }

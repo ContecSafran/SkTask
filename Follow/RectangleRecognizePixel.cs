@@ -80,7 +80,7 @@ namespace Follow
                 }
                 if (RecognizeResult.IsEmpty)
                 {
-                    Action.Task.Click(Cursor.Position);
+                   // Action.Task.Click(Cursor.Position);
                     return inputBmp;
                 }
                 /*

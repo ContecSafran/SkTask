@@ -11,17 +11,18 @@ namespace Action
 {
     public class Trade : NetworkTask
     {
+        //서버가 보내는거
         Form MainWindow = null;
         public Trade(Form mainWindow)
         {
             MainWindow = mainWindow;
             TaskType = Constants.TaskType.NetworkTask;
-            StartKey.Add(Key.D2);
+            StartKey.Add(Key.F9);
         }
         public override void Process()
         {
             Task.Sleep(10);
-            System.Windows.Clipboard.SetText("/invite " + Info.Setting.MainID);
+            System.Windows.Clipboard.SetText("/tradeWith " + Info.Setting.MainID);
             Task.Sleep(10);
             Click(MainWindow.Location.X-100, MainWindow.Location.Y - 100,Constants.InputEvent.LEFT);
             Task.Sleep(100);

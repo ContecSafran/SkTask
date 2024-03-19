@@ -9,14 +9,17 @@ using Action.Controls;
 using SkUtil.Network;
 namespace Action
 {
-    public class InviteAccept : NetworkTask
+    public class ServerInviteAccept : NetworkTask
     {
         //0.8410f, 0.7222f
         //클라이언트가 받는거
-        public InviteAccept()
+        public ServerInviteAccept()
         {
-            TaskType = Constants.TaskType.NetworkTask;
-            StartKey.Add(Key.F8);
+            StartKey.Add(Key.T);
+        }
+        protected override bool isActive()
+        {
+            return Action.TrayIcon.isOpened;
         }
         public override void Start()
         {
@@ -24,6 +27,7 @@ namespace Action
         }
         public override void Process()
         {
+            Action.Info.Setting.TrayIcon.Process();
             Action.Tasks.Move.process(0.8410f, 0.7222f);
         }
     }

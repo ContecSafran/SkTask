@@ -26,6 +26,7 @@ namespace Action.Network
         }
         public override void ClientStart(bool ClientType = true)
         {
+            this.IP = Action.Info.Setting.ServerIP;
             base.ClientStart();
         }
 

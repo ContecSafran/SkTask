@@ -27,11 +27,7 @@ namespace Action
         }
         protected override bool isActive()
         {
-            if (RecognizeThread == null)
-            {
-                return On;
-            }
-            return RecognizeThread.ThreadState != ThreadState.Suspended;
+            return Action.TrayIcon.isOpened;
         }
         public override void Start()
         {
@@ -41,10 +37,7 @@ namespace Action
         {
             if (RecognizeThread != null)
             {
-                if (RecognizeThread.ThreadState == ThreadState.Running)
-                {
-                    RecognizeThread.Suspend();
-                }
+                RecognizeThread.Suspend();
             }
             Action.TimerAction.TimerTaskUtil.Running = false;
             Recognize.On = false;

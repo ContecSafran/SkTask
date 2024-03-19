@@ -9,13 +9,12 @@ using Action.Controls;
 using SkUtil.Network;
 namespace Action
 {
-    public class Invite : NetworkTask
+    public class Invite : Task
     {
         //0.8410f, 0.7222f
         public Invite()
         {
-            TaskType = Constants.TaskType.NetworkTask;
-            StartKey.Add(Key.D1);
+            StartKey.Add(Key.F7);
         }
         public override void Start()
         {

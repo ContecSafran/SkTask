@@ -20,11 +20,9 @@ namespace Action
         //창이 열려진 상태에서 esc키 누르면 다시 tray icon으로 하고
         //그외에 나머지 수행하고 있는데 esc 누르면 취소가 된다
         Form MainWindow = null;
-        TrayIcon trayIcon;
-        public PcChange(Form mainWindow, TrayIcon trayIcon, System.Windows.Input.Key key, KeyCode inputKey)
+        public PcChange(Form mainWindow, System.Windows.Input.Key key, KeyCode inputKey)
         {
             MainWindow = mainWindow;
-            this.trayIcon = trayIcon;
             StartKey.Add(key);
             this.isMenuDraw = false;
             //KeyCode.KEY_1
@@ -47,10 +45,7 @@ namespace Action
         }
         public override void Process()
         {
-            if (Action.TrayIcon.isOpened)
-            {
-                this.trayIcon.Process();
-            }
+            Action.Info.Setting.TrayIcon.Process();
             EnterKeyProcess();
         }
     }

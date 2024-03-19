@@ -33,6 +33,7 @@ namespace SkTask
         Action.Network.TaskServer taskServer = new Action.Network.TaskServer();
         public SkTaskForm() : base()
         {
+            Action.Info.Setting.IsServer = true;
             /*
              * 
              * 물약 검색 
@@ -82,9 +83,14 @@ namespace SkTask
             AddAction(new Action.Trash());
             AddAction(new Action.Alter());
             AddAction(new Action.MouseLog());
-            
-           // AddAction(new Action.Augmentation());
-           // AddAction(new Action.AlchSco());
+
+
+            AddAction(new Action.ServerLocationMove());
+            //AddAction(new Action.Trade(this));
+            AddAction(new Action.ServerInviteAccept());
+            //AddAction(new Action.Invite());
+            // AddAction(new Action.Augmentation());
+            // AddAction(new Action.AlchSco());
             base.AddAction();
         }
 

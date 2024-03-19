@@ -29,25 +29,26 @@ namespace Action
 
         protected virtual void AddAction()
         {
-
-            Action.TrayIcon tray = new Action.TrayIcon(this);
-            tray.ViewModeChanged += Tray_ViewModeChanged;
+            Action.Info.Setting.TrayIcon = new Action.TrayIcon(this);
+            Action.Info.Setting.TrayIcon.ViewModeChanged += Tray_ViewModeChanged;
             Action.PopupWindow popupWindow = new Action.PopupWindow(this);
             popupWindow.ViewModeChanged += Tray_ViewModeChanged;
-            AddAction((Action.Task)tray);
+            AddAction((Action.Task)Action.Info.Setting.TrayIcon);
             AddAction((Action.Task)popupWindow);
             recognizeTask = new Action.Recognize();
             recognizeStopTask = new Action.RecognizeStop();
             tradeCheck = new TradeCheck();
-            AddAction(new Action.Invite());
+            AddAction(tradeCheck);
+            
             AddAction(new Action.LocationMove());
-            AddAction(new Action.Trade(this));
+            //AddAction(new Action.Trade(this));
+            AddAction(new Action.InviteAccept());
+            //AddAction(new Action.Invite());
             AddAction(recognizeTask);
             AddAction(recognizeStopTask);
-            AddAction(tradeCheck);
-            AddAction(new PcChange(this, tray, System.Windows.Input.Key.F1, KeyCode.F1));
-            AddAction(new PcChange(this, tray, System.Windows.Input.Key.F2, KeyCode.F2));
-            AddAction(new PcChange(this, tray, System.Windows.Input.Key.F3, KeyCode.F3));
+            AddAction(new PcChange(this, System.Windows.Input.Key.F1, KeyCode.F1));
+            AddAction(new PcChange(this, System.Windows.Input.Key.F2, KeyCode.F2));
+            AddAction(new PcChange(this, System.Windows.Input.Key.F3, KeyCode.F3));
         }
         protected List<Action.Task> GetActions(Constants.TaskType type = Constants.TaskType.Task)
         {
