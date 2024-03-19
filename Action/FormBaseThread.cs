@@ -13,29 +13,48 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Windows.Input;
 
 namespace Action
 {
     public partial class FormBase : Form
     {
         Thread TaskThread = null;
+        Thread FormThread = null;
         protected List<Thread> threads = new List<Thread>();
+        public System.Windows.Input.Key[] ForcedCloseKey = new System.Windows.Input.Key[] {
+            System.Windows.Input.Key.Escape,
+            System.Windows.Input.Key.LeftCtrl,
+            System.Windows.Input.Key.LeftShift
+        };
+
+        public delegate void Form_CloseDelegate();
+        public event Form_CloseDelegate form_CloseDelegate;
         void InitThread()
         {
-
-
+            this.form_CloseDelegate += FormBase_form_CloseDelegate;
+            CheckForIllegalCrossThreadCalls = false;
             TaskThread = new Thread(MainThread);
             TaskThread.SetApartmentState(ApartmentState.STA);
-            CheckForIllegalCrossThreadCalls = false;
             TaskThread.Start();
+            FormThread = new Thread(FormThreadFunction);
+            FormThread.SetApartmentState(ApartmentState.STA);
+            FormThread.Start();
             threads.Add(TaskThread);
+            threads.Add(FormThread);
             /*
             TimerTaskThread = new Thread(TimerThread);
             TimerTaskThread.SetApartmentState(ApartmentState.STA);
             CheckForIllegalCrossThreadCalls = false;
             TimerTaskThread.Start();*/
         }
+
+        private void FormBase_form_CloseDelegate()
+        {
+
+            this.Close();
+        }
+
         void MainThread()
         {
             while (this.isRunning)
@@ -86,6 +105,26 @@ namespace Action
                 }
             }
         }
+        void FormThreadFunction()
+        {
+            while (this.isRunning)
+            {
+
+                bool check = true;
+
+                for (int i = 0; i < ForcedCloseKey.Length; i++)
+                {
+                    check &= ((Keyboard.GetKeyStates(ForcedCloseKey[i]) & KeyStates.Down) > 0);
+                }
+                if (check)
+                {
+                    form_CloseDelegate();
+                    break;
+                }
+                Thread.Sleep(1000); //minimum CPU usage
+            }
+        }
+
 
         /**
          * 메인 쓰레드 처리하고 각틱마다 호출됨
