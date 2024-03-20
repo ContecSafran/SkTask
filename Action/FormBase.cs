@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -55,7 +56,7 @@ namespace Action
                 this.MainPanel.ContentPanel.Controls.Add(this.actionItems[i]);
             }
             */
-
+            Process[] p = MonitorArea.getProcess();
             CloseTimer.Enabled = true;
         }
 

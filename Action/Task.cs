@@ -46,7 +46,7 @@ namespace Action
 
         static public void Click(int x, int y, InputEvent input)
         {
-            if (!Setting.MouseClick)
+            if (!Setting.MouseClick || MonitorArea.getProcess().Length == 0)
             {
                 Move(x, y);
                 return;

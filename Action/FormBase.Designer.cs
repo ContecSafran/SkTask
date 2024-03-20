@@ -39,13 +39,13 @@ namespace Action
             this.SettingList = new System.Windows.Forms.Panel();
             this.BottomPanel = new System.Windows.Forms.Panel();
             this.BottomSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.CommandLog = new Action.Controls.Log();
+            this.PositionList = new Action.Controls.Position();
             this.MainToolSctip = new System.Windows.Forms.ToolStrip();
             this.SettingToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.TimerTaskSettingToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.FormClose = new System.Windows.Forms.ToolStripButton();
             this.trayicon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.CommandLog = new Action.Controls.Log();
-            this.PositionList = new Action.Controls.Position();
             this.CloseTimer = new System.Windows.Forms.Timer(this.components);
             this.MainPanel.ContentPanel.SuspendLayout();
             this.MainPanel.TopToolStripPanel.SuspendLayout();
@@ -136,6 +136,22 @@ namespace Action
             this.BottomSplitContainer.SplitterDistance = 217;
             this.BottomSplitContainer.TabIndex = 0;
             // 
+            // CommandLog
+            // 
+            this.CommandLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CommandLog.Location = new System.Drawing.Point(0, 0);
+            this.CommandLog.Name = "CommandLog";
+            this.CommandLog.Size = new System.Drawing.Size(217, 100);
+            this.CommandLog.TabIndex = 1;
+            // 
+            // PositionList
+            // 
+            this.PositionList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PositionList.Location = new System.Drawing.Point(0, 0);
+            this.PositionList.Name = "PositionList";
+            this.PositionList.Size = new System.Drawing.Size(139, 100);
+            this.PositionList.TabIndex = 0;
+            // 
             // MainToolSctip
             // 
             this.MainToolSctip.Dock = System.Windows.Forms.DockStyle.None;
@@ -183,24 +199,9 @@ namespace Action
             this.trayicon.Text = "SkTask";
             this.trayicon.Visible = true;
             // 
-            // CommandLog
-            // 
-            this.CommandLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CommandLog.Location = new System.Drawing.Point(0, 0);
-            this.CommandLog.Name = "CommandLog";
-            this.CommandLog.Size = new System.Drawing.Size(217, 100);
-            this.CommandLog.TabIndex = 1;
-            // 
-            // PositionList
-            // 
-            this.PositionList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PositionList.Location = new System.Drawing.Point(0, 0);
-            this.PositionList.Name = "PositionList";
-            this.PositionList.Size = new System.Drawing.Size(139, 100);
-            this.PositionList.TabIndex = 0;
-            // 
             // CloseTimer
             // 
+            this.CloseTimer.Interval = 1000;
             this.CloseTimer.Tick += new System.EventHandler(this.CloseTimer_Tick);
             // 
             // FormBase

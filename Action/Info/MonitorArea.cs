@@ -49,6 +49,10 @@ namespace Action.Info
             SelectMonitorButton.DropDownStyle = ComboBoxStyle.DropDownList;
             return SelectMonitorButton;
         }
+        public static Process[] getProcess()
+        {
+            return Process.GetProcessesByName(ProcessName);
+        }
         public static int GetOtherIndex()
         {
             for (int i = 0; i < Screen.AllScreens.Length; i++)
@@ -64,7 +68,7 @@ namespace Action.Info
         {
 
             //Process[] processes = Process.GetProcessesByName("MSPaint");
-            Process[] processes = Process.GetProcessesByName(ProcessName);
+            Process[] processes = getProcess();
             if (processes.Length == 0)
             {
                 processes = Process.GetProcessesByName("MSPaint");
