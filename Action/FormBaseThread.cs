@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -24,15 +25,11 @@ namespace Action
         protected List<Thread> threads = new List<Thread>();
         public System.Windows.Input.Key[] ForcedCloseKey = new System.Windows.Input.Key[] {
             System.Windows.Input.Key.Escape,
-            System.Windows.Input.Key.LeftCtrl,
             System.Windows.Input.Key.LeftShift
         };
 
-        public delegate void Form_CloseDelegate();
-        public event Form_CloseDelegate form_CloseDelegate;
         void InitThread()
         {
-            this.form_CloseDelegate += FormBase_form_CloseDelegate;
             CheckForIllegalCrossThreadCalls = false;
             TaskThread = new Thread(MainThread);
             TaskThread.SetApartmentState(ApartmentState.STA);
@@ -49,11 +46,6 @@ namespace Action
             TimerTaskThread.Start();*/
         }
 
-        private void FormBase_form_CloseDelegate()
-        {
-
-            this.Close();
-        }
 
         void MainThread()
         {
@@ -118,7 +110,6 @@ namespace Action
                 }
                 if (check)
                 {
-                    form_CloseDelegate();
                     break;
                 }
                 Thread.Sleep(1000); //minimum CPU usage
@@ -132,6 +123,13 @@ namespace Action
         protected virtual void MainThreadProcessed()
         {
 
+        }
+        private void CloseTimer_Tick(object sender, EventArgs e)
+        {
+            if(FormThread.ThreadState == System.Threading.ThreadState.Stopped)
+            {
+                this.Close();
+            }
         }
     }
 }

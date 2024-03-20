@@ -55,6 +55,8 @@ namespace Action
                 this.MainPanel.ContentPanel.Controls.Add(this.actionItems[i]);
             }
             */
+
+            CloseTimer.Enabled = true;
         }
 
         protected virtual void Form_Load(object sender, EventArgs e)
