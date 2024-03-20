@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -48,12 +48,21 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Search\Search.csproj">
+      <Project>{a40244b7-473f-45fc-813a-9b2abcc2c407}</Project>
+      <Name>Search</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SkAffix\SkAffix.csproj">
+      <Project>{5f750383-00a7-4993-aa0a-59eb4c5c5e89}</Project>
+      <Name>SkAffix</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SkUtil\SkUtil.csproj">
       <Project>{cc9318a2-8f4c-46df-93ba-1f1d6a5a5967}</Project>
       <Name>SkUtil</Name>

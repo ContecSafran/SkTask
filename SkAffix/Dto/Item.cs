@@ -11,4 +11,10 @@ namespace SkAffix.Dto
         public string KRName { get; set; }
         public string EnName { get; set; }
     }
+    public class SearchItems
+    {
+        public List<Item> ItemList;
+        public List<Affix> PrefixList;
+        public List<Affix> SurffixList;
+    }
 }

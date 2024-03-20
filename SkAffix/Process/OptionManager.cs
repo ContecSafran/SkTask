@@ -9,12 +9,15 @@ namespace SkAffix.Process
 {
     public class OptionManager
     {
+        //
         public void test()
         {
+            //검색 할때 검색어 설정
             int inputValue = 789;
             string entry = "11testtest #% test 321 123";
             string option = SetOption(entry, inputValue);
 
+            //아이템에서 값 가져오기
             int result = GetOptionValue(option, entry);
         }
         public string SetOption(string s, int value)

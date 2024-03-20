@@ -11,13 +11,14 @@ namespace SkAffix.Process
 {
     public class ItemCsv
     {
-        public List<Item> getItems()
+        public SearchItems getItems()
         {
-            List<Item> ItemList = ItemFileUtil.CsvToItemList("Item/flask.csv");
+            SearchItems searchItems = new SearchItems();
+            searchItems.ItemList = ItemFileUtil.CsvToItemList("Item/flask.csv");
 
-            List<Affix> PrefixList = ItemFileUtil.CsvToAffixList("Item/flask_prefix.csv");
-            List<Affix> SurffixList = ItemFileUtil.CsvToAffixList("Item/flask_surffix.csv");
-            return ItemList;
+            searchItems.PrefixList = ItemFileUtil.CsvToAffixList("Item/flask_prefix.csv");
+            searchItems.SurffixList = ItemFileUtil.CsvToAffixList("Item/flask_surffix.csv");
+            return searchItems;
         }
     }
 }

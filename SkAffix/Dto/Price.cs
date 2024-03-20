@@ -10,17 +10,11 @@ namespace SkAffix.Dto
     {
         public int ItemId;
         public int PrefixId;
-        public int PrefixValue;
+        public double PrefixValue;
         public int SuffixId;
-        public int SuffixValue;
+        public double SuffixValue;
 
-        public SkAffix.Constants.Currency MinCurrency;
-        public int MinNum;
-        public int MinCount;
-
-        public SkAffix.Constants.Currency MaxCurrency;
-        public int MaxNum;
-        public int MaxCount;
+        public List<SkAffix.Dto.Currency> Result;
 
         public DateTime date;
     }
