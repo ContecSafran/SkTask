@@ -35,8 +35,8 @@ namespace SkAffix.Process
                 Name = (string)r[0],
                 Option = (string)r[1],
                 IsRange = r[2].Equals("TRUE"),
-                Max = CT_Converter.StringObjectToDouble(r[3]),
-                Min = CT_Converter.StringObjectToDouble(r[4]),
+                Min = CT_Converter.StringObjectToDouble(r[3]),
+                Max = CT_Converter.StringObjectToDouble(r[4]),
                 NameEN = (string)r[5],
                 OptionEN = (string)r[6]
             }).ToList();

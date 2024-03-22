@@ -21,9 +21,9 @@ namespace Search
             input = Regex.Escape(Regex.Replace(input, @"[+-]?[0-9]+\.[0-9]+|[+-]?[0-9]+", "#"));
             input = Regex.Replace(input, @"\\#", @"[+-]?([0-9]+\.[0-9]+|[0-9]+|\#)");
 
+            Regex rgx = new Regex("^" + input + "$", RegexOptions.IgnoreCase);
             foreach (FilterDict data_result in ConfigFile.mFilter[0].Result)
             {
-                Regex rgx = new Regex("^" + input + "$", RegexOptions.IgnoreCase);
                 FilterDictItem[] entries = Array.FindAll(data_result.Entries, x => rgx.IsMatch(x.Text));
                 if (entries.Length > 0)
                 {

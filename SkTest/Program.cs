@@ -18,9 +18,70 @@ namespace SkTest
         {
             ItemCsv itemCsv = new ItemCsv();
             SearchItems searchItems = itemCsv.getItems();
-            Price result = SearchItem.GetPrice(searchItems.ItemList[6], searchItems.PrefixList[5], searchItems.SurffixList[4], 25, 36);
+            Dictionary<Item, List<Price>> result = GetPriceItemLoop(searchItems);
+            //Price result = SearchItem.GetPrice(searchItems.ItemList[6], searchItems.PrefixList[5], searchItems.SuffixList[4], 25, 36);
             
 
+        }
+        private static Dictionary<Item, List<Price>> GetPriceItemLoop(SearchItems searchItems)
+        {
+            Dictionary<Item, List<Price>> ItemDic = new Dictionary<Item, List<Price>>();
+            for (int i = 0; i < searchItems.ItemList.Count; i++)
+            {
+                List<Price> prices = GetPriceAffixLoop(searchItems, searchItems.ItemList[i]);
+                ItemDic.Add(searchItems.ItemList[i], prices);
+            }
+            return ItemDic;
+        }
+        private static List<Price> GetPriceAffixLoop(SearchItems searchItems, Item item)
+        {
+            List<Price> prices = new List<Price>();
+            for (int p = 0; p < searchItems.PrefixList.Count; p++)
+            {
+                for (int s = 0; s < searchItems.SuffixList.Count; s++)
+                {
+                    GetPriceRangeLoop(item, searchItems.PrefixList[p], searchItems.SuffixList[s], prices);
+                }
+            }
+            return prices;
+        }
+        private static void GetPriceRangeLoop(
+            Item item,
+            Affix prefix,
+            Affix suffix,
+            List<Price> prices)
+        {
+            if (prefix.IsRange)
+            {
+                for (double pr = prefix.Min; pr <= prefix.Max; pr += 1.0)
+                {
+                    if (suffix.IsRange)
+                    {
+                        for (double sr = suffix.Min; sr <= suffix.Max; sr += 1.0)
+                        {
+                            prices.Add(SearchItem.GetPrice(item, prefix, suffix, pr, sr));
+                        }
+                    }
+                    else
+                    {
+                        prices.Add(SearchItem.GetPrice(item, prefix, suffix, pr));
+                    }
+                }
+            }
+            else
+            {
+                if (suffix.IsRange)
+                {
+                    for (double sr = suffix.Min; sr <= suffix.Max; sr += 1.0)
+                    {
+                        prices.Add(SearchItem.GetPrice(item, prefix, suffix, 99999, sr));
+                    }
+                }
+                else
+                {
+                    prices.Add(SearchItem.GetPrice(item, prefix, suffix));
+                }
+            }
         }
     }
 }

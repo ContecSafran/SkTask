@@ -15,6 +15,6 @@ namespace SkAffix.Dto
     {
         public List<Item> ItemList;
         public List<Affix> PrefixList;
-        public List<Affix> SurffixList;
+        public List<Affix> SuffixList;
     }
 }

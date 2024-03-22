@@ -17,7 +17,7 @@ namespace Search
     public class Search
     {
         static ConfigOption configOption = new ConfigOption();
-        static public string toJson(string Name, string inputType, q_Stats_filters prefix, q_Stats_filters surffix)
+        static public string toJson(string Name, string inputType, q_Stats_filters prefix, q_Stats_filters suffix)
         {
             string BeforeDayToString(int day)
             {
@@ -107,7 +107,7 @@ namespace Search
                 JQ.Stats = new q_Stats[1];
                 JQ.Stats[0] = new q_Stats();
                 JQ.Stats[0].Type = "and";
-                JQ.Stats[0].Filters = new q_Stats_filters[2] { prefix,surffix };
+                JQ.Stats[0].Filters = new q_Stats_filters[2] { prefix,suffix };
 
 
                 //if (!ckSocket.Dispatcher.CheckAccess())
