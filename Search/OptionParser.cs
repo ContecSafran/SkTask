@@ -13,6 +13,7 @@ namespace Search
         {
             string ss;
             ConfigFile.LoadData(out ss);
+            s = s.Replace((char)160, ' ');
             string input = s.RepEx(@"\s(\([a-zA-Z]+\)|—\s.+)$", "");
             string ft_type = s.Split(new string[] { "\n" }, 0)[0].RepEx(@"(.+)\s\(([a-zA-Z]+)\)$", "$2");
             if (!RS.lFilterType.ContainsKey(ft_type)) ft_type = "_none_";
