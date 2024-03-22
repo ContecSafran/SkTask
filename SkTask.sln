@@ -24,16 +24,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resource", "Resource", "{40
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item", "Item", "{B5E17401-66E2-4FAC-8FF7-83AC69699233}"
-	ProjectSection(SolutionItems) = preProject
-		bin\resource\Item\flask.csv = bin\resource\Item\flask.csv
-		bin\resource\Item\flask_prefix.csv = bin\resource\Item\flask_prefix.csv
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Follow", "Follow\Follow.csproj", "{869D75B1-A8F1-4BBC-AE0E-83840508627F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkTest", "SkTest\SkTest.csproj", "{C001F965-FC09-4CBD-AA81-D8F4EFC96789}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Action", "Action\Action.csproj", "{836ACD4B-5773-4893-AF43-FAF362FCC7E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "flask", "flask", "{7E00EF4D-9F16-4115-A3AA-426F25879BE6}"
+	ProjectSection(SolutionItems) = preProject
+		bin\resource\Item\flask\flask.csv = bin\resource\Item\flask\flask.csv
+		bin\resource\Item\flask\prefix.csv = bin\resource\Item\flask\prefix.csv
+		bin\resource\Item\flask\suffix.csv = bin\resource\Item\flask\suffix.csv
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -123,6 +126,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B5E17401-66E2-4FAC-8FF7-83AC69699233} = {40738990-CECB-4DEE-8C07-B9427D356536}
+		{7E00EF4D-9F16-4115-A3AA-426F25879BE6} = {B5E17401-66E2-4FAC-8FF7-83AC69699233}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {00298EB2-82EE-4A61-89AE-859EE93FED13}

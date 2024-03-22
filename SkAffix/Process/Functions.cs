@@ -11,7 +11,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows;
 
-namespace Search
+namespace SkAffix.Process
 {
 
     internal static class Native
@@ -132,7 +132,7 @@ namespace Search
         [DllImport("user32")] internal static extern IntPtr GetMessageExtraInfo();
         [DllImport("user32", SetLastError = true)] internal static extern uint SendInput(uint nInputs, INPUT[] pInputs, int cbSize);
     }
-
+    /*
     internal static class MouseHook
     {
         internal static event EventHandler MouseAction = delegate { };
@@ -160,14 +160,6 @@ namespace Search
         private static Native.LowLevelMouseProc _proc = HookCallback;
         private static IntPtr _hookID = IntPtr.Zero;
 
-        private static IntPtr SetHook(Native.LowLevelMouseProc proc)
-        {
-            using (Process curProcess = Process.GetCurrentProcess())
-            using (ProcessModule curModule = curProcess.MainModule)
-            {
-                return Native.SetWindowsHookEx(Native.WH_MOUSE_LL, proc, Native.GetModuleHandle(curModule.ModuleName), 0);
-            }
-        }
 
         private static IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
         {
@@ -233,7 +225,7 @@ namespace Search
             public IntPtr dwExtraInfo;
         }
     }
-
+    */
     internal static class Json
     {
         private const char INDENT_CHAR = ' ';

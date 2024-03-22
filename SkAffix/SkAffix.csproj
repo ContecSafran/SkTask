@@ -55,15 +55,15 @@
     <Compile Include="Dto\Item.cs" />
     <Compile Include="Dto\PrefixExtension.cs" />
     <Compile Include="Dto\Price.cs" />
-    <Compile Include="Process\ItemCsv.cs" />
     <Compile Include="Process\ItemFileUtil.cs" />
     <Compile Include="Process\OptionManager.cs" />
+    <Compile Include="Process\Search.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Search\Configure.cs" />
-    <Compile Include="Search\Contracts.cs" />
-    <Compile Include="Search\CustomEx.cs" />
-    <Compile Include="Search\Functions.cs" />
-    <Compile Include="Search\OptionParser.cs" />
+    <Compile Include="Process\Configure.cs" />
+    <Compile Include="Process\Contracts.cs" />
+    <Compile Include="Process\CustomEx.cs" />
+    <Compile Include="Process\Functions.cs" />
+    <Compile Include="Process\OptionParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SkUtil\SkUtil.csproj">

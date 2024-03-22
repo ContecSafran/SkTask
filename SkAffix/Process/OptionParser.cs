@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Search
+namespace SkAffix.Process
 {
     public class OptionParser
     {

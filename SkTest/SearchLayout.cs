@@ -1,5 +1,4 @@
-﻿using Search;
-using SkAffix.Dto;
+﻿using SkAffix.Dto;
 using SkAffix.Process;
 using SkUtil;
 using System;
@@ -17,7 +16,7 @@ namespace SkTest
         public static void GetPriceAffixLoop(SearchItems searchItems)
         {
             GetPriceAffixLoop(searchItems.PrefixList);
-            GetPriceAffixLoop(searchItems.PrefixList);
+            GetPriceAffixLoop(searchItems.SuffixList);
         }
 
         public static void GetPriceAffixLoop(List<Affix> AffixList)

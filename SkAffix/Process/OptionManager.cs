@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using SkAffix.Dto;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -9,6 +12,46 @@ namespace SkAffix.Process
 {
     public class OptionManager
     {
+        public static string ItemDirectory = "Item/";
+        static public SearchItems getItems(string itemType)
+        {
+
+            string filename = "../resource/" + ItemDirectory + itemType + "/searchLayout.txt";
+            if (File.Exists(filename))
+            {
+                string s = File.ReadAllText(filename);
+                SearchItems searchItems = JsonConvert.DeserializeObject<SearchItems>(s);
+                return searchItems;
+            }
+            else
+            {
+
+                SearchItems searchItems = new SearchItems();
+                string directoryName = ItemDirectory + itemType + "/";
+                searchItems.ItemList = ItemFileUtil.CsvToItemList(directoryName + itemType + ".csv");
+
+                searchItems.PrefixList = ItemFileUtil.CsvToAffixList(directoryName + "prefix.csv");
+                searchItems.SuffixList = ItemFileUtil.CsvToAffixList(directoryName + "suffix.csv");
+                GetPriceAffixLoop(searchItems);
+
+                File.WriteAllText(filename, JsonConvert.SerializeObject(searchItems));
+                return searchItems;
+            }
+        }
+
+        public static void GetPriceAffixLoop(SearchItems searchItems)
+        {
+            GetPriceAffixLoop(searchItems.PrefixList);
+            GetPriceAffixLoop(searchItems.SuffixList);
+        }
+
+        public static void GetPriceAffixLoop(List<Affix> AffixList)
+        {
+            foreach (Affix affix in AffixList)
+            {
+                affix.filter = OptionParser.GetOptionFilter(affix.Option);
+            }
+        }
         //
         public void test()
         {

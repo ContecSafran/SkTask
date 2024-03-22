@@ -1,4 +1,4 @@
-﻿using Search;
+﻿using Newtonsoft.Json;
 using SkAffix.Dto;
 using SkAffix.Process;
 using SkUtil;
@@ -16,12 +16,8 @@ namespace SkTest
     {
         static void Main(string[] args)
         {
-            ItemCsv itemCsv = new ItemCsv();
-            SearchItems searchItems = itemCsv.getItems();
-            SearchLayout.GetPriceAffixLoop(searchItems);
-            //Dictionary<Item, List<Price>> result = GetPriceItemLoop(searchItems);
-            //Price result = SearchItem.GetPrice(searchItems.ItemList[6], searchItems.PrefixList[5], searchItems.SuffixList[4], 25, 36);
-
+            SearchItems searchItems = OptionManager.getItems("flask");
+            Dictionary<Item, List<Price>> result = GetPriceItemLoop(searchItems);
 
         }
         private static Dictionary<Item, List<Price>> GetPriceItemLoop(SearchItems searchItems)

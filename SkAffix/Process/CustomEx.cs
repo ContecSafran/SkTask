@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows;
 
-namespace Search
+namespace SkAffix.Process
 {
     // Custom Extensions
     internal static class CustomEx

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
-using Search;
 using SkAffix.Dto;
 using SkAffix.Process;
 
@@ -13,12 +13,15 @@ namespace SkTest
     {
         public static Price GetPrice(Item item, Affix prefix, Affix suffix, double prefixValue = 99999, double surfixValue = 99999)
         {
+           // Thread.Sleep(5000);
+            prefix.filter.Value = new q_Min_And_Max() { Min = prefixValue, Max = prefixValue };
+            suffix.filter.Value = new q_Min_And_Max() { Min = surfixValue, Max = surfixValue };
             //인풋 파일에서 c2 a0를 20으로 변경해야함
-            q_Stats_filters prefixFilter = OptionParser.GetOptionFilter(prefix.Option, prefixValue);
-            q_Stats_filters suffixFilter = OptionParser.GetOptionFilter(suffix.Option, surfixValue);
+            q_Stats_filters prefixFilter = prefix.filter;
+            q_Stats_filters suffixFilter = suffix.filter;
 
-           // string output = Search.Search.toJson(item.KRName, "flask", prefixFilter, suffixFilter);
-            List<SkAffix.Dto.Currency> price = null;// Search.Search.UpdatePrice("Affliction", 0, output, 5);
+            string output = Search.toJson(item.KRName, "flask", prefixFilter, suffixFilter);
+            List<SkAffix.Dto.Currency> price = null;// Search.UpdatePrice("Affliction", 0, output, 5);
             Price result = new Price()
             {
                 ItemId = item.id,

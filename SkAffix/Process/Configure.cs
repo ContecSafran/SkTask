@@ -7,7 +7,7 @@ using System.Threading;
 using System.Windows;
 
 
-namespace Search
+namespace SkAffix.Process
 {
 
     public static class RS

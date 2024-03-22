@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
 using System.Windows;
-namespace Search
+namespace SkAffix.Process
 {
     [DataContract()]
     public class ConfigData
@@ -393,13 +393,13 @@ namespace Search
     public class q_Min_And_Max
     {
         [DataMember(Name = "min")]
-        internal double Min;
+        public double Min;
 
         [DataMember(Name = "max")]
-        internal double Max;
+        public double Max;
 
         [DataMember(Name = "option")]
-        internal object Option;
+        public object Option;
     }
 
     [DataContract]
@@ -611,13 +611,13 @@ namespace Search
     public class q_Stats_filters
     {
         [DataMember(Name = "id")]
-        internal string Id;
+        public string Id;
 
         [DataMember(Name = "value")]
-        internal q_Min_And_Max Value;
+        public q_Min_And_Max Value;
 
         [DataMember(Name = "disabled")]
-        internal bool Disabled;
+        public bool Disabled;
     }
 
     [DataContract]
