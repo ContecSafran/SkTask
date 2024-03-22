@@ -18,9 +18,10 @@ namespace SkTest
         {
             ItemCsv itemCsv = new ItemCsv();
             SearchItems searchItems = itemCsv.getItems();
-            Dictionary<Item, List<Price>> result = GetPriceItemLoop(searchItems);
+            SearchLayout.GetPriceAffixLoop(searchItems);
+            //Dictionary<Item, List<Price>> result = GetPriceItemLoop(searchItems);
             //Price result = SearchItem.GetPrice(searchItems.ItemList[6], searchItems.PrefixList[5], searchItems.SuffixList[4], 25, 36);
-            
+
 
         }
         private static Dictionary<Item, List<Price>> GetPriceItemLoop(SearchItems searchItems)

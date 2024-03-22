@@ -119,10 +119,6 @@
       <Project>{836acd4b-5773-4893-af43-faf362fcc7e8}</Project>
       <Name>Action</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Search\Search.csproj">
-      <Project>{a40244b7-473f-45fc-813a-9b2abcc2c407}</Project>
-      <Name>Search</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SkAffix\SkAffix.csproj">
       <Project>{5f750383-00a7-4993-aa0a-59eb4c5c5e89}</Project>
       <Name>SkAffix</Name>

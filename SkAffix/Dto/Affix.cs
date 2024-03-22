@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Search;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,5 +16,6 @@ namespace SkAffix.Dto
         public bool IsRange;
         public double Min;
         public double Max;
+        public q_Stats_filters filter;
     }
 }

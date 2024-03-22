@@ -49,16 +49,13 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchItem.cs" />
+    <Compile Include="SearchLayout.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Search\Search.csproj">
-      <Project>{a40244b7-473f-45fc-813a-9b2abcc2c407}</Project>
-      <Name>Search</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SkAffix\SkAffix.csproj">
       <Project>{5f750383-00a7-4993-aa0a-59eb4c5c5e89}</Project>
       <Name>SkAffix</Name>

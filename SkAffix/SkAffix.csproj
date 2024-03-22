@@ -38,6 +38,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,6 +59,11 @@
     <Compile Include="Process\ItemFileUtil.cs" />
     <Compile Include="Process\OptionManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Search\Configure.cs" />
+    <Compile Include="Search\Contracts.cs" />
+    <Compile Include="Search\CustomEx.cs" />
+    <Compile Include="Search\Functions.cs" />
+    <Compile Include="Search\OptionParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SkUtil\SkUtil.csproj">
