@@ -14,10 +14,12 @@ namespace Follow
     public class RectangleRecognizePixel
     {
         //아이템 필터
-        static Color RecognizeColor = Color.FromArgb(165, 248, 13);
-        //follow
+        //static Color RecognizeColor = Color.FromArgb(165, 248, 13);
+        //follow 녹색
         //static Color RecognizeColor = Color.FromArgb(98, 249, 98);
-        //static Color RecognizeColor = Color.FromArgb(0, 0, 0);
+        //보라색
+        static Color RecognizeColor = Color.FromArgb(150,150,249);
+        //static Color RecognizeColor = Col5ㄳor.FromArgb(0, 0, 0);
         static List<System.Drawing.Point> points = new List<System.Drawing.Point>();
         static Pen BluePen = new Pen(Color.Blue, 1);
         static Pen YellowPen = new Pen(Color.Yellow, 2);
@@ -80,7 +82,7 @@ namespace Follow
                 }
                 if (RecognizeResult.IsEmpty)
                 {
-                   // Action.Task.Click(Cursor.Position);
+                    Action.Task.Click(Cursor.Position);
                     return inputBmp;
                 }
                 /*

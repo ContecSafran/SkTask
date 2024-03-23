@@ -32,6 +32,7 @@ namespace Action
                 Action.TimerAction.TimerTaskUtil.Running = false;
                 // TimerTaskThread.Suspend();
             }
+            Log.WriteLog(Action.TimerAction.TimerTaskUtil.Running.ToString());
         }
 
         private void Status_PropertyChanged(object sender, PropertyChangedEventArgs e)

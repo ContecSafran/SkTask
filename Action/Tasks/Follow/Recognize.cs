@@ -56,6 +56,7 @@ namespace Action
                 }
             }
             Action.TimerAction.TimerTaskUtil.Running = true;
+            Log.WriteLog(Action.TimerAction.TimerTaskUtil.Running.ToString());
             Recognize.On = true;
         }
     }

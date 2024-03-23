@@ -21,7 +21,7 @@ namespace Action.TimerAction
             }
             set
             {
-                RunningValue = !value;
+                RunningValue = value;
                 foreach (TimerTask task in TimerTaskDic.Values)
                 {
                     task.SetRestart(RunningValue);

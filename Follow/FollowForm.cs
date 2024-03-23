@@ -110,7 +110,7 @@ namespace Follow
             {
                 try
                 {
-                    Thread.Sleep(500); //minimum CPU usage
+                    Thread.Sleep(300); //minimum CPU usage
 
                     //if (FollowForm.Recognize)
                     {
