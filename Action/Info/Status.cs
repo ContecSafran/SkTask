@@ -123,7 +123,8 @@ namespace Action.Info
         public static void LoadStatus()
         {
             statusValue.MainID = "Kail";
-            statusValue.ServerIP = "127.0.0.1";
+            //statusValue.ServerIP = "127.0.0.1";
+            statusValue.ServerIP = "192.168.219.220";
             string s = JsonConvert.SerializeObject(statusValue);
 
 
