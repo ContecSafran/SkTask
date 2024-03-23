@@ -16,9 +16,9 @@ namespace Follow
         //아이템 필터
         //static Color RecognizeColor = Color.FromArgb(165, 248, 13);
         //follow 녹색
-        //static Color RecognizeColor = Color.FromArgb(98, 249, 98);
+        static Color RecognizeColor = Color.FromArgb(98, 249, 98);
         //보라색
-        static Color RecognizeColor = Color.FromArgb(150,150,249);
+        //static Color RecognizeColor = Color.FromArgb(150,150,249);
         //static Color RecognizeColor = Col5ㄳor.FromArgb(0, 0, 0);
         static List<System.Drawing.Point> points = new List<System.Drawing.Point>();
         static Pen BluePen = new Pen(Color.Blue, 1);
@@ -83,8 +83,8 @@ namespace Follow
                 if (RecognizeResult.IsEmpty)
                 {
                     ///Action.Task.Click(Cursor.Position);
-                    Action.Task.SendKeyUp(Action.Task.KeyCode.KEY_E);
-                    Action.Task.Click(System.Windows.Forms.Cursor.Position);
+                   // Action.Task.SendKeyUp(Action.Task.KeyCode.KEY_E);
+                   // Action.Task.Click(System.Windows.Forms.Cursor.Position);
                     return inputBmp;
                 }
                 /*
@@ -126,11 +126,15 @@ namespace Follow
                     System.Drawing.Point center = System.Drawing.Point.Add(ScreenCapture.CaptureStartPoint, (SkUtil.Draw.ToCenterSize(RecognizeResult)));
 
                     RecognizeResult.Inflate(10, 10);
-                    graphics.DrawRectangle(RedPen, RecognizeResult);
+                    System.Drawing.Point movePoint = new Point(
+                        (center.X - ScreenCapture.CaptureBound.X + (ScreenCapture.ProcessRectangle.Width / 2)) * 2,
+                        (center.Y - ScreenCapture.CaptureBound.Y + (ScreenCapture.ProcessRectangle.Height / 2)) * 2
+                        );
+                    //graphics.DrawRectangle(RedPen, RecognizeResult);
                     //if (FollowForm.FollowClick)
                     {
-                        Action.Task.Move(center);
-                        Action.Task.SendKeyPress(Action.Task.KeyCode.KEY_E);
+                          Action.Task.Move(movePoint);
+                          Action.Task.SendKeyPress(Action.Task.KeyCode.KEY_E);
                         //Action.Task.Click(center, Action.Constants.InputEvent.LEFT);
                     }
                 }

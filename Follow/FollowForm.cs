@@ -124,7 +124,7 @@ namespace Follow
                         screenCapture.Capture();
                         //RectangleRecognizePixel.Click();
                         //Bitmap bmp = (Bitmap)screenCapture.bmp.Clone();
-                        image.InputImage.Image = RectangleRecognizePixel.Process(screenCapture.bmp);
+                        RectangleRecognizePixel.Process(screenCapture.bmp);
                     }
                 }
                 catch (Exception e)
