@@ -82,7 +82,7 @@ namespace Follow
                 }
                 if (RecognizeResult.IsEmpty)
                 {
-                    Action.Task.Click(Cursor.Position);
+                    Action.Task.Move(Cursor.Position);
                     return inputBmp;
                 }
                 /*
@@ -128,7 +128,7 @@ namespace Follow
                     //if (FollowForm.FollowClick)
                     {
                         //SkTask.Action.Task.Move(center);
-                        Action.Task.Click(center, Action.Constants.InputEvent.LEFT);
+                        Action.Task.Move(center);
                     }
                 }
 

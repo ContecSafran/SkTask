@@ -8,21 +8,19 @@ using Action.Tasks;
 using SkUtil.Network;
 namespace Action
 {
-    public class LocationMove : NetworkTask
+    public class PortalMove : NetworkTask
     {
         //0.0102f, 0.2389f
 
-        public LocationMove()
+        public PortalMove()
         {
             TaskType = Constants.TaskType.NetworkTask;
-            StartKey.Add(Key.F10);
         }
 
         public override void Process()
         {
-            Action.Tasks.Move.process(0.0102f, 0.2389f);
-            Task.Sleep(40);
-            Action.Tasks.Move.process(0.5719f, 0.5208f);
+            Action.Tasks.Move.process(0.4945f, 0.3972f);
+            
 
         }
     }

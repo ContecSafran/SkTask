@@ -40,8 +40,9 @@ namespace Action
                 RecognizeThread.Suspend();
             }
             Action.TimerAction.TimerTaskUtil.Running = false;
-            Log.WriteLog(Action.TimerAction.TimerTaskUtil.Running.ToString());
             Recognize.On = false;
+
+            Action.Task.SendKeyUp(Action.Task.KeyCode.KEY_E);
         }
     }
 }

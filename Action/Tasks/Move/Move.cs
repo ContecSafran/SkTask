@@ -34,6 +34,7 @@ namespace Action.Tasks
                 }
                 Thread.Sleep(rand.Next(10, 15));
             }
+            Thread.Sleep(rand.Next(10, 15));
             Task.Click(Task.toPoint(new System.Drawing.PointF(targetX, targetY)), input);
             //현재 위치 가져오기
             //중간 값들 찍기

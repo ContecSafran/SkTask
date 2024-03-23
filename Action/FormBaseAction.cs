@@ -39,8 +39,10 @@ namespace Action
             recognizeStopTask = new Action.RecognizeStop();
             tradeCheck = new TradeCheck();
             AddAction(tradeCheck);
-            
+
+            AddAction(new Action.MouseLog());
             AddAction(new Action.LocationMove());
+            AddAction(new Action.PortalMove());
             //AddAction(new Action.Trade(this));
             AddAction(new Action.InviteAccept());
             //AddAction(new Action.Invite());
