@@ -1,4 +1,5 @@
-﻿using SkUtil;
+﻿using Action.Controls;
+using SkUtil;
 using SkUtil.Network;
 using System;
 using System.Collections.Generic;
@@ -22,8 +23,19 @@ namespace Action.Network
         }
         public void SendCommand(int index)
         {
+            Log.WriteLog("Send command : " + index);
             CT_Converter.Int32ToByte(index, ref packetBuffer, 4 * 2);
             this.Send(packetBuffer);
+        }
+
+        protected override void Server_ConnetClient(string ClientIP, int ClientPort, string ClientID)
+        {
+
+            Log.WriteLog("[ConnetClient IP : " + ClientIP + " Port : " + ClientPort.ToString() + " ID : " + ClientID);
+        }
+        protected override void Server_DisconnectClient(string ClientIP, int ClientPort, string ClientID)
+        {
+            Log.WriteLog("DisconnectClient IP : " + ClientIP + " Port : " + ClientPort.ToString() + " ID : " + ClientID);
         }
     }
 }

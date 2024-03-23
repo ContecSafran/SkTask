@@ -53,6 +53,7 @@ namespace Action.Network
 
             if (taskIndex >= 0 && taskIndex < NetworkActionValue.Count)
             {
+                Log.WriteLog("Receive command : " + taskIndex);
                 Task.ProcessTask.Enqueue(NetworkActionValue[taskIndex]);
             }
             else
