@@ -55,11 +55,11 @@ namespace Action
                     RecognizeThread.Resume();
                 }
             }
+            Action.Task.Click(System.Windows.Forms.Cursor.Position);
             Action.TimerAction.TimerTaskUtil.Running = true;
             Log.WriteLog(Action.TimerAction.TimerTaskUtil.Running.ToString());
             Recognize.On = true;
 
-            Action.Task.SendKeyDown(Action.Task.KeyCode.KEY_E);
         }
     }
 }

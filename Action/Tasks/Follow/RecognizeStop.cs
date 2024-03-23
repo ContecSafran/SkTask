@@ -42,7 +42,6 @@ namespace Action
             Action.TimerAction.TimerTaskUtil.Running = false;
             Recognize.On = false;
 
-            Action.Task.SendKeyUp(Action.Task.KeyCode.KEY_E);
         }
     }
 }

@@ -24,7 +24,6 @@ namespace Action
             this.Visible = isPopup;
             if (isPopup)
             {
-                Action.TimerAction.TimerTaskUtil.Running = true;
                 // TimerTaskThread.Resume();
             }
             else

@@ -87,7 +87,7 @@ namespace Action
                 //대신에 Waiting일때에만 동작하고 
                 //한번에 하나의 동작만 해야한다.
                 //일단 메인 쓰레드에서 하는것으로 변경함 혹시 모르니 냅둠
-                if (RecognizeStop.On)
+                if (Action.TimerAction.TimerTaskUtil.Running)
                 {
                     foreach (Action.TimerAction.TimerTask timerTask in TimerTaskUtil.TimerTaskDic.Values)
                     {

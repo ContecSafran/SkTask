@@ -82,7 +82,9 @@ namespace Follow
                 }
                 if (RecognizeResult.IsEmpty)
                 {
-                    Action.Task.Move(Cursor.Position);
+                    ///Action.Task.Click(Cursor.Position);
+                    Action.Task.SendKeyUp(Action.Task.KeyCode.KEY_E);
+                    Action.Task.Click(System.Windows.Forms.Cursor.Position);
                     return inputBmp;
                 }
                 /*
@@ -127,8 +129,9 @@ namespace Follow
                     graphics.DrawRectangle(RedPen, RecognizeResult);
                     //if (FollowForm.FollowClick)
                     {
-                        //SkTask.Action.Task.Move(center);
                         Action.Task.Move(center);
+                        Action.Task.SendKeyPress(Action.Task.KeyCode.KEY_E);
+                        //Action.Task.Click(center, Action.Constants.InputEvent.LEFT);
                     }
                 }
 
