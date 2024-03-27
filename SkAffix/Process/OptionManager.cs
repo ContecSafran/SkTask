@@ -2,6 +2,7 @@
 using SkAffix.Dto;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -39,6 +40,11 @@ namespace SkAffix.Process
             }
         }
 
+        static public string getSampleData()
+        {
+            string filename = "../resource/" + ItemDirectory + "flask/flask sample.txt";
+            return File.ReadAllText(filename);
+        }
         public static void GetPriceAffixLoop(SearchItems searchItems)
         {
             GetPriceAffixLoop(searchItems.PrefixList);
@@ -50,6 +56,11 @@ namespace SkAffix.Process
             foreach (Affix affix in AffixList)
             {
                 affix.filter = OptionParser.GetOptionFilter(affix.Option);
+                //if (affix.filter == null)
+                //{
+                //    Trace.WriteLine(affix.Option);
+                //    
+                //}
             }
         }
         //

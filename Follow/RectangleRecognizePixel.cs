@@ -16,9 +16,9 @@ namespace Follow
         //아이템 필터
         //static Color RecognizeColor = Color.FromArgb(165, 248, 13);
         //follow 녹색
-        static Color RecognizeColor = Color.FromArgb(98, 249, 98);
+        //static Color RecognizeColor = Color.FromArgb(98, 249, 98);
         //보라색
-        //static Color RecognizeColor = Color.FromArgb(150,150,249);
+        static Color RecognizeColor = Color.FromArgb(150,150,249);
         //static Color RecognizeColor = Col5ㄳor.FromArgb(0, 0, 0);
         static List<System.Drawing.Point> points = new List<System.Drawing.Point>();
         static Pen BluePen = new Pen(Color.Blue, 1);
@@ -83,8 +83,8 @@ namespace Follow
                 if (RecognizeResult.IsEmpty)
                 {
                     ///Action.Task.Click(Cursor.Position);
-                   // Action.Task.SendKeyUp(Action.Task.KeyCode.KEY_E);
-                   // Action.Task.Click(System.Windows.Forms.Cursor.Position);
+                    Action.Task.SendKeyUp(Action.Task.KeyCode.KEY_E);
+                    Action.Task.Click(System.Windows.Forms.Cursor.Position);
                     return inputBmp;
                 }
                 /*
@@ -118,7 +118,7 @@ namespace Follow
                             SkTask.Action.Task.Move(center);
                             SkTask.Action.Task.Click(center, SkTask.Constants.InputEvent.LEFT);
                         }
-                        //Click 동작 해줌
+                        //Click 동작 해줌e
                         //종료
                     }
                     */
@@ -127,9 +127,12 @@ namespace Follow
 
                     RecognizeResult.Inflate(10, 10);
                     System.Drawing.Point movePoint = new Point(
-                        (center.X - ScreenCapture.CaptureBound.X + (ScreenCapture.ProcessRectangle.Width / 2)) * 2,
-                        (center.Y - ScreenCapture.CaptureBound.Y + (ScreenCapture.ProcessRectangle.Height / 2)) * 2
+                        center.X + (center.X - (ScreenCapture.CaptureBound.X + (ScreenCapture.ProcessRectangle.Width / 2))),
+                        center.Y + (center.Y - (ScreenCapture.CaptureBound.Y + (ScreenCapture.ProcessRectangle.Height / 2)))
                         );
+                    /*
+                    Trace.WriteLine("X : " + (center.X - ScreenCapture.CaptureBound.X + (ScreenCapture.ProcessRectangle.Width / 2)));
+                    Trace.WriteLine("T : " + (center.Y - ScreenCapture.CaptureBound.Y + (ScreenCapture.ProcessRectangle.Height / 2)));*/
                     //graphics.DrawRectangle(RedPen, RecognizeResult);
                     //if (FollowForm.FollowClick)
                     {

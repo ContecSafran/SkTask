@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using SkUtil;
+using System.Threading;
 
 namespace SkAffix.Process
 {
@@ -129,7 +130,29 @@ namespace SkAffix.Process
                 return "";
             }
         }
+        static public void OpenWebBrowser(string league, string sEntity)
+        {
+            string request_result = null;
 
+            // 마우스 훜시 프로그램에 딜레이가 생겨 쓰레드 처리
+            Thread thread = new Thread(() =>
+            {
+                request_result = Api.SendHTTP(sEntity, RS.TradeApi[0] + league, 5000);
+                if ((request_result ?? "") != "")
+                {
+                    try
+                    {
+                        ResultData resultData = Json.Deserialize<ResultData>(request_result);
+                        System.Diagnostics.Process.Start(RS.TradeUrl[0] + league + "/" + resultData.ID);
+                    }
+                    catch { }
+                }
+            });
+
+            thread.Start();
+            thread.Join();
+
+        }
         static public List<SkAffix.Dto.Currency> UpdatePrice(string league, int langIndex, string entity, int listCount)
         {
             string url_string = "";

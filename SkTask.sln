@@ -33,6 +33,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Action", "Action\Action.csp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "flask", "flask", "{7E00EF4D-9F16-4115-A3AA-426F25879BE6}"
 	ProjectSection(SolutionItems) = preProject
+		bin\resource\Item\flask\flask sample.txt = bin\resource\Item\flask\flask sample.txt
 		bin\resource\Item\flask\flask.csv = bin\resource\Item\flask\flask.csv
 		bin\resource\Item\flask\prefix.csv = bin\resource\Item\flask\prefix.csv
 		bin\resource\Item\flask\suffix.csv = bin\resource\Item\flask\suffix.csv
