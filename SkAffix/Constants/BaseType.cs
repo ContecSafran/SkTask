@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SkTest
+namespace SkAffix.Constants
 {
-    public class Status
+    public enum Currency
     {
-        public static string league = "Standard";
+        Chaos,
+        Divine
     }
 }

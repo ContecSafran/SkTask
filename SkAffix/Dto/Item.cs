@@ -8,11 +8,10 @@ namespace SkAffix.Dto
 {
     public class Item : DtoBase
     {
-        public string KRName { get; set; }
-        public string EnName { get; set; }
     }
     public class SearchItems
     {
+        public bool search;
         public List<Item> ItemList;
         public List<Affix> PrefixList;
         public List<Affix> SuffixList;

@@ -9,5 +9,8 @@ namespace SkAffix.Dto
     public class DtoBase
     {
         public int id;
+        public string Name;
+        public string NameEN;
+        public bool enable;
     }
 }

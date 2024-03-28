@@ -20,7 +20,7 @@ namespace SkAffix.Process
         public static List<Item> DataTableToItemList(DataTable dt)
         {
             List<System.Data.DataRow> rows = dt.AsEnumerable().ToList();
-            return rows.Select((r, index) => new Item { id = index, KRName = (string)r[0], EnName = (string)r[1] }).ToList(); 
+            return rows.Select((r, index) => new Item { id = index, Name = (string)r[0], NameEN = (string)r[1] }).ToList(); 
         }
         public static List<Affix> CsvToAffixList(string affixFileName)
         {

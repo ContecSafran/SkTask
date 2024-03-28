@@ -40,9 +40,20 @@ namespace SkAffix.Process
             }
         }
 
+        static public void SavePriceLayout(Dictionary<Item, List<Price>> priceLayout,string itemType = "flask")
+        {
+            string filename = "../resource/" + ItemDirectory + itemType + "/priceLayout.txt";
+            File.WriteAllText(filename, JsonConvert.SerializeObject(priceLayout));
+        }
+        static public Dictionary<Item, List<Price>> LoadPriceLayout(string itemType = "flask")
+        {
+            string filename = "../resource/" + ItemDirectory + itemType + "/priceLayout.txt";
+            string s = File.ReadAllText(filename);
+            return JsonConvert.DeserializeObject<Dictionary<Item, List<Price>>>(s);
+        }
         static public string getSampleData()
         {
-            string filename = "../resource/" + ItemDirectory + "flask/flask sample.txt";
+            string filename = "../resource/" + ItemDirectory + "flask/flask sample sufix.txt";
             return File.ReadAllText(filename);
         }
         public static void GetPriceAffixLoop(SearchItems searchItems)

@@ -47,6 +47,68 @@ namespace SkAffix.Process
             }
         }
 
+        public static void test(CurrentItemPrice price, string s, SearchItems searchItems)
+        {
+            s = s.Replace((char)160, ' ');
+            string input = s.RepEx(@"\s(\([a-zA-Z]+\)|—\s.+)$", "");
+            string ft_type = s.Split(new string[] { "\n" }, 0)[0].RepEx(@"(.+)\s\(([a-zA-Z]+)\)$", "$2");
+            if (!RS.lFilterType.ContainsKey(ft_type)) ft_type = "_none_";
+
+            input = Regex.Escape(Regex.Replace(input, @"[+-]?[0-9]+\.[0-9]+|[+-]?[0-9]+", "#"));
+            input = Regex.Replace(input, @"\\#", @"[+-]?([0-9]+\.[0-9]+|[0-9]+|\#)");
+
+            Regex rgx = new Regex("^" + input + "$", RegexOptions.IgnoreCase);
+            if (price.prefix == null)
+            {
+                Affix[] entriesPrefix = Array.FindAll(searchItems.PrefixList.ToArray(), x => rgx.IsMatch(x.Option));
+                if (entriesPrefix.Length > 0)
+                {
+                    Affix affix = entriesPrefix.First();
+                    double value = 99999;
+                    if (affix.IsRange)
+                    {
+                        value = GetOptionValue(s, affix.Option);
+                        if(value < affix.Min)
+                        {
+                            return;
+                        }
+                    }
+                    price.prefix = affix;
+                    price.searchPrefixFilter = new q_Stats_filters()
+                    {
+                        Disabled = false,
+                        Id = price.prefix.filter.Id,
+                        Value = (new q_Min_And_Max() { Min = value, Max = 99999 })
+                    };
+                }
+            }
+            else
+            {
+                Affix[] entriesSurfix = Array.FindAll(searchItems.SuffixList.ToArray(), x => rgx.IsMatch(x.Option));
+                if (entriesSurfix.Length > 0)
+                {
+
+                    Affix affix = entriesSurfix.First();
+                    double value = 99999;
+                    if (affix.IsRange)
+                    {
+                        value = GetOptionValue(s, affix.Option);
+                        if (value < affix.Min)
+                        {
+                            return;
+                        }
+                    }
+                    price.surfix = affix;
+                    price.searchSurfixFilter = new q_Stats_filters()
+                    {
+                        Disabled = false,
+                        Id = price.surfix.filter.Id,
+                        Value = (new q_Min_And_Max() { Min = value, Max = 99999 })
+                    };
+                }
+            }
+        }
+
         public static double GetOptionValue(string options, string entry)
         {
             MatchCollection matches1 = Regex.Matches(options, @"[-]?([0-9]+\.[0-9]+|[0-9]+)");

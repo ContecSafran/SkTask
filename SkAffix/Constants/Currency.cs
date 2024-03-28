@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace SkAffix.Constants
 {
-    public enum Currency
+    public enum BaseType
     {
-        Chaos,
-        Divine
+        Item,
+        Prefix,
+        Suffix
     }
 }

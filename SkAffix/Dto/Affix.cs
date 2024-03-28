@@ -9,8 +9,6 @@ namespace SkAffix.Dto
 {
     public class Affix : DtoBase
     {
-        public string Name;
-        public string NameEN;
         public string OptionEN;
         public string Option;
         public bool IsRange;

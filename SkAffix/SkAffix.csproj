@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants\BaseType.cs" />
     <Compile Include="Constants\Currency.cs" />
     <Compile Include="Constants\FilePath.cs" />
     <Compile Include="Dto\Affix.cs" />

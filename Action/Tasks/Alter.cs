@@ -21,7 +21,7 @@ namespace Action
             StartKey.Add(Key.D6);
             EndKey.Add(Key.D7);
 
-            EnterKey.Add(new KeyCode[] { KeyCode.CONTROL, KeyCode.ALT, KeyCode.KEY_C });
+            EnterKey.Add(new KeyCode[] { KeyCode.CONTROL, KeyCode.KEY_C });
         }
 
         public override void Start()

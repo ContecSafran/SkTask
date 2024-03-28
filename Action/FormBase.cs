@@ -56,8 +56,6 @@ namespace Action
                 this.MainPanel.ContentPanel.Controls.Add(this.actionItems[i]);
             }
             */
-            Process[] p = MonitorArea.getProcess();
-            CloseTimer.Enabled = true;
         }
 
         protected virtual void Form_Load(object sender, EventArgs e)
@@ -78,12 +76,14 @@ namespace Action
 
             Setting.Mode = Action.Constants.Mode.WAITING;
             Setting.PropertyChanged += Status_PropertyChanged;
-            Setting.MouseLog = true;
+            Setting.MouseLog = false;
 
             AddAction();
             InitAction();
             InitThread();
             Action.Info.Setting.LoadStatus();
+            Process[] p = MonitorArea.getProcess();
+            CloseTimer.Enabled = true;
             //TimerTaskUtil.SaveTimerTask();
         }
 
