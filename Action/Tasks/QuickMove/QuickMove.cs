@@ -23,6 +23,7 @@ namespace Action
         public int CountY = 0;
         public QuickMove()
         {
+            StartKey.Add(Key.LeftCtrl);
         }
 
         protected override bool isActive()
